@@ -1,0 +1,10 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"hello_world": "Hello, {name} from de!",
+	"footer_copyright": "© Neuzeit GmbH 2025",
+	"contactHeadline": "KONTAKT",
+	"contactPostalAddress": "Stollwerckstraße 27-31 &shy;51149 Köln",
+	"contactPhone": "+49 221 168 53 600",
+	"contactEmail": "hello@neuzeit.ai",
+	"smHeadline": "Folgen Sie uns"
+}
