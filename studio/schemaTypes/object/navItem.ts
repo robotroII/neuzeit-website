@@ -12,15 +12,15 @@ export const navItem = defineType({
       title: 'Navigation Text'
     },
     {
-      name: 'linkClass',
-      type: 'string',
-      title: 'Link css class'
-    },
-    {
       name: 'navigationItemUrl',
       type: 'link',
       title: 'Navigation Item URL'
     },  
+    {
+      name: 'linkClass',
+      type: 'string',
+      title: 'Link css class'
+    },
   ],
   preview: {
     select: {

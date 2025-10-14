@@ -1,4 +1,8 @@
 <script lang="ts">
+import { page } from '$app/state';
+
+$: pages = page.data.pages?.data;
+// console.log('data', page.data);
 </script>
 
 <!-- <svelte:body use:classList /> -->

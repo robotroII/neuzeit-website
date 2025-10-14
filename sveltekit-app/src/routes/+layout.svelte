@@ -1,6 +1,6 @@
 <script lang="ts">
 	// import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
-	// import PageHeader from '$lib/PageHeader.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
   import PageFooter from '$lib/components/PageFooter.svelte';
 	import { page } from '$app/state';
 
@@ -13,6 +13,9 @@
   // const themeData = $derived(pageData && pageData.theme);
   // console.log('pageData', pageData, pageData?.sections.filter(section => section._type === 'pageSection'));
 
+  // const pages = $derived(page.data.pages?.data);
+  console.log('data', page.data);
+
 	const { children } = $props();
 </script>
 
@@ -21,6 +24,8 @@
   <title>Page</title>
   <!-- <title>{pageData?.title}</title> -->
 </svelte:head>
+
+<PageHeader />
 
 <!-- {#if $isPreviewing}
 	<a href={`/preview/disable?redirect=${page.url.pathname}`} class="preview-toggle">

@@ -6,19 +6,14 @@ export const navigationType = defineType({
   type: 'document',
   fields: [
     defineField({
-      type: 'string',
       name: 'title',
-      title: 'Title',
-    }),
-    defineField({
-      name: 'navId',
-      type: 'slug',
-      title: 'Navigation Id'
-    }),
-    defineField({
-      name: 'headline',
       type: 'string',
-      title: 'Headline'
+      title: 'Navigation Title'
+    }),
+    defineField({
+      name: 'slug',
+      type: 'slug',
+      title: 'Navigation Slug'
     }),
     defineField({
       name: 'items',
@@ -36,9 +31,7 @@ export const navigationType = defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'mainImage',
-      // author: 'author.name',
+      title: 'slug.current',
     },
     // prepare(selection) {
     //   const {author} = selection

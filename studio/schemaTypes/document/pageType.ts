@@ -31,24 +31,25 @@ export const pageType = defineType({
     //   title: 'Theme settings',
     // }),
 
-    // defineField({
-    //   // should match 'languageField' plugin configuration setting, if customized
-    //   name: 'language',
-    //   type: 'string',
-    //   readOnly: true,
-    //   hidden: true,
-    // })
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    })
   ],
   preview: {
     select: {
       title: 'title',
+      slug: 'slug.current',
+      language: 'language',
       // media: 'mainImage',
       // author: 'author.name',
     },
-    // prepare(selection) {
-    //   const {author} = selection
-    //   return {...selection, subtitle: author && `by ${author}`}
-    // },
+    prepare(selection) {
+      const {slug, language} = selection;
+      return { ...selection, subtitle: `${slug && `(${slug})` || '-'}: ${language && `(${language})`}` }
+    },
   },
 });
 

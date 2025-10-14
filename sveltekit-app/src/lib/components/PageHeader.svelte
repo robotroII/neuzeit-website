@@ -38,13 +38,13 @@
                 <path d="M0 0V9.61542C0 48.9045 36.5678 96 88.7124 96H160V0H0Z" fill="white"/>
               </svg>
             </div>
-            <Navigation
+            <!-- <Navigation
               class="relative z-1"
               nav={page.data.nav.meta}
               ulClass="flex-col lg:flex-row lg:items-center lg:gap-6 xl:gap-8"
               liClass="lg:place-items-center"
               aClass="uppercase text-end lg:text-start"
-            />
+            /> -->
           </div>
         </div>
       </div>
@@ -72,18 +72,18 @@
 before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-full before:h-full before:bg-gradient-to-b before:from-[#fff] before:to-[#fff]
 -->
 <script lang="ts">
-  import NeuzeitLogo from '$lib/NeuzeitLogo.svelte';
-  import Navigation from '$lib/Navigation.svelte';
+  import NeuzeitLogo from '$lib/components/NeuzeitLogo.svelte';
+  import Navigation from '$lib/components/Navigation.svelte';
 
 	import { page } from '$app/state';
 
 	const pageData = $derived(page.data.pageData?.data);
   const themeData = $derived(pageData && pageData.theme);
   let expanded = $state(false);
-
+console.log('heD3', page?.data?.nav?.main?.items)
   const navItems = $derived({
     ...page?.data?.nav?.main,
-    items: page?.data?.nav?.main?.items.filter(item => !['cases'].includes(item.slug))
+    // items: page?.data?.nav?.main?.items.filter(item => !['cases'].includes(item.slug))
   });
 </script>
 

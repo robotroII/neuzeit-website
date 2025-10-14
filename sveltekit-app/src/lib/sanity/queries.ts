@@ -249,7 +249,18 @@ export const pageQuery = groq`*[_type == "page" && (slug.current == $slug || _id
     }
   }
 }`;
-export const pagesQuery = groq`*[_type == "page"]`;
+// export const pagesQuery = groq`*[_type == "page"]`;
+export const pagesQuery = groq`*[_type == "page" && language == $language]{
+  _id,
+  title,
+  slug,
+  language,
+  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+    title,
+    slug,
+    language
+  },
+}`;
 /*
 {
   title,
@@ -327,7 +338,7 @@ export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | ord
 
 export const navQuery = groq`*[_type == "navigation"]{
   ...,
-  "navId": @.navId.current,
+  "slug": @.slug.current,
   items[]{
     ...,
     "slug": @.navigationItemUrl.internalLink->slug.current,

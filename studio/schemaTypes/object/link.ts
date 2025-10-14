@@ -30,13 +30,13 @@ export const link = defineType({
       type: "string",
       name: "icon",
     }),
-    defineField({
-      type: "string",
-      name: "title",
-    }),
-    defineField({
-      type: "string",
-      name: "description",
-    }),
+  //   defineField({
+  //     type: "string",
+  //     name: "title",
+  //   }),
+  //   defineField({
+  //     type: "string",
+  //     name: "description",
+  //   }),
   ]
 });

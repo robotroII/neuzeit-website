@@ -1,9 +1,10 @@
-import {defineConfig} from 'sanity'
+import {defineConfig, defineField} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
 import { internationalizedArray } from 'sanity-plugin-internationalized-array'
+import { documentInternationalization } from '@sanity/document-internationalization';
 
 export default defineConfig({
   name: 'default',
@@ -22,6 +23,16 @@ export default defineConfig({
       ],
       defaultLanguages: ['en'],
       fieldTypes: ['string'],
+    }),
+    documentInternationalization({
+      supportedLanguages: [
+        { id: 'de', title: 'German' },
+        { id: 'en', title: 'English' }
+      ],
+      schemaTypes: [ 'page', 'case' ],
+      metadataFields: [
+        defineField({ name: 'slug', type: 'slug' }),
+      ],
     })
   ],
 
