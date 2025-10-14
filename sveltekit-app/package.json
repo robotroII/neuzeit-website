@@ -45,10 +45,10 @@
 	"dependencies": {
 		"@fontsource/sora": "^5.2.5",
 		"@inlang/paraglide-js": "^2.0.0",
-		"@sanity/client": "^7.1.0",
+		"@sanity/client": "^7.12.0",
 		"@sanity/image-url": "^1.1.0",
 		"@sanity/svelte-loader": "^1.13.38",
-		"@sanity/visual-editing": "^2.13.21",
+		"@sanity/visual-editing": "^3.0.5",
 		"@splidejs/svelte-splide": "^0.2.9",
 		"aos": "^2.3.4",
 		"clsx": "^2.1.1",

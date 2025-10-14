@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
+	// import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	// import PageHeader from '$lib/PageHeader.svelte';
   import PageFooter from '$lib/components/PageFooter.svelte';
 	import { page } from '$app/state';
@@ -22,12 +22,12 @@
   <!-- <title>{pageData?.title}</title> -->
 </svelte:head>
 
-{#if $isPreviewing}
+<!-- {#if $isPreviewing}
 	<a href={`/preview/disable?redirect=${page.url.pathname}`} class="preview-toggle">
 		<span>Preview Enabled</span>
 		<span>Disable Preview</span>
 	</a>
-{/if}
+{/if} -->
 
 <!-- <div
   class="svelte-layout w-screen max-w-screen page page--{pageData?.slug?.current || 'start'} {themeData?.class ? themeData.class : ''} {themeData?.colorMode ? `tw-${themeData.colorMode}` : ''} {themeData?.primaryGradient?.colors?.length ? 'has-gradient' : ''} {themeData?.backgroundColor ? 'has-background-color' : ''} {themeData?.primaryColor ? 'has-primary-color' : ''}"
