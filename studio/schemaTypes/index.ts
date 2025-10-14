@@ -1,10 +1,17 @@
-import { post } from './document/post';
-import { navigation } from './document/navigation'
+import { pageType } from './document/pageType';
+import { caseType } from './document/caseType';
+import { postType } from './document/postType';
+import { navigationType } from './document/navigationType'
 
 import { navItem } from './object/navItem'
+import { link } from './object/link'
 
 export const schemaTypes = [
-  post,
-  navigation,
-  navItem
+  pageType,
+  caseType,
+  postType,
+  navigationType,
+
+  navItem,
+  link
 ];
