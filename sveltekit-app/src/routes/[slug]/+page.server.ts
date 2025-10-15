@@ -1,6 +1,6 @@
 import { pageQuery, casesQuery, type Page } from '$lib/sanity/queries';
 import type { PageServerLoad, EntryGenerator } from './$types';
-import { getLocale, locales, baseLocale } from '$lib/paraglide/runtime';
+import { locales, baseLocale } from '$lib/paraglide/runtime';
 import { getLocaleFromPath } from '$lib/utils';
 
 export const load: PageServerLoad = async (event) => {

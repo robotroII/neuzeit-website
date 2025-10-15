@@ -1,11 +1,4 @@
-import {
-	pageQuery,
-	pagesQuery,
-	postsQuery,
-	navQuery,
-	type Post,
-	type Page
-} from '$lib/sanity/queries';
+import { pageQuery } from '$lib/sanity/queries';
 import type { PageServerLoad } from './$types';
 import { locales, baseLocale } from '$lib/paraglide/runtime';
 import { getLocaleFromPath } from '$lib/utils';
@@ -22,12 +15,6 @@ export const load: PageServerLoad = async (event) => {
 
 	return {
 		page
-		// pageQuery,
-		// pagesQuery,
-		// postsQuery,
-		// navQuery,
-		// options: { pages, posts, nav },
-		// pageData,
 	};
 };
 
