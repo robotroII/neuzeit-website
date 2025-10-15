@@ -2,7 +2,6 @@
 	// import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
   import PageFooter from '$lib/components/PageFooter.svelte';
-	import { page } from '$app/state';
 
   import '@fontsource/sora/300.css';
   import '@fontsource/sora/400.css';

@@ -1,5 +1,6 @@
+import { getLocale } from '$lib/paraglide/runtime';
 import {
-	// pageQuery,
+	pageQuery,
 	pagesQuery,
 	postsQuery,
 	navQuery,
@@ -9,16 +10,15 @@ import {
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
-	const { params, fetch } = event;
+	const { params } = event;
 	const { loadQuery } = event.locals;
 
-	const slug = '';
+	const slug = 'start';
 	const id = '';
-  const language = 'en';
-	console.log('slug', slug, id);
+	const language = getLocale();
 
-	const pages = await loadQuery<Page[]>(pagesQuery, { ...params, language });
-	console.log('pages', pages);
+	const page = await loadQuery(pageQuery, { ...params, language, slug });
+	console.log('pages', { ...params, language, slug });
 
 	// const posts = await loadQuery<Post[]>(postsQuery);
 	// const nav = await loadQuery(navQuery);
@@ -29,7 +29,7 @@ export const load: PageServerLoad = async (event) => {
 	// const pageData = await loadQuery<Page>(pageQuery, { id, slug, ...params } );
 
 	return {
-		pages
+		page
 		// pageQuery,
 		// pagesQuery,
 		// postsQuery,

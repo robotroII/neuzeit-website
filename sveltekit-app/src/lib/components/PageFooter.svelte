@@ -91,10 +91,6 @@
   const { class: className = '' } = $props();
 
   const locale = $derived((() => page.url.pathname && getLocale())());
-
-  onMount(() => {
-    console.log('footer locale', locale, locales);
-  });
 </script>
 
 <style lang="postcss">

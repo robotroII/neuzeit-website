@@ -8,12 +8,12 @@ export const load: LayoutServerLoad = async (event) => {
 
 	const language = getLocale();
 	const nav = await loadQuery(navQuery, { language });
-	const page = await loadQuery(pageQuery, { ...params, language, slug: params.slug || 'start' });
+	// const page = await loadQuery(pageQuery, { ...params, language, slug: params.slug || 'start' });
 	// console.log('layout language', language);
 
 	return {
 		// preview,
-		page,
+		// page,
 		nav: {
 			main: nav.data.find((item) => item.slug === 'main-nav'),
 			// footer: nav.data.find((item) => item.navId === 'footerNav'),

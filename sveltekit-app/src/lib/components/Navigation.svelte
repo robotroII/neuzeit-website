@@ -25,7 +25,7 @@
 
   } = $props();
 
-  const path = page.url.pathname.split('/')[1] === 'case' ? 'cases' : undefined;
+  // const path = page.url.pathname.split('/')[1] === 'case' ? 'cases' : undefined;
 </script>
 
 <style lang="postcss" scoped>
