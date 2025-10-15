@@ -1,5 +1,3 @@
-inline {inlineSvg}<br>is {isSvg}<br>cnt {svgContent}<br>
-<!-- {url.toLowerCase()} -->
 {#if inlineSvg && isSvg && svgContent}
   <!-- Inline SVG content -->
   <div 
@@ -84,13 +82,13 @@ function isSvgUrl(url: string): boolean {
 // Function to fetch and inline SVG content
 async function loadSvgContent(url: string) {
   try {
-    console.log('Loading SVG from', url);
     const response = await fetch(url);
-    console.log('SVG content loaded', response);
     if (response.ok) {
       const content = await response.text();
       svgContent = content;
       loaded = true;
+    } else {
+      console.error('Failed to load SVG - Response not OK:', response.status, response.statusText);
     }
   } catch (error) {
     console.error('Failed to load SVG:', error);
@@ -129,5 +127,6 @@ $effect(() => {
     width: 100%;
     height: 100%;
     display: block;
+    overflow: visible;
   }
 </style>
