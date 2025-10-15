@@ -50,10 +50,6 @@
 		"@sanity/svelte-loader": "^1.13.38",
 		"@sanity/visual-editing": "^3.0.5",
 		"@splidejs/svelte-splide": "^0.2.9",
-		"aos": "^2.3.4",
-		"clsx": "^2.1.1",
-		"groq": "^3.88.1",
-		"svelte-motion": "^0.12.2",
-		"tailwind-merge": "^3.3.1"
+		"groq": "^3.88.1"
 	}
 }
