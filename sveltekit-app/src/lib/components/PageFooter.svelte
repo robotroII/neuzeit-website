@@ -61,7 +61,7 @@
   
         <div class="flex justify-between items-center">
           <p class="copyright text-dim text-sm">{@html m.footer_copyright()}</p>
-          <div class="lang-switch">{locale}
+          <div class="lang-switch">
             {#each locales as _locale}
               {#if _locale !== locale}
                 <a
@@ -86,7 +86,6 @@
   // import Navigation from '$lib/Navigation.svelte';
 
 	import { page } from '$app/state';
-	import { mount, onMount } from 'svelte';
 
   const { class: className = '' } = $props();
 

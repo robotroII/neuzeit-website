@@ -1,15 +1,25 @@
 import { pageQuery, casesQuery, type Page } from '$lib/sanity/queries';
 import type { PageServerLoad, EntryGenerator } from './$types';
-import { getLocale } from '$lib/paraglide/runtime';
+import { getLocale, locales, baseLocale } from '$lib/paraglide/runtime';
 
 export const load: PageServerLoad = async (event) => {
-	const { params } = event;
+	const { params, url } = event;
 	const { loadQuery } = event.locals;
 
-	const language = getLocale();
+	// If no slug is provided, return empty data structure
+	if (!params.slug) {
+		return {
+			page: { data: null }
+		};
+	}
+
+	// Extract locale from URL pathname instead of relying on getLocale()
+	const pathSegments = url.pathname.split('/').filter(Boolean);
+	const possibleLocale = pathSegments[0];
+	const language = (locales.includes(possibleLocale as any) ? possibleLocale : baseLocale) as typeof baseLocale;
 
 	const page = await loadQuery(pageQuery, { ...params, language });
-
+  console.log('server request', { ...params, language, pathname: url.pathname });
 	return {
 		page,
 		// cases

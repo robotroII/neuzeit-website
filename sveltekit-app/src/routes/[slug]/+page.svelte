@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { locales, getLocale, localizeHref } from '$lib/paraglide/runtime';
 
-	const pageData = $derived(page.data.page?.data);
+	// Force reactivity by explicitly depending on both pathname and data
+	const pageData = $derived(page.url.pathname && page.data.page?.data);
 
 	// import PageMain from "$lib/PageMain.svelte";
 </script>
