@@ -1,10 +1,12 @@
 import { pageType } from './document/pageType';
 import { caseType } from './document/caseType';
 import { postType } from './document/postType';
-import { navigationType } from './document/navigationType'
+import { navigationType } from './document/navigationType';
 
-import { navItem } from './object/navItem'
-import { link } from './object/link'
+import { navItem } from './object/navItem';
+import { link } from './object/link';
+import { gradient } from './object/gradient';
+import { theme } from './object/theme';
 
 export const schemaTypes = [
   pageType,
@@ -13,5 +15,7 @@ export const schemaTypes = [
   navigationType,
 
   navItem,
-  link
+  link,
+  gradient,
+  theme,
 ];

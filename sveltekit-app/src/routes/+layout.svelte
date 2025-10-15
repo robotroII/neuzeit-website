@@ -10,57 +10,39 @@
   import { page } from '$app/state';
 
 	const pageData = $derived(page.data.page?.data);
-  // const themeData = $derived(pageData && pageData.theme);
+  const theme = $derived(pageData && pageData.theme);
   // console.log('pageData', pageData, pageData?.sections.filter(section => section._type === 'pageSection'));
-
-  // const pages = $derived(page.data.pages?.data);
-  // console.log('data', page.data);
 
 	const { children } = $props();
 </script>
 
 <svelte:head>
-  <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
   <title>{pageData?.title}</title>
-  <!-- <title>{pageData?.title}</title> -->
 </svelte:head>
 
-<PageHeader />
-
-<!-- {#if $isPreviewing}
-	<a href={`/preview/disable?redirect=${page.url.pathname}`} class="preview-toggle">
-		<span>Preview Enabled</span>
-		<span>Disable Preview</span>
-	</a>
-{/if} -->
-
-<!-- <div
-  class="svelte-layout w-screen max-w-screen page page--{pageData?.slug?.current || 'start'} {themeData?.class ? themeData.class : ''} {themeData?.colorMode ? `tw-${themeData.colorMode}` : ''} {themeData?.primaryGradient?.colors?.length ? 'has-gradient' : ''} {themeData?.backgroundColor ? 'has-background-color' : ''} {themeData?.primaryColor ? 'has-primary-color' : ''}"
-  class:tw-dark-mode={themeData && themeData.colorMode === 'dark'}
-  class:tw-light-mode={themeData && themeData.colorMode === 'light'}
+<div
+  class="svelte-layout w-screen max-w-screen page page--{pageData?.slug?.current || 'start'} {theme?.class ? theme.class : ''} {theme?.colorMode ? `tw-${theme.colorMode}` : ''} {theme?.primaryGradient?.colors?.length ? 'has-gradient' : ''} {theme?.backgroundColor ? 'has-background-color' : ''} {theme?.primaryColor ? 'has-primary-color' : ''}"
+  class:tw-dark-mode={theme && theme.colorMode === 'dark'}
+  class:tw-light-mode={theme && theme.colorMode === 'light'}
   style="{
-    themeData && themeData.primaryGradient && themeData.primaryGradient.colors.length
-      ? `--gradient-primary: linear-gradient(${themeData.primaryGradient.angle ? `${themeData.primaryGradient.angle}deg` : ''} in hsl,  ${themeData.primaryGradient.colors?.join(',')})`
+    theme && theme.primaryGradient && theme.primaryGradient.colors.length
+      ? `--gradient-primary: linear-gradient(${theme.primaryGradient.angle ? `${theme.primaryGradient.angle}deg` : ''} in hsl,  ${theme.primaryGradient.colors?.join(',')})`
       : ''
   };{
-    themeData && themeData.primaryColor
-      ? `--color-primary: ${themeData.primaryColor}`
+    theme && theme.primaryColor
+      ? `--color-primary: ${theme.primaryColor}`
       : ''
   };{
-    themeData && themeData.backgroundColor
-      ? `--color-page-background: ${themeData.backgroundColor}`
+    theme && theme.backgroundColor
+      ? `--color-page-background: ${theme.backgroundColor}`
       : ''
   };{
-   themeData && themeData.primaryGradient.colors?.length
-      ? themeData.primaryGradient.colors.map((color, index) => `--gradient-color-${index + 1}: ${color}`).join(';')
+   theme && theme.primaryGradient.colors?.length
+      ? theme.primaryGradient.colors.map((color: string, index: number) => `--gradient-color-${index + 1}: ${color}`).join(';')
       : ''
   }"
   >
   <div class="min-h-dvh flex flex-col gap-4">
-    {#if isPreviewing}
-      <VisualEditing />
-    {/if}
-
     <PageHeader />
   
     <main>
@@ -74,7 +56,7 @@
 <div class="absolute w-0 h-0 invisible -z-1">
   <svg>
     <defs>
-      {#if themeData && themeData.primaryGradient}
+      {#if theme && theme.primaryGradient}
         <linearGradient
           id="primary-gradient-def"
           x1="29.4331"
@@ -82,24 +64,18 @@
           x2="0"
           y2="15.8065"
           gradientUnits="userSpaceOnUse"
-          gradientTransform={themeData.primaryGradient.angle && `rotate(${themeData.primaryGradient.angle})`}
-        >
-          {#if themeData.primaryGradient}
-            {#each themeData.primaryGradient.colors as color, index}
-              <stop offset={index / (themeData.primaryGradient.colors.length - 1)} stop-color={color} />
+          gradientTransform={theme.primaryGradient.angle && `rotate(${theme.primaryGradient.angle})`}
+          >
+          {#if theme.primaryGradient}
+            {#each theme.primaryGradient.colors as color, index}
+              <stop offset={index / (theme.primaryGradient.colors.length - 1)} stop-color={color} />
             {/each}
           {/if}
         </linearGradient>
       {/if}
     </defs>
   </svg>
-</div> -->
-
-<main>
-  {@render children()}
-</main>
-
-<PageFooter />
+</div>
 
 <style lang="postcss">
 </style>

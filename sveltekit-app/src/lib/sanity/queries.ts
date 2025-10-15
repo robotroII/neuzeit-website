@@ -256,9 +256,7 @@ export const pageQuery = groq`
   ][0].translations[_key == $language][0].value->{
     ...,
     "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
-      title,
-      slug,
-      language
+      ...,
     },
   }
 `;

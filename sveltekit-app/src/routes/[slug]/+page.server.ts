@@ -8,12 +8,10 @@ export const load: PageServerLoad = async (event) => {
 	const { loadQuery } = event.locals;
 
 	const language = getLocaleFromPath(url.pathname, Array.from(locales), baseLocale);
-
 	const page = await loadQuery(pageQuery, { ...params, language });
 
   return {
 		page,
-		// cases
 	};
 };
 

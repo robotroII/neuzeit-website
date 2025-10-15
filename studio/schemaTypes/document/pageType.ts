@@ -25,11 +25,11 @@ export const pageType = defineType({
       type: 'string',
     }),
 
-    // defineField({
-    //   type: 'themeSettings',
-    //   name: 'theme',
-    //   title: 'Theme settings',
-    // }),
+    defineField({
+      type: 'theme',
+      name: 'theme',
+      title: 'Theme settings',
+    }),
 
     defineField({
       name: 'language',
