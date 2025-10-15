@@ -250,13 +250,27 @@ const pageSection = groq`
 //   }
 // }`;
 // export const pagesQuery = groq`*[_type == "page"]`;
+export const pageTranslationQuery = groq`
+  ...,
+  sections[] {
+    ...,
+    background{
+      ...,
+      "src": @.asset->url,
+      sources[]{
+        ...,
+        "srcset": @.srcset.asset->url,
+      }
+    }
+  },
+`;
 export const pageQuery = groq`
   *[_type == "translation.metadata" && 
     references(*[_type == "page" && slug.current == $slug][0]._id)
   ][0].translations[_key == $language][0].value->{
-    ...,
+    ${pageTranslationQuery}
     "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
-      ...,
+      ${pageTranslationQuery}
     },
   }
 `;

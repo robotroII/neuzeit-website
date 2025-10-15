@@ -1,0 +1,13 @@
+<svg width="393" height="800" viewBox="0 0 393 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(-13.35, 328) rotate(26.146)">
+    <g id="Union" opacity="0.6" filter="url(#filter0_f_0_683)">
+<path d="M541.329 364C592.135 364 636.983 375.792 668.909 394.775L668.789 394.844C694.527 412.643 709.836 435.581 709.836 460.695V584.094H532.26C479.578 584.094 432.353 570.763 399.811 549.707L400.809 549.131C377.823 531.919 364 510.442 364 487.088V364H541.329Z" fill="var(--fill-0, #5C89FC)"/>
+</g>
+<defs>
+<filter id="filter0_f_0_683" x="0" y="0" width="1073.84" height="948.094" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="182" result="effect1_foregroundBlur_0_683"/>
+</filter>
+</defs>
+</svg>

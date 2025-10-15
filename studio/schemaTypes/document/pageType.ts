@@ -24,6 +24,14 @@ export const pageType = defineType({
       title: 'Description',
       type: 'string',
     }),
+    defineField({
+      type: 'array',
+      name: 'sections',
+      title: 'Page sections',
+      of: [
+        defineArrayMember({ type: 'section' }),
+      ]
+    }),
 
     defineField({
       type: 'theme',
@@ -36,7 +44,7 @@ export const pageType = defineType({
       type: 'string',
       readOnly: true,
       hidden: true,
-    })
+    }),
   ],
   preview: {
     select: {

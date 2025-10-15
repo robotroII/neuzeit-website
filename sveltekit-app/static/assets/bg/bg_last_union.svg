@@ -1,0 +1,17 @@
+<svg preserveAspectRatio="none" width="1920" height="1080" overflow="visible" style="display: block;" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Union" opacity="0.5" filter="url(#filter0_f_0_558)" transform="translate(-95, 0.242) rotate(153.854) scale(1, -1)"
+<path d="M1078.04 364C1282.62 364 1463.21 392.1 1591.77 437.338L1591.28 437.502C1694.92 479.92 1756.56 534.582 1756.57 594.429V888.497H1041.53C829.394 888.497 639.236 856.729 508.2 806.551L512.219 805.177C419.661 764.161 364 712.979 364 657.326V364H1078.04Z" fill="url(#paint0_linear_0_558)"/>
+</g>
+<defs>
+<filter id="filter0_f_0_558" x="0" y="0" width="2120.57" height="1252.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="182" result="effect1_foregroundBlur_0_558"/>
+</filter>
+<linearGradient id="paint0_linear_0_558" x1="1756.57" y1="626.249" x2="364" y2="626.249" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C73564"/>
+<stop offset="0.5" stop-color="#EA3D53"/>
+<stop offset="1" stop-color="#E3402E"/>
+</linearGradient>
+</defs>
+</svg>

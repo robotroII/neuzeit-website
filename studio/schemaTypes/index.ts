@@ -7,6 +7,9 @@ import { navItem } from './object/navItem';
 import { link } from './object/link';
 import { gradient } from './object/gradient';
 import { theme } from './object/theme';
+import { section } from './object/section';
+import { article } from './object/article';
+import { textBlock } from './object/textBlock';
 
 export const schemaTypes = [
   pageType,
@@ -18,4 +21,9 @@ export const schemaTypes = [
   link,
   gradient,
   theme,
+
+  section,
+  article,
+
+  textBlock,
 ];

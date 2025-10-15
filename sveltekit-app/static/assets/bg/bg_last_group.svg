@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" width="1920" height="1080" overflow="visible" style="display: block;" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 289290" transform="translate(629, 0.327)"
+<g id="Union" opacity="0.5" filter="url(#filter0_f_0_559)">
+<path d="M632.676 409.081C518.804 464.981 434.777 547.92 389.772 637.131L390.136 637.195C357.343 716.225 355.113 798.42 390.236 869.969L455.786 977.532C565.811 1158.08 818.373 1182.39 960.823 1026.16C1078.9 968.193 1166.1 878.253 1209.59 782.46L1206.55 781.915C1233.99 707.588 1234.94 631.19 1202.27 564.653C1168.76 432.194 1040.11 346.858 905.043 367.486L632.676 409.081Z" fill="var(--fill-0, #4396D5)"/>
+</g>
+<g id="Testimonial">
+</g>
+</g>
+<defs>
+<filter id="filter0_f_0_559" x="0.711121" y="0.417496" width="1590.26" height="1493.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="182" result="effect1_foregroundBlur_0_559"/>
+</filter>
+</defs>
+</svg>

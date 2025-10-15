@@ -1,15 +1,25 @@
   <div
-    class="container pt-32 min-h-screen bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white"
+    class="container pt-24 min-h-screen bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white"
     >
-    {pageData?.language}<br>
-    {pageData?.description}
-    {gradientColors}
+    {#each pageData?.sections as section (section._key)}
+      <PageSection
+        theme={pageData?.theme}
+        background={section.background}
+        >
+        asdfasdf
+      </PageSection>
+    {/each}
+    <PageSection></PageSection>
+
   </div>
 
 <script lang="ts">
 	import { page } from '$app/state';
+  import PageSection from './PageSection.svelte';
 
 	const pageData = $derived(page.data.page?.data);
+  const sections = $derived(pageData && pageData.sections);
+  console.log('sections', sections);
 
   let gradientColors: string[] = $state([]);
   $effect(() => {
