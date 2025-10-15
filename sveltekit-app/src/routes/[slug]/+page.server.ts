@@ -7,11 +7,11 @@ export const load: PageServerLoad = async (event) => {
 
 	const id = '';
 
-	const pageData = await loadQuery<Page>(pageQuery, { id: '', ...params } );
+	// const pageData = await loadQuery<Page>(pageQuery, { id: '', ...params } );
 	const cases = await loadQuery<Page>(casesQuery);
 
 	return {
-		pageData,
+		// pageData,
 		// cases
 	};
 };

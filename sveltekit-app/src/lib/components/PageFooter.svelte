@@ -59,7 +59,21 @@
   
         <hr class="w-full border-t border-dim" />
   
-        <p class="copyright text-dim text-sm">{@html m.footer_copyright()}</p>
+        <div class="flex justify-between items-center">
+          <p class="copyright text-dim text-sm">{@html m.footer_copyright()}</p>
+          <div class="lang-switch">{locale}
+            {#each locales as _locale}
+              {#if _locale !== locale}
+                <a
+                  class="text-sm text-dim uppercase hover:underline p-2"
+                  href={localizeHref(page.url.pathname, { locale: _locale })}
+                >{_locale}</a>
+              {/if}
+            {/each}
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>
@@ -67,12 +81,20 @@
 
 <script lang="ts">
   import NeuzeitLogo from '$lib/components/NeuzeitLogo.svelte';
-  // import Navigation from '$lib/Navigation.svelte';
+	import { locales, getLocale, localizeHref } from '$lib/paraglide/runtime';
 	import * as m from '$lib/paraglide/messages.js';
+  // import Navigation from '$lib/Navigation.svelte';
 
 	import { page } from '$app/state';
+	import { mount, onMount } from 'svelte';
 
   const { class: className = '' } = $props();
+
+  const locale = $derived((() => page.url.pathname && getLocale())());
+
+  onMount(() => {
+    console.log('footer locale', locale, locales);
+  });
 </script>
 
 <style lang="postcss">

@@ -14,7 +14,7 @@
   // console.log('pageData', pageData, pageData?.sections.filter(section => section._type === 'pageSection'));
 
   // const pages = $derived(page.data.pages?.data);
-  console.log('data', page.data);
+  // console.log('data', page.data);
 
 	const { children } = $props();
 </script>

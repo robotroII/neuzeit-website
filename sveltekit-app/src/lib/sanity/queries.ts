@@ -184,72 +184,80 @@ const pageSection = groq`
   }
 `;
 
-export const pageQuery = groq`*[_type == "page" && (slug.current == $slug || _id == $id)][0]{
-  ...,
-  mainImage{
-    ...,
-    "src": @.asset->url,
-    "alt": @.asset->altText,
-    "caption": @.asset->caption,
-  },
-  sections[]{
-    ...,
-    _type == 'pageSection' => {
-      ${pageSection}
-    },
-    _type == 'imageBlock' => {
-      ${imageBlock}
-    },
-    _type == 'teaserBlock' => {
-      ${teaserBlock}
-    },
-    _type == 'teaserList' => {
-      ${teaserList}
-    },
-    _type == 'teaserGallery' => {
-      ${teaserGallery}
-    },
-    _type == 'logoWall' => {
-      ${logoWall}
-    },
-    _type == 'contactBlock' => {
-      ${contactBlock}
-    },
-    _type == 'contact' => {
-      ...,
-      picture {
-        ...,
-        "src": @.asset->url,
-        sources[]{
-          ...,
-          "srcset": @.srcset.asset->url,
-        }
-      }
-    },
-  },
-  teaserList {
-    ...,
-    items[]{
-      ...,
-      "slug": @.internalLink->slug.current,
-      "href": @.internalLink->_type + "/" + @.internalLink->slug.current,
-      "headline": coalesce(headline, @->title),
-      "subheadline": coalesce(subheadline, @->subtitle),
-      "body": coalesce(body, @->body),
-      "mainImage": coalesce(mainImage, @->mainImage),
-      "theme": @->theme,
-      picture{
-        ...,
-        "src": @.asset->url,
-        sources[]{
-          ...,
-          "srcset": @.srcset.asset->url,
-        }
-      }
-    }
-  }
-}`;
+// export const pageQuery = groq`*[_type == "page" && (slug.current == $slug || _id == $id)][0]{
+//   ...,
+//   mainImage{
+//     ...,
+//     "src": @.asset->url,
+//     "alt": @.asset->altText,
+//     "caption": @.asset->caption,
+//   },
+//   sections[]{
+//     ...,
+//     _type == 'pageSection' => {
+//       ${pageSection}
+//     },
+//     _type == 'imageBlock' => {
+//       ${imageBlock}
+//     },
+//     _type == 'teaserBlock' => {
+//       ${teaserBlock}
+//     },
+//     _type == 'teaserList' => {
+//       ${teaserList}
+//     },
+//     _type == 'teaserGallery' => {
+//       ${teaserGallery}
+//     },
+//     _type == 'logoWall' => {
+//       ${logoWall}
+//     },
+//     _type == 'contactBlock' => {
+//       ${contactBlock}
+//     },
+//     _type == 'contact' => {
+//       ...,
+//       picture {
+//         ...,
+//         "src": @.asset->url,
+//         sources[]{
+//           ...,
+//           "srcset": @.srcset.asset->url,
+//         }
+//       }
+//     },
+//   },
+//   teaserList {
+//     ...,
+//     items[]{
+//       ...,
+//       "slug": @.internalLink->slug.current,
+//       "href": @.internalLink->_type + "/" + @.internalLink->slug.current,
+//       "headline": coalesce(headline, @->title),
+//       "subheadline": coalesce(subheadline, @->subtitle),
+//       "body": coalesce(body, @->body),
+//       "mainImage": coalesce(mainImage, @->mainImage),
+//       "theme": @->theme,
+//       picture{
+//         ...,
+//         "src": @.asset->url,
+//         sources[]{
+//           ...,
+//           "srcset": @.srcset.asset->url,
+//         }
+//       }
+//     }
+//   }
+// }`;
 // export const pagesQuery = groq`*[_type == "page"]`;
+export const pageQuery = groq`*[_type == "page" && (slug.current == $slug)][0]{
+  ...,
+  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+    title,
+    slug,
+    language
+  },
+}`;
 export const pagesQuery = groq`*[_type == "page" && language == $language]{
   _id,
   title,

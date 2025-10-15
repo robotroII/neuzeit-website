@@ -80,7 +80,7 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
 	const pageData = $derived(page.data.pageData?.data);
   const themeData = $derived(pageData && pageData.theme);
   let expanded = $state(false);
-console.log('heD3', page?.data?.nav?.main?.items)
+
   const navItems = $derived({
     ...page?.data?.nav?.main,
     // items: page?.data?.nav?.main?.items.filter(item => !['cases'].includes(item.slug))

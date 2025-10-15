@@ -1,5 +1,5 @@
 import {
-	pageQuery,
+	// pageQuery,
 	pagesQuery,
 	postsQuery,
 	navQuery,
