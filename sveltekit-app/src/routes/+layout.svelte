@@ -1,5 +1,4 @@
 <script lang="ts">
-	// import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
   import PageFooter from '$lib/components/PageFooter.svelte';
 
@@ -8,7 +7,9 @@
   import '@fontsource/sora/700.css';
 	import '../app.css';
 
-	// const pageData = $derived(page.data.pageData?.data);
+  import { page } from '$app/state';
+
+	const pageData = $derived(page.data.page?.data);
   // const themeData = $derived(pageData && pageData.theme);
   // console.log('pageData', pageData, pageData?.sections.filter(section => section._type === 'pageSection'));
 
@@ -20,7 +21,7 @@
 
 <svelte:head>
   <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
-  <title>Page</title>
+  <title>{pageData?.title}</title>
   <!-- <title>{pageData?.title}</title> -->
 </svelte:head>
 

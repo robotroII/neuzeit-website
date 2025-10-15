@@ -13,8 +13,8 @@
 <!-- <svelte:body use:classList /> -->
 
 <div
-	class="min-h-screen bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white"
->
-  {pageData.language}
-  Page test
+	class="container pt-32 min-h-screen bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white"
+  >
+  {pageData.language}<br>
+  {pageData.description}
 </div>

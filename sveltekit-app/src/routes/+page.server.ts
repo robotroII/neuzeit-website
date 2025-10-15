@@ -18,7 +18,7 @@ export const load: PageServerLoad = async (event) => {
 	const language = getLocale();
 
 	const page = await loadQuery(pageQuery, { ...params, language, slug });
-	console.log('pages', { ...params, language, slug });
+	console.log('root page', { ...params, language, slug });
 
 	// const posts = await loadQuery<Post[]>(postsQuery);
 	// const nav = await loadQuery(navQuery);
