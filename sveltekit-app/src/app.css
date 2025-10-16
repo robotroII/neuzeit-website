@@ -22,7 +22,7 @@
 @theme {
   --font-sora: "Sora", "sans-serif";
   --breakpoint-3xl: 120rem;
-  --container-8xl: 96rem;
+  --container-8xl: 85rem;
   --container-10xl: var(--breakpoint-3xl);
 
   --color-dim: #979797;

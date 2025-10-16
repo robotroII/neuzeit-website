@@ -38,13 +38,13 @@
                 <path d="M0 0V9.61542C0 48.9045 36.5678 96 88.7124 96H160V0H0Z" fill="white"/>
               </svg>
             </div>
-            <div class="light" data-tw-theme="light">
+            <div class="tw-light-mode" data-tw-theme="light">
               <Navigation
                 class="relative z-1"
                 nav={metaNavItems}
                 ulClass="flex-col lg:flex-row lg:items-center lg:gap-6 xl:gap-8"
                 liClass="lg:place-items-center"
-                aClass="uppercase text-end lg:text-start text-black"
+                aClass="uppercase text-end lg:text-start"
               />
             </div>
           </div>

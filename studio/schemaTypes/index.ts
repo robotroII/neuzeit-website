@@ -10,6 +10,8 @@ import { theme } from './object/theme';
 import { section } from './object/section';
 import { article } from './object/article';
 import { textBlock } from './object/textBlock';
+import { contentItem } from './object/contentItem';
+import { contentColumns } from './object/contentColumns';
 
 export const schemaTypes = [
   pageType,
@@ -26,4 +28,7 @@ export const schemaTypes = [
   article,
 
   textBlock,
+
+  contentColumns,
+  contentItem,
 ];

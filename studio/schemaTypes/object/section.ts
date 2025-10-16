@@ -25,6 +25,9 @@ export const section = defineType({
         defineArrayMember({
           type: 'textBlock',
         }),
+        defineArrayMember({
+          type: 'contentColumns',
+        }),
       ]
     }),
 

@@ -1,5 +1,5 @@
   <div
-    class="container pt-24 min-h-screen bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white"
+    class="container-xl pt-24 min-h-screen bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white"
     >
     {#each pageData?.sections as section (section._key)}
       <PageSection
