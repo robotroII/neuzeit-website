@@ -11,6 +11,8 @@
             <Article content={foreground?.text?.title} />
           {:else if foreground._type === 'textBlock'}
             <TextBlock {...foreground} class={section.class}/>
+          {:else if foreground._type === 'contentColumns'}
+            <ContentColumns {...foreground} class={section.class}></ContentColumns>
           {/if}
 
         {/each}
@@ -24,6 +26,7 @@
 	import Article from '$lib/components/article/Article.svelte';
   import PageSection from '$lib/components/PageSection.svelte';
 	import TextBlock from '$lib/components/TextBlock.svelte';
+	import ContentColumns from './ContentColumns.svelte';
 
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);

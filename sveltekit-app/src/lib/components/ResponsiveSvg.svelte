@@ -48,7 +48,7 @@ async function loadSvgContent(url: string, mediaQuery: string = 'default') {
     if (response.ok) {
       const content = await response.text();
       svgSources.set(mediaQuery, { content, url });
-      console.log(`SVG loaded for ${mediaQuery}:`, url);
+    //   console.log(`SVG loaded for ${mediaQuery}:`, url);
       return content;
     } else {
       console.error('Failed to load SVG - Response not OK:', response.status, response.statusText);
@@ -122,15 +122,6 @@ function getBestMatchingSvg(): string {
     // If equal specificity, maintain insertion order (sources order)
     return 0;
   });
-
-  // Debug logging
-  if (matchingQueries.length > 1) {
-    console.log('Multiple matching queries found:', matchingQueries.map(q => ({
-      query: q.mediaQuery,
-      specificity: q.specificity
-    })));
-    console.log('Selected:', matchingQueries[0].mediaQuery, 'with specificity:', matchingQueries[0].specificity);
-  }
 
   // Return the most specific match, or fallback
   if (matchingQueries.length > 0) {
