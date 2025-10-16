@@ -19,7 +19,6 @@ export function shouldUseResponsiveSvg(src: string | undefined, sources: Source[
 </script>
 
 <script lang="ts">
-
 let {
   src,
   sources = [],
@@ -41,8 +40,6 @@ let {
 let svgSources = $state(new Map<string, { content: string; url: string }>());
 let currentSvgContent = $state('');
 let containerElement: HTMLDivElement | null = $state(null);
-
-
 
 // Function to fetch and inline SVG content
 async function loadSvgContent(url: string, mediaQuery: string = 'default') {
@@ -68,27 +65,79 @@ function matchesMediaQuery(mediaQuery: string): boolean {
   return window.matchMedia(mediaQuery).matches;
 }
 
-// Function to find the best matching SVG source
-function getBestMatchingSvg(): string {
-  // First, collect all matching media queries
-  const matchingQueries = [];
+// Function to calculate media query specificity score
+function getMediaQuerySpecificity(mediaQuery: string): number {
+  if (!mediaQuery || mediaQuery === 'default') return 0;
   
-  for (const [mediaQuery, svgData] of svgSources.entries()) {
-    if (matchesMediaQuery(mediaQuery)) {
-      matchingQueries.push({ mediaQuery, content: svgData.content });
+  let score = 0;
+  const query = mediaQuery.toLowerCase();
+  
+  // Higher scores for more specific queries
+  if (query.includes('min-width')) score += 100;
+  if (query.includes('max-width')) score += 100;
+  if (query.includes('min-height')) score += 50;
+  if (query.includes('max-height')) score += 50;
+  if (query.includes('orientation')) score += 30;
+  if (query.includes('hover')) score += 20;
+  if (query.includes('pointer')) score += 20;
+  if (query.includes('resolution')) score += 10;
+  
+  // Extract pixel values to prioritize smaller breakpoints over larger ones
+  const widthMatch = query.match(/(?:min-width|max-width):\s*(\d+)px/);
+  if (widthMatch) {
+    const width = parseInt(widthMatch[1]);
+    // For min-width: higher values = more specific
+    // For max-width: lower values = more specific
+    if (query.includes('min-width')) {
+      score += Math.floor(width / 10); // Higher min-width = more specific
+    } else if (query.includes('max-width')) {
+      score += Math.floor((2000 - width) / 10); // Lower max-width = more specific
     }
   }
   
-  // Prioritize non-default queries over default
-  const nonDefaultMatches = matchingQueries.filter(match => match.mediaQuery !== 'default');
-  const defaultMatch = matchingQueries.find(match => match.mediaQuery === 'default');
-  
-  // Return the first non-default match, or fall back to default
-  if (nonDefaultMatches.length > 0) {
-    return nonDefaultMatches[0].content;
+  return score;
+}
+
+// Function to find the best matching SVG source
+function getBestMatchingSvg(): string {
+  // First, collect all matching media queries with their specificity scores
+  const matchingQueries = [];
+
+  for (const [mediaQuery, svgData] of svgSources.entries()) {
+    if (matchesMediaQuery(mediaQuery)) {
+      const specificity = getMediaQuerySpecificity(mediaQuery);
+      matchingQueries.push({ 
+        mediaQuery, 
+        content: svgData.content, 
+        specificity 
+      });
+    }
+  }
+
+  // Sort by specificity (highest first), then by order for equal specificity
+  matchingQueries.sort((a, b) => {
+    if (b.specificity !== a.specificity) {
+      return b.specificity - a.specificity;
+    }
+    // If equal specificity, maintain insertion order (sources order)
+    return 0;
+  });
+
+  // Debug logging
+  if (matchingQueries.length > 1) {
+    console.log('Multiple matching queries found:', matchingQueries.map(q => ({
+      query: q.mediaQuery,
+      specificity: q.specificity
+    })));
+    console.log('Selected:', matchingQueries[0].mediaQuery, 'with specificity:', matchingQueries[0].specificity);
+  }
+
+  // Return the most specific match, or fallback
+  if (matchingQueries.length > 0) {
+    return matchingQueries[0].content;
   }
   
-  return defaultMatch?.content || svgSources.values().next().value?.content || '';
+  return svgSources.values().next().value?.content || '';
 }
 
 // Update current SVG based on viewport
