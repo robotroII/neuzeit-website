@@ -17,6 +17,7 @@ export const link = defineType({
       title: 'External URL',
       description:"Use fully qualified URLS for external link",
       type: 'url',
+      validation: Rule => Rule.uri({ scheme: ['mailto', 'http', 'https', 'tel'] })
     }),
     defineField({
       type: "string",

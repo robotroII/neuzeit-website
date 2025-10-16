@@ -1,4 +1,4 @@
-import { navQuery, pageQuery } from '$lib/sanity/queries';
+import { navQuery } from '$lib/sanity/queries';
 import type { LayoutServerLoad } from './$types';
 import { getLocale } from "$lib/paraglide/runtime.js";
 
@@ -11,8 +11,8 @@ export const load: LayoutServerLoad = async (event) => {
 	return {
 		nav: {
 			main: nav.data.find((item: { [key: string]: any }) => item.slug === 'main-nav'),
-			// footer: nav.data.find((item) => item.navId === 'footerNav'),
-			// meta: nav.data.find((item) => item.navId === 'metaNav'),
+			footer: nav.data.find((item: { [key: string]: any }) => item.slug === 'footer-nav'),
+			meta: nav.data.find((item: { [key: string]: any }) => item.slug === 'meta-nav'),
 		},
 	};
 };

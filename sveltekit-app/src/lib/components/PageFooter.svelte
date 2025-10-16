@@ -36,12 +36,12 @@
             </div>
           {/if} -->
 
-          <!-- {#if page.data && page.data.nav}
+          {#if page.data && page.data.nav}
             <div>
-              <h2 class="text-base font-bold mb-3 lg:mb-8">{page.data.nav.footer.headline}</h2>
-              <Navigation nav={page.data.nav.footer} ulClass="lg:gap-4 lg:flex-col" />
+              <h2 class="text-base font-bold mb-3 lg:mb-8">{@html m.legalLinksHeadline()}</h2>
+              <Navigation nav={page.data.nav.footer} ulClass="lg:gap-4 flex-col" aClass="text-sm" />
             </div>
-          {/if} -->
+          {/if}
     
           <div>
               <h2 class="text-base font-bold mb-3 lg:mb-8 uppercase">{@html m.smHeadline()}</h2>
@@ -81,9 +81,9 @@
 
 <script lang="ts">
   import NeuzeitLogo from '$lib/components/NeuzeitLogo.svelte';
+  import Navigation from '$lib/components/Navigation.svelte';
 	import { locales, getLocale, localizeHref } from '$lib/paraglide/runtime';
 	import * as m from '$lib/paraglide/messages.js';
-  // import Navigation from '$lib/Navigation.svelte';
 
 	import { page } from '$app/state';
 

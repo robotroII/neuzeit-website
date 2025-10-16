@@ -6,7 +6,14 @@
         theme={pageData?.theme}
         background={section.background}
         >
-        asdfasdf
+        {#each section.foreground as foreground}
+          {#if foreground._type === 'stage'}
+            <Article content={foreground?.text?.title} />
+          {:else if foreground._type === 'textBlock'}
+            <TextBlock {...foreground} class={section.class}/>
+          {/if}
+
+        {/each}
       </PageSection>
     {/each}
 
@@ -14,10 +21,16 @@
 
 <script lang="ts">
 	import { page } from '$app/state';
-  import PageSection from './PageSection.svelte';
+	import Article from '$lib/components/article/Article.svelte';
+  import PageSection from '$lib/components/PageSection.svelte';
+	import TextBlock from '$lib/components/TextBlock.svelte';
 
-	const pageData = $derived(page.data.page?.data);
-  const sections = $derived(pageData && pageData.sections);
+  const pageData = $derived(page.data.page?.data);
+  const sections = $derived(pageData?.sections);
+  
+  $effect(() => {
+    console.log('PageMain sections:', sections);
+  });
 
   let gradientColors: string[] = $state([]);
   $effect(() => {

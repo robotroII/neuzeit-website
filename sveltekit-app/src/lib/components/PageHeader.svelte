@@ -25,7 +25,7 @@
         ">
           <div class="lg:flex lg:grow lg:h-24 mb-4 lg:mb-0">
             <Navigation
-              nav={navItems}
+              nav={mainNavItems}
               class="mx-auto"
               ulClass="flex-col lg:flex-row lg:gap-6 lg:items-center xl:gap-8"
               liClass="lg:place-items-center"
@@ -38,13 +38,15 @@
                 <path d="M0 0V9.61542C0 48.9045 36.5678 96 88.7124 96H160V0H0Z" fill="white"/>
               </svg>
             </div>
-            <!-- <Navigation
-              class="relative z-1"
-              nav={page.data.nav.meta}
-              ulClass="flex-col lg:flex-row lg:items-center lg:gap-6 xl:gap-8"
-              liClass="lg:place-items-center"
-              aClass="uppercase text-end lg:text-start"
-            /> -->
+            <div class="light" data-tw-theme="light">
+              <Navigation
+                class="relative z-1"
+                nav={metaNavItems}
+                ulClass="flex-col lg:flex-row lg:items-center lg:gap-6 xl:gap-8"
+                liClass="lg:place-items-center"
+                aClass="uppercase text-end lg:text-start text-black"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -81,9 +83,13 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
   const themeData = $derived(pageData && pageData.theme);
   let expanded = $state(false);
 
-  const navItems = $derived({
+  const mainNavItems = $derived({
     ...page?.data?.nav?.main,
     // items: page?.data?.nav?.main?.items.filter(item => !['cases'].includes(item.slug))
+  });
+  const metaNavItems = $derived({
+    ...page?.data?.nav?.meta,
+    // items: page?.data?.nav?.meta?.items.filter(item => !['cases'].includes(item.slug))
   });
 </script>
 

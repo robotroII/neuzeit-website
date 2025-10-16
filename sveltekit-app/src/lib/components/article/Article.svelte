@@ -13,11 +13,11 @@
 
 <script lang="ts">
   import { PortableText } from '@portabletext/svelte';
-  import Image from '$lib/Image.svelte';
-  import Highlight from '$lib/Highlight.svelte';
-	import ArticleAlignCenter from '$lib/ArticleAlignCenter.svelte';
-	import ArticleAlignStart from '$lib/ArticleAlignStart.svelte';
-	import ArticleAlignEnd from '$lib/ArticleAlignEnd.svelte';
+  import Image from '$lib/components/Image.svelte';
+  import Highlight from '$lib/components/article/Highlight.svelte';
+	import ArticleAlignCenter from '$lib/components/article/ArticleAlignCenter.svelte';
+	import ArticleAlignStart from '$lib/components/article/ArticleAlignStart.svelte';
+	import ArticleAlignEnd from '$lib/components/article/ArticleAlignEnd.svelte';
 
   let {
     content = null,
