@@ -1,5 +1,5 @@
 <footer class="page-footer mt-auto tw-light-mode relative overflow-hidden {className}">
-  <div class="lg:hidden absolute bottom-0 w-full page-footer__background before:content-[''] before:absolute before:top-0 before:right-[100%] before:w-full before:h-full before:bg-gradient-to-b before:from-[#F7F7F7] before:to-[#F7F7F7]">
+  <div class="lg:hidden absolute bottom-0 w-full page-footer__background">
     <svg class="w-full" width="393" height="852" viewBox="0, 0, 393, 852">
       <path d="M0,0 L63,0 C245.254,0 393,147.746 393,330 L393,852 L0,852 L0,0 z" fill="#F7F7F7" />
     </svg>
@@ -94,7 +94,7 @@
 
 <style lang="postcss">
   .page-footer__background {
-    &::after {
+    /* &::after {
       content: '';
       display: block;
       position: absolute;
@@ -102,6 +102,6 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(to bottom, #F7F7F7, #F7F7F7);
-    }
+    } */
   }
 </style>

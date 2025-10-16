@@ -9,7 +9,6 @@
         asdfasdf
       </PageSection>
     {/each}
-    <PageSection></PageSection>
 
   </div>
 

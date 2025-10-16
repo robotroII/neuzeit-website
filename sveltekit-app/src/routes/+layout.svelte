@@ -53,7 +53,7 @@
   </div>
 </div>
 
-<div class="absolute w-0 h-0 invisible -z-1">
+<div class="absolute w-0 h-0 invisible overflow-hidden -z-1">
   <svg>
     <defs>
       {#if theme && theme.primaryGradient}
