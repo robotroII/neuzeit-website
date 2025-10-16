@@ -1,16 +1,14 @@
-{#if inlineSvg && isSvg && svgContent}
-  <!-- Inline SVG content -->
-  <div 
-    class={`picture__svg
-      transition-all ease-in-out duration-500
-      ${zoom ? 'group-hover:scale-104 group-hoverhover:duration-1200' : ''}
-      ${loaded ? 'opacity-100' : 'opacity-0'}
-      ${portableText ? 'inline mb-2' : 'w-full h-full'}
-      ${className}
-    `}
-  >
-    {@html svgContent}
-  </div>
+{#if inlineSvg && shouldUseResponsiveSvg(src, sources, portableText)}
+  <!-- Responsive SVG component -->
+  <ResponsiveSvg 
+    {src}
+    {sources}
+    {alt}
+    bind:loaded
+    {zoom}
+    class={portableText ? 'inline mb-2' : `w-full h-full ${className}`}
+    {portableText}
+  />
 {:else}
   <!-- Regular picture element for non-SVG images -->
   <picture class="picture block relative {className}">
@@ -56,6 +54,13 @@
 {/if}
 
 <script lang="ts">
+import ResponsiveSvg, { shouldUseResponsiveSvg } from './ResponsiveSvg.svelte';
+
+interface Source {
+  srcset: string;
+  mediaQuery?: string;
+}
+
 let {
   src,
   sources,
@@ -65,68 +70,30 @@ let {
   zoom = false,
   class: className = '',
   inlineSvg = false,
-
   portableText = null,
+}: {
+  src?: string;
+  sources?: Source[];
+  alt?: string;
+  loaded?: boolean;
+  spinner?: boolean;
+  zoom?: boolean;
+  class?: string;
+  inlineSvg?: boolean;
+  portableText?: any;
 } = $props();
-
-let svgContent = $state('');
-let isSvg = $state(false);
-
-// Function to check if URL is an SVG
-function isSvgUrl(url: string): boolean {
-  console.log('isSvgUrl', url, url.toLowerCase().includes('.svg'));
-  if (!url) return false;
-  return url.toLowerCase().includes('.svg') || url.toLowerCase().includes('image/svg');
-}
-
-// Function to fetch and inline SVG content
-async function loadSvgContent(url: string) {
-  try {
-    const response = await fetch(url);
-    if (response.ok) {
-      const content = await response.text();
-      svgContent = content;
-      loaded = true;
-    } else {
-      console.error('Failed to load SVG - Response not OK:', response.status, response.statusText);
-    }
-  } catch (error) {
-    console.error('Failed to load SVG:', error);
-    // Fallback to regular img tag
-    isSvg = false;
-  }
-}
-
-// Reactive effect to handle SVG loading
-$effect(() => {
-  const imageUrl = src || portableText?.value?.asset?.src;
-  if (imageUrl && isSvgUrl(imageUrl)) {
-    console.log('Picture effect', imageUrl, isSvgUrl(imageUrl));
-    isSvg = true;
-    loadSvgContent(imageUrl);
-  } else {
-    console.log('fhjjcchgjf');
-    isSvg = false;
-  }
-});
 </script>
 
 
 <style>
-  .image svg {
-    stroke: currentColor;
-    fill: currentColor;
-  }
-
-  .picture__svg {
+  .picture {
     display: block;
     position: relative;
   }
 
-  .picture__svg :global(svg) {
+  .picture__image {
     width: 100%;
     height: 100%;
-    display: block;
-    overflow: visible;
+    object-fit: cover;
   }
 </style>

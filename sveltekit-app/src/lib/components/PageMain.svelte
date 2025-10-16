@@ -19,7 +19,6 @@
 
 	const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData && pageData.sections);
-  console.log('sections', sections);
 
   let gradientColors: string[] = $state([]);
   $effect(() => {
