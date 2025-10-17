@@ -80,11 +80,17 @@
 	@reference "tailwindcss";
 	.neuzeit-logo {
 		/* @apply inline-flex items-center justify-center; */
-		/* width: 100%;
-		height: 100%; */
     svg {
+      width: auto;
+      height: 2.875rem;
       color: currentColor;
       fill: currentColor;
+      @screen md {
+        height: 4rem;
+      }
+
+      /* @media screen and (max-width: 768px) {
+      } */
     }
 	}
 </style>

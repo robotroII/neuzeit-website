@@ -1,6 +1,6 @@
 <header class="page-header absolute z-100 w-full py-4 lg:py-0">
   <div class="container-fluid-xl flex items-center relative">
-    <div class="grow-0 shrink-0 ms-4">
+    <div class="grow-0 shrink-0 ms-10">
       <!-- <a href="/" aria-label="Home"> -->
         <NeuzeitLogo
           id="header-logo"
@@ -52,7 +52,7 @@
       </div>
     {/if}
 
-    <div class="flex lg:hidden items-center ms-auto">
+    <div class="flex lg:hidden items-center ms-auto me-8">
       <button
         data-collapse-toggle="navbar-default"
         type="button"
