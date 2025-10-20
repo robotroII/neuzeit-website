@@ -31,6 +31,12 @@ export const section = defineType({
         defineArrayMember({
           type: 'gridTeaser',
         }),
+        defineArrayMember({
+          type: 'logoWall',
+        }),
+        defineArrayMember({
+          type: 'contact',
+        }),
       ]
     }),
 

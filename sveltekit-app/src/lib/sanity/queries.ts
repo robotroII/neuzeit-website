@@ -117,13 +117,14 @@ const logoWall = groq`
   },
 `;
 
-const contactBlock = groq`
+const contact = groq`
   ...,
   "name": @.author->name,
   "slug": @.author->slug.current,
   "role": @.author->role,
   "about": @.author->about,
   "links": @.author->links,
+  "link": @.link,
   "picture": @.author->picture.asset->url,
 `;
 
@@ -270,6 +271,12 @@ const section = groq`
     ...,
     _type == 'gridTeaser' => {
       ${gridTeaser}
+    },
+    _type == 'logoWall' => {
+      ${logoWall}
+    },
+    _type == 'contact' => {
+      ${contact}
     },
   }
 `;

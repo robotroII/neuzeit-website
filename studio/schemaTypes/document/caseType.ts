@@ -25,19 +25,19 @@ export const caseType = defineType({
       type: 'string',
     }),
 
-    // defineField({
-    //   type: 'themeSettings',
-    //   name: 'theme',
-    //   title: 'Theme settings',
-    // }),
+    defineField({
+      type: 'theme',
+      name: 'theme',
+      title: 'Theme settings',
+    }),
 
-    // defineField({
-    //   // should match 'languageField' plugin configuration setting, if customized
-    //   name: 'language',
-    //   type: 'string',
-    //   readOnly: true,
-    //   hidden: true,
-    // })
+    defineField({
+      // should match 'languageField' plugin configuration setting, if customized
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    })
   ],
   preview: {
     select: {

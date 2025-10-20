@@ -13,6 +13,8 @@ import { picture } from './object/picture';
 import { article } from './object/article';
 import { textBlock } from './object/textBlock';
 import { gridTeaser } from './object/gridTeaser';
+import { logoWall } from './object/logoWall';
+import { contact } from './object/contact';
 
 export const schemaTypes = [
   pageType,
@@ -32,4 +34,6 @@ export const schemaTypes = [
   article,
   textBlock,
   gridTeaser,
+  logoWall,
+  contact
 ];

@@ -9,12 +9,21 @@
         {#each section.foreground as foreground}
           {#if foreground._type === 'stage'}
             <Article content={foreground?.text?.title} />
-          {:else if foreground._type === 'textBlock'}
+          {/if}
+          {#if foreground._type === 'textBlock'}
             <TextBlock {...foreground} class={section.class}/>
-          {:else if foreground._type === 'contentColumns'}
+          {/if}
+          {#if foreground._type === 'contentColumns'}
             <ContentColumns {...foreground} class={section.class}></ContentColumns>
-          {:else if foreground._type === 'gridTeaser'}
+          {/if}
+          {#if foreground._type === 'gridTeaser'}
             <GridTeaser {...foreground} class={section.class}></GridTeaser>
+          {/if}
+          {#if foreground._type === 'logoWall'}
+            <LogoWall {...foreground} class={section.class}></LogoWall>
+          {/if}
+          {#if foreground._type === 'contact'}
+            <ContactTeaser {...foreground} class={section.class}></ContactTeaser>
           {/if}
         {/each}
       </PageSection>
@@ -29,6 +38,8 @@
 	import Article from '$lib/components/article/Article.svelte';
 	import TextBlock from '$lib/components/TextBlock.svelte';
 	import GridTeaser from '$lib/components/GridTeaser.svelte';
+	import LogoWall from './LogoWall.svelte';
+	import ContactTeaser from './ContactTeaser.svelte';
 
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);
