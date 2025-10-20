@@ -55,6 +55,7 @@
 
 <script lang="ts">
 import ResponsiveSvg, { shouldUseResponsiveSvg } from './ResponsiveSvg.svelte';
+import { onMount } from "svelte";
 
 interface Source {
   srcset: string;
@@ -82,6 +83,20 @@ let {
   inlineSvg?: boolean;
   portableText?: any;
 } = $props();
+
+onMount(async () => {
+  console.log('Picture component mounted with props:', {
+    src,
+    sources,
+    alt,
+    loaded,
+    spinner,
+    zoom,
+    className,
+    inlineSvg,
+    portableText,
+  });
+})
 </script>
 
 

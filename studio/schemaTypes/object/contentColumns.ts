@@ -24,7 +24,13 @@ export const contentColumns = defineType({
               title: 'Column items',
               of: [
                 defineArrayMember({
-                  type: 'contentItem',
+                  type: 'contentColumns',
+                }),
+                defineArrayMember({
+                  type: 'gridTeaser',
+                }),
+                defineArrayMember({
+                  type: 'textBlock',
                 }),
               ]
             }),

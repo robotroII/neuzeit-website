@@ -13,8 +13,9 @@
             <TextBlock {...foreground} class={section.class}/>
           {:else if foreground._type === 'contentColumns'}
             <ContentColumns {...foreground} class={section.class}></ContentColumns>
+          {:else if foreground._type === 'gridTeaser'}
+            <GridTeaser {...foreground} class={section.class}></GridTeaser>
           {/if}
-
         {/each}
       </PageSection>
     {/each}
@@ -23,10 +24,11 @@
 
 <script lang="ts">
 	import { page } from '$app/state';
-	import Article from '$lib/components/article/Article.svelte';
   import PageSection from '$lib/components/PageSection.svelte';
+	import ContentColumns from '$lib/components/ContentColumns.svelte';
+	import Article from '$lib/components/article/Article.svelte';
 	import TextBlock from '$lib/components/TextBlock.svelte';
-	import ContentColumns from './ContentColumns.svelte';
+	import GridTeaser from '$lib/components/GridTeaser.svelte';
 
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);

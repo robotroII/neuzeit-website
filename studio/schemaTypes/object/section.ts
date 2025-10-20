@@ -23,10 +23,13 @@ export const section = defineType({
       title: 'Foreground',
       of: [
         defineArrayMember({
+          type: 'contentColumns',
+        }),
+        defineArrayMember({
           type: 'textBlock',
         }),
         defineArrayMember({
-          type: 'contentColumns',
+          type: 'gridTeaser',
         }),
       ]
     }),

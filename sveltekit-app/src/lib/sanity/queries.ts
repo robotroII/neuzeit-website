@@ -9,7 +9,7 @@ const imageBlock = groq`
   "caption": @.asset->caption,
 `;
 
-const teaserBlock = groq`
+const gridTeaser = groq`
   ...,
   "slug": @.internalLink->slug.current,
   "href": @.internalLink->_type + "/" + @.internalLink->slug.current,
@@ -27,16 +27,21 @@ const teaserBlock = groq`
       }
     }
   },
-  sectionTheme{
-    ...,
-    "backgroundImage": @.backgroundImage.asset->url,
-  },
   items[]{
     ...,
-    _type == 'imageBlock' => {
+    _type == 'image' => {
       ...,
       "src": @.asset->url,
       "alt": @.asset->alt,
+    },
+    _type == 'picture' => {
+      ...,
+      "dsfafda": "asdfsfda",
+      "src": @.asset->url,
+      sources[]{
+        ...,
+        "srcset": @.srcset.asset->url,
+      }
     },
     _type == 'linkList' => {
       ...,
@@ -137,52 +142,53 @@ const stage = groq`
   },
 `;
 
-const pageSection = groq`
-  ...,
-  background{
-    ...,
-    "src": @.asset->url,
-    sources[]{
-      ...,
-      "srcset": @.srcset.asset->url,
-    }
-  },
-  foreground[] {
-    ...,
-    _type == 'stage' => {
-      ${stage}
-    },
-    _type == 'imageBlock' => {
-      ${imageBlock}
-    },
-    _type == 'teaserBlock' => {
-      ${teaserBlock}
-    },
-    _type == 'teaserList' => {
-      ${teaserList}
-    },
-    _type == 'teaserGallery' => {
-      ${teaserGallery}
-    },
-    _type == 'logoWall' => {
-      ${logoWall}
-    },
-    _type == 'contactBlock' => {
-      ${contactBlock}
-    },
-    _type == 'contact' => {
-      ...,
-      picture {
-        ...,
-        "src": @.asset->url,
-        sources[]{
-          ...,
-          "srcset": @.srcset.asset->url,
-        }
-      }
-    },
-  }
-`;
+// const section = groq`
+//   ...,
+//   background{
+//     ...,
+//     "src": @.asset->url,
+//     sources[]{
+//       ...,
+//       "srcset": @.srcset.asset->url,
+//     }
+//   },
+//   foreground[] {
+//     ...,
+//     _type == 'stage' => {
+//       ${stage}
+//     },
+//     _type == 'imageBlock' => {
+//       ${imageBlock}
+//     },
+//     _type == 'gridTeaser' => {
+//       ${gridTeaser}
+//     },
+//     _type == 'teaserList' => {
+//       ${teaserList}
+//     },
+//     _type == 'teaserGallery' => {
+//       ${teaserGallery}
+//     },
+//     _type == 'logoWall' => {
+//       ${logoWall}
+//     },
+//     _type == 'contactBlock' => {
+//       ${contactBlock}
+//     },
+//     _type == 'contact' => {
+//       ...,
+//       picture {
+//         ...,
+//         "src": @.asset->url,
+//         sources[]{
+//           ...,
+//           "srcset": @.srcset.asset->url,
+//         }
+//       }
+//     },
+//   }
+// `;
+
 
 // export const pageQuery = groq`*[_type == "page" && (slug.current == $slug || _id == $id)][0]{
 //   ...,
@@ -194,8 +200,8 @@ const pageSection = groq`
 //   },
 //   sections[]{
 //     ...,
-//     _type == 'pageSection' => {
-//       ${pageSection}
+//     _type == 'section' => {
+//       ${section}
 //     },
 //     _type == 'imageBlock' => {
 //       ${imageBlock}
@@ -250,18 +256,31 @@ const pageSection = groq`
 //   }
 // }`;
 // export const pagesQuery = groq`*[_type == "page"]`;
+const section = groq`
+  ...,
+  background{
+    ...,
+    "src": @.asset->url,
+    sources[]{
+      ...,
+      "srcset": @.srcset.asset->url,
+    }
+  },
+  foreground[] {
+    ...,
+    _type == 'gridTeaser' => {
+      ${gridTeaser}
+    },
+  }
+`;
+
 export const pageTranslationQuery = groq`
   ...,
   sections[] {
     ...,
-    background{
-      ...,
-      "src": @.asset->url,
-      sources[]{
-        ...,
-        "srcset": @.srcset.asset->url,
-      }
-    }
+    _type == 'section' => {
+      ${section}
+    },
   },
 `;
 export const pageQuery = groq`

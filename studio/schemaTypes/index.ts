@@ -8,10 +8,11 @@ import { link } from './object/link';
 import { gradient } from './object/gradient';
 import { theme } from './object/theme';
 import { section } from './object/section';
+import { contentColumns } from './object/contentColumns';
+import { picture } from './object/picture';
 import { article } from './object/article';
 import { textBlock } from './object/textBlock';
-import { contentItem } from './object/contentItem';
-import { contentColumns } from './object/contentColumns';
+import { gridTeaser } from './object/gridTeaser';
 
 export const schemaTypes = [
   pageType,
@@ -25,10 +26,10 @@ export const schemaTypes = [
   theme,
 
   section,
-  article,
-
-  textBlock,
-
   contentColumns,
-  contentItem,
+
+  picture,
+  article,
+  textBlock,
+  gridTeaser,
 ];
