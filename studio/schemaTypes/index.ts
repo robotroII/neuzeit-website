@@ -15,6 +15,8 @@ import { textBlock } from './object/textBlock';
 import { gridTeaser } from './object/gridTeaser';
 import { logoWall } from './object/logoWall';
 import { contact } from './object/contact';
+import { caseTeasers } from './object/case-teasers';
+import { caseTeaser } from './object/case-teaser';
 
 export const schemaTypes = [
   pageType,
@@ -35,5 +37,8 @@ export const schemaTypes = [
   textBlock,
   gridTeaser,
   logoWall,
-  contact
+  contact,
+
+  caseTeasers,
+  caseTeaser
 ];

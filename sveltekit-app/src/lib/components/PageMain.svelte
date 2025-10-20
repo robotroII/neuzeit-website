@@ -4,6 +4,7 @@
     {#each pageData?.sections as section (section._key)}
       <PageSection
         theme={pageData?.theme}
+        container={section.foreground?.find((foreground: any) => foreground._type !== 'caseTeasers')}
         background={section.background}
         >
         {#each section.foreground as foreground}
@@ -25,6 +26,24 @@
           {#if foreground._type === 'contact'}
             <ContactTeaser {...foreground} class={section.class}></ContactTeaser>
           {/if}
+          {#if foreground._type === 'caseTeasers'}
+            <Carousel items={foreground.items} let:carouselItem={item}>
+              {#snippet carouselItem(item: any)}
+                <div class="case-teaser">
+                  {#if item.picture}
+                    <Picture
+                      {...item.picture}
+                      class="case-teaser__image mb-4"
+                    />
+                  {/if}
+                  <h3 class="case-teaser__title text-lg font-semibold mb-2">{item.headline}</h3>
+                  {#if item.article}
+                    <Article content={item.article} />
+                  {/if}
+                </div>
+              {/snippet}
+            </Carousel>
+          {/if}
         {/each}
       </PageSection>
     {/each}
@@ -40,6 +59,8 @@
 	import GridTeaser from '$lib/components/GridTeaser.svelte';
 	import LogoWall from './LogoWall.svelte';
 	import ContactTeaser from './ContactTeaser.svelte';
+	import Carousel from './Carousel.svelte';
+	import Picture from './Picture.svelte';
 
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);

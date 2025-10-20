@@ -47,7 +47,7 @@
   import Picture from './Picture.svelte';
 
   let {
-    container = true,
+    container = false,
     class: className = '',
     children = null,
     theme = null,

@@ -78,16 +78,8 @@ const teaserGallery = groq`
   },
 `;
 
-const teaserList = groq`
+const caseTeasers = groq`
   ...,
-  "mainImage": {
-    ...,
-    "src": @.mainImage.asset->url,
-  },
-  sectionTheme{
-    ...,
-    "backgroundImage": @.backgroundImage.asset->url
-  },
   items[]{
     ...,
     "slug": @.internalLink->slug.current,
@@ -274,6 +266,9 @@ const section = groq`
     },
     _type == 'logoWall' => {
       ${logoWall}
+    },
+    _type == 'caseTeasers' => {
+      ${caseTeasers}
     },
     _type == 'contact' => {
       ${contact}

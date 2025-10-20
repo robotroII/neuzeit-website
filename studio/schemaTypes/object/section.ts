@@ -37,6 +37,9 @@ export const section = defineType({
         defineArrayMember({
           type: 'contact',
         }),
+        defineArrayMember({
+          type: 'caseTeasers',
+        }),
       ]
     }),
 
