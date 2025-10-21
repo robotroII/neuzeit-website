@@ -9,7 +9,10 @@ const { children } = $props();
 <style lang="css">
   .definition-list {
     :global(.accordion-toggle) {
-      width: 1.25rem;
+      width: 1rem;
+      @screen lg {
+        height: 1.5rem;
+      }
     }
     :global(.accordion-toggle path) {
         fill: #F7F7F7 !important;

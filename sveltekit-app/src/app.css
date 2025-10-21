@@ -234,6 +234,7 @@
   }
 }
 
+.definition-list .accordion-header:not(:has(.collapsed)),
 .article h2 {
   position: relative;
   &::after {
@@ -247,6 +248,12 @@
     border-width: 0 0 .0125rem 0;
     border-image: var(--gradient-primary) 1;
     border-style: solid;
+  }
+}
+.definition-list .accordion-header:not(:has(.collapsed)) {
+  position: relative;
+  &::after {
+    margin-block: 1.5rem;
   }
 }
 

@@ -1,7 +1,7 @@
 <div class="accordion-item flex flex-col gap-4 {className}">
   <div class="accordion-header" id={`heading-${id}`}>
     <button
-      class="accordion-button text-start w-full min-h-[5rem]"
+      class="accordion-button text-start w-full py-5"
       class:collapsed={! expanded}
       type="button"
       data-bs-toggle="collapse"
@@ -10,11 +10,16 @@
       aria-controls={`target-${id}`}
       onclick={toggle}
       >
-      <div class="grid grid-cols-[auto_auto] gap-2">
-        <div class="col-start-1">
+      <div class="grid grid-cols-[auto_auto{index ? '_auto' : ''}] gap-2">
+        {#if index}
+          <div class="col-start-1 {expanded ? 'gradient-primary' : ''} font-bold leading-none select-none flex items-center">
+            {index < 10 ? `0${index}` : index}
+          </div>
+        {/if}
+        <div class="col-start-{index ? 2 : 1} flex items-center">
           {@render title()}
         </div>
-        <div class="col-start-2 grid items-center ms-auto">
+        <div class="col-start-{index ? 3 : 2} grid items-center ms-auto">
           <svg
             width="30"
             height="17"
@@ -44,6 +49,7 @@
 <script>
 let {
   id,
+  index,
   expanded,
   parent,
   title,

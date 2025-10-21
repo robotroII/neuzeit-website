@@ -16,10 +16,11 @@
             <Accordion>
               {#each item.items as accordionItem, index}
                 <AccordionItem
+                  index={index + 1}
                   id={`definition-list-accordion-${index}`}
-                  expanded={false}
+                  expanded={index === 0 ? true : false}
                   parent="definition-list-accordion"
-                  class="bg-grey/30 rounded-[2.5rem] rounded-tl-none px-8"
+                  class="bg-grey/30 rounded-[2.5rem] rounded-tl-none px-5"
                   >
                   {#snippet title()}
                     <h3>{accordionItem.title}</h3>
