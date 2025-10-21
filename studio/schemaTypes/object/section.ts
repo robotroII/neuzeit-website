@@ -46,6 +46,9 @@ export const section = defineType({
         defineArrayMember({
           type: 'scrollTracker',
         }),
+        defineArrayMember({
+          type: 'accordion',
+        }),
       ]
     }),
 

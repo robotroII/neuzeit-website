@@ -16,6 +16,10 @@ import { textBlock } from './object/textBlock';
 import { gridTeaser } from './object/gridTeaser';
 import { logoWall } from './object/logoWall';
 import { contact } from './object/contact';
+
+import { accordion } from './object/accordion';
+import { accordionItem } from './object/accordionItem';
+
 import { caseTeasers } from './object/case-teasers';
 import { caseTeaser } from './object/case-teaser';
 import { scrollTracker } from './object/scrollTracker';
@@ -41,6 +45,9 @@ export const schemaTypes = [
   gridTeaser,
   logoWall,
   contact,
+
+  accordion,
+  accordionItem,
 
   caseTeasers,
   caseTeaser,

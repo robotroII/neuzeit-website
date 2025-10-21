@@ -50,6 +50,29 @@
           {#if foreground._type === 'scrollTracker'}
             <ScrollTracker items={foreground.items} />
           {/if}
+          {#if foreground._type === 'accordion'}
+            <Accordion>
+              {#each foreground.items as item, index}
+                <AccordionItem
+                  index={0}
+                  id="tokenomics-accordion-{index}"
+                  expanded={false}
+                  parent="tokenomics-accordion"
+                  >
+                  {#snippet title()}
+                    <div class="accordion-item__title grid md:grid-cols-[8rem_auto] gap-4 content-start items-center">
+                      <p class="gradient-primary text-xl lg:text-4xl hidden md:block">{index < 9 ? `0${index+1}` : index + 1}</p>
+                      <p class="col-start-2 text-xl lg:text-4xl">{item.title}</p>
+                    </div>
+                  {/snippet}
+                  {#snippet body()}
+                    <Article content={item.article} class="col-start-2" />
+                  {/snippet}
+                </AccordionItem>
+              {/each}
+
+            </Accordion>
+          {/if}
         {/each}
       </PageSection>
     {/each}
@@ -68,6 +91,8 @@
 	import Carousel from './Carousel.svelte';
 	import Picture from './Picture.svelte';
 	import ScrollTracker from './ScrollTracker.svelte';
+	import Accordion from './Accordion.svelte';
+	import AccordionItem from './AccordionItem.svelte';
 
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);
