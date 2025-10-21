@@ -1,6 +1,6 @@
-<div class="definition-list">
+<dl class="definition-list">
   {@render children()}
-</div>
+</dl>
 
 <script>
 const { children } = $props();

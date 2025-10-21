@@ -18,6 +18,7 @@ import { logoWall } from './object/logoWall';
 import { contact } from './object/contact';
 import { caseTeasers } from './object/case-teasers';
 import { caseTeaser } from './object/case-teaser';
+import { scrollTracker } from './object/scrollTracker';
 
 export const schemaTypes = [
   pageType,
@@ -42,5 +43,6 @@ export const schemaTypes = [
   contact,
 
   caseTeasers,
-  caseTeaser
+  caseTeaser,
+  scrollTracker
 ];

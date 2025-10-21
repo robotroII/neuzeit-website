@@ -150,6 +150,17 @@ const stage = groq`
   },
 `;
 
+const scrollTracker = groq`
+  ...,
+  items[]{
+    ...,
+    image{
+      ...,
+      "src": @.asset->url,
+    }
+  },
+`;
+
 const section = groq`
   ...,
   background{
@@ -173,6 +184,9 @@ const section = groq`
     },
     _type == 'caseTeasers' => {
       ${caseTeasers}
+    },
+    _type == 'scrollTracker' => {
+      ${scrollTracker}
     },
     _type == 'contact' => {
       ${contact}

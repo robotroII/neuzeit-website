@@ -26,6 +26,9 @@
           {#if foreground._type === 'contact'}
             <ContactTeaser {...foreground} class={section.class}></ContactTeaser>
           {/if}
+          {#if foreground._type === 'picture'}
+            <Picture {...foreground} class={section.class}></Picture>
+          {/if}
           {#if foreground._type === 'caseTeasers'}
             <Carousel items={foreground.items} let:carouselItem={item}>
               {#snippet carouselItem(item: any)}
@@ -44,6 +47,9 @@
               {/snippet}
             </Carousel>
           {/if}
+          {#if foreground._type === 'scrollTracker'}
+            <ScrollTracker items={foreground.items} />
+          {/if}
         {/each}
       </PageSection>
     {/each}
@@ -61,6 +67,7 @@
 	import ContactTeaser from './ContactTeaser.svelte';
 	import Carousel from './Carousel.svelte';
 	import Picture from './Picture.svelte';
+	import ScrollTracker from './ScrollTracker.svelte';
 
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);
