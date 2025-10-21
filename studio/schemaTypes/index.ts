@@ -11,6 +11,7 @@ import { section } from './object/section';
 import { contentColumns } from './object/contentColumns';
 import { picture } from './object/picture';
 import { article } from './object/article';
+import { definitionList } from './object/definitionList';
 import { textBlock } from './object/textBlock';
 import { gridTeaser } from './object/gridTeaser';
 import { logoWall } from './object/logoWall';
@@ -34,6 +35,7 @@ export const schemaTypes = [
 
   picture,
   article,
+  definitionList,
   textBlock,
   gridTeaser,
   logoWall,

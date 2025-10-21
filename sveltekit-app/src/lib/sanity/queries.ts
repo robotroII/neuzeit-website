@@ -9,6 +9,21 @@ const imageBlock = groq`
   "caption": @.asset->caption,
 `;
 
+const textBlock = groq`
+  ...,
+  sectionTheme{
+    ...,
+    "backgroundImage": @.backgroundImage.asset->url
+  },
+  article[]{
+    ...,
+    asset{
+      ...,
+      "src": @->url,
+    }
+  }
+`;
+
 const gridTeaser = groq`
   ...,
   "slug": @.internalLink->slug.current,
@@ -135,120 +150,6 @@ const stage = groq`
   },
 `;
 
-// const section = groq`
-//   ...,
-//   background{
-//     ...,
-//     "src": @.asset->url,
-//     sources[]{
-//       ...,
-//       "srcset": @.srcset.asset->url,
-//     }
-//   },
-//   foreground[] {
-//     ...,
-//     _type == 'stage' => {
-//       ${stage}
-//     },
-//     _type == 'imageBlock' => {
-//       ${imageBlock}
-//     },
-//     _type == 'gridTeaser' => {
-//       ${gridTeaser}
-//     },
-//     _type == 'teaserList' => {
-//       ${teaserList}
-//     },
-//     _type == 'teaserGallery' => {
-//       ${teaserGallery}
-//     },
-//     _type == 'logoWall' => {
-//       ${logoWall}
-//     },
-//     _type == 'contactBlock' => {
-//       ${contactBlock}
-//     },
-//     _type == 'contact' => {
-//       ...,
-//       picture {
-//         ...,
-//         "src": @.asset->url,
-//         sources[]{
-//           ...,
-//           "srcset": @.srcset.asset->url,
-//         }
-//       }
-//     },
-//   }
-// `;
-
-
-// export const pageQuery = groq`*[_type == "page" && (slug.current == $slug || _id == $id)][0]{
-//   ...,
-//   mainImage{
-//     ...,
-//     "src": @.asset->url,
-//     "alt": @.asset->altText,
-//     "caption": @.asset->caption,
-//   },
-//   sections[]{
-//     ...,
-//     _type == 'section' => {
-//       ${section}
-//     },
-//     _type == 'imageBlock' => {
-//       ${imageBlock}
-//     },
-//     _type == 'teaserBlock' => {
-//       ${teaserBlock}
-//     },
-//     _type == 'teaserList' => {
-//       ${teaserList}
-//     },
-//     _type == 'teaserGallery' => {
-//       ${teaserGallery}
-//     },
-//     _type == 'logoWall' => {
-//       ${logoWall}
-//     },
-//     _type == 'contactBlock' => {
-//       ${contactBlock}
-//     },
-//     _type == 'contact' => {
-//       ...,
-//       picture {
-//         ...,
-//         "src": @.asset->url,
-//         sources[]{
-//           ...,
-//           "srcset": @.srcset.asset->url,
-//         }
-//       }
-//     },
-//   },
-//   teaserList {
-//     ...,
-//     items[]{
-//       ...,
-//       "slug": @.internalLink->slug.current,
-//       "href": @.internalLink->_type + "/" + @.internalLink->slug.current,
-//       "headline": coalesce(headline, @->title),
-//       "subheadline": coalesce(subheadline, @->subtitle),
-//       "body": coalesce(body, @->body),
-//       "mainImage": coalesce(mainImage, @->mainImage),
-//       "theme": @->theme,
-//       picture{
-//         ...,
-//         "src": @.asset->url,
-//         sources[]{
-//           ...,
-//           "srcset": @.srcset.asset->url,
-//         }
-//       }
-//     }
-//   }
-// }`;
-// export const pagesQuery = groq`*[_type == "page"]`;
 const section = groq`
   ...,
   background{
@@ -261,6 +162,9 @@ const section = groq`
   },
   foreground[] {
     ...,
+    _type == 'textBlock' => {
+      ${textBlock}
+    },
     _type == 'gridTeaser' => {
       ${gridTeaser}
     },
@@ -326,24 +230,6 @@ const caseHero = groq`
     ...,
     "src": @.asset->url,
   }
-`;
-
-const textBlock = groq`
-  ...,
-  sectionTheme{
-    ...,
-    "backgroundImage": @.backgroundImage.asset->url
-  },
-  text{
-    ...,
-    content[]{
-      ...,
-      asset{
-        ...,
-        "src": @->url,
-      }
-    }
-  },
 `;
 
 export const caseQuery = groq`*[_type == "case" && slug.current == $slug][0]{

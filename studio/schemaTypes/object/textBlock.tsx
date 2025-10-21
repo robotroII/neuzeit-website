@@ -25,7 +25,7 @@ export const textBlock = defineType({
     },
     prepare(selection) {
       // const {title} = selection
-      return { ...selection, subtitle: `Text block` }
+      return { ...selection, title: selection.title || `Text block`, subtitle: selection.title ? `Text block` : '' }
     },
   },
 });

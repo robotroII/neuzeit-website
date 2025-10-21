@@ -32,6 +32,9 @@ export const contentColumns = defineType({
                 defineArrayMember({
                   type: 'textBlock',
                 }),
+                defineArrayMember({
+                  type: 'definitionList',
+                }),
               ]
             }),
           ]

@@ -25,16 +25,18 @@
   --container-8xl: 85rem;
   --container-10xl: var(--breakpoint-3xl);
 
-  --color-dim: #979797;
-  --gradient-primary: linear-gradient(90deg, #ffffff 0%, #000000 100%);
+  --color-dim: oklch(64.4% 0 0);
+  --gradient-primary: linear-gradient(90deg, oklch(100% 0 0) 0%, oklch(0% 0 0) 100%);
 
-  --color-body-text: #000;
+  --color-body-text: oklch(0% 0 0);
   --color-page-background: transparent;
-  --color-body-background: var(--color-page-background, #fff);
+  --color-body-background: var(--color-page-background, oklch(100% 0 0));
 
-  --color-primary: #000;
-  --color-limed-spruce: #37474F;
-  --color-alto: #D9D9D9;
+  --color-primary: oklch(0% 0 0);
+  --color-limed-spruce: oklch(35.6% 0.016 225);
+  --color-alto: oklch(88.4% 0 0);
+
+  --color-grey: #333333;
 
   --text-base: 16px;
   --tw-leading: 1.25
@@ -44,20 +46,20 @@
   hyphens: auto;
   line-height: normal;
 
-  --gradient-color-1: #C73564;
-  --gradient-color-2: #EA3D53;
-  --gradient-color-3: #E3402E;
-  --gradient-color-4: #000000;
+  --gradient-color-1: oklch(56.4% 0.175 345);
+  --gradient-color-2: oklch(65.2% 0.172 15);
+  --gradient-color-3: oklch(62.8% 0.164 30);
+  --gradient-color-4: oklch(0% 0 0);
 }
 
 @layer theme {
   .tw-dark-mode {
-    --color-body-text: #fff;
-    --color-body-background: var(--color-page-background, #000);
+    --color-body-text: oklch(100% 0 0);
+    --color-body-background: var(--color-page-background, oklch(0% 0 0));
   }
   .tw-light-mode {
-    --color-body-text: #000;
-    --color-body-background: var(--color-page-background, #fff);
+    --color-body-text: oklch(0% 0 0);
+    --color-body-background: var(--color-page-background, oklch(100% 0 0));
   }
   .gradient-primary,
   .link-gradient {
