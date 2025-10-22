@@ -1,15 +1,21 @@
 <div class="content-columns flex flex-col lg:flex-row{className}">
   {#each columns as column, index}
-    <div class="content-columns__column p-4 {column.class}">
+    <div class="content-columns__column {column.class}">
       {#each column.items as item}
         {#if item._type === 'stage'}
           <Article content={item?.text?.title} />
+        {/if}
+        {#if item._type === 'image'}
+          <Image {...item} class={item.class} />
         {/if}
         {#if item._type === 'textBlock'}
           <TextBlock {...item} class={item.class} />
         {/if}
         {#if item._type === 'contentColumns'}
           <ContentColumns {...item} class={item.class} />
+        {/if}
+        {#if item._type === 'bulletList'}
+          <BulletList {...item} class={item.class} />
         {/if}
         {#if item._type === 'definitionList'}
           <DefinitionList>
@@ -44,6 +50,8 @@
 	import DefinitionList from "./DefinitionList.svelte";
 	import Accordion from "./Accordion.svelte";
 	import AccordionItem from "./AccordionItem.svelte";
+	import BulletList from "./BulletList.svelte";
+	import Image from "./Image.svelte";
 
 	// import { page } from '$app/state';
 

@@ -49,6 +49,9 @@ export const section = defineType({
         defineArrayMember({
           type: 'accordion',
         }),
+        defineArrayMember({
+          type: 'bulletList',
+        }),
       ]
     }),
 

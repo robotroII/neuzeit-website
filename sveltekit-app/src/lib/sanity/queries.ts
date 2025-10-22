@@ -2,7 +2,7 @@ import type { PortableTextBlock } from '@portabletext/types';
 import type { ImageAsset, Slug } from '@sanity/types';
 import groq from 'groq';
 
-const imageBlock = groq`
+const image = groq`
   ...,
   "src": @.asset->url,
   "alt": @.asset->altText,
@@ -150,6 +150,21 @@ const stage = groq`
   },
 `;
 
+const bulletList = groq`
+  ...,
+  bullet{
+    ...,
+    "src": @.asset->url,
+  },
+  items[]{
+    ...,
+    image{
+      ...,
+      "src": @.asset->url,
+    }
+  },
+`;
+
 const scrollTracker = groq`
   ...,
   items[]{
@@ -158,6 +173,44 @@ const scrollTracker = groq`
       ...,
       "src": @.asset->url,
     }
+  },
+`;
+
+const itemTypes = groq`
+  _type == 'textBlock' => {
+    ${textBlock}
+  },
+  _type == 'gridTeaser' => {
+    ${gridTeaser}
+  },
+  _type == 'logoWall' => {
+    ${logoWall}
+  },
+  _type == 'caseTeasers' => {
+    ${caseTeasers}
+  },
+  _type == 'scrollTracker' => {
+    ${scrollTracker}
+  },
+  _type == 'contact' => {
+    ${contact}
+  },
+  _type == 'bulletList' => {
+    ${bulletList}
+  },
+  _type == 'image' => {
+    ${image}
+  },
+`;
+
+const contentColumns = groq`
+  ...,
+  columns[]{
+    ...,
+    items[]{
+      ...,
+      ${itemTypes}
+    },
   },
 `;
 
@@ -173,23 +226,9 @@ const section = groq`
   },
   foreground[] {
     ...,
-    _type == 'textBlock' => {
-      ${textBlock}
-    },
-    _type == 'gridTeaser' => {
-      ${gridTeaser}
-    },
-    _type == 'logoWall' => {
-      ${logoWall}
-    },
-    _type == 'caseTeasers' => {
-      ${caseTeasers}
-    },
-    _type == 'scrollTracker' => {
-      ${scrollTracker}
-    },
-    _type == 'contact' => {
-      ${contact}
+    ${itemTypes}
+    _type == 'contentColumns' => {
+      ${contentColumns}
     },
   }
 `;

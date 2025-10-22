@@ -29,6 +29,9 @@
           {#if foreground._type === 'picture'}
             <Picture {...foreground} class={section.class}></Picture>
           {/if}
+          {#if foreground._type === 'bulletList'}
+            <BulletList {...foreground} class={foreground.class} />
+          {/if}
           {#if foreground._type === 'caseTeasers'}
             <Carousel items={foreground.items} let:carouselItem={item}>
               {#snippet carouselItem(item: any)}
@@ -93,6 +96,7 @@
 	import ScrollTracker from './ScrollTracker.svelte';
 	import Accordion from './Accordion.svelte';
 	import AccordionItem from './AccordionItem.svelte';
+	import BulletList from './BulletList.svelte';
 
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);

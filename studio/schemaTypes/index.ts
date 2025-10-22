@@ -11,6 +11,7 @@ import { section } from './object/section';
 import { contentColumns } from './object/contentColumns';
 import { picture } from './object/picture';
 import { article } from './object/article';
+import { bulletList } from './object/bulletList';
 import { definitionList } from './object/definitionList';
 import { textBlock } from './object/textBlock';
 import { gridTeaser } from './object/gridTeaser';
@@ -20,8 +21,8 @@ import { contact } from './object/contact';
 import { accordion } from './object/accordion';
 import { accordionItem } from './object/accordionItem';
 
-import { caseTeasers } from './object/case-teasers';
-import { caseTeaser } from './object/case-teaser';
+import { caseTeasers } from './object/caseTeasers';
+import { caseTeaser } from './object/caseTeaser';
 import { scrollTracker } from './object/scrollTracker';
 
 export const schemaTypes = [
@@ -40,6 +41,7 @@ export const schemaTypes = [
 
   picture,
   article,
+  bulletList,
   definitionList,
   textBlock,
   gridTeaser,

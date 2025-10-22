@@ -35,13 +35,25 @@ export const contentColumns = defineType({
                 defineArrayMember({
                   type: 'definitionList',
                 }),
+                defineArrayMember({
+                  type: 'bulletList',
+                }),
+                defineArrayMember({
+                  type: 'image',
+                }),
               ]
             }),
           ]
         }),
       ],
-
-    })
+    }),
+    defineField({
+      type: "boolean",
+      name: "reverse",
+      title: "Reverse order",
+      description: "Reverse the order of columns",
+      initialValue: false,
+    }),
   ]
   // preview: {
   //   select: {
