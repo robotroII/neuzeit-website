@@ -37,7 +37,7 @@
       ? `--color-page-background: ${theme.backgroundColor}`
       : ''
   };{
-   theme && theme.primaryGradient.colors?.length
+   theme && theme.primaryGradient?.colors?.length
       ? theme.primaryGradient.colors.map((color: string, index: number) => `--gradient-color-${index + 1}: ${color}`).join(';')
       : ''
   }"
@@ -67,8 +67,8 @@
           gradientTransform={theme.primaryGradient.angle && `rotate(${theme.primaryGradient.angle})`}
           >
           {#if theme.primaryGradient}
-            {#each theme.primaryGradient.colors as color, index}
-              <stop offset={index / (theme.primaryGradient.colors.length - 1)} stop-color={color} />
+            {#each theme.primaryGradient?.colors as color, index}
+              <stop offset={index / (theme.primaryGradient?.colors.length - 1)} stop-color={color} />
             {/each}
           {/if}
         </linearGradient>

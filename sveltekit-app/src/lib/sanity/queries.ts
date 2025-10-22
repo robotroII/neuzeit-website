@@ -263,20 +263,7 @@ export const pagesQuery = groq`*[_type == "page" && language == $language]{
     language
   },
 }`;
-/*
-{
-  title,
-  slug,
-  language,
-  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
-    ...,
-    title,
-    slug,
-	body,
-    language
-  },
-}
-*/
+
 const caseHero = groq`
   ...,
   mainImage{
@@ -285,10 +272,13 @@ const caseHero = groq`
   }
 `;
 
-export const caseQuery = groq`*[_type == "case" && slug.current == $slug][0]{
+export const caseTranslationQuery = groq`
   ...,
-  sections[]{
+  sections[] {
     ...,
+    _type == 'section' => {
+      ${section}
+    },
     _type == 'caseHero' => {
       ${caseHero}
     },
@@ -296,7 +286,17 @@ export const caseQuery = groq`*[_type == "case" && slug.current == $slug][0]{
       ${textBlock}
     },
   },
-}`;
+`;
+export const caseQuery = groq`
+  *[_type == "translation.metadata" && 
+    references(*[_type == "case" && slug.current == $slug][0]._id)
+  ][0].translations[_key == $language][0].value->{
+    ${caseTranslationQuery}
+    "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+      ${caseTranslationQuery}
+    },
+  }
+`;
 
 export const casesQuery = groq`*[_type == "case"]{
   ...,

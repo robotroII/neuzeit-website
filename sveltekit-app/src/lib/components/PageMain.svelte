@@ -1,6 +1,7 @@
   <div
-    class="container-xl pt-24 min-h-screen bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white"
-    >
+    class="container-xl pt-20 lg:pt-24 min-h-screen
+      bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white
+    ">
     {#each pageData?.sections as section (section._key)}
       <PageSection
         theme={pageData?.theme}
@@ -76,7 +77,10 @@
 
             </Accordion>
           {/if}
-        {/each}
+          {/each}
+          {#if section._type === 'caseHero'}
+            <CaseHero {...section} class={section.class}></CaseHero>
+          {/if}
       </PageSection>
     {/each}
 
@@ -98,11 +102,13 @@
 	import AccordionItem from './AccordionItem.svelte';
 	import BulletList from './BulletList.svelte';
 
+  import CaseHero from './CaseHero.svelte';
+
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);
   
   $effect(() => {
-    console.log('PageMain sections:', sections);
+    console.log('PageMain pageData:', pageData);
   });
 
   let gradientColors: string[] = $state([]);

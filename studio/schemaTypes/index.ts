@@ -25,6 +25,9 @@ import { caseTeasers } from './object/caseTeasers';
 import { caseTeaser } from './object/caseTeaser';
 import { scrollTracker } from './object/scrollTracker';
 
+import { caseHero } from './object/caseHero';
+import { keyData } from './object/keyData';
+
 export const schemaTypes = [
   pageType,
   caseType,
@@ -53,5 +56,8 @@ export const schemaTypes = [
 
   caseTeasers,
   caseTeaser,
-  scrollTracker
+  scrollTracker,
+
+  caseHero,
+  keyData
 ];

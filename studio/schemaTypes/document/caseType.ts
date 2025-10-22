@@ -24,6 +24,20 @@ export const caseType = defineType({
       title: 'Description',
       type: 'string',
     }),
+    defineField({
+      type: 'array',
+      name: 'sections',
+      title: 'Page sections',
+      of: [
+        defineArrayMember({
+          type: 'caseHero',
+        }),
+        defineArrayMember({
+          type: 'section'
+        }),
+      ]
+    }),
+
 
     defineField({
       type: 'theme',
@@ -42,13 +56,15 @@ export const caseType = defineType({
   preview: {
     select: {
       title: 'title',
+      slug: 'slug.current',
+      language: 'language',
       // media: 'mainImage',
       // author: 'author.name',
     },
-    // prepare(selection) {
-    //   const {author} = selection
-    //   return {...selection, subtitle: author && `by ${author}`}
-    // },
+    prepare(selection) {
+      const {slug, language} = selection;
+      return { ...selection, subtitle: `${slug && `(${slug})` || '-'}: ${language && `(${language})`}` }
+    },
   },
 });
 

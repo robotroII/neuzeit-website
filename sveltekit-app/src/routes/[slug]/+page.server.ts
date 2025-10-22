@@ -1,4 +1,4 @@
-import { pageQuery, casesQuery, type Page } from '$lib/sanity/queries';
+import { pageQuery } from '$lib/sanity/queries';
 import type { PageServerLoad, EntryGenerator } from './$types';
 import { locales, baseLocale } from '$lib/paraglide/runtime';
 import { getLocaleFromPath } from '$lib/utils';
