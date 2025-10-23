@@ -2,6 +2,8 @@
   <div class="case-hero--background relative z-0 w-full h-full">
     <Image
       {...mainImage}
+      spinner={false}
+      loaded={true}
       class="aspect-[1/1] md:aspect-[4/3] lg:aspect-[21/9]"
     />
     <div class="svg-shape text-page-background
@@ -22,17 +24,17 @@
       text-white
       ">
       <div
-        class="case-hero__title relative ms-12 -mt-12 md:-mt-24 lg:-mt-32 mb-8 max-w-[50vw] md:max-w-[32vw]"
+        class="case-hero__title relative ms-12 -mt-12 md:-mt-24 lg:-mt-32 mb-8 max-w-[54vw] md:max-w-[36vw] lg:w-[560px]"
         >
         <div class="svg-shape text-primary">
           <svg viewBox="0 0 612 612" class="block w-full h-full">
             <path d="M0 0H612V306C612 474.999 474.999 612 306 612C137.001 612 0 474.999 0 306V0Z" />
           </svg>
         </div>
-        <div class="case-hero__text absolute left-0 top-0 w-full h-full p-6 lg:p-8">
-          <h1 class="teaser-block--headline uppercase text-2xl lg:text-5xl mb-2 lg:mb-4">{text.headline}</h1>
+        <div class="case-hero__text absolute left-0 top-0 w-full h-full p-5 lg:p-12">
+          <h1 class="teaser-block--headline lg:text-5xl mb-2 lg:mb-4">{text.headline}</h1>
           {#if text.subheadline}<h2 class="teaser-block--subheadline mb-8">{text.subheadline}</h2>{/if}
-          <Article content={text.article} class="text-xs lg:text-base" />
+          <Article content={text.article} class="text-xs/22 lg:text-base/28" />
         </div>
       </div>
       <div class="case-hero__keydata relative max-w-full px-12 md:mt-12">
