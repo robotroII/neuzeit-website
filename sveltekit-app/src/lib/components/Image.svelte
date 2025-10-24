@@ -28,7 +28,7 @@
           transition-all ease-in-out duration-500
           ${zoom ? 'group-hover:scale-104 group-hoverhover:duration-1200' : ''}
           ${loaded ? 'opacity-100' : 'opacity-0'}
-          ${portableText ? 'inline mb-2' : 'w-full h-full object-cover'}
+          ${portableText ? 'inline mb-6' : 'w-full h-full object-cover'}
         `}
       />
     {/if}
@@ -68,5 +68,6 @@ onMount(async () => {
   }
   .image > .w-full :global(svg) {
     width: 100%;
+    height: auto;
   }
 </style>

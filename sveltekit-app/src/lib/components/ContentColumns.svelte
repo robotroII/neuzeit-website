@@ -1,4 +1,4 @@
-<div class="content-columns flex flex-col lg:flex-row{className}">
+<div class="content-columns flex flex-col lg:flex-row{className} gap-8 lg:gap-0">
   {#each columns as column, index}
     <div class="content-columns__column {column.class}">
       {#each column.items as item}

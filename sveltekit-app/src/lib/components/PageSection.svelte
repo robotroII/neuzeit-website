@@ -35,7 +35,7 @@
       </div>
     {/if} -->
     <div class="page-section__foreground">
-      <div class="page-section__canvas w-full lg:w-auto {container ? 'container-fluid' : ''}">
+      <div class="page-section__canvas w-full lg:w-auto {container ? 'container-fluid' : ''} flex flex-col gap-8">
         {@render children?.()}
       </div>
     </div>

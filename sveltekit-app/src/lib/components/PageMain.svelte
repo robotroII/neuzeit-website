@@ -7,6 +7,7 @@
         theme={pageData?.theme}
         container={section.foreground?.find((foreground: any) => foreground._type !== 'caseTeasers')}
         background={section.background}
+        class={`section--${section.name}`}
         >
         {#each section.foreground as foreground}
           {#if foreground._type === 'stage'}
@@ -62,6 +63,7 @@
                   id="tokenomics-accordion-{index}"
                   expanded={false}
                   parent="tokenomics-accordion"
+                  class=""
                   >
                   {#snippet title()}
                     <div class="accordion-item__title grid md:grid-cols-[8rem_auto] gap-4 content-start items-center">

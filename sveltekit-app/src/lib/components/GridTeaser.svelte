@@ -1,6 +1,6 @@
 <div
   class="teaser-block {className}
-    grid lg:grid-cols-[1fr_1fr] lg:grid-rows-[auto_auto_auto_auto] gap-20 gap-y-4
+    grid lg:grid-cols-[1fr_1fr] lg:grid-rows-[auto_auto_auto_auto] gap-20 gap-y-8
     lg:items-{align ? align : 'center'}
     mx-auto
   "
@@ -13,52 +13,54 @@
   <div class="teaser-block__head
     row-start-1 row-end-2
     {reverse ? 'lg:col-start-2 lg:col-end-3' : 'lg:col-start-1 lg:col-end-2'}
-    mb-4 lg:mb-0">
+    ">
     {#if text.headline}
-      <h2 class="teaser-block__headline gradient-primary text-lg uppercase font-normal mb-10">{text.headline}</h2>
+      <h2 class="teaser-block__headline gradient-primary text-lg uppercase font-normal">{text.headline}</h2>
     {/if}
     {#if text.subheadline}
-      <h3 class="teaser-block__subheadline text-5xl mb-8">{text.subheadline}</h3>
+      <h3 class="teaser-block__subheadline text-5xl">{text.subheadline}</h3>
     {/if}
   </div>
   <div class="teaser-block__content
     lg:row-start-2 lg:row-end-3
     {reverse ? 'lg:col-start-2 lg:col-end-3' : 'lg:col-start-1 lg:col-end-2'}
     ">
-    <Article content={text.article} class="text-2xl" />
+    <Article content={text.article} />
   </div>
   {#if href}
     <a href="/{href}" class="teaser-block__link
       lg:row-start-3 lg:row-end-4
       {reverse ? 'lg:col-start-2 lg:col-end-3' : 'lg:col-start-1 lg:col-end-2'}
-      link flex gap-4 mt-4 gradient-primary text-sm uppercase">
+      link flex gap-4 gradient-primary text-sm uppercase">
       <span class="link--text">{@html m.more()}</span>
     </a>
   {/if}
-  <div class="teaser-block__context
-    row-start-2 row-end-3 lg:row-auto lg:row-span-4
-    {reverse ? 'lg:col-start-1 lg:col-end-2' : 'lg:col-start-2 lg:col-end-3'}
-    ">
-    {#each items as item}
-      {#if item._type === 'image'}
-        <Image
-          src={item.src}
-          alt={item.alt || ''}
-          class={item.class ? item.class : "w-full h-full object-cover"}
-        />
-      {/if}
-      {#if item._type === 'picture'}
-        <Picture
-          {...item}
-          alt={item.alt || ''}
-          class={item.class ? item.class : "w-full h-full object-cover"}
-        />
-      {/if}
-      <!-- {#if item._type === 'linkList'}
-        <LinkList items={item.items} />
-      {/if} -->
-    {/each}
-  </div>
+  {#if items && items.length}
+    <div class="teaser-block__context
+      row-start-2 row-end-3 lg:row-auto lg:row-span-4
+      {reverse ? 'lg:col-start-1 lg:col-end-2' : 'lg:col-start-2 lg:col-end-3'}
+      ">
+      {#each items as item}
+        {#if item._type === 'image'}
+          <Image
+            src={item.src}
+            alt={item.alt || ''}
+            class={item.class ? item.class : "w-full h-full object-cover"}
+          />
+        {/if}
+        {#if item._type === 'picture'}
+          <Picture
+            {...item}
+            alt={item.alt || ''}
+            class={item.class ? item.class : "w-full h-full object-cover"}
+          />
+        {/if}
+        <!-- {#if item._type === 'linkList'}
+          <LinkList items={item.items} />
+        {/if} -->
+      {/each}
+    </div>
+  {/if}
 </div>
 
 {#if theme && theme.primaryGradient}

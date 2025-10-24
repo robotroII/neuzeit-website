@@ -1,7 +1,11 @@
 <div class="text-block mx-auto {className}">
   <div class="text-block-head mb-8">
-    <h2 class="teaser-block--headline gradient-primary text-lg uppercase mb-10">{headline}</h2>
-    <h3 class="teaser-block--subheadline text-5xl mb-8">{subheadline}</h3>
+    {#if headline}
+      <h2 class="text-block-headline gradient-primary text-lg uppercase mb-10">{headline}</h2>
+    {/if}
+    {#if subheadline}
+      <h3 class="text-block-subheadline text-3xl mb-8">{subheadline}</h3>
+    {/if}
   </div>
   <div class="teaser-block--content">
     <Article content={article} />

@@ -1,4 +1,4 @@
-<header class="page-header absolute z-100 w-full py-4 lg:py-0">
+<header bind:this={header} class="page-header absolute z-100 w-full py-4 lg:py-0">
   <div class="container-fluid-xl flex items-center relative">
     <div class="grow-0 shrink-0 ms-10">
       <!-- <a href="/" aria-label="Home"> -->
@@ -27,7 +27,7 @@
             <Navigation
               nav={mainNavItems}
               class="mx-auto"
-              ulClass="flex-col lg:flex-row lg:gap-6 lg:items-center xl:gap-8"
+              ulClass="navigation flex-col lg:flex-row lg:gap-6 lg:items-center xl:gap-8"
               liClass="lg:place-items-center"
               aClass="uppercase text-end lg:text-start"
             />
@@ -42,7 +42,7 @@
               <Navigation
                 class="relative z-1"
                 nav={metaNavItems}
-                ulClass="flex-col lg:flex-row lg:items-center lg:gap-6 xl:gap-8"
+                ulClass="navigation flex-col lg:flex-row lg:items-center lg:gap-6 xl:gap-8"
                 liClass="lg:place-items-center"
                 aClass="uppercase text-end lg:text-start"
               />
@@ -78,9 +78,12 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
   import Navigation from '$lib/components/Navigation.svelte';
 
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 
 	const pageData = $derived(page.data.pageData?.data);
   const themeData = $derived(pageData && pageData.theme);
+
+  let header = $state<HTMLElement>();
   let expanded = $state(false);
 
   const mainNavItems = $derived({
@@ -90,6 +93,14 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
   const metaNavItems = $derived({
     ...page?.data?.nav?.meta,
     // items: page?.data?.nav?.meta?.items.filter(item => !['cases'].includes(item.slug))
+  });
+
+  onMount(() => {
+    header?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        expanded = false;
+      });
+    });
   });
 </script>
 

@@ -42,6 +42,9 @@
 
   --text-base: 16px;
   --text-xs: 10px;
+  --text-2xl: 26px;
+  --text-3xl: 32px;
+  --text-6xl: 64px;
   --tw-leading: 1.25
 }
 
@@ -194,12 +197,12 @@
 
 .article {
   h1 {
-    @apply text-6xl font-bold mb-8;
+    @apply text-6xl/80 font-bold mb-8;
     line-height: normal;
     letter-spacing: -0.15625rem;
   }
   h2 {
-    @apply text-5xl mb-8;
+    @apply text-2xl mb-8;
     font-weight: normal;
     letter-spacing: -.5px;
     line-height: 1.25;
@@ -211,11 +214,14 @@
   p {
     line-height: 1.5 !important;
   }
+  /* picture {
+    @apply mb-8;
+  } */
 }
 @media screen and (min-width: 600px) {
   .article {
     h1 {
-      @apply text-7xl;
+      @apply text-8xl;
       line-height: 1.25;
     }
     h2 {
@@ -239,18 +245,20 @@
 
 .definition-list .accordion-header:not(:has(.collapsed)),
 .article h2 {
-  position: relative;
-  &::after {
-    content: '';
-    display: block;
+  &:has(+ p) {
     position: relative;
-    margin-block: 2.5rem;
-    width: 8rem;
-    height: 0;
-    background-color: transparent;
-    border-width: 0 0 .0125rem 0;
-    border-image: var(--gradient-primary) 1;
-    border-style: solid;
+    &::after {
+      content: '';
+      display: block;
+      position: relative;
+      margin-block: 2.5rem;
+      width: 8rem;
+      height: 0;
+      background-color: transparent;
+      border-width: 0 0 .0125rem 0;
+      border-image: var(--gradient-primary) 1;
+      border-style: solid;
+    }
   }
 }
 .definition-list .accordion-header:not(:has(.collapsed)) {
@@ -264,5 +272,50 @@
 .page-section__foreground {
   .container-fluid {
     @apply px-10;
+  }
+}
+
+.border-gradient {
+  position: relative;
+  padding: 1.5rem 3rem;
+  margin: .125rem;
+  display: inline-block;
+  /* font-size: 30px; */
+  /* border: double .125rem transparent;
+  border-radius: 30px;
+  background-image: linear-gradient(black, black), var(--gradient-primary);
+  background-origin: border-box;
+  background-clip: content-box, border-box; */
+}
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 4rem;
+  padding: .125rem;
+  background: var(--gradient-primary);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+.section--logo-section {
+  text-align: center;
+  .image {
+    display: flex;
+    width: 50vw;
+    margin-inline: auto;
+  }
+}
+
+.section--teaser-section {
+  .article {
+    @apply bg-grey/30 p-8 rounded-[2.5rem] rounded-tl-none;
+    .image {
+      @apply max-w-[4rem];
+    }
   }
 }
