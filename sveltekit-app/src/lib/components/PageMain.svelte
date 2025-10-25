@@ -14,7 +14,10 @@
             <Article content={foreground?.text?.title} />
           {/if}
           {#if foreground._type === 'textBlock'}
-            <TextBlock {...foreground} class={section.class}/>
+            <TextBlock
+              {...foreground}
+              class="{foreground.class}"
+            />
           {/if}
           {#if foreground._type === 'contentColumns'}
             <ContentColumns {...foreground} class={section.class}></ContentColumns>

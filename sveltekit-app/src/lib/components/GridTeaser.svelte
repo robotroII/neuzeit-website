@@ -1,7 +1,7 @@
 <div
   class="teaser-block {className}
-    grid lg:grid-cols-[1fr_1fr] lg:grid-rows-[auto_auto_auto_auto] gap-20 gap-y-8
-    lg:items-{align ? align : 'center'}
+    grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto] gap-20 gap-y-8
+    md:items-{align ? align : 'center'}
     mx-auto
   "
   style={
@@ -12,7 +12,7 @@
   >
   <div class="teaser-block__head
     row-start-1 row-end-2
-    {reverse ? 'lg:col-start-2 lg:col-end-3' : 'lg:col-start-1 lg:col-end-2'}
+    {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
     ">
     {#if text.headline}
       <h2 class="teaser-block__headline gradient-primary text-lg uppercase font-normal">{text.headline}</h2>
@@ -22,23 +22,23 @@
     {/if}
   </div>
   <div class="teaser-block__content
-    lg:row-start-2 lg:row-end-3
-    {reverse ? 'lg:col-start-2 lg:col-end-3' : 'lg:col-start-1 lg:col-end-2'}
+    md:row-start-2 md:row-end-3
+    {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
     ">
     <Article content={text.article} />
   </div>
   {#if href}
     <a href="/{href}" class="teaser-block__link
-      lg:row-start-3 lg:row-end-4
-      {reverse ? 'lg:col-start-2 lg:col-end-3' : 'lg:col-start-1 lg:col-end-2'}
+      md:row-start-3 md:row-end-4
+      {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
       link flex gap-4 gradient-primary text-sm uppercase">
       <span class="link--text">{@html m.more()}</span>
     </a>
   {/if}
   {#if items && items.length}
     <div class="teaser-block__context
-      row-start-2 row-end-3 lg:row-auto lg:row-span-4
-      {reverse ? 'lg:col-start-1 lg:col-end-2' : 'lg:col-start-2 lg:col-end-3'}
+      row-start-2 row-end-3 md:row-auto md:row-span-4
+      {reverse ? 'md:col-start-1 md:col-end-2' : 'md:col-start-2 md:col-end-3'}
       ">
       {#each items as item}
         {#if item._type === 'image'}

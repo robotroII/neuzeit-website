@@ -83,20 +83,6 @@ let {
   inlineSvg?: boolean;
   portableText?: any;
 } = $props();
-
-onMount(async () => {
-  console.log('Picture component mounted with props:', {
-    src,
-    sources,
-    alt,
-    loaded,
-    spinner,
-    zoom,
-    className,
-    inlineSvg,
-    portableText,
-  });
-})
 </script>
 
 
@@ -108,7 +94,7 @@ onMount(async () => {
 
   .picture__image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    /* object-fit: cover; */
   }
 </style>

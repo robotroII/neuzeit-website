@@ -18,7 +18,7 @@ export const textBlock = defineType({
     }),
     defineField({
       type: "string",
-      name: "className",
+      name: "class",
     }),
   ],
   preview: {

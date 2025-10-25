@@ -10,7 +10,7 @@
       aria-controls={`target-${id}`}
       onclick={toggle}
       >
-      <div class="grid grid-cols-[auto_auto{index ? '_auto' : ''}] gap-2">
+      <div class="grid {index ? 'grid-cols-[auto_minmax(0,_1fr)_auto]' : 'grid-cols-[minmax(0,_1fr)_auto]'} gap-2">
         {#if index}
           <div class="col-start-1 {expanded ? 'gradient-primary' : ''} font-bold leading-none select-none flex items-center">
             {index < 10 ? `0${index}` : index}

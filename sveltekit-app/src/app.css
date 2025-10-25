@@ -72,7 +72,7 @@
     background: var(--gradient-primary);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-size: 100vw 100dvh;
   }
   .link-gradient {
@@ -157,9 +157,9 @@
     color: var(--color-body-text);
   }
 
-  h2 {
-    @apply text-2xl font-bold;
-  }
+  /* h2 {
+    @apply text-2xl;
+  } */
   article ul,
   article ol {
     list-style: disc;
@@ -197,28 +197,31 @@
 
 .article {
   h1 {
-    @apply text-6xl/80 font-bold mb-8;
-    line-height: normal;
+    @apply text-6xl font-bold mb-8;
     letter-spacing: -0.15625rem;
+    line-height: 5rem;
   }
   h2 {
-    @apply text-2xl mb-8;
+    @apply text-3xl mb-8;
     font-weight: normal;
     letter-spacing: -.5px;
-    line-height: 1.25;
+    line-height: 3rem;
   }
   h1 + p {
-    @apply text-2xl mb-5;
+    @apply text-2xl/32;
     line-height: 1.25;
-  }
-  p {
-    line-height: 1.5 !important;
   }
   /* picture {
     @apply mb-8;
   } */
 }
-@media screen and (min-width: 600px) {
+.text-block {
+  p {
+    @apply text-xl;
+    line-height: 2rem;
+  }
+}
+@screen md {
   .article {
     h1 {
       @apply text-8xl;
@@ -230,7 +233,7 @@
     }
   }
 }
-@media screen and (min-width: 1400px) {
+@screen xl {
   .article {
     h1 {
       @apply text-8xl;
