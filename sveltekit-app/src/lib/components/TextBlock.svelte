@@ -1,4 +1,4 @@
-<div class="text-block mx-auto {className}">
+<div class="text-block {className}">
   <div class="text-block-head mb-8">
     {#if headline}
       <h2 class="text-block-headline gradient-primary text-lg uppercase mb-10">{headline}</h2>
