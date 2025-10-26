@@ -9,16 +9,18 @@
 @source inline('{sm:,md:,lg:,xl:,}text-black');
 @source inline('{sm:,md:,lg:,xl:,}flex-row-reverse');
 @source inline('{sm:,md:,lg:,xl:,}grid-cols-{1,2,3,4,5,6,7,8,9,10,11,12}');
+@source inline('{sm:,md:,lg:,xl:,}col-span-{1,2,3,4,5,6,7,8,9,10,11,12}');
 @source inline('{sm:,md:,lg:,xl:,}col-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
 @source inline('{sm:,md:,lg:,xl:,}row-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
+@source inline('{sm:,md:,lg:,xl:,}gap-[{2..40..2}]');
 @source inline('{sm:,md:,lg:,xl:,}aspect-{square,video,auto,[2/3],[3/4],[4/3],[16/9],[21/9],}');
 @source inline('bg-{top,center,bottom}');
 @source inline('{sm:,md:,lg:,xl:,}place-content-center');
 /* @source inline('{sm:,md:,lg:,xl:,}p-,m-{25vh}'); */
-@source inline('{sm:,md:,lg:,xl:,}me-[{1..20..1}]');
-@source inline('{sm:,md:,lg:,xl:,}{ms,mx,}-{[1..20..1],auto}');
+/* @source inline('{sm:,md:,lg:,xl:,}me-[{1..20..1}]'); */
+@source inline('{sm:,md:,lg:,xl:,}{me,ms,mx,mb,my,}-{[1..20..1],auto}');
 @source inline('{sm:,md:,lg:,xl:,}min-h-[{20..1000..20}px]');
-@source inline('{sm:,md:,lg:,xl:,}max-w-[{2..100..2}%]');
+@source inline('{sm:,md:,lg:,xl:,}max-w-[{2..100..2}%,none]');
 @source inline('{sm:,md:,lg:,xl:,}block{!}');
 
 

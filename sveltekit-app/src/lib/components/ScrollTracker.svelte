@@ -5,7 +5,7 @@
       data-scroll-section={index}
       data-index={index}
     >
-      <div class="hidden lg:block col-start-{index % 2 ? '3' : '1'}">
+      <div class="hidden lg:block col-start-{index % 2 ? '3' : '1'} py-8 lg:py-16">
         <Image
           src={item.image?.src}
           alt={item.image?.alt || ''}
@@ -13,11 +13,12 @@
         />
       </div>
       <div class="scroll-tracker__track col-start 1 lg:col-start-2 row-start-1 min-w-[3px] transition-colors duration-300 {activeIndex === index ? 'bg-gradient-to-b from-[var(--gradient-color-1)] via-[var(--gradient-color-2)] to-[var(--gradient-color-3)]' : 'bg-grey'}"></div>
-      <div class="col-start-2 lg:col-start-{index % 2 ? '1' : '3'} row-start-1 scroll-tracker__content mb-10 lg:mb-0">
-        <div class="scroll-tracker__title font-bold mb-2 lg:mb-4">
-          <span class="gradient-primary">{index + 1 >= 10 ? '' : '0'}{index + 1}</span> {item.title}
+      <div class="col-start-2 lg:col-start-{index % 2 ? '1' : '3'} row-start-1 scroll-tracker__content mb-10 lg:mb-0 py-8 lg:py-16">
+        <div class="scroll-tracker__title font-bold mb-2 lg:mb-4 lg:text-3xl">
+          <span class="gradient-primary">{index + 1 >= 10 ? '' : '0'}{index + 1}</span>
+		  <span class="scroll-tracker__title-text">{item.title}</span>
         </div>
-        <div class="scroll-tracker__description text-sm lg:text-base text-gray-700 dark:text-gray-300">
+        <div class="scroll-tracker__description text-sm md:text-base lg:text-xl text-gray-700 dark:text-gray-300">
           <Article content={item.article} />
         </div>
       </div>

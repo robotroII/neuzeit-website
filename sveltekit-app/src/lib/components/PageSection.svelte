@@ -34,12 +34,12 @@
         <GradientAnimation containerClassName="fixed inset-0" />
       </div>
     {/if} -->
-    <div class="page-section__foreground">
+    <div class="page-section__foreground max-w-none">
       <div
         class="page-section__canvas w-full lg:w-auto
           {theme?.class ? theme.class : ''}
           {container ? 'container-fluid' : ''}
-          flex flex-col gap-8
+          lg:grid lg:grid-cols-12 gap-4 gap-y-8
         ">
         {@render children?.()}
       </div>
@@ -92,11 +92,6 @@
     background-repeat: no-repeat;
   }
 
-  /* .page-section__background {
-    display: none;
-  } */
-  @media screen and (min-width: 1024px) {
-  }
   .page-section__foreground {
     position: relative;
     z-index: 10;
@@ -115,5 +110,9 @@
       place-content: center;
       grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
+  }
+  /* Default: all direct children span full width unless they have their own grid-column class */
+  :global(.page-section__canvas > *:not([class*="col-"])) {
+    grid-column: 1 / -1;
   }
 </style>

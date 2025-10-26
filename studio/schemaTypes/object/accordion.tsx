@@ -18,6 +18,11 @@ export const accordion = defineType({
         }),
       ],
     }),
+    defineField({
+      type: 'string',
+      name: 'class',
+      title: 'Css class',
+    }),
   ],
   preview: {
     select: {

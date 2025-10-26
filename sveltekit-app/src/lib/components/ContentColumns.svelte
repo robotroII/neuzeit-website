@@ -1,4 +1,4 @@
-<div class="content-columns flex flex-col lg:flex-row {className} gap-8 lg:gap-0">
+<div class="content-columns flex gap-y-8 flex-col {reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} {className}">
   {#each columns as column, index}
     <div class="content-columns__column {column.class}">
       {#each column.items as item}
@@ -58,5 +58,12 @@
   let {
     class: className = '',
     columns = [],
+    reverse = false,
   } = $props();
 </script>
+
+<style lang="css">
+  :global(.content-columns__column:not([class*="col-"])) {
+    flex-basis: 50%
+  }
+</style>

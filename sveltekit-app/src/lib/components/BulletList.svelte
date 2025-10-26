@@ -1,5 +1,5 @@
-<dl class="bullet-list">
-  <ul class="flex flex-col gap-3 {className}">
+<dl class="bullet-list {className}">
+  <ul class="flex flex-col gap-3">
     {#each items as item}
       <li class="bullet-list__item flex items-start mb-4 gap-4">
         {#if bullet?.src}

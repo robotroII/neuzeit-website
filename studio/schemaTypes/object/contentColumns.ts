@@ -54,6 +54,11 @@ export const contentColumns = defineType({
       description: "Reverse the order of columns",
       initialValue: false,
     }),
+    defineField({
+      type: 'string',
+      name: 'class',
+      title: 'Css class',
+    }),
   ]
   // preview: {
   //   select: {
