@@ -1,8 +1,8 @@
 <div
-  class="teaser-block {className}
+  class="grid-teaser
     grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto] gap-20 gap-y-8
     md:items-{align ? align : 'center'}
-    mx-auto
+    {className}
   "
   style={
     theme && theme.primaryGradient && theme.primaryGradient.colors.length
@@ -10,25 +10,25 @@
       : ''
   }
   >
-  <div class="teaser-block__head
+  <div class="grid-teaser__head
     row-start-1 row-end-2
     {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
     ">
     {#if text.headline}
-      <h2 class="teaser-block__headline gradient-primary text-lg uppercase font-normal">{text.headline}</h2>
+      <h2 class="grid-teaser__headline gradient-primary text-lg uppercase font-normal">{text.headline}</h2>
     {/if}
     {#if text.subheadline}
-      <h3 class="teaser-block__subheadline text-5xl">{text.subheadline}</h3>
+      <h3 class="grid-teaser__subheadline text-5xl">{text.subheadline}</h3>
     {/if}
   </div>
-  <div class="teaser-block__content
+  <div class="grid-teaser__content
     md:row-start-2 md:row-end-3
     {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
     ">
     <Article content={text.article} />
   </div>
   {#if href}
-    <a href="/{href}" class="teaser-block__link
+    <a href="/{href}" class="grid-teaser__link
       md:row-start-3 md:row-end-4
       {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
       link flex gap-4 gradient-primary text-sm uppercase">
@@ -36,7 +36,7 @@
     </a>
   {/if}
   {#if items && items.length}
-    <div class="teaser-block__context
+    <div class="grid-teaser__context
       row-start-2 row-end-3 md:row-auto md:row-span-4
       {reverse ? 'md:col-start-1 md:col-end-2' : 'md:col-start-2 md:col-end-3'}
       ">
@@ -121,10 +121,10 @@
 </script>
 
 <style lang="postcss">
-  .teaser-block__link::after {
+  .grid-teaser__link::after {
     content: "→";
   }
-  .teaser-block-head::after {
+  .grid-teaser-head::after {
     content: "";
     display: block;
     width: 10rem;

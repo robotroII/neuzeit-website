@@ -6,11 +6,6 @@ export const bulletList = defineType({
   type: 'object',
   fields: [
     defineField({
-      type: "image",
-      name: "bullet",
-      title: "Bullet icon",
-    }),
-    defineField({
       type: "array",
       name: "items",
       of: [
@@ -18,6 +13,16 @@ export const bulletList = defineType({
           type: "textBlock",
         }),
       ],
+    }),
+    defineField({
+      type: "image",
+      name: "bullet",
+      title: "Bullet icon",
+    }),
+    defineField({
+      type: "string",
+      name: "class",
+      title: "Css Class",
     }),
   ],
   // preview: {

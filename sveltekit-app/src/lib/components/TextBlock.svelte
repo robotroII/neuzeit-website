@@ -10,7 +10,7 @@
     </div>
   {/if}
   {#if article && article}
-  <div class="teaser-block--content">
+  <div class="text-block--content">
     <Article content={article} />
   </div>
   {/if}  

@@ -1,5 +1,5 @@
 <section
-  class="page-section {theme?.class ? theme.class : ''} {className} pb-16 lg:pb-24"
+  class="page-section pb-16 lg:pb-24 {className}"
   class:tw-dark-mode={theme?.colorMode === 'dark'}
   class:tw-light-mode={theme?.colorMode === 'light'}
   style="
@@ -35,7 +35,12 @@
       </div>
     {/if} -->
     <div class="page-section__foreground">
-      <div class="page-section__canvas w-full lg:w-auto {container ? 'container-fluid' : ''} flex flex-col gap-8">
+      <div
+        class="page-section__canvas w-full lg:w-auto
+          {theme?.class ? theme.class : ''}
+          {container ? 'container-fluid' : ''}
+          flex flex-col gap-8
+        ">
         {@render children?.()}
       </div>
     </div>

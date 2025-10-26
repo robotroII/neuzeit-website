@@ -7,7 +7,7 @@
         theme={pageData?.theme}
         container={section.foreground?.find((foreground: any) => foreground._type !== 'caseTeasers')}
         background={section.background}
-        class={`section--${section.name}`}
+        class={`section--${section.name} ${section.class || ''}`}
         >
         {#each section.foreground as foreground}
           {#if foreground._type === 'stage'}
@@ -20,19 +20,19 @@
             />
           {/if}
           {#if foreground._type === 'contentColumns'}
-            <ContentColumns {...foreground} class={section.class}></ContentColumns>
+            <ContentColumns {...foreground}></ContentColumns>
           {/if}
           {#if foreground._type === 'gridTeaser'}
-            <GridTeaser {...foreground} class={section.class}></GridTeaser>
+            <GridTeaser {...foreground}></GridTeaser>
           {/if}
           {#if foreground._type === 'logoWall'}
-            <LogoWall {...foreground} class={section.class}></LogoWall>
+            <LogoWall {...foreground}></LogoWall>
           {/if}
           {#if foreground._type === 'contact'}
-            <ContactTeaser {...foreground} class={section.class}></ContactTeaser>
+            <ContactTeaser {...foreground}></ContactTeaser>
           {/if}
           {#if foreground._type === 'picture'}
-            <Picture {...foreground} class={section.class}></Picture>
+            <Picture {...foreground}></Picture>
           {/if}
           {#if foreground._type === 'bulletList'}
             <BulletList {...foreground} class={foreground.class} />
@@ -84,7 +84,7 @@
           {/if}
           {/each}
           {#if section._type === 'caseHero'}
-            <CaseHero {...section} class={section.class}></CaseHero>
+            <CaseHero {...section}></CaseHero>
           {/if}
       </PageSection>
     {/each}

@@ -1,13 +1,16 @@
 <dl class="bullet-list">
-  <ul>
+  <ul class="flex flex-col gap-3 {className}">
     {#each items as item}
       <li class="bullet-list__item flex items-start mb-4 gap-4">
         {#if bullet?.src}
           <img src="{bullet.src}" alt="{bullet.alt || 'Bullet icon'}" class="bullet-list__icon flex-shrink-0" />
         {/if}
-        <span class="bullet-list__text">
+        <div class="bullet-list__text">
+          {#if item.subheadline}
+            <h3 class="mb-2">{item.subheadline}</h3>
+          {/if}
           <Article content={item.article} />
-        </span>
+        </div>
       </li>
     {/each}
   </ul>
@@ -16,7 +19,7 @@
 <script>
 	import Article from "./article/Article.svelte";
 
-const { bullet, items } = $props();
+const { bullet, items, class: className } = $props();
 </script>
 
 <style lang="css">

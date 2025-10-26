@@ -39,6 +39,7 @@
   --color-alto: oklch(88.4% 0 0);
 
   --color-grey: #333333;
+  --color-grey-dark: #0C0C0C;
 
   --text-base: 16px;
   --text-xs: 10px;
@@ -315,10 +316,19 @@
 }
 
 .section--teaser-section {
-  .article {
-    @apply bg-grey/30 p-8 rounded-[2.5rem] rounded-tl-none;
-    .image {
-      @apply max-w-[4rem];
-    }
+  .content-columns {
+    .article {
+      @apply bg-grey/30 p-8 rounded-[2.5rem] rounded-tl-none;
+      .image {
+        @apply max-w-[4rem];
+      }
+      h3 {
+        @apply mb-4;
+      }
+      p {
+        @apply text-sm;
+        line-height: 1.75;
+      }
+  }
   }
 }
