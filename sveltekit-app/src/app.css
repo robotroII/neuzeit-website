@@ -16,6 +16,7 @@
 @source inline('{sm:,md:,lg:,xl:,}place-content-center');
 /* @source inline('{sm:,md:,lg:,xl:,}p-,m-{25vh}'); */
 @source inline('{sm:,md:,lg:,xl:,}me-[{1..20..1}]');
+@source inline('{sm:,md:,lg:,xl:,}{ms,mx,}-{[1..20..1],auto}');
 @source inline('{sm:,md:,lg:,xl:,}min-h-[{20..1000..20}px]');
 @source inline('{sm:,md:,lg:,xl:,}max-w-[{2..100..2}%]');
 @source inline('{sm:,md:,lg:,xl:,}block{!}');

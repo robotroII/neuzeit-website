@@ -6,11 +6,6 @@ export const logoWall = defineType({
   type: 'object',
   fields: [
     defineField({
-      type: 'string',
-      name: 'title',
-      title: 'Title',
-    }),
-    defineField({
       name: 'items',
       type: 'array',
       title: 'Logos',
@@ -19,6 +14,11 @@ export const logoWall = defineType({
           type: 'image',
         }),
       ]
+    }),
+    defineField({
+      type: 'string',
+      name: 'class',
+      title: 'Css Class',
     }),
   ],
   preview: {

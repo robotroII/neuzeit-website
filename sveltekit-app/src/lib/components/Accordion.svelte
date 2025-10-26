@@ -1,9 +1,9 @@
-<div class="accordion flex flex-col gap-4">
+<div class="accordion flex flex-col gap-4 {className}">
   {@render children()}
 </div>
 
 <script>
-const { children } = $props();
+const { children, class: className = '' } = $props();
 </script>
 
 <style lang="css">

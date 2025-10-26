@@ -1,4 +1,4 @@
-<div class="scroll-tracker" bind:this={scrollTrackerRef}>
+<div class="scroll-tracker {className}" bind:this={scrollTrackerRef}>
   {#each items as item, index}
     <div 
       class="grid grid-cols-[auto_1fr] lg:grid-cols-[1fr_auto_1fr] grid-rows-[auto] gap-8 scroll-tracker__section" 
@@ -31,7 +31,7 @@
 	import Article from "./article/Article.svelte";
 	import Image from "./Image.svelte";
 
-	const { items } = $props();
+	const { items, class: className = '' } = $props();
 	
 	let scrollTrackerRef: HTMLDivElement;
 	let activeIndex = $state(0);

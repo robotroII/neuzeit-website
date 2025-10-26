@@ -16,6 +16,10 @@ export const gridTeaser = defineType({
       type: 'textBlock',
       name: 'text',
       title: 'Text',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
     }),
     defineField({
       name: 'items',

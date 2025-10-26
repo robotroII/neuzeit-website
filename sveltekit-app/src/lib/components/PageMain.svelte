@@ -16,23 +16,23 @@
           {#if foreground._type === 'textBlock'}
             <TextBlock
               {...foreground}
-              class="{foreground.class}"
+              class={foreground.class}
             />
           {/if}
           {#if foreground._type === 'contentColumns'}
-            <ContentColumns {...foreground}></ContentColumns>
+            <ContentColumns {...foreground} class={foreground.class}></ContentColumns>
           {/if}
           {#if foreground._type === 'gridTeaser'}
-            <GridTeaser {...foreground}></GridTeaser>
+            <GridTeaser {...foreground} class={foreground.class}></GridTeaser>
           {/if}
           {#if foreground._type === 'logoWall'}
-            <LogoWall {...foreground}></LogoWall>
+            <LogoWall {...foreground} class={`${foreground.class} my-24`}></LogoWall>
           {/if}
           {#if foreground._type === 'contact'}
-            <ContactTeaser {...foreground}></ContactTeaser>
+            <ContactTeaser {...foreground} class={foreground.class}></ContactTeaser>
           {/if}
           {#if foreground._type === 'picture'}
-            <Picture {...foreground}></Picture>
+            <Picture {...foreground} class={foreground.class}></Picture>
           {/if}
           {#if foreground._type === 'bulletList'}
             <BulletList {...foreground} class={foreground.class} />
@@ -56,13 +56,13 @@
             </Carousel>
           {/if}
           {#if foreground._type === 'scrollTracker'}
-            <ScrollTracker items={foreground.items} />
+            <ScrollTracker items={foreground.items} class={foreground.class} />
           {/if}
           {#if foreground._type === 'accordion'}
-            <Accordion>
+            <Accordion class={foreground.class}>
               {#each foreground.items as item, index}
                 <AccordionItem
-                  index={0}
+                  index={index + 1}
                   id="tokenomics-accordion-{index}"
                   expanded={false}
                   parent="tokenomics-accordion"
@@ -70,12 +70,14 @@
                   >
                   {#snippet title()}
                     <div class="accordion-item__title grid md:grid-cols-[8rem_auto] gap-4 content-start items-center">
-                      <p class="gradient-primary text-xl lg:text-4xl hidden md:block">{index < 9 ? `0${index+1}` : index + 1}</p>
-                      <p class="col-start-2 text-xl lg:text-4xl">{item.title}</p>
+                      <!-- <p class="gradient-primary text-xl lg:text-4xl block">{index < 9 ? `0${index+1}` : index + 1}</p> -->
+                      <div class="col-start-1 col-span-2 text-xl lg:text-4xl ms-4">{item.title}</div>
                     </div>
                   {/snippet}
                   {#snippet body()}
-                    <Article content={item.article} class="col-start-2" />
+                    <div class="max-w-[90%] md:max-w-[80%] ms-auto md:mx-auto">
+                      <Article content={item.article} class="col-start-2" />
+                    </div>
                   {/snippet}
                 </AccordionItem>
               {/each}
