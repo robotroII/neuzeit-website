@@ -1,8 +1,10 @@
   <div
     class="container-xl pt-20 lg:pt-24 min-h-screen
-      bg-white text-black transition-colors duration-500 dark:bg-black dark:text-white
     ">
     {#each pageData?.sections as section (section._key)}
+      {#if section._type === 'caseHero'}
+        <CaseHero {...section}></CaseHero>
+      {:else}
       <PageSection
         theme={pageData?.theme}
         container={section.foreground?.find((foreground: any) => foreground._type !== 'caseTeasers')}
@@ -99,11 +101,10 @@
 
             </Accordion>
           {/if}
-          {/each}
-          {#if section._type === 'caseHero'}
-            <CaseHero {...section}></CaseHero>
-          {/if}
+        {/each}
       </PageSection>
+      {/if}
+
     {/each}
 
   </div>

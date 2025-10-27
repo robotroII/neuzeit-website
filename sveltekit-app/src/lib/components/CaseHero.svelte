@@ -32,9 +32,9 @@
           </svg>
         </div>
         <div class="case-hero__text absolute left-0 top-0 w-full h-full p-5 lg:p-12">
-          <h1 class="teaser-block--headline lg:text-5xl mb-2 lg:mb-4">{text.headline}</h1>
+          <h1 class="teaser-block--headline text-base sm:text-xl lg:text-5xl mb-2 lg:mb-4">{text.headline}</h1>
           {#if text.subheadline}<h2 class="teaser-block--subheadline mb-8">{text.subheadline}</h2>{/if}
-          <Article content={text.article} class="text-xs/22 lg:text-base/28" />
+          <Article content={text.article} class="text-xs/4 sm:text-sm lg:text-base" />
         </div>
       </div>
       <div class="case-hero__keydata relative max-w-full px-12 md:mt-12">
