@@ -1,4 +1,7 @@
-<div class="content-columns flex gap-y-8 flex-col {reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} {className}">
+<div class="content-columns
+  flex gap-y-8 flex-col {reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}
+  {className}
+  ">
   {#each columns as column, index}
     <div class="content-columns__column {column.class}">
       {#each column.items as item}

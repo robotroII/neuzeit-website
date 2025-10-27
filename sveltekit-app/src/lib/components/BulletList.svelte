@@ -7,9 +7,11 @@
         {/if}
         <div class="bullet-list__text">
           {#if item.subheadline}
-            <h3 class="mb-2">{item.subheadline}</h3>
+            <h3 class="mb-2 lg:text-2xl font-bold">{item.subheadline}</h3>
           {/if}
-          <Article content={item.article} />
+          <div class="lg:text-xl">
+            <Article content={item.article} />
+          </div>
         </div>
       </li>
     {/each}
