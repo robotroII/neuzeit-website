@@ -32,8 +32,9 @@ const options = {
   perPage: 2,
   gap: '2rem',
   fixedWidth: 'calc(62%)',
-  start: 1,
+  // start: 1,
   focus: 'center',
+  trimSpace: false,
   // height : '15rem',
   breakpoints: {
     1024: {

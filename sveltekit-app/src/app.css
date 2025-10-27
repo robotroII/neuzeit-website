@@ -14,7 +14,7 @@
 @source inline('{sm:,md:,lg:,xl:,}col-span-{1,2,3,4,5,6,7,8,9,10,11,12}');
 @source inline('{sm:,md:,lg:,xl:,}col-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
 @source inline('{sm:,md:,lg:,xl:,}row-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
-@source inline('{sm:,md:,lg:,xl:,}gap-{2..40..2}');
+@source inline('{sm:,md:,lg:,xl:,}{gap-,gap-x-,gap-y-}{2..40..2}');
 /* @source inline('{sm:,md:,lg:,xl:,}gap-x-[{2..40..2}]');
 @source inline('{sm:,md:,lg:,xl:,}gap-y-[{2..40..2}]'); */
 @source inline('{sm:,md:,lg:,xl:,}aspect-{square,video,auto,[2/3],[3/4],[4/3],[16/9],[21/9],}');
@@ -22,8 +22,9 @@
 @source inline('{sm:,md:,lg:,xl:,}place-content-center');
 @source inline('{sm:,md:,lg:,xl:,}{pe,ps,pb,pt,pl,pr,px,py,}-{{1..20..1},auto}');
 @source inline('{sm:,md:,lg:,xl:,}{me,ms,mb,mt,ml,mr,mx,my,}-{{1..20..1},auto}');
-@source inline('{sm:,md:,lg:,xl:,}min-h-[{20..1000..20}px]');
-@source inline('{sm:,md:,lg:,xl:,}max-w-[{2..100..2}%,none]');
+@source inline('{sm:,md:,lg:,xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..800..20}px]');
+@source inline('{sm:,md:,lg:,xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..100..2}%]');
+@source inline('{sm:,md:,lg:,xl:,}{max-w-,max-h-}none');
 @source inline('{sm:,md:,lg:,xl:,}block{!}');
 @source inline('{sm:,md:,lg:,xl:,}bg-grey-dark{/}{0..100..10}');
 
@@ -165,9 +166,6 @@
     color: var(--color-body-text);
   }
 
-  /* h2 {
-    @apply text-2xl;
-  } */
   article ul,
   article ol {
     list-style: disc;
@@ -196,11 +194,6 @@
 
 @utility container {
   margin-inline: auto;
-  /* @variant sm {
-  }
-
-  @variant md {
-  } */
 }
 
 .article {
@@ -214,6 +207,13 @@
     font-weight: normal;
     letter-spacing: -.5px;
     line-height: 3rem;
+    @variant lg {
+      @apply text-4xl;
+      line-height: 1.25;
+    }
+    @variant xl {
+      @apply text-5xl;
+    }
   }
   h1 + p {
     @apply text-2xl/32;
@@ -228,21 +228,7 @@
     @apply text-xl;
     line-height: 2rem;
   }
-}
-@screen md {
-  .article {
-    h1 {
-      @apply text-8xl;
-      line-height: 1.25;
-    }
-    h2 {
-      @apply text-5xl;
-      line-height: 1.25;
-    }
-  }
-}
-@screen xl {
-  .article {
+  @variant xl {
     h1 {
       @apply text-8xl;
       line-height: 1.25;

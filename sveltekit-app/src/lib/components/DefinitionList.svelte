@@ -10,7 +10,7 @@ const { children } = $props();
   .definition-list {
     :global(.accordion-toggle) {
       width: 1rem;
-      @screen lg {
+      @media (min-width: 1024px) {
         height: 1.5rem;
       }
     }

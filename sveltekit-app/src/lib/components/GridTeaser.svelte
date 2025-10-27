@@ -1,6 +1,8 @@
 <div
   class="grid-teaser
-    {items?.length ? 'grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto] gap-20 gap-y-8' : ''}
+    {items?.length
+      ? 'grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto] gap-20 gap-y-8'
+      : 'flex flex-col gap-y-8'}
     md:items-{align ? align : 'center'}
     {className}
   "

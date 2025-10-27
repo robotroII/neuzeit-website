@@ -28,7 +28,7 @@ const { bullet, items, class: className } = $props();
   .definition-list {
     :global(.accordion-toggle) {
       width: 1rem;
-      @screen lg {
+      @media (min-width: 768px) {
         height: 1.5rem;
       }
     }

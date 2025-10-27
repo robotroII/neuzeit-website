@@ -85,7 +85,7 @@
       height: 2.875rem;
       color: currentColor;
       fill: currentColor;
-      @screen md {
+      @variant md {
         height: 4rem;
       }
 
