@@ -6,12 +6,15 @@ import {schemaTypes} from './schemaTypes'
 import { internationalizedArray } from 'sanity-plugin-internationalized-array'
 import { documentInternationalization } from '@sanity/document-internationalization';
 
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'dcp0ewf9'
+const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
+
 export default defineConfig({
   name: 'default',
   title: 'Neuzeit Website',
 
-  projectId: 'dcp0ewf9',
-  dataset: 'production',
+  projectId,
+  dataset,
 
   plugins: [
     structureTool(), 
