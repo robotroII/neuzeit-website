@@ -45,20 +45,20 @@ export const gridTeaser = defineType({
       description: "Reverse the order of text and image",
       initialValue: false,
     }),
-    defineField({
-      type: "string",
-      name: "align",
-      title: "Alignment",
-      description: "Vertical alignment",
-      options: {
-        list: [
-          { title: 'Centered', value: 'center' },
-          { title: 'Top', value: 'start' },
-          { title: 'Bottom', value: 'end' },
-        ],
-      },
-      initialValue: 'center',
-    }),
+    // defineField({
+    //   type: "string",
+    //   name: "align",
+    //   title: "Alignment",
+    //   description: "Vertical alignment",
+    //   options: {
+    //     list: [
+    //       { title: 'Centered', value: 'center' },
+    //       { title: 'Top', value: 'start' },
+    //       { title: 'Bottom', value: 'end' },
+    //     ],
+    //   },
+    //   initialValue: 'center',
+    // }),
     defineField({
       type: 'string',
       name: 'class',

@@ -31,7 +31,7 @@ const options = {
   rewind: true,
   perPage: 2,
   gap: '2rem',
-  fixedWidth: 'calc(62%)',
+  fixedWidth: 'calc(62.5%)',
   // start: 1,
   focus: 'center',
   trimSpace: false,

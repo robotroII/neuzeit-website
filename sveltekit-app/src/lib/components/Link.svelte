@@ -1,9 +1,11 @@
-        <a
-          href={_href}
-          class={className}
-          class:active={page.url.pathname === `${_href || ''}`
-            || `${page.url.pathname.split('/')[1]}s` === slug}
-        >{@render children()}</a>
+<a
+  href={_href}
+  class={className}
+  class:active={page.url.pathname === `${_href || ''}`
+    || `${page.url.pathname.split('/')[1]}s` === slug}
+  >
+  {@render children()}
+</a>
 
 <script lang="ts">
   import { getLocale, baseLocale } from '$lib/paraglide/runtime.js';

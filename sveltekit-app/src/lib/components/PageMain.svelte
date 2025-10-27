@@ -44,13 +44,28 @@
                   {#if item.picture}
                     <Picture
                       {...item.picture}
-                      class="case-teaser__image mb-4"
+                      class="case-teaser__image mb-4 lg:mb-12"
                     />
                   {/if}
-                  <h3 class="case-teaser__title text-lg font-semibold mb-2">{item.headline}</h3>
-                  {#if item.article}
-                    <Article content={item.article} />
-                  {/if}
+                  <div class="px-12">
+                    <h3 class="case-teaser__title text-lg lg:text-2xl font-semibold mb-2 lg:mb-6">{item.headline}</h3>
+                    {#if item.article}
+                      <div class="lg:text-xl/10 mb-6">
+                        <Article content={item.article} />
+                      </div>
+                    {/if}
+                    {#if item.href}
+                      <Link
+                        slug={item.href}
+                        class="carousel-item__link
+                          link flex items-center gap-4 text-sm uppercase"
+                        >
+                        <span class="link--text">{@html m.more()}</span>
+                        <span>&rightarrow;</span>
+                      </Link>
+                    {/if}
+
+                  </div>
                 </div>
               {/snippet}
             </Carousel>
@@ -108,8 +123,9 @@
 	import Accordion from './Accordion.svelte';
 	import AccordionItem from './AccordionItem.svelte';
 	import BulletList from './BulletList.svelte';
-
   import CaseHero from './CaseHero.svelte';
+	import Link from './Link.svelte';
+	import * as m from '$lib/paraglide/messages.js';
 
   const pageData = $derived(page.data.page?.data);
   const sections = $derived(pageData?.sections);

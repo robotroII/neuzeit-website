@@ -1,9 +1,8 @@
 <div
   class="grid-teaser
     {items?.length
-      ? 'grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto] gap-20 gap-y-8'
-      : 'flex flex-col gap-y-8'}
-    md:items-{align ? align : 'center'}
+      ? 'grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto] md:content-center gap-20 gap-y-8'
+      : 'flex flex-col items-start gap-y-8'}
     {className}
   "
   style={
@@ -30,12 +29,16 @@
     <Article content={text.article} />
   </div>
   {#if href}
-    <a href="/{href}" class="grid-teaser__link
-      md:row-start-3 md:row-end-4
-      {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
-      link flex gap-4 gradient-primary text-sm uppercase">
+    <Link
+      slug={href}
+      class="grid-teaser__link
+        md:row-start-3 md:row-end-4
+        {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
+        link flex items-center gap-4 gradient-primary text-sm uppercase"
+      >
       <span class="link--text">{@html m.more()}</span>
-    </a>
+      <span>&rightarrow;</span>
+    </Link>
   {/if}
   {#if items && items.length}
     <div class="grid-teaser__context
@@ -95,6 +98,7 @@
 	import Image from '$lib/components/Image.svelte';
   // import LinkList from '$lib/components/LinkList.svelte';
 	import * as m from '$lib/paraglide/messages.js';
+	import Link from './Link.svelte';
 	import Picture from './Picture.svelte';
   import { onMount } from "svelte";
   let { 
