@@ -21,7 +21,7 @@
 @source inline('bg-{top,center,bottom}');
 @source inline('{sm:,md:,lg:,xl:,}place-content-center');
 @source inline('{sm:,md:,lg:,xl:,}{pe,ps,pb,pt,pl,pr,px,py,}-{{1..20..1},auto}');
-@source inline('{sm:,md:,lg:,xl:,}{me,ms,mb,mt,ml,mr,mx,my,}-{{1..20..1},auto}');
+@source inline('{sm:,md:,lg:,xl:,}{me,ms,mb,mt,ml,mr,mx,my,-mt}-{{1..80..1},auto}');
 @source inline('{sm:,md:,lg:,xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..800..20}px]');
 @source inline('{sm:,md:,lg:,xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..100..2}%]');
 @source inline('{sm:,md:,lg:,xl:,}{max-w-,max-h-}none');

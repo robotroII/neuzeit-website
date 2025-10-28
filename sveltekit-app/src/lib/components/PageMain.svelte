@@ -6,7 +6,7 @@
         <CaseHero {...section}></CaseHero>
       {:else}
       <PageSection
-        theme={pageData?.theme}
+        theme={{ ...pageData?.theme, ...section.theme }}
         container={section.foreground?.find((foreground: any) => foreground._type !== 'caseTeasers')}
         background={section.background}
         class={`section--${section.name} ${section.class || ''}`}
@@ -49,7 +49,7 @@
                       class="case-teaser__image mb-4 lg:mb-12"
                     />
                   {/if}
-                  <div class="px-12">
+                  <div class="lg:px-12">
                     <h3 class="case-teaser__title text-lg lg:text-2xl font-semibold mb-2 lg:mb-6">{item.headline}</h3>
                     {#if item.article}
                       <div class="lg:text-xl/10 mb-6">

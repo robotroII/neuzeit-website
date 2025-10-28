@@ -9,6 +9,17 @@ const image = groq`
   "caption": @.asset->caption,
 `;
 
+const picture = groq`
+  ...,
+  "src": @.asset->url,
+  sources[]{
+    ...,
+    "srcset": @.srcset.asset->url,
+  },
+  "alt": @.asset->altText,
+  "caption": @.asset->caption,
+`;
+
 const textBlock = groq`
   ...,
   sectionTheme{
@@ -50,13 +61,7 @@ const gridTeaser = groq`
       "alt": @.asset->alt,
     },
     _type == 'picture' => {
-      ...,
-      "dsfafda": "asdfsfda",
-      "src": @.asset->url,
-      sources[]{
-        ...,
-        "srcset": @.srcset.asset->url,
-      }
+      ${picture}
     },
     _type == 'linkList' => {
       ...,
@@ -104,12 +109,7 @@ const caseTeasers = groq`
     },
     "theme": @.internalLink->theme,
     picture{
-      ...,
-      "src": @.asset->url,
-      sources[]{
-        ...,
-        "srcset": @.srcset.asset->url,
-      }
+      ${picture}
     },
   },
 `;
@@ -200,6 +200,9 @@ const itemTypes = groq`
   },
   _type == 'image' => {
     ${image}
+  },
+  _type == 'picture' => {
+    ${picture}
   },
 `;
 

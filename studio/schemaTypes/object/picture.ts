@@ -55,10 +55,12 @@ export const picture = defineType({
       name: 'alt',
       type: 'string',
       title: 'Alternative text',
-      options: {
-        // isRequired: true, // <-- make this field required
-      },
-      // validation: (Rule) => Rule.required().error('Alt text is required'),
-    }]
+    },
+    {
+      name: 'class',
+      type: 'string',
+      title: 'Css class',
+    }
+  ]
 });
 

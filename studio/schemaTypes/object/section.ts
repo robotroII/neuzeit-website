@@ -29,10 +29,16 @@ export const section = defineType({
           type: 'textBlock',
         }),
         defineArrayMember({
-          type: 'gridTeaser',
+          type: 'picture',
         }),
         defineArrayMember({
-          type: 'picture',
+          type: 'accordion',
+        }),
+        defineArrayMember({
+          type: 'bulletList',
+        }),
+        defineArrayMember({
+          type: 'gridTeaser',
         }),
         defineArrayMember({
           type: 'logoWall',
@@ -45,12 +51,6 @@ export const section = defineType({
         }),
         defineArrayMember({
           type: 'scrollTracker',
-        }),
-        defineArrayMember({
-          type: 'accordion',
-        }),
-        defineArrayMember({
-          type: 'bulletList',
         }),
       ]
     }),
