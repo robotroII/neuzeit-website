@@ -98,7 +98,12 @@ export const section = defineType({
               ]
             })
           ]
-        }
+        },
+        defineField({
+          name: 'class',
+          type: 'string',
+          title: 'Css class',
+        }),
       ],
     }),
 

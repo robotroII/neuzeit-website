@@ -1,3 +1,21 @@
+{#if currentSvgContent}
+  <div 
+    bind:this={containerElement}
+    class={`responsive-svg
+      transition-all ease-in-out duration-500
+      ${zoom ? 'group-hover:scale-104 group-hoverhover:duration-1200' : ''}
+      ${loaded ? 'opacity-100' : 'opacity-0'}
+      ${className}
+    `}
+    role="img"
+    aria-label={alt}
+    >
+    {@html currentSvgContent}
+  </div>
+{:else}
+  <div>No SVG content (length: {currentSvgContent?.length || 0})</div>
+{/if}
+
 <script module lang="ts">
 interface Source {
   srcset: string;
@@ -19,6 +37,8 @@ export function shouldUseResponsiveSvg(src: string | undefined, sources: Source[
 </script>
 
 <script lang="ts">
+import { tick, untrack } from 'svelte';
+
 let {
   src,
   sources = [],
@@ -39,17 +59,18 @@ let {
 
 let svgSources = $state(new Map<string, { content: string; url: string }>());
 let currentSvgContent = $state('');
+let updateTrigger = $state(0); // Force reactivity trigger
 let containerElement: HTMLDivElement | null = $state(null);
+let loadingKey = $state(0); // Track when to reload
 
 // Function to fetch and inline SVG content
 async function loadSvgContent(url: string, mediaQuery: string = 'default') {
   try {
     const response = await fetch(url);
+
     if (response.ok) {
       const content = await response.text();
-      svgSources.set(mediaQuery, { content, url });
-    //   console.log(`SVG loaded for ${mediaQuery}:`, url);
-      return content;
+      return { mediaQuery, content, url };
     } else {
       console.error('Failed to load SVG - Response not OK:', response.status, response.statusText);
     }
@@ -68,10 +89,10 @@ function matchesMediaQuery(mediaQuery: string): boolean {
 // Function to calculate media query specificity score
 function getMediaQuerySpecificity(mediaQuery: string): number {
   if (!mediaQuery || mediaQuery === 'default') return 0;
-  
+
   let score = 0;
   const query = mediaQuery.toLowerCase();
-  
+
   // Higher scores for more specific queries
   if (query.includes('min-width')) score += 100;
   if (query.includes('max-width')) score += 100;
@@ -81,7 +102,7 @@ function getMediaQuerySpecificity(mediaQuery: string): number {
   if (query.includes('hover')) score += 20;
   if (query.includes('pointer')) score += 20;
   if (query.includes('resolution')) score += 10;
-  
+
   // Extract pixel values to prioritize smaller breakpoints over larger ones
   const widthMatch = query.match(/(?:min-width|max-width):\s*(\d+)px/);
   if (widthMatch) {
@@ -127,16 +148,14 @@ function getBestMatchingSvg(): string {
   if (matchingQueries.length > 0) {
     return matchingQueries[0].content;
   }
-  
+
   return svgSources.values().next().value?.content || '';
 }
 
 // Update current SVG based on viewport
 function updateCurrentSvg() {
   const bestMatch = getBestMatchingSvg();
-  if (bestMatch !== currentSvgContent) {
-    currentSvgContent = bestMatch;
-  }
+  currentSvgContent = bestMatch;
 }
 
 // Check if any sources contain SVGs
@@ -147,10 +166,10 @@ function hasSvgSources(): boolean {
   return sources.some(source => source.srcset && isSvgUrl(source.srcset));
 }
 
-// Reactive effect to handle SVG loading
-$effect(() => {
+// Async function to load SVGs - called from $effect
+async function loadAllSvgs() {
   if (!hasSvgSources()) {
-    svgSources.clear();
+    svgSources = new Map();
     currentSvgContent = '';
     return;
   }
@@ -172,18 +191,44 @@ $effect(() => {
       });
     }
   });
-  
+
   if (allSvgUrls.length > 0) {
-    svgSources.clear();
-    
-    // Load all SVG sources
-    Promise.all(
+    const results = await Promise.all(
       allSvgUrls.map(({ url, mediaQuery }) => loadSvgContent(url, mediaQuery))
-    ).then(() => {
-      updateCurrentSvg();
-      loaded = true;
+    );
+
+    // Create a new Map
+    const newMap = new Map<string, { content: string; url: string }>();
+    results.forEach((result) => {
+      if (result) {
+        newMap.set(result.mediaQuery, { content: result.content, url: result.url });
+      }
     });
+    
+    return newMap;
   }
+  
+  return new Map();
+}
+
+// Reactive effect to trigger SVG loading
+$effect(() => {
+  // Immediately invoke async and handle in same effect
+  (async () => {
+    const newMap = await loadAllSvgs();
+    
+    if (newMap && newMap.size > 0) {
+      // Force synchronous state update
+      svgSources = newMap;
+      const content = getBestMatchingSvg();
+      currentSvgContent = content;
+      updateTrigger = updateTrigger + 1;
+      loaded = true;
+
+      // Force a tick
+      await tick();
+    }
+  })();
 });
 
 // Set up resize observer for responsive SVG switching
@@ -233,22 +278,6 @@ $effect(() => {
 });
 </script>
 
-{#if currentSvgContent}
-  <div 
-    bind:this={containerElement}
-    class={`responsive-svg
-      transition-all ease-in-out duration-500
-      ${zoom ? 'group-hover:scale-104 group-hoverhover:duration-1200' : ''}
-      ${loaded ? 'opacity-100' : 'opacity-0'}
-      ${className}
-    `}
-    role="img"
-    aria-label={alt}
-  >
-    {@html currentSvgContent}
-  </div>
-{/if}
-
 <style>
   .responsive-svg {
     display: block;
@@ -260,5 +289,7 @@ $effect(() => {
     height: 100%;
     display: block;
     overflow: visible;
+    fill: currentColor;
   }
+
 </style>
