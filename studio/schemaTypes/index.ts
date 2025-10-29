@@ -21,6 +21,7 @@ import { contact } from './object/contact';
 import { accordion } from './object/accordion';
 import { accordionItem } from './object/accordionItem';
 
+import { carousel } from './object/carousel';
 import { caseTeasers } from './object/caseTeasers';
 import { caseTeaser } from './object/caseTeaser';
 import { scrollTracker } from './object/scrollTracker';
@@ -54,6 +55,7 @@ export const schemaTypes = [
   accordion,
   accordionItem,
 
+  carousel,
   caseTeasers,
   caseTeaser,
   scrollTracker,

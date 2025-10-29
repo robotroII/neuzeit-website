@@ -14,11 +14,6 @@ export const contentColumns = defineType({
           type: 'object',
           fields: [
             defineField({
-              type: 'string',
-              name: 'class',
-              title: 'Css class',
-            }),
-            defineField({
               name: 'items',
               type: 'array',
               title: 'Column items',
@@ -27,7 +22,10 @@ export const contentColumns = defineType({
                   type: 'contentColumns',
                 }),
                 defineArrayMember({
-                  type: 'gridTeaser',
+                  type: 'image',
+                }),
+                defineArrayMember({
+                  type: 'picture',
                 }),
                 defineArrayMember({
                   type: 'textBlock',
@@ -39,9 +37,14 @@ export const contentColumns = defineType({
                   type: 'bulletList',
                 }),
                 defineArrayMember({
-                  type: 'image',
+                  type: 'gridTeaser',
                 }),
               ]
+            }),
+            defineField({
+              type: 'string',
+              name: 'class',
+              title: 'Css class',
             }),
           ]
         }),

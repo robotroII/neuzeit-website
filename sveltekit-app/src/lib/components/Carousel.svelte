@@ -3,7 +3,9 @@
   on:mounted={ e => console.log( 'slides', e.detail.splide.length ) }
   on:move={ e => console.log( 'move to', e.detail.index ) }
   hasTrack={ false }
-  aria-label="My Favorite Images">
+  aria-label="My Favorite Images"
+  class={className}
+  >
   <div class="track-wrapper">
     <SplideTrack>
       {#each items as item, index}
@@ -27,15 +29,17 @@
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/svelte-splide';
 import '@splidejs/svelte-splide/css/core';
 
-const options = {
+const defaults = {
   rewind: true,
-  perPage: 2,
+  perPage: 1,
   gap: '2rem',
   fixedWidth: 'calc(62.5%)',
   // start: 1,
   focus: 'center',
   trimSpace: false,
   // height : '15rem',
+  mediaQuery: 'min',
+  wheel: true,
   breakpoints: {
     1024: {
       perPage: 1,
@@ -44,7 +48,10 @@ const options = {
   arrows: false,
 }
 
-let { items, carouselItem } = $props();
+let { items, carouselItem, class: className = '', options: _options = {} } = $props();
+
+const options = $state({ ...defaults, ..._options });
+console.log('carousel options', options);
 </script>
 
 <style lang="css">

@@ -11,6 +11,9 @@
         {#if item._type === 'image'}
           <Image {...item} class={item.class} />
         {/if}
+        {#if item._type === 'picture'}
+          <Picture {...item} class={item.class} />
+        {/if}
         {#if item._type === 'textBlock'}
           <TextBlock {...item} class={item.class} />
         {/if}
@@ -55,6 +58,7 @@
 	import AccordionItem from "./AccordionItem.svelte";
 	import BulletList from "./BulletList.svelte";
 	import Image from "./Image.svelte";
+	import Picture from "./Picture.svelte";
 
 	// import { page } from '$app/state';
 

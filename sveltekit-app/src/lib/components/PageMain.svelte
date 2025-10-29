@@ -39,6 +39,35 @@
           {#if foreground._type === 'bulletList'}
             <BulletList {...foreground} class={foreground.class} />
           {/if}
+          {#if foreground._type === 'carousel'}
+            <Carousel
+              items={foreground.items}
+              let:carouselItem={item}
+              class="not-prose relative left-1/2 w-dvw max-w-none -translate-x-1/2 lg:w-auto lg:translate-x-0 lg:left-0"
+              options={{
+                  gap: '1.5rem',
+                  fixedWidth: 'calc(100% - 80px)',
+                  breakpoints: {
+                    1024: {
+                      perPage: 4,
+                      fixedWidth: 'calc(25% - 1.5rem)',
+                      focus: 0,
+                    },
+                  },
+              }}
+              >
+              {#snippet carouselItem(item: any)}
+                <div class="carousel-item">
+                  {#if item}
+                    <Picture
+                      {...item}
+                      class="carousel-item__image mb-4 lg:mb-12 overflow-hidden rounded-xl object-cover w-full h-full"
+                    />
+                  {/if}
+                </div>
+              {/snippet}
+            </Carousel>
+          {/if}
           {#if foreground._type === 'caseTeasers'}
             <Carousel items={foreground.items} let:carouselItem={item}>
               {#snippet carouselItem(item: any)}

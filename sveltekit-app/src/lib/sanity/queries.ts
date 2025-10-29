@@ -98,6 +98,22 @@ const teaserGallery = groq`
   },
 `;
 
+const carousel = groq`
+  ...,
+  items[]{
+    ...,
+    _type == 'image' => {
+      ${image}
+    },
+    _type == 'picture' => {
+      ${picture}
+    },
+    _type == 'textBlock' => {
+      ${textBlock}
+    },
+  },
+`;
+
 const caseTeasers = groq`
   ...,
   items[]{
@@ -135,20 +151,20 @@ const contact = groq`
   "picture": @.author->picture.asset->url,
 `;
 
-const stage = groq`
-  ...,
-  text{
-    ...,
-    title[]{
-      ...,
-      "src": @->url,
-    },
-    subtitle[]{
-      ...,
-      "src": @->url,
-    }
-  },
-`;
+// const stage = groq`
+//   ...,
+//   text{
+//     ...,
+//     title[]{
+//       ...,
+//       "src": @->url,
+//     },
+//     subtitle[]{
+//       ...,
+//       "src": @->url,
+//     }
+//   },
+// `;
 
 const bulletList = groq`
   ...,
@@ -180,6 +196,18 @@ const itemTypes = groq`
   _type == 'textBlock' => {
     ${textBlock}
   },
+  _type == 'image' => {
+    ${image}
+  },
+  _type == 'picture' => {
+    ${picture}
+  },
+  _type == 'carousel' => {
+    ${carousel}
+  },
+  _type == 'bulletList' => {
+    ${bulletList}
+  },
   _type == 'gridTeaser' => {
     ${gridTeaser}
   },
@@ -194,15 +222,6 @@ const itemTypes = groq`
   },
   _type == 'contact' => {
     ${contact}
-  },
-  _type == 'bulletList' => {
-    ${bulletList}
-  },
-  _type == 'image' => {
-    ${image}
-  },
-  _type == 'picture' => {
-    ${picture}
   },
 `;
 

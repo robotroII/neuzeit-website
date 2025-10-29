@@ -289,7 +289,6 @@ $effect(() => {
     height: 100%;
     display: block;
     overflow: visible;
-    fill: currentColor;
   }
 
 </style>

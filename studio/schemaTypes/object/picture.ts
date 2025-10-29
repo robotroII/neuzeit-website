@@ -2,7 +2,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const picture = defineType({
   name: 'picture',
-  title: 'Responsive picture',
+  title: 'Picture',
   type: 'image',
   options: {
     hotspot: true,

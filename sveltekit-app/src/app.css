@@ -87,14 +87,6 @@
   .link-gradient {
     @apply flex gap-4 mt-4 text-sm uppercase;
   }
-  .svg-icon svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
-  }
 
   .rounded-corners {
     --teaser-border-radius: 2rem;

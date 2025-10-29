@@ -32,10 +32,13 @@ export const section = defineType({
           type: 'picture',
         }),
         defineArrayMember({
+          type: 'bulletList',
+        }),
+        defineArrayMember({
           type: 'accordion',
         }),
         defineArrayMember({
-          type: 'bulletList',
+          type: 'carousel',
         }),
         defineArrayMember({
           type: 'gridTeaser',
