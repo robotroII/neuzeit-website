@@ -61,7 +61,7 @@
                   {#if item}
                     <Picture
                       {...item}
-                      class="carousel-item__image mb-4 lg:mb-12 overflow-hidden rounded-xl object-cover w-full h-full"
+                      class="carousel-item__image mb-4 lg:mb-12 overflow-hidden object-cover w-full h-full"
                     />
                   {/if}
                 </div>
