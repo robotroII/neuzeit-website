@@ -1,3 +1,31 @@
+{#if currentSvgContent}
+  <div
+    class={`responsive-svg
+      transition-all ease-in-out duration-1000
+      ${zoom ? 'group-hover:scale-104 group-hover:duration-1200' : ''}
+      ${loaded ? 'opacity-100' : 'opacity-0'}
+      ${className}
+    `}
+    role="img"
+    aria-label={alt}
+  >
+    {@html currentSvgContent}
+  </div>
+{:else}
+  <!-- The original component had a containerElement bind, which is now removed as ResizeObserver is gone. -->
+  <!-- It also had a fallback div, which we keep. -->
+  <div class="responsive-svg-fallback">
+    <!-- Display a message only if we have tried to load but failed, or if no source was provided -->
+    {#if getAllSvgSources().length === 0}
+      No SVG source provided.
+    {:else if isComponentLoaded}
+      Failed to load SVG content.
+    <!-- {:else}
+      Loading SVG... -->
+    {/if}
+  </div>
+{/if}
+
 <script module lang="ts">
 interface Source {
   srcset: string;
@@ -207,34 +235,6 @@ $effect(() => {
   };
 });
 </script>
-
-{#if currentSvgContent}
-  <div
-    class={`responsive-svg
-      transition-all ease-in-out duration-500
-      ${zoom ? 'group-hover:scale-104 group-hover:duration-1200' : ''}
-      ${loaded ? 'opacity-100' : 'opacity-0'}
-      ${className}
-    `}
-    role="img"
-    aria-label={alt}
-  >
-    {@html currentSvgContent}
-  </div>
-{:else}
-  <!-- The original component had a containerElement bind, which is now removed as ResizeObserver is gone. -->
-  <!-- It also had a fallback div, which we keep. -->
-  <div class="responsive-svg-fallback">
-    <!-- Display a message only if we have tried to load but failed, or if no source was provided -->
-    {#if getAllSvgSources().length === 0}
-      No SVG source provided.
-    {:else if isComponentLoaded}
-      Failed to load SVG content.
-    <!-- {:else}
-      Loading SVG... -->
-    {/if}
-  </div>
-{/if}
 
 <style>
   .responsive-svg {
