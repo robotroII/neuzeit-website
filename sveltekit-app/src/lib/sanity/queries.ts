@@ -322,7 +322,7 @@ export const caseQuery = groq`
 
 export const casesQuery = groq`*[_type == "case"]{
   ...,
-  "slug": "case/" +@.slug.current,
+  "slug": "cases/" +@.slug.current,
   "headline": @.title,
 }`;
 /*

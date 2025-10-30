@@ -1,4 +1,4 @@
-<div class="case-hero container relative {className}">
+<div class="case-hero 3xl:container relative {className}">
   <div class="case-hero--background relative z-0 w-full h-full">
     <Image
       {...mainImage}
