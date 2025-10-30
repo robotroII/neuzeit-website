@@ -40,7 +40,8 @@
         class="page-section__canvas w-full lg:w-auto
           {theme?.class ? theme.class : ''}
           {container ? 'container-fluid' : ''}
-          lg:grid lg:grid-cols-12 gap-4 gap-y-8
+          flex flex-col gap-y-8
+          lg:grid lg:grid-cols-12 gap-4
         ">
         {@render children?.()}
       </div>

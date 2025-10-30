@@ -1,30 +1,38 @@
-{#if currentSvgContent}
-  <div
-    class={`responsive-svg
-      transition-all ease-in-out duration-1000
-      ${zoom ? 'group-hover:scale-104 group-hover:duration-1200' : ''}
-      ${loaded ? 'opacity-100' : 'opacity-0'}
-      ${className}
-    `}
-    role="img"
-    aria-label={alt}
-  >
-    {@html currentSvgContent}
-  </div>
-{:else}
-  <!-- The original component had a containerElement bind, which is now removed as ResizeObserver is gone. -->
-  <!-- It also had a fallback div, which we keep. -->
+<div
+  class={`responsive-svg
+    transition-all ease-in-out duration-400
+    ${zoom ? 'group-hover:scale-104 group-hover:duration-1200' : ''}
+    ${loaded ? 'opacity-100' : 'opacity-0'}
+    ${className}
+  `}
+  role="img"
+  aria-label={alt}
+>
+  {@html currentSvgContent}
+</div>
+{#if !currentSvgContent}
   <div class="responsive-svg-fallback">
-    <!-- Display a message only if we have tried to load but failed, or if no source was provided -->
     {#if getAllSvgSources().length === 0}
       No SVG source provided.
     {:else if isComponentLoaded}
       Failed to load SVG content.
-    <!-- {:else}
-      Loading SVG... -->
+    {:else}
+      <svg class="block w-full h-full max-w-[25vmin] max-h-[25vmin] mx-auto" viewBox="0 0 100 100">
+        <path d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+          <animateTransform 
+            attributeName="transform"
+            attributeType="XML" 
+            type="rotate"
+            dur="1s" 
+            from="0 50 50"
+            to="360 50 50" 
+            repeatCount="indefinite"
+          />
+        </path>
+      </svg>
     {/if}
   </div>
-{/if}
+  {/if}
 
 <script module lang="ts">
 interface Source {
@@ -190,7 +198,7 @@ $effect(() => {
     );
   });
 
-  Promise.all(fetchPromises).then(() => {
+  Promise.all(fetchPromises).then(async () => {
     // Update state once all fetches are complete
     svgContentMap = tempMap;
     isComponentLoaded = true;
@@ -198,7 +206,7 @@ $effect(() => {
     currentSvgContent = getBestMatchingSvgContent();
     loaded = !!currentSvgContent;
     console.log('SVGs loaded', loaded);
-    tick(); // Ensure DOM is updated
+    await tick(); // Ensure DOM is updated
   });
 });
 
