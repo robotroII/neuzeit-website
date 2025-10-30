@@ -18,12 +18,13 @@
   <!-- <div class="page-section__inner {container ? 'container-fluid' : ''}" data-aos="fade-up"> -->
   <div class="page-section__inner grow-1">
     {#if background}
-      <div class="page-section__background">
+      <div class={loaded ? 'page-section__background' : ''}>
         <div class="container-fluid-xl">
           <Picture
             {...background}
             alt=""
             inlineSvg={true}
+            bind:loaded
           />
         </div>
       </div>
@@ -58,6 +59,8 @@
     theme = null,
     background = null,
   } = $props();
+
+  let loaded = $state(false);
 </script>
 
 <style lang="postcss">

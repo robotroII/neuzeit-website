@@ -55,7 +55,6 @@
 
 <script lang="ts">
 import ResponsiveSvg, { shouldUseResponsiveSvg } from './ResponsiveSvg.svelte';
-import { onMount } from "svelte";
 
 interface Source {
   srcset: string;
@@ -66,7 +65,7 @@ let {
   src,
   sources,
   alt,
-  loaded = false,
+  loaded = $bindable(false),
   spinner = true,
   zoom = false,
   class: className = '',

@@ -230,8 +230,8 @@ $effect(() => {
       No SVG source provided.
     {:else if isComponentLoaded}
       Failed to load SVG content.
-    {:else}
-      Loading SVG...
+    <!-- {:else}
+      Loading SVG... -->
     {/if}
   </div>
 {/if}
