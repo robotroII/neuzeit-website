@@ -119,7 +119,7 @@ const caseTeasers = groq`
   items[]{
     ...,
     "slug": @.internalLink->slug.current,
-    "href": @.internalLink->_type + "/" + @.internalLink->slug.current,
+    "href": @.internalLink->_type + "s/" + @.internalLink->slug.current,
     @.internalLink->_type == 'page' => {
       "href": @.internalLink->slug.current,
     },
