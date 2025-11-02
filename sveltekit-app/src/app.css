@@ -5,28 +5,28 @@
 @custom-variant light (&:where([data-tw-theme=light], [data-tw-theme=light] *), &:where(.tw-light-mode, .tw-light-mode *));
 @custom-variant dark (&:where([data-tw-theme=""=dark], [data-tw-theme=dark] *), &:where(.tw-dark-mode, .tw-dark-mode *));
 
-@source inline('{sm:,md:,lg:,xl:,}rounded-{tl,tr,bl,br,}-{sm,md,lg,xl,}');
-@source inline('{sm:,md:,lg:,xl:,}rounded-[{0..100..10}px]');
-@source inline('{sm:,md:,lg:,xl:,}text-center,text-start');
-@source inline('{sm:,md:,lg:,xl:,}text-black');
-@source inline('{sm:,md:,lg:,xl:,}flex-row-reverse');
-@source inline('{sm:,md:,lg:,xl:,}grid-cols-{1,2,3,4,5,6,7,8,9,10,11,12}');
-@source inline('{sm:,md:,lg:,xl:,}col-span-{1,2,3,4,5,6,7,8,9,10,11,12}');
-@source inline('{sm:,md:,lg:,xl:,}col-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
-@source inline('{sm:,md:,lg:,xl:,}row-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
-@source inline('{sm:,md:,lg:,xl:,}{gap-,gap-x-,gap-y-}{2..40..2}');
-/* @source inline('{sm:,md:,lg:,xl:,}gap-x-[{2..40..2}]');
-@source inline('{sm:,md:,lg:,xl:,}gap-y-[{2..40..2}]'); */
-@source inline('{sm:,md:,lg:,xl:,}aspect-{square,video,auto,[2/3],[3/4],[4/3],[16/9],[21/9],}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}rounded-{tl,tr,bl,br,}-{sm,md,lg,xl,}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}rounded-[{0..100..10}px]');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}text-center,text-start');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}text-black');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}flex-row-reverse');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}grid-cols-{1,2,3,4,5,6,7,8,9,10,11,12}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}col-span-{1,2,3,4,5,6,7,8,9,10,11,12}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}col-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}row-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}{gap-,gap-x-,gap-y-}{2..40..2}');
+/* @source inline('{sm:,md:,lg:,xl:,2xl:,}gap-x-[{2..40..2}]');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}gap-y-[{2..40..2}]'); */
+@source inline('{sm:,md:,lg:,xl:,2xl:,}aspect-{square,video,auto,[2/3],[3/4],[4/3],[16/9],[21/9],}');
 @source inline('bg-{top,center,bottom}');
-@source inline('{sm:,md:,lg:,xl:,}place-content-center');
-@source inline('{sm:,md:,lg:,xl:,}{pe,ps,pb,pt,pl,pr,px,py,}-{{1..20..1},auto}');
-@source inline('{sm:,md:,lg:,xl:,}{me,ms,mb,mt,ml,mr,mx,my,-mt}-{{1..80..1},auto}');
-@source inline('{sm:,md:,lg:,xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..800..20}px]');
-@source inline('{sm:,md:,lg:,xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..100..2}%]');
-@source inline('{sm:,md:,lg:,xl:,}{max-w-,max-h-}none');
-@source inline('{sm:,md:,lg:,xl:,}block{!}');
-@source inline('{sm:,md:,lg:,xl:,}bg-grey-dark{/}{0..100..10}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}place-content-center');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}{pe,ps,pb,pt,pl,pr,px,py,}-{{1..20..1},auto}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}{me,ms,mb,mt,ml,mr,mx,my,-mt}-{{1..80..1},auto}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..800..10}px]');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..100..2}%]');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}{max-w-,max-h-}none');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}block{!}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}bg-grey-dark{/}{0..100..10}');
 
 
 @theme {
@@ -193,7 +193,34 @@
     @apply text-6xl font-bold mb-8;
     letter-spacing: -0.15625rem;
     line-height: 5rem;
+    @variant lg {
+      @apply text-5xl;
+    }
+    @variant xl {
+      @apply text-6xl;
+    }
+    @variant 2xl {
+      @apply text-8xl;
+    }
   }
+  h1 + p {
+    @apply text-2xl;
+    line-height: 1.25;
+    @variant lg {
+      @apply text-xl;
+    }
+    @variant xl {
+      @apply text-2xl;
+    }
+    @variant 2xl {
+      @apply text-3xl;
+    }
+  }
+  @variant xl {
+    @apply text-4xl;
+    line-height: 1.25;
+  }
+
   h2 {
     @apply text-3xl mb-8;
     font-weight: normal;
@@ -207,10 +234,6 @@
       @apply text-5xl;
     }
   }
-  h1 + p {
-    @apply text-2xl/32;
-    line-height: 1.25;
-  }
   /* picture {
     @apply mb-8;
   } */
@@ -219,16 +242,6 @@
   p {
     @apply text-xl;
     line-height: 2rem;
-  }
-  @variant xl {
-    h1 {
-      @apply text-8xl;
-      line-height: 1.25;
-    }
-    h1 + p {
-      @apply text-4xl;
-      line-height: 1.25;
-    }
   }
 }
 

@@ -112,18 +112,18 @@
     class: className,
   } = $props();
 
-  onMount(() => {
-    console.log('GridTeaser component mounted with props:', {
-      text,
-      slug,
-      href,
-      items,
-      theme,
-      reverse,
-      align,
-      className,
-    });
-  })
+  // onMount(() => {
+  //   console.log('GridTeaser component mounted with props:', {
+  //     text,
+  //     slug,
+  //     href,
+  //     items,
+  //     theme,
+  //     reverse,
+  //     align,
+  //     className,
+  //   });
+  // })
 </script>
 
 <style lang="postcss">

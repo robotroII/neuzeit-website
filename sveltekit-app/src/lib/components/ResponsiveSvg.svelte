@@ -144,6 +144,7 @@ function getBestMatchingSvgContent(): string {
   const allSources = getAllSvgSources();
 
   // 2. Find the first source with a matching media query and fetched content
+  let match = null;
   for (const { url, mediaQuery } of allSources) {
     const content = svgContentMap.get(url);
 
@@ -154,9 +155,12 @@ function getBestMatchingSvgContent(): string {
         // The logic below ensures specific matches are found first.
       } else if (window.matchMedia(mediaQuery).matches) {
         // Found a specific match, return its content
-        return content;
+        match = content;
       }
     }
+  }
+  if (match) {
+    return match;
   }
 
   // 3. Fallback to the 'default' source content (main src)

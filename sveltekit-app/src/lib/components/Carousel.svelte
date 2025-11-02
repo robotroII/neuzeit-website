@@ -1,7 +1,7 @@
 <Splide
   options={ options }
-  on:mounted={ e => console.log( 'slides', e.detail.splide.length ) }
-  on:move={ e => console.log( 'move to', e.detail.index ) }
+  on:mounted={ e => ({}) }
+  on:move={ e => ({}) }
   hasTrack={ false }
   aria-label="My Favorite Images"
   class={className}
@@ -51,7 +51,6 @@ const defaults = {
 let { items, carouselItem, class: className = '', options: _options = {} } = $props();
 
 const options = $state({ ...defaults, ..._options });
-console.log('carousel options', options);
 </script>
 
 <style lang="css">
