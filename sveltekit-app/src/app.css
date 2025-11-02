@@ -213,12 +213,8 @@
       @apply text-2xl;
     }
     @variant 2xl {
-      @apply text-3xl;
+      @apply text-4xl;
     }
-  }
-  @variant xl {
-    @apply text-4xl;
-    line-height: 1.25;
   }
 
   h2 {
