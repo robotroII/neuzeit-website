@@ -15,38 +15,56 @@
         class="grow xl:flex
           absolute xl:static top-[100%] xl:top-auto right-0 xl:right-auto
           mt-4 xl:mt-0 pb-8 xl:pb-0
-          {expanded ? '[clip-path:inset(0_0_0_0)]' : '[clip-path:inset(0_0_0_100%)] xl:[clip-path:inset(0_0_0_0)]'}
+          {expanded ? '[clip-path:inset(0_0_0_0)]' : '[clip-path:inset(0_0_0_100%)]'} xl:[clip-path:none]
           transition-all ease-in-out duration-240
         "
         >
         <div class="w-screen sm:w-auto min-w-[20rem] xl:min-w-auto h-screen xl:h-auto
           flex flex-col xl:flex-row xl:grow items-end xl:items-center gap-4 xl:gap-0
-          px-6 py-8 xl:py-0
+          px-8 py-8 xl:py-0
           bg-[rgba(0,0,0,0.9)] xl:bg-transparent
           backdrop-blur-xl xl:backdrop-blur-none
         ">
           <div class="xl:flex xl:grow xl:h-24 mb-4 xl:mb-0">
             <Navigation
               nav={mainNavItems}
-              class="mx-auto"
+              class="mx-auto flex-col lg:flex-row mb-12 xl:mb-0"
               ulClass="navigation flex-col xl:flex-row xl:gap-6 xl:items-center xl:gap-8"
               liClass="xl:place-items-center"
               aClass="uppercase text-end xl:text-start"
+              bind:selectedItem={selectedSlug}
             />
+            <div
+              class="
+                {selectedSlug ? 'xl:[clip-path:inset(0_0_0_0)]' : 'xl:[clip-path:inset(0_0_100%_0)]'}
+                xl:absolute xl:left-0 xl:w-full xl:top-full
+                transition-all ease-in-out duration-240
+                "
+              >
+              <div class="container-xl xl:flex xl:justify-end">
+                <Navigation
+                  nav={casesNavItems}
+                  class="mx-auto flex-col xl:flex-row {selectedSlug ? '' : 'xl:hidden'} mb-8 xl:mb-0"
+                  ulClass="navigation flex-col xl:flex-row xl:gap-6 xl:items-center xl:gap-8"
+                  liClass="xl:place-items-center"
+                  aClass="uppercase text-end xl:text-start"
+                />
+              </div>
+            </div>
           </div>
-          <div class="shrink flex ms-auto xl:tw-light-mode">
+          <div class="shrink flex ms-auto xl:tw-light-mode mt-12 xl:mt-0">
             <div class="page-header--background absolute top-0 right-0 min-h-24 hidden xl:block translate-x-6">
               <svg width="160" height="96" viewBox="0 0 160 96">
                 <path d="M0 0V9.61542C0 48.9045 36.5678 96 88.7124 96H160V0H0Z" fill="white"/>
               </svg>
             </div>
-            <div class="tw-light-mode" data-tw-theme="light">
+            <div class="lg:tw-light-mode" data-tw-theme="light">
               <Navigation
                 class="relative z-1"
                 nav={metaNavItems}
                 ulClass="navigation flex-col xl:flex-row xl:items-center xl:gap-6 xl:gap-8"
                 liClass="xl:place-items-center"
-                aClass="uppercase text-end xl:text-start"
+                aClass="uppercase text-end xl:text-start text-white xl:text-black"
               />
             </div>
           </div>
@@ -87,6 +105,8 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
 
   let header = $state<HTMLElement>();
   let expanded = $state(false);
+  
+  let selectedSlug = $state<string>('');
 
   const mainNavItems = $derived({
     ...page?.data?.nav?.main,
@@ -96,9 +116,17 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
     ...page?.data?.nav?.meta,
     // items: page?.data?.nav?.meta?.items.filter(item => !['cases'].includes(item.slug))
   });
+  const casesNavItems = $derived({
+    ...page?.data?.nav?.cases,
+    // items: page?.data?.nav?.cases?.items.filter(item => !['cases'].includes(item.slug))
+  });
+
+  $effect(() => {
+    console.log('casesNavItems', casesNavItems);
+  });
 
   onMount(() => {
-    header?.querySelectorAll('a').forEach((link) => {
+    header?.querySelectorAll('a:link').forEach((link) => {
       link.addEventListener('click', () => {
         expanded = false;
       });

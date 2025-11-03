@@ -1,8 +1,10 @@
 <a
-  href={_href}
+  href={slug !== 'cases' ? _href : null}
+  role="button"
   class={className}
   class:active={page.url.pathname === `${_href || ''}`
     || `${page.url.pathname.split('/')[1]}s` === slug}
+  onclick={() => { active = active !== slug ? slug : ''; }}
   >
   {@render children()}
 </a>
@@ -15,7 +17,8 @@
     slug,
     href = '',
     class: className = '',
-    children
+    children,
+    active = $bindable(''),
   } = $props();
 
   const locale = $derived(page.url.pathname && getLocale());

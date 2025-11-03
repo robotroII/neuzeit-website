@@ -21,6 +21,11 @@ export const navItem = defineType({
       type: 'string',
       title: 'Link css class'
     },
+    {
+      name: 'toggle',
+      type: 'boolean',
+      title: 'Toggle'
+    },
   ],
   preview: {
     select: {

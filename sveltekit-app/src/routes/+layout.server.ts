@@ -13,6 +13,7 @@ export const load: LayoutServerLoad = async (event) => {
 			main: nav.data.find((item: { [key: string]: any }) => item.slug === 'main-nav'),
 			footer: nav.data.find((item: { [key: string]: any }) => item.slug === 'footer-nav'),
 			meta: nav.data.find((item: { [key: string]: any }) => item.slug === 'meta-nav'),
+			cases: nav.data.find((item: { [key: string]: any }) => item.slug === 'case-nav'),
 		},
 	};
 };

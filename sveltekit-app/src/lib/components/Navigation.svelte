@@ -4,7 +4,8 @@
       <li class="menu-list-item grid {liClass}">
         <Link
           slug={item.slug}
-          class="bold {aClass} {item.linkClass}"
+          class="bold {aClass} {item.linkClass} {item.toggle ? 'hidden xl:block' : 'block'}"
+          bind:active={selectedItem}
         >{item.text}</Link>
       </li>
     {/each}
@@ -12,6 +13,7 @@
 </nav>
 
 <script lang="ts">
+	import { bind } from '@splidejs/svelte-splide/components/Splide/bind';
 	import Link from './Link.svelte';
 
   let {
@@ -19,8 +21,11 @@
     class: className = '',
     ulClass = '',
     liClass = '',
-    aClass = ''
+    aClass = '',
+    selectedItem = $bindable<string>(''),
   } = $props();
+
+  // let selectedItem = $state<string>('');
 </script>
 
 <style lang="postcss" scoped>
