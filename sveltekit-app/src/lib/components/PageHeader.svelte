@@ -36,7 +36,7 @@
             />
             <div
               class="
-                {selectedSlug ? 'xl:[clip-path:inset(0_0_0_0)]' : 'xl:[clip-path:inset(0_0_100%_0)]'}
+                {selectedSlug.includes('cases') ? 'xl:[clip-path:inset(0_0_0_0)]' : 'xl:[clip-path:inset(0_0_100%_0)]'}
                 xl:absolute xl:left-0 xl:w-full xl:top-full
                 transition-all ease-in-out duration-240
                 "
@@ -44,7 +44,7 @@
               <div class="container-xl xl:flex xl:justify-end">
                 <Navigation
                   nav={casesNavItems}
-                  class="mx-auto flex-col xl:flex-row {selectedSlug ? '' : 'xl:hidden'} mb-8 xl:mb-0"
+                  class="mx-auto flex-col xl:flex-row mb-8 xl:mb-0"
                   ulClass="navigation flex-col xl:flex-row xl:gap-6 xl:items-center xl:gap-8"
                   liClass="xl:place-items-center"
                   aClass="uppercase text-end xl:text-start"
@@ -118,7 +118,7 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
   });
   const casesNavItems = $derived({
     ...page?.data?.nav?.cases,
-    // items: page?.data?.nav?.cases?.items.filter(item => !['cases'].includes(item.slug))
+    items: page?.data?.nav?.cases?.items.map((item: any) => ({ ...item, slug: `cases/${item.slug}` })),
   });
 
   $effect(() => {
