@@ -22,7 +22,7 @@
         <div class="w-screen sm:w-auto min-w-[20rem] xl:min-w-auto h-screen xl:h-auto
           flex flex-col xl:flex-row xl:grow items-end xl:items-center gap-4 xl:gap-0
           px-8 py-8 xl:py-0
-          bg-[rgba(0,0,0,0.9)] xl:bg-transparent
+          bg-page-background xl:bg-transparent
           backdrop-blur-xl xl:backdrop-blur-none
         ">
           <div class="xl:flex xl:grow xl:h-24 mb-4 xl:mb-0">
@@ -39,7 +39,7 @@
                 {selectedSlug.includes('cases') ? 'xl:[clip-path:inset(0_0_0_0)]' : 'xl:[clip-path:inset(0_0_100%_0)]'}
                 xl:absolute xl:left-0 xl:w-full xl:top-full
                 transition-all ease-in-out duration-200
-                xl:bg-black
+                xl:bg-page-background
                 box-shadow-xl
                 "
               >
