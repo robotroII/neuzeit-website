@@ -13,7 +13,6 @@
 </nav>
 
 <script lang="ts">
-	import { bind } from '@splidejs/svelte-splide/components/Splide/bind';
 	import Link from './Link.svelte';
 
   let {
@@ -29,11 +28,13 @@
 </script>
 
 <style lang="postcss" scoped>
-.menu-list-item a.active {
-  background: var(--gradient-primary);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-attachment: fixed;
-  text-decoration: underline;
+@screen xl {
+  :global(.menu-list-item a.active) {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-attachment: fixed;
+    text-decoration: underline;
+  }
 }
 </style>

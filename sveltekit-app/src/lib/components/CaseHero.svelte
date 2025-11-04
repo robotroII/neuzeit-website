@@ -1,4 +1,4 @@
-<div class="case-hero 3xl:container relative {className}">
+<div class="case-hero 3xl:container relative mb-24 {className}">
   <div class="case-hero--background relative z-0 w-full h-full">
     <Image
       {...mainImage}
@@ -15,27 +15,38 @@
     </div>
   </div>
   <div
-    class="case-hero__foreground">
+    class="case-hero__foreground container-fluid">
     <div class="case-hero__stage
-      md:col-start-3 md:col-span-8
-      grid md:grid-cols-[auto_1fr] place-content-end
+      grid grid-cols-8 lg:grid-cols-12 lg:place-content-end
       ">
       <div
-        class="case-hero__title relative ms-12 -mt-12 md:-mt-24 lg:-mt-32 mb-8 max-w-[60vw] md:max-w-[36vw] lg:w-[560px]"
+        class="case-hero__title
+          col-span-6
+          lg:col-span-5
+          xl:col-start-2 xl:col-span-5
+          relative
+          -translate-y-[24%] md:-translate-y-[16%] lg:-translate-y-[32%] xl:-translate-y-[12rem]
+        "
         >
         <div class="svg-shape text-primary">
           <svg viewBox="0 0 612 612" class="block w-full h-full">
             <path d="M0 0H612V306C612 474.999 474.999 612 306 612C137.001 612 0 474.999 0 306V0Z" />
           </svg>
         </div>
-        <div class="case-hero__text absolute left-0 top-0 w-full h-full p-5 lg:p-12 {text.class}">
-          <h1 class="teaser-block--headline text-base sm:text-xl lg:text-5xl mb-2 lg:mb-4">{text.headline}</h1>
-          {#if text.subheadline}<h2 class="teaser-block--subheadline mb-8">{text.subheadline}</h2>{/if}
-          <Article content={text.article} class="text-xs/4 sm:text-sm lg:text-base" />
+        <div class="case-hero__text absolute left-0 top-0 w-full h-full p-5 md:p-8 xl:p-12 {text.class}">
+          <h1 class="teaser-block--headline text-base sm:text-xl md:text-3xl xl:text-5xl mb-2 md:mb-6 xl:mb-8">{text.headline}</h1>
+          {#if text.subheadline}<h2 class="teaser-block--subheadline text-base mb-8">{text.subheadline}</h2>{/if}
+          <Article content={text.article} class="text-xs/4 sm:text-sm md:text-xl lg:text-base xl:text-xl leading-[2]" />
         </div>
       </div>
-      <div class="case-hero__keydata relative max-w-full px-12 md:mt-12">
-        <div class="case-hero__keydata">
+      <div class="case-hero__keydata
+        relative
+        col-span-8
+        lg:col-start-7 lg:col-span-6
+        xl:col-start-8 xl:col-span-5
+        "
+        >
+        <div class="case-hero__keydata lg:mt-24">
           <dl class="grid grid-cols-1 md:grid-cols-[auto_auto] gap-4">
             {#each keyData as item}
               <dt><span class="uppercase gradient-primary">{item.key}</span></dt>

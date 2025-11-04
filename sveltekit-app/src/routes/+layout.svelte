@@ -42,8 +42,8 @@
       : ''
   }"
   >
-  <div class="min-h-dvh flex flex-col gap-4">
-    <PageHeader />
+  <div class="min-h-dvh flex flex-col">
+    <PageHeader class="relative z-100" />
   
     <main>
       {@render children()}

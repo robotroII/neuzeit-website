@@ -1,5 +1,5 @@
   <div
-    class="container-xl pt-20 lg:pt-24 min-h-screen
+    class="container-xl min-h-screen
     ">
     {#each pageData?.sections as section (section._key)}
       {#if section._type === 'caseHero'}
@@ -158,7 +158,6 @@
 	import * as m from '$lib/paraglide/messages.js';
 
   const pageData = $derived(page.data.page?.data);
-  const sections = $derived(pageData?.sections);
   
   $effect(() => {
     console.log('PageMain pageData:', pageData);

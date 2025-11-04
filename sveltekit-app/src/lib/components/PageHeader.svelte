@@ -1,4 +1,4 @@
-<header bind:this={header} class="page-header absolute z-100 w-full py-4 xl:py-0">
+<header bind:this={header} class="page-header w-full py-4 xl:py-0 {className}">
   <div class="container-fluid-xl flex items-center relative">
     <div class="grow-0 shrink-0 ms-10">
       <!-- <a href="/" aria-label="Home"> -->
@@ -38,7 +38,7 @@
               class="
                 {selectedSlug.includes('cases') ? 'xl:[clip-path:inset(0_0_0_0)]' : 'xl:[clip-path:inset(0_0_100%_0)]'}
                 xl:absolute xl:left-0 xl:w-full xl:top-full
-                transition-all ease-in-out duration-240
+                transition-all ease-in-out duration-200
                 "
               >
               <div class="container-xl xl:flex xl:justify-end">
@@ -99,6 +99,10 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
 
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+
+  let {
+    class: className = '',
+  } = $props();
 
 	const pageData = $derived(page.data.pageData?.data);
   const themeData = $derived(pageData && pageData.theme);

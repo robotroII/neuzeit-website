@@ -267,6 +267,7 @@
 }
 
 
+.case-hero,
 .page-section__foreground {
   .container-fluid {
     @apply px-10;

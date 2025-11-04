@@ -26,11 +26,4 @@
 </script>
 
 <style lang="postcss" scoped>
-  a.active {
-    background: var(--gradient-primary);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-attachment: fixed;
-    text-decoration: underline;
-  }
 </style>
