@@ -39,9 +39,11 @@
                 {selectedSlug.includes('cases') ? 'xl:[clip-path:inset(0_0_0_0)]' : 'xl:[clip-path:inset(0_0_100%_0)]'}
                 xl:absolute xl:left-0 xl:w-full xl:top-full
                 transition-all ease-in-out duration-200
+                xl:bg-black
+                box-shadow-xl
                 "
               >
-              <div class="container-xl xl:flex xl:justify-end">
+              <div class="container-xl xl:flex xl:justify-end xl:py-12">
                 <Navigation
                   nav={casesNavItems}
                   class="mx-auto flex-col xl:flex-row mb-8 xl:mb-0"

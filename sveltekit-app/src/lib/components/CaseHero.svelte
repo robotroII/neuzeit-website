@@ -1,12 +1,12 @@
 <div class="case-hero 3xl:container relative mb-24 {className}">
-  <div class="case-hero--background relative z-0 w-full h-full">
+  <div class="case-hero--background relative z-0 w-full h-full aspect-[1/1] md:aspect-[4/3] lg:aspect-[21/9]">
     <Image
       {...mainImage}
       spinner={false}
-      class="aspect-[1/1] md:aspect-[4/3] lg:aspect-[21/9]"
+      class="object-cover w-full h-full"
     />
     <div class="svg-shape text-page-background
-      absolute end-0 bottom-0 translate-y-[50%] translate-x-[20%] md:translate-x-[0] lg:translate-x-[-50%]
+      absolute end-0 bottom-0 translate-y-[52%] translate-x-[20%] md:translate-x-[0] lg:translate-x-[-50%]
       max-w-[62%]
       ">
       <svg viewBox="0 0 612 612" class="block w-full h-full">
@@ -47,7 +47,7 @@
         "
         >
         <div class="case-hero__keydata lg:mt-24">
-          <dl class="grid grid-cols-1 md:grid-cols-[auto_auto] gap-4">
+          <dl class="grid grid-cols-1 md:grid-cols-[auto_auto] gap-4 lg:gap-x-6 lg:gap-y-8">
             {#each keyData as item}
               <dt><span class="uppercase gradient-primary">{item.key}</span></dt>
               <dd class="flex flex-wrap gap-2">
