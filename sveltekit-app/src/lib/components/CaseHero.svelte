@@ -53,7 +53,11 @@
               <dd class="flex flex-wrap gap-2">
                 {#if item.values.length > 1}
                   {#each item.values as value}
-                    <span class="inline-block text-white bg-limed-spruce rounded-full text-s font-thin px-2 py-1 whitespace-nowrap">{value}</span>
+                    <span class="
+                      inline-block text-white bg-limed-spruce rounded-full
+                      text-xs md:text-sm font-thin
+                      py-1 px-3 md:py-2 md:px-5
+                      whitespace-nowrap">{value}</span>
                   {/each}
                 {:else}
                   {#each item.values as value}

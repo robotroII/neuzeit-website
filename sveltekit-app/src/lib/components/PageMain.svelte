@@ -79,9 +79,9 @@
                     />
                   {/if}
                   <div class="lg:px-12">
-                    <h3 class="case-teaser__title text-lg lg:text-2xl font-semibold mb-2 lg:mb-6">{item.headline}</h3>
+                    <h3 class="case-teaser__title text-lg lg:text-3xl font-semibold mb-2 lg:mb-6">{item.headline}</h3>
                     {#if item.article}
-                      <div class="lg:text-xl/10 mb-6">
+                      <div class="text-block text-sm lg:text-2xl mb-6">
                         <Article content={item.article} />
                       </div>
                     {/if}
@@ -89,7 +89,7 @@
                       <Link
                         slug={item.href}
                         class="carousel-item__link
-                          link flex items-center gap-4 text-sm uppercase"
+                          link flex items-center gap-4 text-sm lg:text-xl uppercase"
                         >
                         <span class="link--text">{@html m.more()}</span>
                         <span>&rightarrow;</span>

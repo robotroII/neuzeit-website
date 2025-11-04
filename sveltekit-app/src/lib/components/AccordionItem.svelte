@@ -12,7 +12,7 @@
       >
       <div class="grid {index ? 'grid-cols-[auto_minmax(0,_1fr)_auto]' : 'grid-cols-[minmax(0,_1fr)_auto]'} gap-2">
         {#if index}
-          <div class="col-start-1 {expanded ? 'gradient-primary' : ''} font-bold leading-none select-none flex items-center">
+          <div class="col-start-1 {expanded ? 'gradient-primary' : ''} font-bold leading-none select-none flex items-center md:text-2xl">
             {index < 10 ? `0${index}` : index}
           </div>
         {/if}

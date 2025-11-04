@@ -1,7 +1,7 @@
 <div
   class="grid-teaser
     {items?.length
-      ? 'grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto] md:content-center gap-20 gap-y-8'
+      ? 'grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto_auto] md:content-center gap-20 gap-y-8'
       : 'flex flex-col items-start gap-y-8'}
     {className}
   "
@@ -11,6 +11,7 @@
       : ''
   }
   >
+
   <div class="grid-teaser__head
     row-start-1 row-end-2
     {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
@@ -18,13 +19,21 @@
     {#if text.headline}
       <h2 class="grid-teaser__headline gradient-primary text-lg uppercase font-normal">{text.headline}</h2>
     {/if}
+  </div>
+
+  <div class="grid-teaser__subhead
+    row-start-3 row-end-4 md:row-start-2 md:row-end-3
+    {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
+    ">
     {#if text.subheadline}
-      <h3 class="grid-teaser__subheadline text-5xl">{text.subheadline}</h3>
+      <h3 class="grid-teaser__subheadline text-4xl md:text-5xl lg:text-4xl 2xl:text-5xl">{text.subheadline}</h3>
     {/if}
   </div>
+
   <div class="grid-teaser__content
-    md:row-start-2 md:row-end-3
+    md:row-start-3 md:row-end-4
     {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
+    text-xl md:text-2xl
     ">
     <Article content={text.article} />
   </div>
@@ -32,7 +41,7 @@
     <Link
       slug={href}
       class="grid-teaser__link
-        md:row-start-3 md:row-end-4
+        md:row-start-4 md:row-end-5
         {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
         link flex items-center gap-4 gradient-primary text-sm uppercase"
       >
@@ -42,23 +51,26 @@
   {/if}
   {#if items && items.length}
     <div class="grid-teaser__context
-      row-start-2 row-end-3 md:row-auto md:row-span-4
+      row-start-2 row-end-3 md:row-auto md:row-span-5
       {reverse ? 'md:col-start-1 md:col-end-2' : 'md:col-start-2 md:col-end-3'}
       ">
       {#each items as item}
         {#if item._type === 'image'}
+        <div class="w-full h-full grid place-content-center">
           <Image
             src={item.src}
             alt={item.alt || ''}
-            class={item.class ? item.class : "w-full h-full object-cover"}
+            class={item.class ? item.class : ""}
           />
+        </div>
         {/if}
         {#if item._type === 'picture'}
-          <Picture
-            {...item}
-            alt={item.alt || ''}
-            class={item.class ? item.class : "w-full h-full object-cover"}
-          />
+          <div class="w-full h-full grid items-center">
+            <Picture
+              {...item}
+              alt={item.alt || ''}
+            />
+          </div>
         {/if}
         <!-- {#if item._type === 'linkList'}
           <LinkList items={item.items} />

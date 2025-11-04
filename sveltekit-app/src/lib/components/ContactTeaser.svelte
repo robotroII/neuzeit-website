@@ -1,6 +1,6 @@
 <div class="contact-list-item text-center">
   <p class="text-sm lg:text-lg uppercase mb-10">{headline}</p>
-  <p class="text-3xl mb-20">{subheadline}</p>
+  <p class="text-3xl md:text-5xl lg:text-4xl xl:text-5xl mb-20">{subheadline}</p>
   <!-- <img src="{picture}" alt="avatar" class="inline-block rounded-full mb-8 max-w-24" /> -->
   <!-- <h3 class="contact-list-item-title text-4xl mb-4">{name}</h3>
   <p class="text-lg uppercase mb-16">{role}</p> -->

@@ -35,10 +35,10 @@
                   class="bg-grey/30 rounded-[2.5rem] rounded-tl-none px-5"
                   >
                   {#snippet title()}
-                    <dt><h3>{accordionItem.title}</h3></dt>
+                    <dt><h3 class="md:text-2xl">{accordionItem.title}</h3></dt>
                   {/snippet}
                   {#snippet body()}
-                    <dd><Article content={accordionItem.article} class="mb-8" /></dd>
+                    <dd class="md:text-xl"><Article content={accordionItem.article} class="mb-8" /></dd>
                   {/snippet}
                 </AccordionItem>
               {/each}
