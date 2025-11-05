@@ -10,7 +10,7 @@
     </svg>
   </div>
   <div class="page-footer__foreground relative bottom-0 w-full h-full">
-    <div class="container-fluid p-10 pt-16 h-full">
+    <div class="container-fluid px-5 sm:px-10 py-10 pt-16 h-full">
       <div class="flex flex-col align-start gap-10 h-full">
         <NeuzeitLogo id="footer-logo" class="w-[193px] lg:w-auto mb-4 lg:mb-auto" withText={true} />
 

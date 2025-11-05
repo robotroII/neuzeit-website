@@ -1,6 +1,6 @@
 <header bind:this={header} class="page-header w-full py-4 xl:py-0 {className}">
   <div class="container-fluid-xl flex items-center relative">
-    <div class="grow-0 shrink-0 ms-10">
+    <div class="grow-0 shrink-0 ms-8 sm:ms-10">
       <!-- <a href="/" aria-label="Home"> -->
         <NeuzeitLogo
           id="header-logo"
@@ -74,7 +74,7 @@
       </div>
     {/if}
 
-    <div class="flex xl:hidden items-center ms-auto me-8">
+    <div class="flex xl:hidden items-center ms-auto me-4 sm:me-8">
       <button
         data-collapse-toggle="navbar-default"
         type="button"

@@ -1,7 +1,7 @@
 <dl class="bullet-list {className}">
   <ul class="flex flex-col gap-3">
     {#each items as item}
-      <li class="bullet-list__item flex items-start mb-4 gap-4">
+      <li class="bullet-list__item flex items-center mb-4 gap-2 md:gap-4">
         {#if bullet?.src}
           <img src="{bullet.src}" alt="{bullet.alt || 'Bullet icon'}" class="bullet-list__icon flex-shrink-0" />
         {/if}
@@ -9,7 +9,7 @@
           {#if item.subheadline}
             <h3 class="mb-2 lg:text-2xl font-bold">{item.subheadline}</h3>
           {/if}
-          <div class="lg:text-xl">
+          <div class="text-block text-sm lg:text-xl">
             <Article content={item.article} />
           </div>
         </div>

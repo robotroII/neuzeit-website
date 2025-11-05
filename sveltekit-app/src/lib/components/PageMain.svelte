@@ -117,12 +117,14 @@
                   {#snippet title()}
                     <div class="accordion-item__title grid md:grid-cols-[8rem_auto] gap-4 content-start items-center">
                       <!-- <p class="gradient-primary text-xl lg:text-4xl block">{index < 9 ? `0${index+1}` : index + 1}</p> -->
-                      <div class="col-start-1 col-span-2 text-xl lg:text-4xl ms-4">{item.title}</div>
+                      <div class="col-start-1 col-span-2 text-lg lg:text-4xl mx-2 lg:mx-4">{item.title}</div>
                     </div>
                   {/snippet}
                   {#snippet body()}
                     <div class="max-w-[90%] md:max-w-[80%] ms-auto md:mx-auto">
-                      <Article content={item.article} class="col-start-2" />
+                      <div class="text-block text-base md:text-xl">
+                        <Article content={item.article} class="col-start-2" />
+                      </div>
                     </div>
                   {/snippet}
                 </AccordionItem>

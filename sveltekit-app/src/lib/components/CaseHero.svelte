@@ -49,7 +49,7 @@
         <div class="case-hero__keydata lg:mt-24">
           <dl class="grid grid-cols-1 md:grid-cols-[auto_auto] gap-4 lg:gap-x-6 lg:gap-y-8">
             {#each keyData as item}
-              <dt><span class="uppercase gradient-primary">{item.key}</span></dt>
+              <dt><span class="uppercase">{item.key}</span></dt>
               <dd class="flex flex-wrap gap-2">
                 {#if item.values.length > 1}
                   {#each item.values as value}
