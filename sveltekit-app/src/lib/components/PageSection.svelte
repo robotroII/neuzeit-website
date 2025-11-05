@@ -18,7 +18,7 @@
   <!-- <div class="page-section__inner {container ? 'container-fluid' : ''}" data-aos="fade-up"> -->
   <div class="page-section__inner grow-1">
     {#if background}
-      <div class={loaded ? 'page-section__background' : ''}>
+      <div class="{background.class} {loaded ? 'page-section__background' : ''}">
         <div class="container-fluid-xl">
           <Picture
             {...background}

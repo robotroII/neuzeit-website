@@ -2,7 +2,7 @@
   {#if headline || subheadline}
     <div class="text-block-head mb-8">
       {#if headline}
-        <h2 class="text-block-headline gradient-primary text-lg uppercase mb-10">{headline}</h2>
+        <h2 class="text-block-headline gradient-primary text-lg uppercase mb-8 lg:mb-4 xl:mb-6">{headline}</h2>
       {/if}
       {#if subheadline}
         <h3 class="text-block-subheadline text-3xl mb-8">{subheadline}</h3>

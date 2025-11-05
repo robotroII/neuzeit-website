@@ -24,6 +24,7 @@
 @source inline('{sm:,md:,lg:,xl:,2xl:,}{me,ms,mb,mt,ml,mr,mx,my,-mt}-{{1..80..1},auto}');
 @source inline('{sm:,md:,lg:,xl:,2xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..800..10}px]');
 @source inline('{sm:,md:,lg:,xl:,2xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..100..2}%]');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}{w-,max-w-,min-w-,h-,max-h-,min-h-}[{0..100..2}vh]');
 @source inline('{sm:,md:,lg:,xl:,2xl:,}{max-w-,max-h-}none');
 @source inline('{sm:,md:,lg:,xl:,2xl:,}block{!}');
 @source inline('{sm:,md:,lg:,xl:,2xl:,}bg-grey-dark{/}{0..100..10}');
@@ -36,7 +37,7 @@
   --container-10xl: var(--breakpoint-3xl);
 
   --color-dim: oklch(64.4% 0 0);
-  --gradient-primary: linear-gradient(90deg, oklch(100% 0 0) 0%, oklch(0% 0 0) 100%);
+  --gradient-primary: linear-gradient(90deg, oklch(100% 0 0) 0%, oklch(100% 0 0) 100%);
 
   --color-body-text: oklch(0% 0 0);
   --color-page-background: transparent;
@@ -78,10 +79,12 @@
   .tw-dark-mode {
     --color-body-text: oklch(100% 0 0);
     --color-body-background: var(--color-page-background, oklch(0% 0 0));
+    --gradient-primary: linear-gradient(90deg, oklch(100% 0 0) 0%, oklch(100% 0 0) 100%);
   }
   .tw-light-mode {
     --color-body-text: oklch(0% 0 0);
     --color-body-background: var(--color-page-background, oklch(100% 0 0));
+    --gradient-primary: linear-gradient(90deg, oklch(0% 0 0) 0%, oklch(0% 0 0) 100%);
   }
   .gradient-primary,
   .link-gradient {
@@ -241,6 +244,9 @@
       @apply text-5xl;
     }
   }
+  h3 {
+    @apply text-xl md:text-2xl mb-6 font-bold;
+  }
 }
 /* .text-block {
   p {
@@ -271,22 +277,32 @@
   }
 } */
 .text-block p { @apply text-base leading-[1.875] mb-4; }
+.text-block p:last-child { @apply mb-0; }
 .text-block.text-sm p { @apply text-sm; }
-.text-block[class*="md:text-sm"] p { @variant md { @apply text-sm; } }
-.text-block[class*="lg:text-sm"] p { @variant lg { @apply text-sm; } }
-.text-block[class*="xl:text-sm"] p { @variant xl { @apply text-sm; } }
+.text-block.text-base p { @apply text-base; }
 .text-block.text-lg p { @apply text-lg; }
-.text-block[class*="md:text-lg"] p { @variant md { @apply text-lg; } }
-.text-block[class*="lg:text-lg"] p { @variant lg { @apply text-lg; } }
-.text-block[class*="xl:text-lg"] p { @variant xl { @apply text-lg; } }
 .text-block.text-xl p { @apply text-xl; }
-.text-block[class*="md:text-xl"] p { @variant md { @apply text-xl; } }
-.text-block[class*="lg:text-xl"] p { @variant lg { @apply text-xl; } }
-.text-block[class*="xl:text-xl"] p { @variant xl { @apply text-xl; } }
 .text-block.text-2xl p { @apply text-2xl; }
+.text-block[class*="md:text-sm"] p { @variant md { @apply text-sm; } }
+.text-block[class*="md:text-base"] p { @variant md { @apply text-base; } }
+.text-block[class*="md:text-lg"] p { @variant md { @apply text-lg; } }
+.text-block[class*="md:text-xl"] p { @variant md { @apply text-xl; } }
 .text-block[class*="md:text-2xl"] p { @variant md { @apply text-2xl; } }
+.text-block[class*="lg:text-sm"] p { @variant lg { @apply text-sm; } }
+.text-block[class*="lg:text-base"] p { @variant lg { @apply text-base; } }
+.text-block[class*="lg:text-lg"] p { @variant lg { @apply text-lg; } }
+.text-block[class*="lg:text-xl"] p { @variant lg { @apply text-xl; } }
 .text-block[class*="lg:text-2xl"] p { @variant lg { @apply text-2xl; } }
+.text-block[class*="xl:text-sm"] p { @variant xl { @apply text-sm; } }
+.text-block[class*="xl:text-base"] p { @variant xl { @apply text-base; } }
+.text-block[class*="xl:text-lg"] p { @variant xl { @apply text-lg; } }
+.text-block[class*="xl:text-xl"] p { @variant xl { @apply text-xl; } }
 .text-block[class*="xl:text-2xl"] p { @variant xl { @apply text-2xl; } }
+.text-block[class*="2xl:text-sm"] p { @variant 2xl { @apply text-sm; } }
+.text-block[class*="2xl:text-base"] p { @variant 2xl { @apply text-base; } }
+.text-block[class*="2xl:text-lg"] p { @variant 2xl { @apply text-lg; } }
+.text-block[class*="2xl:text-xl"] p { @variant 2xl { @apply text-xl; } }
+.text-block[class*="2xl:text-2xl"] p { @variant 2xl { @apply text-2xl; } }
 
 .definition-list .accordion-header:not(:has(.collapsed)),
 .article h2 {
@@ -306,6 +322,7 @@
     }
   }
 }
+.text-block-subheadline,
 .grid-teaser__subheadline {
   position: relative;
   &::after {
@@ -389,6 +406,6 @@
       h3 {
         @apply mb-4;
       }
-  }
+    }
   }
 }
