@@ -192,6 +192,13 @@
       }
     }
   }
+  .page-section__canvas > * {
+    grid-column: 1 / -1;
+  }
+
+  .content-columns {
+    row-gap: calc(var(--spacing) * 8);
+  }
 }
 
 @utility container {

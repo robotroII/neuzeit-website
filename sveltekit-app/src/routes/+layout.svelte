@@ -11,7 +11,7 @@
 
 	const pageData = $derived(page.data.page?.data);
   const theme = $derived(pageData && pageData.theme);
-  // console.log('pageData', pageData, pageData?.sections.filter(section => section._type === 'pageSection'));
+  console.log('pageData', pageData);
 
 	const { children } = $props();
 </script>
@@ -21,7 +21,7 @@
 </svelte:head>
 
 <div
-  class="svelte-layout w-screen max-w-screen page page--{pageData?.slug?.current || 'start'} {theme?.class ? theme.class : ''} {theme?.colorMode ? `tw-${theme.colorMode}` : ''} {theme?.primaryGradient?.colors?.length ? 'has-gradient' : ''} {theme?.backgroundColor ? 'has-background-color' : ''} {theme?.primaryColor ? 'has-primary-color' : ''}"
+  class="svelte-layout w-screen max-w-screen page page--{pageData?.slug?.current || pageData?.slug || 'start'} {theme?.class ? theme.class : ''} {theme?.colorMode ? `tw-${theme.colorMode}` : ''} {theme?.primaryGradient?.colors?.length ? 'has-gradient' : ''} {theme?.backgroundColor ? 'has-background-color' : ''} {theme?.primaryColor ? 'has-primary-color' : ''}"
   class:tw-dark-mode={theme && theme.colorMode === 'dark'}
   class:tw-light-mode={theme && theme.colorMode === 'light'}
   style="{
@@ -44,7 +44,7 @@
   >
   <div class="min-h-dvh flex flex-col">
     <PageHeader class="relative z-100" />
-  
+  <!-- --{Object.keys(pageData)}-- -->
     <main>
       {@render children()}
     </main>

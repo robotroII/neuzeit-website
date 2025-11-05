@@ -116,7 +116,7 @@
     }
   }
   /* Default: all direct children span full width unless they have their own grid-column class */
-  :global(.page-section__canvas > *:not([class*="col-"])) {
+  /* :global(.page-section__canvas > *:not([class*="col-"])) {
     grid-column: 1 / -1;
-  }
+  } */
 </style>

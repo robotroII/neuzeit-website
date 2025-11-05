@@ -1,5 +1,5 @@
 <div class="content-columns
-  flex gap-y-8 flex-col {reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}
+  flex flex-col {reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}
   {className}
   ">
   {#each columns as column, index}
@@ -71,6 +71,6 @@
 
 <style lang="css">
   :global(.content-columns__column:not([class*="col-"])) {
-    flex-basis: 50%
+    flex-basis: 50%;
   }
 </style>
