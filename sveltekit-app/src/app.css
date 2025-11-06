@@ -290,26 +290,27 @@
 .text-block.text-lg p { @apply text-lg; }
 .text-block.text-xl p { @apply text-xl; }
 .text-block.text-2xl p { @apply text-2xl; }
-.text-block[class*="md:text-sm"] p { @variant md { @apply text-sm; } }
-.text-block[class*="md:text-base"] p { @variant md { @apply text-base; } }
-.text-block[class*="md:text-lg"] p { @variant md { @apply text-lg; } }
-.text-block[class*="md:text-xl"] p { @variant md { @apply text-xl; } }
-.text-block[class*="md:text-2xl"] p { @variant md { @apply text-2xl; } }
-.text-block[class*="lg:text-sm"] p { @variant lg { @apply text-sm; } }
-.text-block[class*="lg:text-base"] p { @variant lg { @apply text-base; } }
-.text-block[class*="lg:text-lg"] p { @variant lg { @apply text-lg; } }
-.text-block[class*="lg:text-xl"] p { @variant lg { @apply text-xl; } }
-.text-block[class*="lg:text-2xl"] p { @variant lg { @apply text-2xl; } }
-.text-block[class*="xl:text-sm"] p { @variant xl { @apply text-sm; } }
-.text-block[class*="xl:text-base"] p { @variant xl { @apply text-base; } }
-.text-block[class*="xl:text-lg"] p { @variant xl { @apply text-lg; } }
-.text-block[class*="xl:text-xl"] p { @variant xl { @apply text-xl; } }
-.text-block[class*="xl:text-2xl"] p { @variant xl { @apply text-2xl; } }
-.text-block[class*="2xl:text-sm"] p { @variant 2xl { @apply text-sm; } }
-.text-block[class*="2xl:text-base"] p { @variant 2xl { @apply text-base; } }
-.text-block[class*="2xl:text-lg"] p { @variant 2xl { @apply text-lg; } }
-.text-block[class*="2xl:text-xl"] p { @variant 2xl { @apply text-xl; } }
-.text-block[class*="2xl:text-2xl"] p { @variant 2xl { @apply text-2xl; } }
+
+.text-block.md\:text-sm p { @variant md { @apply text-sm; } }
+.text-block.md\:text-base p { @variant md { @apply text-base; } }
+.text-block.md\:text-lg p { @variant md { @apply text-lg; } }
+.text-block.md\:text-xl p { @variant md { @apply text-xl; } }
+.text-block.md\:text-2xl p { @variant md { @apply text-2xl; } }
+.text-block.lg\:text-sm p { @variant lg { @apply text-sm; } }
+.text-block.lg\:text-base p { @variant lg { @apply text-base; } }
+.text-block.lg\:text-lg p { @variant lg { @apply text-lg; } }
+.text-block.lg\:text-xl p { @variant lg { @apply text-xl; } }
+.text-block.lg\:text-2xl p { @variant lg { @apply text-2xl; } }
+.text-block.xl\:text-sm p { @variant xl { @apply text-sm; } }
+.text-block.xl\:text-base p { @variant xl { @apply text-base; } }
+.text-block.xl\:text-lg p { @variant xl { @apply text-lg; } }
+.text-block.xl\:text-xl p { @variant xl { @apply text-xl; } }
+.text-block.xl\:text-2xl p { @variant xl { @apply text-2xl; } }
+.text-block.\32xl\:text-sm p { @variant 2xl { @apply text-sm; } }
+.text-block.\32xl\:text-base p { @variant 2xl { @apply text-base; } }
+.text-block.\32xl\:text-lg p { @variant 2xl { @apply text-lg; } }
+.text-block.\32xl\:text-xl p { @variant 2xl { @apply text-xl; } }
+.text-block.\32xl\:text-2xl p { @variant 2xl { @apply text-2xl; } }
 
 .definition-list .accordion-header:not(:has(.collapsed)),
 .article h2 {
@@ -413,6 +414,20 @@
       h3 {
         @apply mb-4;
       }
+    }
+  }
+}
+
+
+.page--telekom {
+  .section--intro-section {
+    @apply mb-16;
+    .page-section__foreground {
+      @apply translate-y-16 md:translate-y-32 lg:translate-y-16;
+      place-content: start !important;
+    }
+    .content-columns {
+      @apply lg:items-center 2xl:gap-32;
     }
   }
 }

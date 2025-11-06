@@ -46,11 +46,11 @@
               class="not-prose relative left-1/2 w-dvw max-w-none -translate-x-1/2 lg:w-auto lg:translate-x-0 lg:left-0"
               options={{
                   gap: '1.5rem',
-                  fixedWidth: 'calc(100% - 80px)',
+                  fixedWidth: 'calc((100% - 2rem))',
                   breakpoints: {
                     1024: {
                       perPage: 4,
-                      fixedWidth: 'calc(25% - 1.5rem)',
+                      fixedWidth: 'calc((100% - 2rem) / 4)',
                       focus: 0,
                     },
                   },
@@ -69,19 +69,43 @@
             </Carousel>
           {/if}
           {#if foreground._type === 'caseTeasers'}
-            <Carousel items={foreground.items} let:carouselItem={item}>
+            <Carousel
+              items={foreground.items}
+              let:carouselItem={item}
+              options={{
+                breakpoints: {
+                  1024: {
+                    // perPage: 2.3,
+                    fixedWidth: 'calc((100% - 2rem) / 2)',
+                  },
+                  1240: {
+                    // perPage: 3,
+                    fixedWidth: 'calc((100% - 2rem) / 1.5)',
+                    padding: { right: 'calc((100vw - 80px) / 2)' },
+                  },
+                  1400: {
+                    // perPage: 2.3,
+                    // fixedWidth: 'calc((100% - 2rem) / 3)',
+                    // padding: { left: '10%', right: '10%' },
+                    fixedWidth: 'calc((100% - 2rem) / 2)',
+                    padding: { right: '32%' },
+                  },
+                },
+            }}
+
+              >
               {#snippet carouselItem(item: any)}
                 <div class="case-teaser">
                   {#if item.picture}
                     <Picture
                       {...item.picture}
-                      class="case-teaser__image mb-4 lg:mb-12"
+                      class="case-teaser__image mb-4 xl:mb-8 2xl:mb-12"
                     />
                   {/if}
-                  <div class="lg:px-12">
-                    <h3 class="case-teaser__title text-lg lg:text-3xl font-semibold mb-2 lg:mb-6">{item.headline}</h3>
+                  <div class="xl:px-4 2xl:px-12">
+                    <h3 class="case-teaser__title text-lg lg:text-xl 2xl:text-3xl font-semibold mb-2 lg:mb-4 xl:mb-6">{item.headline}</h3>
                     {#if item.article}
-                      <div class="text-block text-sm lg:text-2xl mb-6">
+                      <div class="text-block text-sm lg:text-base 2xl:text-2xl mb-6">
                         <Article content={item.article} />
                       </div>
                     {/if}
@@ -89,7 +113,7 @@
                       <Link
                         slug={item.href}
                         class="carousel-item__link
-                          link flex items-center gap-4 text-sm lg:text-xl uppercase"
+                          link flex items-center gap-4 text-sm lg:text-lg 2xl:text-xl uppercase"
                         >
                         <span class="link--text">{@html m.more()}</span>
                         <span>&rightarrow;</span>

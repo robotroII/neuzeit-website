@@ -30,21 +30,24 @@ import { Splide, SplideTrack, SplideSlide } from '@splidejs/svelte-splide';
 import '@splidejs/svelte-splide/css/core';
 
 const defaults = {
-  rewind: true,
-  perPage: 1,
+  rewind: false,
+  // perPage: 1,
   gap: '2rem',
-  fixedWidth: 'calc(62.5%)',
+  fixedWidth: 'calc((85% - 2rem))',
   // start: 1,
   focus: 'center',
   trimSpace: false,
   // height : '15rem',
   mediaQuery: 'min',
   wheel: true,
-  breakpoints: {
-    1024: {
-      perPage: 1,
-    },
-  },
+  wheelsleep: 100,
+  releaseWheel: true,
+  waitForTransition: true,
+  // breakpoints: {
+  //   1024: {
+  //     // perPage: 1,
+  //   },
+  // },
   arrows: false,
 }
 
