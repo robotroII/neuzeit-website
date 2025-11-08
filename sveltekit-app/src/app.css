@@ -332,7 +332,6 @@
 .text-block.\32xl\:text-xl p { @variant 2xl { @apply text-xl; } }
 .text-block.\32xl\:text-2xl p { @variant 2xl { @apply text-2xl; } }
 
-.definition-list .accordion-header:not(:has(.collapsed)),
 .article h2 {
   &:has(+ p) {
     position: relative;
@@ -350,7 +349,8 @@
     }
   }
 }
-.text-block-subheadline,
+.definition-list .accordion-header:not(:has(.collapsed)),
+.text-block-subheadline:not(.text-center .text-block-subheadline),
 .grid-teaser__subheadline {
   position: relative;
   &::after {
@@ -368,9 +368,8 @@
 }
 
 .definition-list .accordion-header:not(:has(.collapsed)) {
-  position: relative;
   &::after {
-    margin-block: 1.5rem;
+    margin: .5rem 0;
   }
 }
 

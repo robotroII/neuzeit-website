@@ -1,4 +1,8 @@
-<div class="accordion-item flex flex-col gap-4 {className}">
+<div class="
+  accordion-item
+  flex flex-col gap-4
+  {className}
+  ">
   <div class="accordion-header" id={`heading-${id}`}>
     <button
       class="accordion-button text-start w-full py-5"
@@ -10,16 +14,16 @@
       aria-controls={`target-${id}`}
       onclick={toggle}
       >
-      <div class="grid {index ? 'grid-cols-[auto_minmax(0,_1fr)_auto]' : 'grid-cols-[minmax(0,_1fr)_auto]'} gap-2">
+      <div class="grid grid-cols-12">
         {#if index}
-          <div class="col-start-1 {expanded ? 'gradient-primary' : ''} font-bold leading-none select-none flex items-center md:text-2xl">
+          <div class="col-start-1 col-span-2 {expanded ? 'gradient-primary' : ''} font-bold leading-none select-none flex items-center">
             {index < 10 ? `0${index}` : index}
           </div>
         {/if}
-        <div class="col-start-{index ? 2 : 1} flex items-center">
+        <div class="col-start-{index ? 3 : 2} col-span-{index ? '7' : '8'} flex items-center">
           {@render title()}
         </div>
-        <div class="col-start-{index ? 3 : 2} grid items-center ms-auto">
+        <div class="col-start-11 col-span-2 grid items-center ms-auto">
           <svg
             width="30"
             height="17"
