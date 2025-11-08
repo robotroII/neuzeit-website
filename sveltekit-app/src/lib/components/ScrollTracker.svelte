@@ -1,11 +1,16 @@
 <div class="scroll-tracker {className}" bind:this={scrollTrackerRef}>
   {#each items as item, index}
     <div 
-      class="grid grid-cols-[auto_1fr] lg:grid-cols-[1fr_auto_1fr] grid-rows-[auto] gap-8 scroll-tracker__section" 
+      class="scroll-tracker__section
+		    grid
+        grid-cols-[auto_1fr] grid-rows-[auto]
+        lg:grid-cols-[1fr_auto_1fr]
+        gap-8 lg:gap-16 xl:gap-24
+        " 
       data-scroll-section={index}
       data-index={index}
     >
-      <div class="hidden lg:block col-start-{index % 2 ? '3 lg:ps-8' : '1 lg:pe-8'} py-8 lg:py-32">
+      <div class="hidden lg:block col-start-{index % 2 ? '3 ' : '1 '} py-8 lg: py-16 xl:py-32">
         <Image
           src={item.image?.src}
           alt={item.image?.alt || ''}
@@ -13,8 +18,8 @@
         />
       </div>
       <div class="scroll-tracker__track col-start 1 lg:col-start-2 row-start-1 min-w-[3px] transition-colors duration-300 {activeIndex === index ? 'bg-gradient-to-b from-[var(--gradient-color-1)] via-[var(--gradient-color-2)] to-[var(--gradient-color-3)]' : 'bg-grey'}"></div>
-      <div class="col-start-2 lg:col-start-{index % 2 ? '1 lg:pe-8' : '3 lg:ps-8'} row-start-1 scroll-tracker__content mb-10 lg:mb-0 py-8 lg:py-32 grid content-center">
-        <div class="scroll-tracker__title font-bold mb-2 lg:mb-4 lg:text-3xl gap-2">
+      <div class="col-start-2 lg:col-start-{index % 2 ? '1 ' : '3 '} row-start-1 scroll-tracker__content mb-10 lg:mb-0 py-8 lg: py-16 xl:py-32 grid content-center">
+        <div class="scroll-tracker__title font-bold mb-2 lg:mb-6 lg:text-3xl gap-2">
           <span class="gradient-primary">{index + 1 >= 10 ? '' : '0'}{index + 1}</span>
 		  <span class="scroll-tracker__title-text ms-1">{item.title}</span>
         </div>
