@@ -1,5 +1,5 @@
 <div class="content-columns
-  flex flex-col {reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}
+  grid lg:grid-cols-12 {reverse ? 'col-reverse' : ''}
   {className}
   ">
   {#each columns as column, index}
@@ -70,7 +70,4 @@
 </script>
 
 <style lang="css">
-  :global(.content-columns__column:not([class*="col-"])) {
-    flex-basis: 50%;
-  }
 </style>
