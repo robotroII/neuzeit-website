@@ -1,7 +1,7 @@
 <div
   class="grid-teaser
     {items?.length
-      ? 'grid md:grid-cols-[1fr_1fr] md:grid-rows-[auto_auto_auto_auto_auto] md:content-center gap-20 gap-y-8'
+      ? 'grid md:grid-cols-10 md:grid-rows-[auto_auto_auto_auto_auto] md:items-center md:content-center gap-y-8'
       : 'flex flex-col items-start gap-y-8'}
     {className}
   "
@@ -14,7 +14,7 @@
 
   <div class="grid-teaser__head
     row-start-1 row-end-2
-    {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
+    {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     ">
     {#if text.headline}
       <h2 class="grid-teaser__headline gradient-primary text-lg uppercase font-normal">{text.headline}</h2>
@@ -23,7 +23,7 @@
 
   <div class="grid-teaser__subhead
     row-start-3 row-end-4 md:row-start-2 md:row-end-3
-    {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
+    {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     ">
     {#if text.subheadline}
       <h3 class="grid-teaser__subheadline text-4xl md:text-5xl lg:text-4xl 2xl:text-5xl">{text.subheadline}</h3>
@@ -32,7 +32,7 @@
 
   <div class="grid-teaser__content
     md:row-start-3 md:row-end-4
-    {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
+    {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     text-xl md:text-2xl
     ">
     <Article content={text.article} />
@@ -42,7 +42,7 @@
       slug={href}
       class="grid-teaser__link
         md:row-start-4 md:row-end-5
-        {reverse ? 'md:col-start-2 md:col-end-3' : 'md:col-start-1 md:col-end-2'}
+        {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
         link flex items-center gap-4 gradient-primary text-sm uppercase"
       >
       <span class="link--text">{@html m.more()}</span>
@@ -52,20 +52,20 @@
   {#if items && items.length}
     <div class="grid-teaser__context
       row-start-2 row-end-3 md:row-auto md:row-span-5
-      {reverse ? 'md:col-start-1 md:col-end-2' : 'md:col-start-2 md:col-end-3'}
+      {reverse ? 'md:col-start-1 md:col-end-5' : 'md:col-start-7 md:col-end-11'}
       ">
       {#each items as item}
         {#if item._type === 'image'}
-        <div class="w-full h-full grid place-content-center">
+        <div class="w-full h-full flex flex-col justify-center">
           <Image
             src={item.src}
             alt={item.alt || ''}
-            class={item.class ? item.class : ""}
+            class="w-full h-full {item.class ? item.class : ""}"
           />
         </div>
         {/if}
         {#if item._type === 'picture'}
-          <div class="w-full h-full grid items-center">
+          <div class="w-full h-full flex flex-col justify-center">
             <Picture
               {...item}
               alt={item.alt || ''}

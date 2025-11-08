@@ -225,12 +225,15 @@
     line-height: 1.25;
     @variant lg {
       @apply text-xl;
+      line-height: 1.25;
     }
     @variant xl {
       @apply text-2xl;
+      line-height: 1.25;
     }
     @variant 2xl {
       @apply text-4xl;
+      line-height: 1.25;
     }
   }
 
