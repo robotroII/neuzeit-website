@@ -1,4 +1,4 @@
-<div class="accordion flex flex-col gap-4 {className}">
+<div class="accordion flex flex-col {className}">
   {@render children()}
 </div>
 

@@ -27,6 +27,11 @@ export const definitionList = defineType({
         }),
       ],
     }),
+    defineField({
+      type: 'string',
+      name: 'class',
+      title: 'Css Class',
+    }),
   ],
   preview: {
     select: {

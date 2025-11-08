@@ -25,7 +25,7 @@
         {/if}
         {#if item._type === 'definitionList'}
           <DefinitionList>
-            <Accordion>
+            <Accordion class="gap-4">
               {#each item.items as accordionItem, index}
                 <AccordionItem
                   index={index + 1}
