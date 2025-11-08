@@ -1,7 +1,7 @@
 <div
   class="grid-teaser
     {items?.length
-      ? 'grid md:grid-cols-10 md:grid-rows-[auto_auto_auto_auto_auto] md:items-center md:content-center gap-y-8'
+      ? 'grid md:grid-cols-10 md:grid-rows-[auto_auto_auto_auto_auto_auto] md:items-center md:-content-center gap-y-8'
       : 'flex flex-col items-start gap-y-8'}
     {className}
   "
@@ -13,7 +13,7 @@
   >
 
   <div class="grid-teaser__head
-    row-start-1 row-end-2
+    row-start-2 row-end-3
     {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     ">
     {#if text.headline}
@@ -22,16 +22,16 @@
   </div>
 
   <div class="grid-teaser__subhead
-    row-start-3 row-end-4 md:row-start-2 md:row-end-3
+    row-start-4 row-end-5 md:row-start-3 md:row-end-4
     {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     ">
     {#if text.subheadline}
-      <h3 class="grid-teaser__subheadline text-4xl md:text-5xl lg:text-4xl 2xl:text-5xl">{text.subheadline}</h3>
+      <h3 class="grid-teaser__subheadline text-4xl md:text-5xl lg:text-4xl 2xl:text-5xl leading-[1.25]">{text.subheadline}</h3>
     {/if}
   </div>
 
   <div class="grid-teaser__content
-    md:row-start-3 md:row-end-4
+    row-start-5 row-end-6 md:row-start-4 md:row-end-5
     {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     text-xl md:text-2xl
     ">
@@ -41,7 +41,7 @@
     <Link
       slug={href}
       class="grid-teaser__link
-        md:row-start-4 md:row-end-5
+        row-start-6 row-end-7 md:row-start-5 md:row-end-6
         {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
         link flex items-center gap-4 gradient-primary text-sm uppercase"
       >
@@ -51,7 +51,7 @@
   {/if}
   {#if items && items.length}
     <div class="grid-teaser__context
-      row-start-2 row-end-3 md:row-auto md:row-span-5
+      row-start-3 row-end-4 md:row-auto md:row-span-6
       {reverse ? 'md:col-start-1 md:col-end-5' : 'md:col-start-7 md:col-end-11'}
       ">
       {#each items as item}
