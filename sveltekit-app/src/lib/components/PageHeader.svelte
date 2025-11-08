@@ -127,10 +127,6 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
     items: page?.data?.nav?.cases?.items.map((item: any) => ({ ...item, slug: `cases/${item.slug}` })),
   });
 
-  $effect(() => {
-    console.log('casesNavItems', casesNavItems);
-  });
-
   onMount(() => {
     header?.querySelectorAll('a:link').forEach((link) => {
       link.addEventListener('click', () => {
