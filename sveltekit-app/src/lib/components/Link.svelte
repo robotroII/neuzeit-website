@@ -2,7 +2,7 @@
   href={slug !== 'cases' ? _href : null}
   role="button"
   class={className}
-  class:active={page.url.pathname === `${_href || ''}`
+  class:active={page.url.pathname.replace(/\/$/, '') === `${_href.replace(/\/$/, '')}`
     || `${page.url.pathname.split('/')[1]}s` === slug}
   onclick={() => { active = active !== slug ? slug : ''; }}
   >
