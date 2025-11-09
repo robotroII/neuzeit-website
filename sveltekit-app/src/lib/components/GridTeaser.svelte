@@ -13,7 +13,7 @@
   >
 
   <div class="grid-teaser__head
-    row-start-2 row-end-3
+    row-start-1 row-end-2 md:row-start-2 md:row-end-3
     {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     ">
     {#if text.headline}
@@ -26,14 +26,14 @@
     {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     ">
     {#if text.subheadline}
-      <h3 class="grid-teaser__subheadline text-4xl 2xl:text-5xl leading-[1.25]">{text.subheadline}</h3>
+      <h3 class="grid-teaser__subheadline text-4xl 2xl:text-5xl leading-[1.333] md:leading-[1.25]">{text.subheadline}</h3>
     {/if}
   </div>
 
   <div class="grid-teaser__content
     row-start-5 row-end-6 md:row-start-4 md:row-end-5
     {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
-    text-lg 2xl:text-2xl
+    text-lg leading-[1.78] 2xl:text-2xl
     ">
     <Article content={text.article} />
   </div>

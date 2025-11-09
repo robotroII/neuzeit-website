@@ -471,13 +471,13 @@
   }
 }
 
-.page--start {
+/* .page--start {
   .section--profile-section {
     .page-section__foreground {
       place-content: start !important;
     }
   }
-}
+} */
 
 .page--telekom {
   .section--intro-section {
