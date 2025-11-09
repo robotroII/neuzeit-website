@@ -41,7 +41,7 @@
           {theme?.class ? theme.class : ''}
           {container ? 'container-fluid' : ''}
           flex flex-col gap-y-8
-          lg:grid lg:grid-cols-12 gap-4
+          md:grid md:grid-cols-12 gap-4
         ">
         {@render children?.()}
       </div>
