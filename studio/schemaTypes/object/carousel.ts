@@ -18,6 +18,11 @@ export const carousel = defineType({
         }),
       ]
     }),
+    defineField({
+      name: 'itemsPerPage',
+      type: 'number',
+      title: 'Items per page',
+    }),
   ],
   preview: {
     select: {

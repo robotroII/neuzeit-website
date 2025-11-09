@@ -39,10 +39,10 @@ const defaults = {
   trimSpace: false,
   // height : '15rem',
   mediaQuery: 'min',
-  wheel: true,
-  wheelsleep: 100,
-  releaseWheel: true,
-  waitForTransition: true,
+  // wheel: true,
+  // wheelsleep: 100,
+  // releaseWheel: true,
+  // waitForTransition: true,
   // breakpoints: {
   //   1024: {
   //     // perPage: 1,
