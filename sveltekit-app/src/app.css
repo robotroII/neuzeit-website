@@ -471,12 +471,18 @@
   }
 }
 
+.page--start {
+  .section--profile-section {
+    .page-section__foreground {
+      place-content: start !important;
+    }
+  }
+}
 
 .page--telekom {
   .section--intro-section {
     @apply mb-16;
     .page-section__foreground {
-      @apply translate-y-16 md:translate-y-32 lg:translate-y-16;
       place-content: start !important;
     }
     .content-columns {
