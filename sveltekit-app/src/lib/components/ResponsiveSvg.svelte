@@ -260,4 +260,7 @@ $effect(() => {
     display: block;
     overflow: visible;
   }
+  .responsive-svg :global(svg > g[clip-path]) {
+    clip-path: none;
+  }
 </style>
