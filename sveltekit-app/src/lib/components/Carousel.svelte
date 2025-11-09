@@ -31,9 +31,10 @@ import '@splidejs/svelte-splide/css/core';
 
 const defaults = {
   rewind: false,
-  // perPage: 1,
+  perPage: 1.2,
   gap: '2rem',
-  fixedWidth: 'calc((85% - 2rem))',
+  // padding: { left: '4rem', right: '4rem' },
+  // fixedWidth: 'calc((85% - 2rem))',
   // start: 1,
   focus: 'center',
   trimSpace: false,

@@ -46,13 +46,13 @@
               class="not-prose relative left-1/2 w-dvw max-w-none -translate-x-1/2 lg:w-auto lg:translate-x-0 lg:left-0"
               options={{
                   gap: '1.5rem',
-                  fixedWidth: 'calc((100% - 1.5rem))',
+                  // fixedWidth: 'calc((100% - 1.5rem))',
                   breakpoints: {
                     ...(foreground.itemsPerPage
                     ? {
                         1024: {
                           perPage: foreground.itemsPerPage,
-                          fixedWidth: `calc((100% - 1.5rem) / ${foreground.itemsPerPage})`,
+                          // fixedWidth: `calc((100% - 1.5rem) / ${foreground.itemsPerPage})`,
                           focus: 0,
                         },
                       }
