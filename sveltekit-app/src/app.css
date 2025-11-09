@@ -251,15 +251,18 @@
   h1 {
     @apply text-6xl font-bold mb-10;
     letter-spacing: -0.15625rem;
-    line-height: 5rem;
+    line-height: 1.25;
     @variant lg {
       @apply text-5xl;
+      line-height: 1.25;
     }
     @variant xl {
       @apply text-6xl;
+      line-height: 1.25;
     }
     @variant 2xl {
       @apply text-8xl;
+      line-height: 1.25;
     }
   }
   h1 + p {
