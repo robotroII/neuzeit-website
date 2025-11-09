@@ -21,7 +21,7 @@
         >
         <div class="w-screen sm:w-auto min-w-[20rem] xl:min-w-auto h-screen xl:h-auto
           flex flex-col xl:flex-row xl:grow items-end xl:items-center gap-4 xl:gap-0
-          px-8 py-8 xl:py-0
+          px-8 sm:px-10 py-8 xl:py-0
           bg-page-background xl:bg-transparent
           backdrop-blur-xl xl:backdrop-blur-none
         ">
@@ -74,11 +74,11 @@
       </div>
     {/if}
 
-    <div class="flex xl:hidden items-center ms-auto me-4 sm:me-8">
+    <div class="flex xl:hidden items-center ms-auto me-[22px] sm:me-[30px]">
       <button
         data-collapse-toggle="navbar-default"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        class="inline-flex items-center p-0 w-10 h-10 justify-center text-sm text-gray-500 xl:hidden hover:bg-gray-100 focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700"
         aria-controls="navbar-default"
         aria-expanded="false"
         onclick={() => {expanded = !expanded; }}
