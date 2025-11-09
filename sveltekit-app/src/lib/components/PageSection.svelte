@@ -1,5 +1,5 @@
 <section
-  class="page-section pb-16 lg:pb-24 {className}"
+  class="page-section {className}"
   class:tw-dark-mode={theme?.colorMode === 'dark'}
   class:tw-light-mode={theme?.colorMode === 'light'}
   style="
