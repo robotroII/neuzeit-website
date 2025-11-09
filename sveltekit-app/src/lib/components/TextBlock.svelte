@@ -5,7 +5,7 @@
         <h2 class="text-block-headline gradient-primary text-lg uppercase mb-8 lg:mb-4 xl:mb-6">{headline}</h2>
       {/if}
       {#if subheadline}
-        <h3 class="text-block-subheadline text-3xl mb-8">{subheadline}</h3>
+        <h3 class="text-block-subheadline text-4xl leading-[1.333] 2xl:5xl 2xl:leading-[1.25] mb-8">{subheadline}</h3>
       {/if}
     </div>
   {/if}

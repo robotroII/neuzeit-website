@@ -15,7 +15,7 @@
 @source inline('{sm:,md:,lg:,xl:,2xl:,}col-span-{1,2,3,4,5,6,7,8,9,10,11,12}');
 @source inline('{sm:,md:,lg:,xl:,2xl:,}col-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
 @source inline('{sm:,md:,lg:,xl:,2xl:,}row-start-{1,2,3,4,5,6,7,8,9,10,11,12}');
-@source inline('{sm:,md:,lg:,xl:,2xl:,}{gap-,gap-x-,gap-y-}{2..40..2}');
+@source inline('{sm:,md:,lg:,xl:,2xl:,}{gap-,gap-x-,gap-y-}{2..40..1}');
 /* @source inline('{sm:,md:,lg:,xl:,2xl:,}gap-x-[{2..40..2}]');
 @source inline('{sm:,md:,lg:,xl:,2xl:,}gap-y-[{2..40..2}]'); */
 @source inline('{sm:,md:,lg:,xl:,2xl:,}aspect-{square,video,auto,[2/3],[3/4],[4/3],[16/9],[21/9],}');
@@ -203,12 +203,16 @@
       }
     }
   }
+  .page-section__canvas {
+    gap: calc(var(--spacing) * 4);
+    row-gap: calc(var(--spacing) * 8);
+  }
   .page-section__canvas > * {
     grid-column: 1 / -1;
   }
 
   .content-columns {
-    row-gap: calc(var(--spacing) * 16);
+    /* row-gap: calc(var(--spacing) * 16); */
   }
   .content-columns > * {
     grid-column: 1 / -1;
