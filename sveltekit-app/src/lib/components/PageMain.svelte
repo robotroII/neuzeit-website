@@ -28,7 +28,7 @@
             <GridTeaser {...foreground} class={foreground.class}></GridTeaser>
           {/if}
           {#if foreground._type === 'logoWall'}
-            <LogoWall {...foreground} class={`${foreground.class} my-24`}></LogoWall>
+            <LogoWall {...foreground} class={`${foreground.class}`}></LogoWall>
           {/if}
           {#if foreground._type === 'contact'}
             <ContactTeaser {...foreground} class={foreground.class}></ContactTeaser>

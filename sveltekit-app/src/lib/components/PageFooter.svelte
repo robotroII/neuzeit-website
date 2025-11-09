@@ -10,14 +10,14 @@
     </svg>
   </div>
   <div class="page-footer__foreground relative bottom-0 w-full h-full">
-    <div class="container-fluid px-5 sm:px-10 py-10 pt-16 h-full">
+    <div class="container-fluid-xl px-5 sm:px-10 py-10 pt-16 h-full">
       <div class="flex flex-col align-start gap-10 h-full">
         <NeuzeitLogo id="footer-logo" class="w-[193px] lg:w-auto mb-4 lg:mb-auto" withText={true} />
 
         <div class="flex flex-col lg:flex-row gap-10 lg:gap-32">
           <div>
             <h2 class="text-base font-bold mb-3 lg:mb-8">{@html m.contactHeadline()}</h2>
-            <dd class="text-sm mb-3">{@html m.contactPostalAddress()}</dd>
+            <dd class="text-sm mb-3 leading-6">{@html m.contactPostalAddress()}</dd>
             <dd class="text-sm mb-3">{@html m.contactPhone()}</dd>
             <dd class="text-sm">{@html m.contactEmail()}</dd>
           </div>
