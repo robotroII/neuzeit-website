@@ -252,6 +252,7 @@
     @apply text-6xl font-bold mb-10;
     letter-spacing: -0.15625rem;
     line-height: 1.25;
+    hyphens: manual;
     @variant lg {
       @apply text-5xl;
       line-height: 1.25;
