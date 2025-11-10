@@ -336,7 +336,7 @@
     }
   }
 } */
-.text-block p { @apply text-base leading-[1.875] mb-4; }
+.text-block p { @apply text-base leading-[1.375] mb-4; }
 .text-block p:last-child { @apply mb-0; }
 .text-block.text-sm p { @apply text-sm; }
 .text-block.text-base p { @apply text-base; }
@@ -498,5 +498,11 @@
     .content-columns {
       @apply lg:items-center 2xl:gap-32;
     }
+  }
+}
+
+.page--case {
+  .page-section {
+    @apply mb-24;
   }
 }
