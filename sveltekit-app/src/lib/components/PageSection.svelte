@@ -84,6 +84,13 @@
       background-size: 100%;
       background-position: top;
     }
+    margin-block-end: 2rem;
+    @variant md {
+      margin-block-end: 4rem;
+    }
+    @variant lg {
+      margin-block-end: 6rem;
+    }
   }
   .page-section__inner {
     position: relative;

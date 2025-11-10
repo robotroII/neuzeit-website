@@ -26,7 +26,10 @@
     {reverse ? 'md:col-start-7 md:col-end-11' : 'md:col-start-1 md:col-end-5'}
     ">
     {#if text.subheadline}
-      <h3 class="grid-teaser__subheadline text-4xl 2xl:text-5xl leading-[1.333] md:leading-[1.25]">{text.subheadline}</h3>
+      <svelte:element
+        this={tag}
+        class="grid-teaser__subheadline text-4xl xl:text-5xl leading-[1.333] md:leading-[1.25]"
+      >{text.subheadline}</svelte:element>
     {/if}
   </div>
 
@@ -123,6 +126,8 @@
     align,
     class: className,
   } = $props();
+
+  let tag = $state(text.headline ? 'h3' : 'h2');
 
   // onMount(() => {
   //   console.log('GridTeaser component mounted with props:', {

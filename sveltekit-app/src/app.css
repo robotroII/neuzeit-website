@@ -179,6 +179,12 @@
     color: var(--color-body-text);
   }
 
+  h1,
+  h2,
+  h3 {
+    hyphens: manual;
+  }
+
   article ul,
   article ol {
     list-style: disc;
@@ -252,7 +258,6 @@
     @apply text-6xl font-bold mb-10;
     letter-spacing: -0.15625rem;
     line-height: 1.25;
-    hyphens: manual;
     @variant lg {
       @apply text-5xl;
       line-height: 1.25;
@@ -292,6 +297,7 @@
     font-weight: normal;
     letter-spacing: -.5px;
     line-height: 3rem;
+    hyphens: manual;
     @variant lg {
       @apply text-4xl;
       line-height: 1.25;
@@ -445,7 +451,7 @@
   border-radius: 4rem;
   padding: .125rem;
   background: var(--gradient-primary);
-  -webkit-mask: 
+  -webkit-mask:
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
