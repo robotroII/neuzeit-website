@@ -482,7 +482,7 @@
 .page--start {
   .section--profile-section {
     .page-section__foreground {
-      @variant lg {
+      @variant md {
         place-content: start !important;
       }
     }
