@@ -106,16 +106,32 @@
   }
 }
 
+
 .page--telekom {
   .section--intro-section {
-    @apply mb-16;
-
+    margin-block-end: 12rem !important;
     .page-section__foreground {
       place-content: start !important;
+      margin-block-start: 6rem;
+      @variant md { margin-block-start: 8rem; }
+      @variant lg { margin-block-start: 4rem; }
+    }
+
+    .page-section__canvas {
+      row-gap: 32px;
+      > .picture {
+        @apply w-[48px] md:w-[100px] lg:w-[60px] xl:w-[120px] mx-auto;
+      }
+      .content-columns {
+        .picture {
+          @apply max-w-[62%] md:max-w-[62%] lg:max-w-[50%] 2xl:max-w-[60%] mx-auto my-12 lg:my-4;
+        }
+      }
     }
 
     .content-columns {
       @apply lg:items-center 2xl:gap-32;
     }
+
   }
 }
