@@ -31,9 +31,9 @@ import '@splidejs/svelte-splide/css/core';
 
 const defaults = {
   rewind: false,
-  perPage: 1.2,
-  gap: '2rem',
-  // padding: { left: '4rem', right: '4rem' },
+  perPage: 1,
+  gap: '1rem',
+  padding: { left: '2rem', right: '2rem' },
   // fixedWidth: 'calc((85% - 2rem))',
   // start: 1,
   focus: 'center',
@@ -44,11 +44,18 @@ const defaults = {
   // wheelsleep: 100,
   // releaseWheel: true,
   // waitForTransition: true,
-  // breakpoints: {
-  //   1024: {
-  //     // perPage: 1,
-  //   },
-  // },
+  breakpoints: {
+    640: {
+      gap: '2rem',
+      padding: { left: '2.5rem', right: '2.5rem' },
+    },
+    768: {
+      gap: '2rem',
+    },
+    1024: {
+      // perPage: 1,
+    },
+  },
   arrows: false,
 }
 

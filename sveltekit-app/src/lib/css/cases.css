@@ -72,7 +72,7 @@
       padding-block-start: 11.5vw;
     }
     @variant xl {
-      padding-block-start: 12vw;
+      padding-block-start: 200px;
     }
 
     .page-section__foreground {
@@ -83,7 +83,7 @@
         @apply md:col-start-2 md:col-span-10
       }
       > picture {
-        @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
+        @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 xl:col-start-2 xl:col-span-10;
         margin-block-start: -16vw;
         @variant md {
           margin-block-start: -2.5vw;
@@ -92,12 +92,15 @@
           margin-block-start: -11.5vw;
         }
         @variant xl {
-          margin-block-start: -12vw;
+          margin-block-start: -200px;
           margin-block-end: 2rem;
         }
       }
       > .text-block {
         @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
+      }
+      .carousel-container {
+        @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 xl:col-start-2 xl:col-span-10;
       }
     }
   }

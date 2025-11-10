@@ -40,23 +40,42 @@
             <BulletList {...foreground} class={foreground.class} />
           {/if}
           {#if foreground._type === 'carousel'}
+          <div class="relative carousel-container">
             <Carousel
               items={foreground.items}
               let:carouselItem={item}
-              class="not-prose relative left-1/2 w-dvw max-w-none -translate-x-1/2 lg:w-auto lg:translate-x-0 lg:left-0"
+              class="not-prose relative left-1/2 w-dvw max-w-none -translate-x-1/2 lg:translate-x-0 lg:left-0"
               options={{
-                  gap: '1.5rem',
-                  // fixedWidth: 'calc((100% - 1.5rem))',
+                  gap: '1rem',
+                  perPage: 1,
+                  padding: { left: '2rem', right: '2rem' },
+                  focus: 0,
                   breakpoints: {
-                    ...(foreground.itemsPerPage
-                    ? {
-                        1024: {
-                          perPage: foreground.itemsPerPage,
-                          // fixedWidth: `calc((100% - 1.5rem) / ${foreground.itemsPerPage})`,
+                    640: {
+                      padding: { left: '2.5rem', right: '2.5rem' },
+                    },
+                    1024: {
+                      padding: { left: 0, right: 0 },
+                      ...(foreground.itemsPerPage
+                      ? {
+                          gap: '2rem',
+                          fixedWidth: `calc((100vw - 5rem - ${foreground.itemsPerPage} * 2rem) / ${foreground.itemsPerPage})`,
                           focus: 0,
-                        },
-                      }
-                    : {})
+                        }
+                      : {
+                        perPage: 1.61
+                      })
+                    },
+                    1280: {
+                      perPage: foreground.itemsPerPage || 1.27
+                    },
+                    1440: {
+                      ...(foreground.itemsPerPage
+                        ? {
+                          fixedWidth: `calc((1360px - 5rem - ${foreground.itemsPerPage} * 2rem) / ${foreground.itemsPerPage})`,
+                        }
+                        : { fixedWidth: 1064 })
+                    },
                   },
               }}
               >
@@ -71,63 +90,85 @@
                 </div>
               {/snippet}
             </Carousel>
+          </div>
           {/if}
           {#if foreground._type === 'caseTeasers'}
-            <Carousel
-              items={foreground.items}
-              let:carouselItem={item}
-              options={{
-                breakpoints: {
-                  1024: {
-                    // perPage: 2.3,
-                    fixedWidth: 'calc((100% - 2rem) / 2)',
-                  },
-                  1240: {
-                    // perPage: 3,
-                    fixedWidth: 'calc((100% - 2rem) / 1.5)',
-                    padding: { right: 'calc((100vw - 80px) / 2)' },
-                  },
-                  1400: {
-                    // perPage: 2.3,
-                    // fixedWidth: 'calc((100% - 2rem) / 3)',
-                    // padding: { left: '10%', right: '10%' },
-                    fixedWidth: 'calc((100% - 2rem) / 2)',
-                    padding: { right: '32%' },
-                  },
-                },
-            }}
-
-              >
-              {#snippet carouselItem(item: any)}
-                <div class="case-teaser">
-                  {#if item.picture}
-                    <Picture
-                      {...item.picture}
-                      class="case-teaser__image mb-4 xl:mb-8 2xl:mb-12"
-                    />
-                  {/if}
-                  <div class="xl:px-4 2xl:px-12">
-                    <h3 class="case-teaser__title text-lg lg:text-xl 2xl:text-3xl font-semibold mb-2 lg:mb-4 xl:mb-6">{item.headline}</h3>
-                    {#if item.article}
-                      <div class="text-block text-sm lg:text-base 2xl:text-2xl mb-6">
-                        <Article content={item.article} />
-                      </div>
+            <div class="relative carousel-container">
+              <Carousel
+                items={foreground.items}
+                let:carouselItem={item}
+                options={{
+                    breakpoints: {
+                      640: {
+                        gap: '2rem',
+                        padding: { left: '2.5rem', right: '2.5rem' },
+                      },
+                      1024: {
+                        padding: { left: 0, right: 0 },
+                        perPage: 1.6,
+                      },
+                      1280: {
+                        gap: '2rem',
+                        perPage: 2.5,
+                        padding: { left: 0, right: '20%' },
+                      },
+                      1440: {
+                        fixedWidth: 1064 / 2,
+                        padding: { left: 0, right: 0 },
+                      }
+                    },
+                  // breakpoints: {
+                  //   1024: {
+                  //     // perPage: 2.3,
+                  //     fixedWidth: 'calc((100% - 2rem) / 2)',
+                  //   },
+                  //   1240: {
+                  //     // perPage: 3,
+                  //     fixedWidth: 'calc((100% - 2rem) / 1.5)',
+                  //     padding: { right: 'calc((100vw - 80px) / 2)' },
+                  //   },
+                  //   1400: {
+                  //     // perPage: 2.3,
+                  //     // fixedWidth: 'calc((100% - 2rem) / 3)',
+                  //     // padding: { left: '10%', right: '10%' },
+                  //     fixedWidth: 'calc((100% - 2rem) / 2)',
+                  //     padding: { right: '32%' },
+                  //   },
+                  // },
+              }}
+  
+                >
+                {#snippet carouselItem(item: any)}
+                  <div class="case-teaser">
+                    {#if item.picture}
+                      <Picture
+                        {...item.picture}
+                        class="case-teaser__image mb-4 xl:mb-8 2xl:mb-12"
+                      />
                     {/if}
-                    {#if item.href}
-                      <Link
-                        slug={item.href}
-                        class="carousel-item__link
-                          link flex items-center gap-4 text-sm lg:text-lg 2xl:text-xl uppercase"
-                        >
-                        <span class="link--text">{@html m.more()}</span>
-                        <span>&rightarrow;</span>
-                      </Link>
-                    {/if}
-
+                    <div class="xl:px-4 2xl:px-12">
+                      <h3 class="case-teaser__title text-lg lg:text-xl 2xl:text-3xl font-semibold mb-2 lg:mb-4 xl:mb-6">{item.headline}</h3>
+                      {#if item.article}
+                        <div class="text-block text-sm lg:text-base 2xl:text-2xl mb-6">
+                          <Article content={item.article} />
+                        </div>
+                      {/if}
+                      {#if item.href}
+                        <Link
+                          slug={item.href}
+                          class="carousel-item__link
+                            link flex items-center gap-4 text-sm lg:text-lg 2xl:text-xl uppercase"
+                          >
+                          <span class="link--text">{@html m.more()}</span>
+                          <span>&rightarrow;</span>
+                        </Link>
+                      {/if}
+  
+                    </div>
                   </div>
-                </div>
-              {/snippet}
-            </Carousel>
+                {/snippet}
+              </Carousel>
+            </div>
           {/if}
           {#if foreground._type === 'scrollTracker'}
             <ScrollTracker items={foreground.items} class={foreground.class} />
@@ -188,6 +229,8 @@
   import CaseHero from './CaseHero.svelte';
 	import Link from './Link.svelte';
 	import * as m from '$lib/paraglide/messages.js';
+
+  import { browser } from '$app/environment';
 
   const pageData = $derived(page.data.page?.data);
   
