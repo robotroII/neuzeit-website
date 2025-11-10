@@ -1,0 +1,118 @@
+.page--case {
+  .page-section {
+    @apply mb-24;
+  }
+
+  .text-block {
+    h3.text-4xl {
+      @apply text-2xl;
+      @variant xl {
+        @apply text-3xl;
+      }
+    }
+
+    p {
+      @apply text-lg;
+      line-height: 1.75;
+
+      @variant lg {
+        @apply text-xl;
+        line-height: 1.75;
+      }
+      @variant xl {
+        @apply text-2xl;
+        line-height: 1.75;
+      }
+    }
+
+    &.text-xs p {
+      @apply text-sm;
+      line-height: 1.875;
+      /* @variant lg {
+        @apply text-base;
+        line-height: 1.875;
+      } */
+    }
+  }
+
+  .section--intro-section {
+    .page-section__canvas {
+      row-gap: 2.5rem;
+      @variant md {
+        row-gap: 3rem;
+      }
+      @variant 2xl {
+        row-gap: 6rem;
+      }
+    }
+    .text-block {
+      p {
+        @apply text-base;
+        line-height: 1.75;
+        @variant md {
+          @apply text-lg;
+          line-height: 1.75;
+        }
+        @variant xl {
+          @apply text-2xl;
+          line-height: 1.75;
+        }
+      }
+    }
+  }
+}
+
+.page--grohe {
+  .section--dxp-section {
+    padding-block-start: 16vw;
+    @variant md {
+      padding-block-start: 2.5vw;
+    }
+    @variant lg {
+      padding-block-start: 11.5vw;
+    }
+    @variant xl {
+      padding-block-start: 12vw;
+    }
+
+    .page-section__foreground {
+      align-content: normal !important;
+    }
+    .page-section__canvas {
+      > * {
+        @apply md:col-start-2 md:col-span-10
+      }
+      > picture {
+        @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
+        margin-block-start: -16vw;
+        @variant md {
+          margin-block-start: -2.5vw;
+        }
+        @variant lg {
+          margin-block-start: -11.5vw;
+        }
+        @variant xl {
+          margin-block-start: -12vw;
+          margin-block-end: 2rem;
+        }
+      }
+      > .text-block {
+        @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
+      }
+    }
+  }
+}
+
+.page--telekom {
+  .section--intro-section {
+    @apply mb-16;
+
+    .page-section__foreground {
+      place-content: start !important;
+    }
+
+    .content-columns {
+      @apply lg:items-center 2xl:gap-32;
+    }
+  }
+}

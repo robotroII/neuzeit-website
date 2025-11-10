@@ -495,20 +495,4 @@
   }
 }
 
-.page--telekom {
-  .section--intro-section {
-    @apply mb-16;
-    .page-section__foreground {
-      place-content: start !important;
-    }
-    .content-columns {
-      @apply lg:items-center 2xl:gap-32;
-    }
-  }
-}
-
-.page--case {
-  .page-section {
-    @apply mb-24;
-  }
-}
+@import './lib/css/cases.css';
