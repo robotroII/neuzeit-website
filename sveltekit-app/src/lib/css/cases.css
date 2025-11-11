@@ -200,4 +200,22 @@
       }
     }
   }
+
+  .section--highlight-section {
+      margin-block-end: 8rem !important;
+      @variant md { margin-block-end: 12rem !important; }
+      @variant lg { margin-block-end: 16rem !important; }
+      @variant 2xl { margin-block-end: 12rem !important; }
+    .page-section__foreground {
+      place-content: start !important;
+      margin-block-start: 12rem;
+      @variant md { margin-block-start: 4rem; }
+      @variant lg { margin-block-start: 4rem; }
+      @variant xl { margin-block-start: 8rem; }
+      @variant 2xl { margin-block-start: 10rem; }
+    }
+    .text-block {
+      @apply md:col-start-3 md:col-span-8 lg:col-start-4 lg:col-span-6;
+    }
+  }
 }
