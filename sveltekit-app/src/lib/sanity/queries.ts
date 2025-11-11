@@ -316,10 +316,10 @@ export const caseQuery = groq`
     references(*[_type == "case" && slug.current == $slug][0]._id)
   ][0].translations[_key == $language][0].value->{
     ${caseTranslationQuery}
-    "slug": (*[_type == "translation.metadata" && references(^._id)][0].translations[].value->slug.current)[0],
-    "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+    "slug": (*[_type == "translation.metadata" && references(^._id)][0].translations[].value->slug.current)[defined(@)][0],
+    "_translations": *[_type == "translation.metadata" && references(^._id)][0].translations[].value->{
       ${caseTranslationQuery}
-      "slug": (*[_type == "translation.metadata" && references(^._id)][0].translations[].value->slug.current)[0],
+      "slug": (*[_type == "translation.metadata" && references(^._id)][0].translations[].value->slug.current)[defined(@)][0],
     },
   }
 `;
