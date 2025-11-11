@@ -497,3 +497,49 @@
 
 @import './lib/css/pages.css';
 @import './lib/css/cases.css';
+
+.page {
+  .section--main-section {
+    min-height: 100dvh;
+
+    .text-block {
+      @apply lg:col-start-3 lg:col-span-8;
+    }
+    h1 {
+      @apply text-3xl mb-8;
+      font-weight: normal;
+      letter-spacing: -.5px;
+      line-height: 3rem;
+      hyphens: auto;
+      position: relative;
+      margin-block-start: 6rem;
+      @variant lg {
+        @apply text-4xl;
+        line-height: 1.25;
+      }
+      @variant xl {
+        @apply text-5xl;
+        line-height: 1.25;
+      }
+      &::after {
+        content: '';
+        display: block;
+        position: relative;
+        margin-block: 2.5rem;
+        width: 8rem;
+        height: 0;
+        background-color: transparent;
+        border-width: 0 0 .0125rem 0;
+        border-image: var(--gradient-primary) 1;
+        border-style: solid;
+      }
+    }
+  }
+}
+
+.page--imprint,
+.page--privacy {
+  p:has(strong) {
+    margin-block-start: 3rem !important;
+  }
+}
