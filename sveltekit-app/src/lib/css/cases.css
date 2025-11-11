@@ -64,16 +64,45 @@
 
 
 .page--grohe {
+  .section--intro-section {
+    margin-block-end: 8rem !important;
+    @variant md {
+      margin-block-end: 12rem !important;
+    }
+    @variant xl {
+      margin-block-end: 16rem !important;
+    }
+  }
+
+  .section--article-section {
+    margin-block-end: 5rem !important;
+    @variant md {
+      margin-block-end: 10rem !important;
+    }
+    @variant lg {
+      margin-block-end: 14rem !important;
+    }
+    @variant xl {
+      margin-block-end: 18rem !important;
+    }
+  }
+
   .section--dxp-section {
     padding-block-start: 16vw;
+    padding-block-end: 6rem;
     @variant md {
       padding-block-start: 2.5vw;
     }
     @variant lg {
-      padding-block-start: 11.5vw;
+      padding-block-start: 14.5vw;
     }
     @variant xl {
       padding-block-start: 200px;
+      margin-block-end: 16rem !important;
+    }
+    @variant 2xl {
+      padding-block-start: 200px;
+      margin-block-end: 8rem !important;
     }
 
     .page-section__foreground {
@@ -105,6 +134,18 @@
       }
     }
   }
+
+  .section--results-section {
+    margin-block-end: 8rem !important;
+    @variant lg {
+      margin-block-end: 16rem !important;
+    }
+    .text-block {
+      @variant lg {
+        margin-block-end: 4rem !important;
+      }
+    }
+  }
 }
 
 
@@ -121,11 +162,14 @@
     .page-section__canvas {
       row-gap: 32px;
       > .picture {
-        @apply w-[48px] md:w-[100px] lg:w-[60px] xl:w-[120px] mx-auto;
+        @apply w-[48px] md:w-[100px] lg:w-[60px] xl:w-[80px] 2xl:mb-8 mx-auto;
+      }
+      .content-columns {
+        @apply 2xl:mb-12;
       }
       .content-columns {
         .picture {
-          @apply max-w-[62%] md:max-w-[62%] lg:max-w-[50%] 2xl:max-w-[60%] mx-auto my-12 lg:my-4;
+          @apply max-w-[62%] md:max-w-[62%] lg:max-w-[50%] 2xl:max-w-[60%] mx-auto lg:my-4;
         }
       }
     }
@@ -136,8 +180,22 @@
 
   }
 
+  .section--challenge-section {
+    .content-columns {
+      @apply lg:col-start-2 lg:col-span-10;
+    }
+    .content-columns__column {
+      &:nth-child(odd) {
+        @variant lg { grid-column: 1 / span 5; }
+      }
+      &:nth-child(even) {
+        @variant lg { grid-column: 8 / span 5; }
+      }
+    }
+  }
+
   .section--process-section {
-    margin-block-end: 6rem;
+    margin-block-end: 6rem !important;
     @variant md { margin-block-end: 12rem !important; }
     @variant lg { margin-block-end: 12rem !important; }
     .page-section__foreground {
@@ -153,14 +211,33 @@
       @apply md:col-start-3 w-dvw max-w-none;
     }
   }
+
+  .section--result-section {
+    margin-block-end: 8rem !important;
+    @variant lg {
+      margin-block-end: 16rem !important;
+    }
+
+    .text-block {
+      @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
+
+      @variant lg {
+        margin-block-end: 4rem !important;
+      }
+    }
+  }
 }
 
 
 .page--dhl {
+  .section--hero-section {
+    @apply xl:mb-0;
+  }
   .section--intro-section {
     margin-block-end: 10rem !important;
     @variant lg { margin-block-end: 32rem !important; }
     @variant xl { margin-block-end: 40rem !important; }
+    @variant 2xl { margin-block-end: 32rem !important; }
     .page-section__foreground {
       place-content: start !important;
       margin-block-start: 8rem;
@@ -189,6 +266,9 @@
   .section--challenge-section,
   .section--process-section {
     .content-columns {
+      margin-block-end: 2rem;
+      /* @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6; */
+
       @variant lg {
         align-items: center;
       }
@@ -201,11 +281,18 @@
         @variant lg { grid-column: 8 / span 5; }
       }
     }
+    .text-block,
+    .image {
+      margin-block-end: 4rem;
+    }
+    .content-columns__column:has(.image) {
+      @apply max-md:row-start-2;
+    }
   }
 
   .section--highlight-section {
       margin-block-end: 8rem !important;
-      @variant md { margin-block-end: 12rem !important; }
+      @variant md { margin-block-end: 16rem !important; }
       @variant lg { margin-block-end: 16rem !important; }
       @variant 2xl { margin-block-end: 12rem !important; }
     .page-section__foreground {
@@ -217,7 +304,22 @@
       @variant 2xl { margin-block-start: 10rem; }
     }
     .text-block {
-      @apply md:col-start-3 md:col-span-8 lg:col-start-4 lg:col-span-6;
+      @apply md:col-start-3 md:col-span-8 lg:col-start-4 lg:col-span-6 xl:mb-12;
+    }
+  }
+
+  .section--result-section {
+    margin-block-end: 8rem !important;
+    @variant lg {
+      margin-block-end: 16rem !important;
+    }
+
+    .text-block {
+      @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
+
+      @variant lg {
+        margin-block-end: 4rem !important;
+      }
     }
   }
 }
@@ -227,7 +329,7 @@
   .section--intro-section {
     margin-block-end: 10rem !important;
     @variant md { margin-block-end: 16rem !important; }
-    @variant xl { margin-block-end: 28rem !important; }
+    @variant xl { margin-block-end: 32rem !important; }
     @variant 2xl { margin-block-end: 20rem !important; }
     .page-section__foreground {
       place-content: start !important;
@@ -256,6 +358,9 @@
 
   .section--challenge-section,
   .section--process-section {
+    margin-block-end: 4rem !important;
+    @variant lg { margin-block-end: 8rem !important; }
+    @variant xl { margin-block-end: 12rem !important; }
     .content-columns {
       @variant lg {
         align-items: center;
@@ -269,18 +374,40 @@
         @variant lg { grid-column: 8 / span 5; }
       }
     }
+    .text-block {
+      margin-block-end: 2rem;
+    }
   }
   .section--process-section {
     /* margin-block-end: 10rem !important; */
-    @variant md { margin-block-end: 12rem !important; }
+    @variant md { margin-block-end: 16rem !important; }
     @variant lg { margin-block-end: 32rem !important; }
+    @variant xl { margin-block-end: 40rem !important; }
+    @variant 2xl { margin-block-end: 24rem !important; }
     .page-section__foreground {
-      place-content: start !important;
+      @variant md {
+        place-content: start !important;
+      }
       margin-block-start: 0;
       @variant md { margin-block-start: 8rem; }
       @variant lg { margin-block-start: 4rem; }
       @variant xl { margin-block-start: 8rem; }
       @variant 2xl { margin-block-start: 10rem; }
+    }
+  }
+
+  .section--result-section {
+    margin-block-end: 8rem !important;
+    @variant lg {
+      margin-block-end: 16rem !important;
+    }
+
+    .text-block {
+      @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
+
+      @variant lg {
+        margin-block-end: 4rem !important;
+      }
     }
   }
 }
