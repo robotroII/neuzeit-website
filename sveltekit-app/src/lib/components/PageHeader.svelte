@@ -29,9 +29,9 @@
             <Navigation
               nav={mainNavItems}
               class="mx-auto flex-col lg:flex-row mb-12 xl:mb-0"
-              ulClass="navigation flex-col xl:flex-row xl:gap-6 xl:items-center xl:gap-8"
+              ulClass="navigation flex-col xl:flex-row xl:gap-6 2xl:gap-8 xl:items-center"
               liClass="xl:place-items-center"
-              aClass="uppercase text-end xl:text-start"
+              aClass="uppercase text-end xl:text-start xl:text-sm 2xl:text-base"
               bind:selectedItem={selectedSlug}
             />
             <div
@@ -49,15 +49,15 @@
                   class="mx-auto flex-col xl:flex-row mb-8 xl:mb-0"
                   ulClass="navigation flex-col xl:flex-row xl:gap-6 xl:items-center xl:gap-8"
                   liClass="xl:place-items-center"
-                  aClass="uppercase text-end xl:text-start"
+                  aClass="uppercase text-end xl:text-start xl:text-sm 2xl:text-base"
                 />
               </div>
             </div>
           </div>
           <div class="shrink flex ms-auto xl:tw-light-mode mt-12 xl:mt-0">
             <div class="page-header--background absolute top-0 right-0 min-h-24 hidden xl:block translate-x-6">
-              <svg width="160" height="96" viewBox="0 0 160 96">
-                <path d="M0 0V9.61542C0 48.9045 36.5678 96 88.7124 96H160V0H0Z" fill="white"/>
+              <svg x="0" y="0" width="200" height="96" viewBox="0, 0, 200, 96">
+                <path d="M88.712,96 C36.568,96 0,48.904 0,9.615 L0,0 L200,0 L200,96 L88.712,96 z" fill="#FFFFFF"/>
               </svg>
             </div>
             <div class="lg:tw-light-mode" data-tw-theme="light">
@@ -66,7 +66,7 @@
                 nav={metaNavItems}
                 ulClass="navigation flex-col xl:flex-row xl:items-center xl:gap-6 xl:gap-8"
                 liClass="xl:place-items-center"
-                aClass="uppercase text-end xl:text-start text-white xl:text-black"
+                aClass="uppercase text-end xl:text-start text-white xl:text-black xl:text-sm 2xl:text-base"
               />
             </div>
           </div>
