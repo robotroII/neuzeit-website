@@ -1,0 +1,31 @@
+.page--start {
+  .section--hero-section {
+    margin-block-end: 0;
+    @variant lg {
+      margin-block-end: 8rem;
+    }
+  }
+
+  .section--profile-section {
+    margin-block-end: 0;
+  }
+
+  .section--agentic-intelligence {
+    @variant md {
+      margin-block-end: 12rem;
+    }
+  }
+
+  .section--tokenomics-section {
+    @variant md {
+      margin-block-end: 16rem;
+    }
+  }
+
+  .section--hcd-section {
+    margin-block-end: 0;
+    @variant md {
+      margin-block-end: 16rem;
+    }
+  }
+}

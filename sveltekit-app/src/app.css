@@ -495,4 +495,5 @@
   }
 }
 
+@import './lib/css/pages.css';
 @import './lib/css/cases.css';
