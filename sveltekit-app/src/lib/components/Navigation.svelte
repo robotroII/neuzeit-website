@@ -4,8 +4,10 @@
       <li class="menu-list-item grid {liClass}">
         <Link
           slug={item.slug}
+          href={item.externalUrl || null}
           class="bold {aClass} {item.linkClass} {item.toggle ? 'hidden xl:block' : 'block'}"
           bind:active={selectedItem}
+          target={item.target || null}
         >{item.text}</Link>
       </li>
     {/each}

@@ -5,6 +5,7 @@
   class:active={page.url.pathname.replace(/\/$/, '') === `${_href.replace(/\/$/, '')}`
     || `${page.url.pathname.split('/')[1]}s` === slug}
   onclick={() => { active = active !== slug ? slug : ''; }}
+  target={target}
   >
   {@render children()}
 </a>
@@ -19,6 +20,7 @@
     class: className = '',
     children,
     active = $bindable(''),
+    target = ''
   } = $props();
 
   const locale = $derived(page.url.pathname && getLocale());

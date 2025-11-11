@@ -352,7 +352,9 @@ export const navQuery = groq`*[_type == "navigation"]{
   items[]{
     ...,
     "slug": @.navigationItemUrl.internalLink->slug.current,
+    "externalUrl": @.navigationItemUrl.externalUrl,
     "text": @.text[0].value,
+    "target": @.navigationItemUrl.target,
   }
 }`;
 

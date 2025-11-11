@@ -5,7 +5,8 @@
         <NeuzeitLogo
           id="header-logo"
           withText
-          colors={themeData} />
+          colors={themeData}
+        />
       <!-- </a> -->
     </div>
 
