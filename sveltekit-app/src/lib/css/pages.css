@@ -1,8 +1,8 @@
 .page--start {
   .section--hero-section {
-    margin-block-end: 0;
+    margin-block-end: 0 !important;
     @variant lg {
-      margin-block-end: 8rem;
+      margin-block-end: 8rem !important;
     }
   }
 
@@ -12,20 +12,225 @@
 
   .section--agentic-intelligence {
     @variant md {
-      margin-block-end: 12rem;
+      margin-block-end: 12rem !important;
     }
   }
 
   .section--tokenomics-section {
     @variant md {
-      margin-block-end: 16rem;
+      margin-block-end: 16rem !important;
     }
   }
 
   .section--hcd-section {
-    margin-block-end: 0;
+    margin-block-end: 0 !important;
     @variant md {
-      margin-block-end: 16rem;
+      margin-block-end: 16rem !important;
+    }
+  }
+}
+
+
+.page--agentic-intelligence {
+  .section--hero-section {
+    margin-block-end: 8rem !important;
+    @variant lg {
+      margin-block-end: 12rem !important;
+    }
+    @variant xl {
+      margin-block-end: 16rem !important;
+    }
+    @variant 2xl {
+      margin-block-end: 8rem !important;
+    }
+  }
+
+  .section--intro-section {
+    @variant md {
+      margin-block-end: 12rem !important;
+    }
+    @variant xl {
+      margin-block-end: 16rem !important;
+    }
+    @variant 2xl {
+      margin-block-end: 6rem !important;
+    }
+    .text-block {
+      margin-block-end: 4rem !important;
+    }
+  }
+
+  .section--list-section {
+    margin-block-end: 8rem !important;
+    @variant md {
+      margin-block-end: 12rem !important;
+    }
+    @variant xl {
+      margin-block-end: 16rem !important;
+    }
+    @variant 2xl {
+      margin-block-end: 20rem !important;
+    }
+  }
+
+  .section--logo-section {
+    margin-block-end: 4rem !important;
+    @variant md {
+      margin-block-end: 8rem !important;
+    }
+    @variant xl {
+      margin-block-end: 12rem !important;
+    }
+    @variant 2xl {
+      margin-block-end: 16rem !important;
+    }
+  }
+
+  .section--scroll-track-section {
+    margin-block-end: 12rem !important;
+    @variant md {
+      margin-block-end: 16rem !important;
+    }
+    @variant lg {
+      margin-block-end: 20rem !important;
+    }
+  }
+}
+
+
+.page--tokenomics {
+  .section--hero-section {
+  }
+  .section--intro-section {
+    @variant md {
+      margin-block-end: 8rem !important;
+    }
+    .text-block {
+      margin-block-end: 2rem !important;
+    }
+  }
+  .section--teaser-section {
+    .page-section__canvas > * {
+      @apply md:col-start-2 md:col-span-10
+    }
+    .page-section__canvas .text-block {
+      @apply lg:col-start-3 lg:col-span-8
+    } 
+  }
+  .section--accordion-section {
+    margin-block-end: 12rem !important;
+    @variant md {
+      margin-block-end: 12rem !important;
+    }
+    @variant lg {
+      margin-block-end: 16rem !important;
+    }
+
+    .page-section__canvas > * {
+      @apply md:col-start-2 md:col-span-10
+    }
+  }
+}
+
+.page--human-centered-design {
+  .section--hero-section {
+    margin-block-end: 0 !important;
+    @variant lg {
+      margin-block-end: 8rem !important;
+    }
+  }
+
+  .section--profile-section {
+    margin-block-start: -4rem !important;
+    margin-block-end: 0 !important;
+    @variant lg {
+      margin-block-start: 0 !important;
+    }
+    .page-section__canvas > * {
+      @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6;
+    }
+  }
+
+  .section--shape-section,
+  .section--stripe-section {
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+  }
+
+  .section--stripe-section {
+    margin-block-start: -2rem !important;
+    @variant md {
+      margin-block-start: -16rem !important;
+      margin-block-end: 24rem !important;
+    }
+    @variant lg {
+      margin-block-start: -4rem !important;
+      margin-block-end: 18rem !important;
+    }
+  }
+
+  .section--tech-section {
+    margin-block-start: -4rem !important;
+    margin-block-end: 24rem !important;
+    @variant md {
+      margin-block-start: 0 !important;
+    }
+    @variant lg {
+      margin-block-end: 20rem !important;
+    }
+    @variant xl {
+      margin-block-end: 12rem !important;
+    }
+    .content-columns {
+      margin-block-end: 4rem;
+      @variant xl {
+        margin-block-end: 8rem !important;
+      }
+    }
+
+    .page-section__canvas > * {
+      @apply md:col-start-2 md:col-span-10
+    }
+
+  }
+
+  .section--impact-section {
+    margin-block-start: -6rem !important;
+    margin-block-end: 0 !important;
+    @variant md {
+      margin-block-start: 0 !important;
+      margin-block-end: 8rem !important;
+    }
+    @variant xl {
+      margin-block-end: 12rem !important;
+    }
+    .page-section__canvas > * {
+      @apply md:col-start-2 md:col-span-10
+    }
+  }
+
+
+  .section--relevance-section {
+    margin-block-end: 8rem !important;
+    @variant xl {
+      margin-block-end: 16rem !important;
+    }
+    .text-block {
+      margin-block-end: 2rem !important;
+      @variant lg {
+        margin-block-end: 4rem !important;
+      }
+      @variant xl {
+        margin-block-end: 8rem !important;
+      }
+    }
+    .page-section__canvas > * {
+      @apply md:col-start-2 md:col-span-10
+    }
+    .page-section__canvas > .text-block {
+      @variant lg {
+        @apply lg:col-start-3 lg:col-span-8;
+      }
     }
   }
 }
