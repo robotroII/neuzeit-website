@@ -25,7 +25,7 @@
     svelte-layout
     w-screen max-w-screen
     page page--{pageData?.slug?.current || pageData?.slug || 'start'}
-    {pageData._type === 'case' ? `page--case case--${pageData.slug?.current || pageData.slug}` : ''}
+    {pageData?._type === 'case' ? `page--case case--${pageData.slug?.current || pageData.slug}` : ''}
     {theme?.class ? theme.class : ''}
     {theme?.colorMode ? `tw-${theme.colorMode}` : ''}
     {theme?.primaryGradient?.colors?.length ? 'has-gradient' : ''}
