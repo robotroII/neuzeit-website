@@ -64,7 +64,7 @@
   
         <div class="flex justify-between items-center">
           <p class="copyright text-dim text-sm">{@html m.footer_copyright()}</p>
-          <div class="lang-switch">
+          <!-- <div class="lang-switch">
             {#each locales as _locale}
               {#if _locale !== locale}
                 <a
@@ -73,7 +73,7 @@
                 >{_locale}</a>
               {/if}
             {/each}
-          </div>
+          </div> -->
         </div>
 
 
