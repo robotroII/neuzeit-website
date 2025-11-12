@@ -4,7 +4,13 @@
   <!-- <img src="{picture}" alt="avatar" class="inline-block rounded-full mb-8 max-w-24" /> -->
   <!-- <h3 class="contact-list-item-title text-4xl mb-4">{name}</h3>
   <p class="text-lg uppercase mb-16">{role}</p> -->
-  <a href={link} role="button" class="btn text-lg border-gradient">{@html m.getInTouch()}</a>
+  <a
+    href={link.externalUrl}
+    role="button"
+    class="btn text-lg border-gradient"
+    target="_blank"
+    rel="noopener noreferrer"
+  >{@html m.getInTouch()}</a>
 </div>
 
 <script lang="ts">

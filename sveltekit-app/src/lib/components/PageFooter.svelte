@@ -21,7 +21,7 @@
             <dd class="text-sm mb-3">{@html m.contactPhone()}</dd>
             <dd class="text-sm">{@html m.contactEmail()}</dd>
           </div>
-    
+
           <!-- {#if page.data && page.data.nav}
             <div>
               <h2 class="text-base font-bold mb-3 lg:mb-8">{page.data.nav.main.headline}</h2>
@@ -42,7 +42,7 @@
               <Navigation nav={page.data.nav.footer} ulClass="lg:gap-4 flex-col" aClass="text-sm" />
             </div>
           {/if}
-    
+
           <div>
               <h2 class="text-base font-bold mb-3 lg:mb-8 uppercase">{@html m.smHeadline()}</h2>
               <div class="svg-icon justify-start text-4xl gap-4">
