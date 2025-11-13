@@ -18,7 +18,10 @@
 </script>
 
 <svelte:head>
-  <title>{pageData?.title}</title>
+  <title>
+    {pageData?.title}
+  </title>
+  <meta property="description" content="{pageData?.description}" />
 </svelte:head>
 
 <div
