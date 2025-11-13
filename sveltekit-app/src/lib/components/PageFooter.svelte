@@ -21,7 +21,7 @@
             <dd class="text-sm mb-3">{@html m.contactPhone()}</dd>
             <dd class="text-sm">{@html m.contactEmail()}</dd>
           </div>
-    
+
           <!-- {#if page.data && page.data.nav}
             <div>
               <h2 class="text-base font-bold mb-3 lg:mb-8">{page.data.nav.main.headline}</h2>
@@ -42,11 +42,11 @@
               <Navigation nav={page.data.nav.footer} ulClass="lg:gap-4 flex-col" aClass="text-sm" />
             </div>
           {/if}
-    
+
           <div>
               <h2 class="text-base font-bold mb-3 lg:mb-8 uppercase">{@html m.smHeadline()}</h2>
               <div class="svg-icon justify-start text-4xl gap-4">
-                <a href="https://www.linkedin.com/company/neuzeit-group" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/neuzeit-gmbh" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <svg id="icon-icons8-linkedin1" viewBox="0 0 32 32">
                     <path d="M28.191 0h-24.381c-2.102 0-3.809 1.707-3.809 3.809v24.381c0 2.102 1.707 3.809 3.809 3.809h24.381c2.102 0 3.809-1.707 3.809-3.809v-24.381c0-2.102-1.707-3.809-3.809-3.809zM9.905 12.191v14.476h-4.572v-14.476h4.572zM5.333 7.977c0-1.066 0.915-1.882 2.286-1.882s2.232 0.815 2.285 1.882c0 1.067-0.853 1.928-2.285 1.928-1.372 0-2.286-0.861-2.286-1.928zM26.667 26.667h-4.572c0 0 0-7.055 0-7.619 0-1.524-0.762-3.048-2.667-3.078h-0.061c-1.844 0-2.606 1.57-2.606 3.078 0 0.693 0 7.619 0 7.619h-4.571v-14.476h4.571v1.95c0 0 1.471-1.95 4.427-1.95 3.025 0 5.478 2.080 5.478 6.293v8.183z"></path>
                   </svg>
@@ -64,7 +64,7 @@
   
         <div class="flex justify-between items-center">
           <p class="copyright text-dim text-sm">{@html m.footer_copyright()}</p>
-          <div class="lang-switch">
+          <!-- <div class="lang-switch">
             {#each locales as _locale}
               {#if _locale !== locale}
                 <a
@@ -73,7 +73,7 @@
                 >{_locale}</a>
               {/if}
             {/each}
-          </div>
+          </div> -->
         </div>
 
 
