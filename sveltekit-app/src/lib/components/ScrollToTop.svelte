@@ -52,7 +52,8 @@
 
 <style lang="postcss">
 	.scroll-to-top {
-		background-color: var(--color-page-background);
+        background-color: oklch(100% 0 0 / 0.15);
+        backdrop-filter: blur(10px);
 		border: 0.0625rem solid oklch(100% 0 0 / 0.15);
 	}
 
