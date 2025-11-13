@@ -1,6 +1,7 @@
 <script lang="ts">
 	import PageHeader from '$lib/components/PageHeader.svelte';
   import PageFooter from '$lib/components/PageFooter.svelte';
+  import ScrollToTop from '$lib/components/ScrollToTop.svelte';
 
   import '@fontsource/sora/300.css';
   import '@fontsource/sora/400.css';
@@ -61,6 +62,8 @@
   
     <PageFooter />
   </div>
+
+  <ScrollToTop />
 </div>
 
 <div class="absolute w-0 h-0 invisible overflow-hidden -z-1">
