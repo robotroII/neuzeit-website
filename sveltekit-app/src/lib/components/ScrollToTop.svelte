@@ -6,8 +6,8 @@
 	onMount(() => {
 		const handleScroll = () => {
 			// Show button after scrolling 200vh (2 times the viewport height)
-			const scrollThreshold = window.innerHeight * 2;
-			visible = window.scrollY > scrollThreshold;
+			const scrollThreshold = window.innerHeight * 4;
+			visible = window.scrollY > scrollThreshold && document.body.clientHeight > window.innerHeight * 5;
 		};
 
 		window.addEventListener('scroll', handleScroll);
