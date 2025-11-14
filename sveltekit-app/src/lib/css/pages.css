@@ -330,3 +330,14 @@
     }
   }
 }
+
+.section--cases-section,
+.section--contact-section {
+  margin-block: 0 8rem;
+  @variant lg {
+    margin-block: 0 12rem;
+  }
+  @variant xl {
+    margin-block: 0 0;
+  }
+}

@@ -372,6 +372,15 @@
     }
   }
 
+  h1:last-child,
+  h2:last-child,
+  h3:last-child,
+  h4:last-child,
+  h5:last-child,
+  h6:last-child {
+    margin-block-end: 0;
+  }
+
   ul {
     @apply flex flex-col gap-4 md:gap-6 mb-8;
   }
