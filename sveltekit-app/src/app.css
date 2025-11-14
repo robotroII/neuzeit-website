@@ -293,9 +293,9 @@
   }
 
 
-  .page-section__canvas .content-columns {
+  /* .page-section__canvas .content-columns {
     margin-block-end: 0;
-  }
+  } */
 
   .content-columns > * {
     grid-column: 1 / -1;
