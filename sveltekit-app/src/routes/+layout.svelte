@@ -12,7 +12,7 @@
 
 	const pageData = $derived(page.data.page?.data);
   const theme = $derived(pageData && pageData.theme);
-  console.log('layout pageData', pageData);
+  // console.log('layout pageData', pageData);
 
 	const { children } = $props();
 </script>

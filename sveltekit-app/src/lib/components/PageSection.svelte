@@ -69,61 +69,60 @@
   /* @plugin '@tailwindcss/forms';
   @plugin '@tailwindcss/typography'; */
 
-  .page-section {
-    --color-section-background: transparent;
-    --section-background-image: none;
-    background-color: var(--color-section-background);
-    background-image: var(--section-background-image);
-    background-repeat: no-repeat;
-    /* background-size: 100%;
-    background-position: top; */
-
-    background-size: 500%;
-    background-position: center;
-    @media screen and (min-width: 768px) {
+  @layer base {
+    .page-section {
+      --color-section-background: transparent;
+      /* --section-background-image: none; */
+      background-color: var(--color-section-background);
+      /* background-image: var(--section-background-image);
+      background-repeat: no-repeat; */
+      /* background-size: 100%;
+      background-position: top; */
+  
+      /* background-size: 500%;
+      background-position: center;
+      @media screen and (min-width: 768px) {
+        background-size: 100%;
+        background-position: top;
+      } */
+    }
+    .page-section__inner {
+      position: relative;
+      --color-section-inner-background: transparent;
+      --section-inner-background-image: none;
+      background-color: var(--color-section-inner-background);
+      background-image: var(--section-inner-background-image);
       background-size: 100%;
       background-position: top;
+      background-repeat: no-repeat;
     }
-    margin-block-end: 2rem;
-    @variant md {
-      margin-block-end: 4rem;
+  
+    .page-section__foreground {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
-    @variant lg {
-      margin-block-end: 6rem;
-    }
-  }
-  .page-section__inner {
-    position: relative;
-    --color-section-inner-background: transparent;
-    --section-inner-background-image: none;
-    background-color: var(--color-section-inner-background);
-    background-image: var(--section-inner-background-image);
-    background-size: 100%;
-    background-position: top;
-    background-repeat: no-repeat;
-  }
-
-  .page-section__foreground {
-    position: relative;
-    z-index: 10;
-  }
-  .page-section__background {
-    display: block;
-    position: relative;
-    z-index: 0;
-    /* min-height: 100vh; */
-    +  .page-section__foreground {
+    .page-section__background {
+      display: block;
       position: absolute;
       inset: 0;
-      z-index: 10;
-
+      z-index: 0;
       display: grid;
       place-content: center;
       grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+      > * {
+        grid-column: 1 / -1;
+      }
+      /* min-height: 100vh; */
+      + .page-section__foreground {
+        /* position: absolute; */
+        z-index: 10;
+      }
     }
+    /* Default: all direct children span full width unless they have their own grid-column class */
+    /* :global(.page-section__canvas > *:not([class*="col-"])) {
+      grid-column: 1 / -1;
+    } */
   }
-  /* Default: all direct children span full width unless they have their own grid-column class */
-  /* :global(.page-section__canvas > *:not([class*="col-"])) {
-    grid-column: 1 / -1;
-  } */
 </style>
