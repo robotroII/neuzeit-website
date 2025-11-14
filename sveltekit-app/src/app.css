@@ -284,6 +284,9 @@
   .section--stripe-section,
   .section--stripes-section {
     margin-block: 0;
+    .page-section__background {
+      position: relative !important;
+    }
     .page-section__foreground {
       min-height: 0 !important;
     }
