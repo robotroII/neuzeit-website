@@ -9,7 +9,8 @@
         theme={{ ...pageData?.theme, ...section.theme }}
         container={section.foreground?.find((foreground: any) => foreground._type !== 'caseTeasers')}
         background={section.background}
-        class={`section--${section.name} ${section.class || ''}`}
+        class={`section--${section.name} ${section.class || ''} ${section.name === 'intro-section' ? 'block' : ''}`}
+        type={section.name.replace('-section', '')}
         >
         {#each section.foreground as foreground}
           {#if foreground._type === 'stage'}

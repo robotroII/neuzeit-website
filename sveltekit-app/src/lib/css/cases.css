@@ -1,6 +1,15 @@
-/* .page--case {
-  .page-section {
-    @apply mb-24;
+.page--case {
+  .page-section:not(.case-hero) {
+    margin-block: 8rem;
+    @variant md {
+      margin-block: 8rem;
+    }
+    @variant lg {
+      margin-block: 10rem;
+    }
+    @variant xl {
+      margin-block: 12rem;
+    }
   }
 
   .text-block {
@@ -31,36 +40,54 @@
     }
   }
 
+  .case-hero {
+    margin-block-end: 4rem;
+  }
+
   .section--intro-section {
-    .page-section__canvas {
-      row-gap: 2.5rem;
+    margin-block-start: 0;
+    @variant md {
+      aspect-ratio: 4 / 5;
+    }
+    @variant lg {
+      aspect-ratio: unset;
+    }
+
+    .page-section__foreground {
+      height: 100%;
+      place-content: end !important;
+      padding-block: 0 4rem;
       @variant md {
-        row-gap: 3rem;
+        padding-block: 0 8rem;
       }
-      @variant 2xl {
-        row-gap: 6rem;
+      @variant xl {
+        padding-block: 12rem;
       }
     }
-    .text-block {
-      p {
-        @apply text-base;
-        line-height: 1.75;
-        @variant lg {
-          @apply text-lg;
-          line-height: 1.75;
-        }
-        @variant xl {
-          @apply text-2xl;
-          line-height: 1.75;
-        }
+    .page-section__canvas {
+      > *:not(:last-child) {
+        margin-block-end: calc(var(--spacing) * 8);
       }
+    }
+    .svg-logo {
+      @apply w-[120px] lg:w-[140px] xl:w-[160px] mx-auto mb-0;
+    }
+    .picture:not(.svg-logo) {
+      @apply max-md:relative max-md:left-1/2 max-md:w-dvw max-md:max-w-none max-md:-translate-x-1/2 xl:col-start-2 xl:col-span-10
+    }
+    .text-block {
+      @apply md:col-start-3 md:col-span-8 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6;
     }
   }
 }
 
+.page--case {
+
+}
+
 
 .page--grohe {
-  .section--intro-section {
+  /* .section--intro-section {
     margin-block-end: 8rem !important;
     @variant md {
       margin-block-end: 12rem !important;
@@ -68,9 +95,9 @@
     @variant xl {
       margin-block-end: 16rem !important;
     }
-  }
+  } */
 
-  .section--article-section {
+  /* .section--article-section {
     margin-block-end: 5rem !important;
     @variant md {
       margin-block-end: 10rem !important;
@@ -81,36 +108,39 @@
     @variant xl {
       margin-block-end: 18rem !important;
     }
-  }
+  } */
 
   .section--dxp-section {
-    padding-block-start: 16vw;
-    padding-block-end: 6rem;
-    @variant md {
-      padding-block-start: 2.5vw;
+    .page-section__background {
+      padding-block-start: 16vw;
+      @variant md {
+        padding-block-start: 14vw;
+      }
+      @variant lg {
+        padding-block-start: 12vw;
+      }
+      @variant xl {
+        padding-block-start: 12rem;
+      }
+      @variant 2xl {
+        padding-block-start: 12.5rem;
+      }
     }
-    @variant lg {
-      padding-block-start: 14.5vw;
-    }
-    @variant xl {
-      padding-block-start: 200px;
-      margin-block-end: 16rem !important;
-    }
-    @variant 2xl {
-      padding-block-start: 200px;
-      margin-block-end: 8rem !important;
-    }
-
     .page-section__foreground {
       align-content: normal !important;
+      padding-block-end: 4rem;
     }
     .page-section__canvas {
       > * {
-        @apply md:col-start-2 md:col-span-10
+        @apply md:col-start-2 md:col-span-10;
+        margin-block-end: 2rem;
+        @variant xl {
+          margin-block-end: 4rem;
+        }
       }
       > picture {
         @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 xl:col-start-2 xl:col-span-10;
-        margin-block-start: -16vw;
+        /* margin-block-start: -16vw;
         @variant md {
           margin-block-start: -2.5vw;
         }
@@ -120,7 +150,7 @@
         @variant xl {
           margin-block-start: -200px;
           margin-block-end: 2rem;
-        }
+        } */
       }
       > .text-block {
         @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
@@ -131,7 +161,7 @@
     }
   }
 
-  .section--results-section {
+  /* .section--results-section {
     margin-block-end: 8rem !important;
     @variant lg {
       margin-block-end: 16rem !important;
@@ -141,7 +171,7 @@
         margin-block-end: 4rem !important;
       }
     }
-  }
+  } */
 }
 
 
@@ -400,4 +430,4 @@
       }
     }
   }
-} */
+}

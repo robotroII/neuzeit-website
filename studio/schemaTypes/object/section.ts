@@ -107,6 +107,24 @@ export const section = defineType({
           type: 'string',
           title: 'Css class',
         }),
+        defineField({
+          name: 'shape',
+          type: 'string',
+          title: 'Predefined shape',
+          options: {
+            list: [
+              { title: 'None', value: '' },
+              { title: 'Top Left', value: 'topLeft' },
+              { title: 'Top Right Bottom Left', value: 'topRightBottomLeft' },
+            ]
+          }
+        }),
+        defineField({
+          name: 'shapeColor',
+          type: 'string',
+          title: 'Predefined shape color',
+          initialValue: '#fff',
+        }),
       ],
     }),
 
