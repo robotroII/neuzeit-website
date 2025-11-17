@@ -11,3 +11,6 @@ export function getLocaleFromPath(pathname: string, locales: string[], baseLocal
   const possibleLocale = pathSegments[0];
   return (locales.includes(possibleLocale as any) ? possibleLocale : baseLocale) as typeof baseLocale;
 }
+
+export { useScrollDirection } from './useScrollDirection.svelte';
+export type { ScrollDirection, ScrollDirectionOptions } from './useScrollDirection.svelte';

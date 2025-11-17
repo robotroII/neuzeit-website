@@ -1,4 +1,4 @@
-<div class="case-hero 3xl:container relative mb-24 {className}">
+<div class="case-hero 3xl:container relative {className}">
   <div class="case-hero--background relative z-0 w-full h-full aspect-[1/1] md:aspect-[4/3] lg:aspect-[21/9]">
     <Image
       {...mainImage}

@@ -20,8 +20,10 @@
       <div class="scroll-tracker__track col-start 1 lg:col-start-2 row-start-1 min-w-[3px] transition-colors duration-300 {activeIndex === index ? 'bg-gradient-to-b from-[var(--gradient-color-1)] via-[var(--gradient-color-2)] to-[var(--gradient-color-3)]' : 'bg-grey'}"></div>
       <div class="col-start-2 lg:col-start-{index % 2 ? '1 ' : '3 '} row-start-1 scroll-tracker__content mb-10 lg:mb-0 py-8 lg: py-16 xl:py-32 grid content-center">
         <div class="scroll-tracker__title font-bold mb-2 lg:mb-6 lg:text-3xl gap-2">
-          <span class="gradient-primary">{index + 1 >= 10 ? '' : '0'}{index + 1}</span>
-		  <span class="scroll-tracker__title-text ms-1">{item.title}</span>
+        <h3 class="text-lg md:text-3xl font-bold mb-4">
+            <span class="gradient-primary">{index + 1 >= 10 ? '' : '0'}{index + 1}</span>
+            <span class="scroll-tracker__title-text ms-1">{item.title}</span>
+        </h3>
         </div>
         <div class="scroll-tracker__description text-sm md:text-base lg:text-xl text-gray-700 dark:text-gray-300">
           <Article content={item.article} />

@@ -44,6 +44,7 @@ const defaults = {
   // wheelsleep: 100,
   // releaseWheel: true,
   // waitForTransition: true,
+  pagination: false,
   breakpoints: {
     640: {
       gap: '2rem',

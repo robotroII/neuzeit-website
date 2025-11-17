@@ -9,6 +9,7 @@ export const load: LayoutServerLoad = async (event) => {
 	const nav = await loadQuery(navQuery, { language });
 
 	return {
+		pathname: event.url.pathname,
 		nav: {
 			main: nav.data.find((item: { [key: string]: any }) => item.slug === 'main-nav'),
 			footer: nav.data.find((item: { [key: string]: any }) => item.slug === 'footer-nav'),

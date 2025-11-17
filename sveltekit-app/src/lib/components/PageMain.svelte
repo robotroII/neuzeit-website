@@ -9,7 +9,8 @@
         theme={{ ...pageData?.theme, ...section.theme }}
         container={section.foreground?.find((foreground: any) => foreground._type !== 'caseTeasers')}
         background={section.background}
-        class={`section--${section.name} ${section.class || ''}`}
+        class={`section--${section.name} ${section.class || ''} ${section.name === 'intro-section' ? 'block' : ''}`}
+        type={section.name.replace('-section', '')}
         >
         {#each section.foreground as foreground}
           {#if foreground._type === 'stage'}
@@ -84,7 +85,7 @@
                   {#if item}
                     <Picture
                       {...item}
-                      class="carousel-item__image mb-4 lg:mb-12 overflow-hidden object-cover w-full h-full"
+                      class="carousel-item__image mb-0 lg:mb-12 overflow-hidden object-cover w-full h-full"
                     />
                   {/if}
                 </div>
@@ -103,11 +104,11 @@
                         gap: '2rem',
                         padding: { left: '2.5rem', right: '2.5rem' },
                       },
-                      1024: {
+                      768: {
                         padding: { left: 0, right: 0 },
                         perPage: 1.6,
                       },
-                      1280: {
+                      920: {
                         gap: '2rem',
                         perPage: 2.5,
                         padding: { left: 0, right: '20%' },
