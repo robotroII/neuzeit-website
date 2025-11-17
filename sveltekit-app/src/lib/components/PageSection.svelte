@@ -67,7 +67,7 @@
         </div>
       {/if}
     {:else}
-      {#if background && type !== 'intro' && type !== 'dxp'}
+      {#if background}
         <div class="{background.class} {loaded ? 'page-section__background' : ''}">
           <div class="container-fluid-xl">
             <Picture
@@ -96,6 +96,7 @@
 
 
 <script lang="ts">
+	import { onMount } from 'svelte';
   import Picture from './Picture.svelte';
 
   let {
@@ -108,6 +109,10 @@
   } = $props();
 
   let loaded = $state(false);
+
+  onMount(() => {
+    console.log('PageSection mounted with background:', className, background);
+  });
 </script>
 
 <style lang="postcss">
