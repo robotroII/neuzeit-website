@@ -66,7 +66,9 @@
   }"
   >
   <div class="min-h-dvh flex flex-col">
-    <PageHeader class="relative z-100" />
+    <PageHeader class="z-100" />
+    <!-- Spacer for fixed header -->
+    <div class="h-[72px] xl:h-[96px]"></div>
   <!-- --{Object.keys(pageData)}-- -->
     <main>
       {#key page.data?.pathname}

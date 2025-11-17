@@ -1,5 +1,11 @@
-<header bind:this={header} class="page-header w-full py-4 xl:py-0 {className}">
-  <div class="container-fluid-xl flex items-center relative">
+<header 
+  bind:this={header} 
+  class="page-header w-full py-4 xl:py-0 fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out {className}"
+  class:translate-y-0={scroll.visible}
+  class:-translate-y-full={!scroll.visible}
+>
+  <div class="page-header--background absolute top-0 right-0 w-full h-full backdrop-blur-md bg-page-background/80"></div>
+  <div class="container-fluid-xl flex items-center relative z-10">
     <div class="grow-0 shrink-0 ms-8 sm:ms-10">
       <!-- <a href="/" aria-label="Home"> -->
         <NeuzeitLogo
@@ -18,13 +24,13 @@
           mt-4 xl:mt-0 pb-8 xl:pb-0
           {expanded ? '[clip-path:inset(0_0_0_0)]' : '[clip-path:inset(0_0_0_100%)]'} xl:[clip-path:none]
           transition-all ease-in-out duration-240
+          bg-page-background/80 xl:bg-transparent
+          backdrop-blur-md xl:backdrop-blur-none
         "
         >
         <div class="w-screen sm:w-auto min-w-[20rem] xl:min-w-auto h-screen xl:h-auto
           flex flex-col xl:flex-row xl:grow items-end xl:items-center gap-4 xl:gap-0
           px-8 sm:px-10 py-8 xl:py-0
-          bg-page-background xl:bg-transparent
-          backdrop-blur-xl xl:backdrop-blur-none
         ">
           <div class="xl:flex xl:grow xl:h-24 mb-4 xl:mb-0">
             <Navigation
@@ -40,7 +46,7 @@
                 {selectedSlug.includes('cases') ? 'xl:[clip-path:inset(0_0_0_0)]' : 'xl:[clip-path:inset(0_0_100%_0)]'}
                 xl:absolute xl:left-0 xl:w-full xl:top-full
                 transition-all ease-in-out duration-200
-                xl:bg-page-background
+                xl:backdrop-blur-md xl:bg-page-background/80
                 box-shadow-xl
                 "
               >
@@ -102,6 +108,7 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
 
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+  import { useScrollDirection } from '$lib/utils/useScrollDirection.svelte';
 
   let {
     class: className = '',
@@ -114,6 +121,9 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
   let expanded = $state(false);
   
   let selectedSlug = $state<string>('');
+
+  // Initialize scroll direction tracking
+  const scroll = useScrollDirection({ threshold: 10 });
 
   const mainNavItems = $derived({
     ...page?.data?.nav?.main,
