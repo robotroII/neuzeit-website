@@ -434,7 +434,7 @@
   }
   .section--process-section {
     .page-section__foreground {
-      padding-block-end: 8rem;
+      padding-block: 4rem 8rem;
     }
     .text-block-headline {
       color: #fff;
