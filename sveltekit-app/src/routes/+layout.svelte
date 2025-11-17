@@ -9,6 +9,8 @@
 	import '../app.css';
 
   import { page } from '$app/state';
+  import { afterNavigate } from '$app/navigation';
+  import { tick } from 'svelte';
 
   import { fade, fly } from 'svelte/transition';
   import { cubicIn, cubicOut } from 'svelte/easing';
@@ -24,6 +26,22 @@
 	const transitionOut = { easing: cubicIn, y: -y, duration };
 
 	const { children } = $props();
+
+	// Scroll to top after out-transition completes but before in-transition starts
+	afterNavigate(async () => {
+		// Wait for the DOM to update
+		await tick();
+		// Scroll happens during the delay period (between out and in transition)
+		setTimeout(() => {
+			window.scrollTo({ top: 0, behavior: 'instant' });
+		}, duration + 50); // Scroll during the delay period
+	});
+
+	// Disable scroll snapshot restoration
+	export const snapshot = {
+		capture: () => ({}),
+		restore: () => {}
+	};
 </script>
 
 <svelte:head>
