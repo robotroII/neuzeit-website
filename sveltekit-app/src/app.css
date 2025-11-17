@@ -63,7 +63,9 @@
   --text-6xl: 64px;
   --text-7xl: 80px;
   --text-8xl: 96px;
-  --tw-leading: 1.25
+  --tw-leading: 1.25;
+
+  --font-weight-bold: 600;
 }
 
 :root {

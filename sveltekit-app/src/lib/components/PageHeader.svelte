@@ -35,10 +35,10 @@
           <div class="xl:flex xl:grow xl:h-24 mb-4 xl:mb-0">
             <Navigation
               nav={mainNavItems}
-              class="mx-auto flex-col lg:flex-row mb-12 xl:mb-0"
+              class="flex-col lg:flex-row ms-12 2xl:ms-auto 2xl:me-[8rem] mb-12 xl:mb-0"
               ulClass="navigation flex-col xl:flex-row xl:gap-6 2xl:gap-8 xl:items-center"
               liClass="xl:place-items-center"
-              aClass="uppercase text-end xl:text-start xl:text-sm 2xl:text-base"
+              aClass="uppercase text-end xl:text-start xl:text-sm 2xl:text-base font-bold"
               bind:selectedItem={selectedSlug}
             />
             <div
@@ -56,7 +56,7 @@
                   class="mx-auto flex-col xl:flex-row mb-8 xl:mb-0"
                   ulClass="navigation flex-col xl:flex-row xl:gap-6 xl:items-center xl:gap-8"
                   liClass="xl:place-items-center"
-                  aClass="uppercase text-end xl:text-start xl:text-sm 2xl:text-base"
+                  aClass="uppercase text-end xl:text-start xl:text-sm 2xl:text-base font-bold font-bold"
                 />
               </div>
             </div>
@@ -73,7 +73,7 @@
                 nav={metaNavItems}
                 ulClass="navigation flex-col xl:flex-row xl:items-center xl:gap-6 xl:gap-8"
                 liClass="xl:place-items-center"
-                aClass="uppercase text-end xl:text-start text-white xl:text-black xl:text-sm 2xl:text-base"
+                aClass="uppercase text-end xl:text-start text-white xl:text-black xl:text-sm 2xl:text-base font-bold"
               />
             </div>
           </div>

@@ -8,7 +8,11 @@
         flex items-center justify-center
         "
         >
-        <img src="{item.src}" alt={item.alt} class="link-list--logo w-full h-auto opacity-50" />
+        <img
+          src={item.src}
+          alt={item.alt || ''}
+          class="link-list--logo w-full h-auto opacity-50"
+        />
       </li>
     {/each}
   </ul>
