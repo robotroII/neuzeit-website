@@ -23,7 +23,7 @@
       <img
         src={src || portableText?.value?.asset?.src}
         onload={(() => loaded = true)}
-        alt={alt}
+        alt="{alt || ''}"
         class={`
           transition-all ease-in-out duration-500
           ${zoom ? 'group-hover:scale-104 group-hoverhover:duration-1200' : ''}

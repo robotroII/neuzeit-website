@@ -108,7 +108,7 @@
                         padding: { left: 0, right: 0 },
                         perPage: 1.6,
                       },
-                      1280: {
+                      920: {
                         gap: '2rem',
                         perPage: 2.5,
                         padding: { left: 0, right: '20%' },
