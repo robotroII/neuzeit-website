@@ -12,6 +12,12 @@
     }
   }
 
+  .page-section:not(.section--intro-section) {
+    .page-section__foreground {
+      min-height: 0;
+    }
+  }
+
   .text-block {
     h3.text-4xl {
       @apply text-2xl;
@@ -47,10 +53,10 @@
   .section--intro-section {
     margin-block-start: 0;
     @variant md {
-      aspect-ratio: 4 / 5;
+      min-height: 125vw;
     }
     @variant lg {
-      aspect-ratio: unset;
+      min-height: unset;
     }
 
     .page-section__foreground {
@@ -72,7 +78,7 @@
     .svg-logo {
       @apply w-[120px] lg:w-[140px] xl:w-[160px] mx-auto mb-0;
     }
-    .picture:not(.svg-logo) {
+    > .picture {
       @apply max-md:relative max-md:left-1/2 max-md:w-dvw max-md:max-w-none max-md:-translate-x-1/2 xl:col-start-2 xl:col-span-10
     }
     .text-block {
@@ -81,21 +87,19 @@
   }
 }
 
-.page--case {
-
-}
-
-
 .page--grohe {
-  /* .section--intro-section {
-    margin-block-end: 8rem !important;
+  .section--intro-section {
+    /* margin-block-end: 8rem !important;
     @variant md {
       margin-block-end: 12rem !important;
     }
     @variant xl {
       margin-block-end: 16rem !important;
+    } */
+    .page-section__foreground {
+      padding-block-start: 8rem;
     }
-  } */
+  }
 
   /* .section--article-section {
     margin-block-end: 5rem !important;
@@ -177,31 +181,55 @@
 
 .page--telekom {
   .section--intro-section {
-    margin-block-end: 12rem !important;
-    .page-section__foreground {
-      place-content: start !important;
-      margin-block-start: 6rem;
-      @variant md { margin-block-start: 8rem; }
-      @variant lg { margin-block-start: 4rem; }
+    .page-section__background {
+      padding-block-end: 24vw;
+      @variant lg {
+        padding-block-end: 12vw;
+      }
+      @variant 2xl {
+        padding-block-end: 10rem;
+      }
     }
-
+    .page-section__foreground {
+      padding-block-start: 8rem;
+      @variant md {
+        padding-block-start: 10rem;
+      }
+      @variant lg {
+        padding-block-start: 6rem;
+      }
+      padding-block-end: 0;
+    }
     .page-section__canvas {
-      row-gap: 32px;
-      > .picture {
-        @apply w-[48px] md:w-[100px] lg:w-[60px] xl:w-[80px] 2xl:mb-8 mx-auto;
+      /* > *:not(:last-child) {
+        margin-block-end: 4rem;
+        @variant xl {
+          margin-block-end: 6rem;
+        }
+      } */
+      .svg-logo {
+        @apply w-[60px] lg:w-[80px] xl:w-[100px];
       }
       .content-columns {
         @apply 2xl:mb-12;
       }
       .content-columns {
         .picture {
-          @apply max-w-[62%] md:max-w-[62%] lg:max-w-[50%] 2xl:max-w-[60%] mx-auto lg:my-4;
+          width: 100%;
+          margin-block-end: 2rem;
+          max-width: 62%;
+          margin-inline: auto;
+          @variant lg {
+            margin-block-end: 0;
+          }
+          /* @apply max-w-[62%] md:max-w-[62%] lg:max-w-[50%] 2xl:max-w-[60%] mx-auto lg:my-4; */
         }
       }
-    }
-
-    .content-columns {
-      @apply lg:items-center;
+      .content-columns__column:last-child {
+        @variant lg {
+          align-self: center;
+        }
+      }
     }
 
   }
@@ -221,14 +249,27 @@
   }
 
   .section--process-section {
-    margin-block-end: 6rem !important;
-    @variant md { margin-block-end: 12rem !important; }
-    @variant lg { margin-block-end: 12rem !important; }
+    .page-section__background {
+      padding-block-end: 24vw;
+      @variant lg {
+        padding-block-end: 12vw;
+      }
+      @variant 2xl {
+        padding-block-end: 10rem;
+      }
+    }
     .page-section__foreground {
+      padding-block-start: 4rem;
+      @variant 2xl {
+        padding-block-start: 8rem;
+      }
       align-content: normal !important;
-      margin-block-start: 6rem;
-      @variant lg { margin-block-start: 12rem; }
-      @variant 2xl { margin-block-start: 20rem; }
+    }
+    .gradient-primary {
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+      background: none;
+      background-clip: unset;
     }
     .text-block {
       @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
@@ -239,61 +280,57 @@
   }
 
   .section--result-section {
-    margin-block-end: 8rem !important;
-    @variant lg {
-      margin-block-end: 16rem !important;
-    }
-
     .text-block {
       @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
-
-      @variant lg {
-        margin-block-end: 4rem !important;
-      }
     }
   }
 }
 
 
 .page--dhl {
-  .section--hero-section {
-    @apply xl:mb-0;
-  }
   .section--intro-section {
-    margin-block-end: 10rem !important;
-    @variant lg { margin-block-end: 32rem !important; }
-    @variant xl { margin-block-end: 40rem !important; }
-    @variant 2xl { margin-block-end: 32rem !important; }
+    .page-section__background {
+      padding-block-end: 20vw;
+      @variant md {
+        padding-block-end: 21vw;
+      }
+      @variant lg {
+        padding-block-end: 22vw;
+      }
+      @variant xl {
+        padding-block-end: 17.8rem;
+      }
+      @variant 2xl {
+        padding-block-end: 19rem;
+      }
+    }
     .page-section__foreground {
-      place-content: start !important;
-      margin-block-start: 8rem;
-      @variant md { margin-block-start: 8rem; }
-      @variant lg { margin-block-start: 4rem; }
-      @variant xl { margin-block-start: 8rem; }
-      @variant 2xl { margin-block-start: 10rem; }
+      padding-block-start: 10rem;
+      padding-block-end: 0;
+      @variant md {
+        padding-block-start: 12rem;
+      }
     }
 
-    .page-section__canvas {
+    /* .page-section__canvas {
       row-gap: 32px;
       .image {
         @apply  mx-auto mb-0;
       }
-    }
+    } */
 
-    .text-block {
+    /* .text-block {
       @apply md:col-start-3 md:col-span-8 lg:col-start-3 lg:col-span-8;
     }
     .picture {
       @apply lg:col-start-2 lg:col-span-10;
       @variant 2xl { margin-block-start: 4rem; }
-    }
+    } */
   }
 
   .section--challenge-section,
   .section--process-section {
     .content-columns {
-      margin-block-end: 2rem;
-
       @variant lg {
         align-items: center;
       }
@@ -316,17 +353,8 @@
   }
 
   .section--highlight-section {
-      margin-block-end: 8rem !important;
-      @variant md { margin-block-end: 16rem !important; }
-      @variant lg { margin-block-end: 16rem !important; }
-      @variant 2xl { margin-block-end: 12rem !important; }
     .page-section__foreground {
-      place-content: start !important;
-      margin-block-start: 12rem;
-      @variant md { margin-block-start: 4rem; }
-      @variant lg { margin-block-start: 4rem; }
-      @variant xl { margin-block-start: 8rem; }
-      @variant 2xl { margin-block-start: 10rem; }
+      padding-block-end: 8rem;
     }
     .text-block {
       @apply md:col-start-3 md:col-span-8 lg:col-start-4 lg:col-span-6 xl:mb-12;
@@ -334,17 +362,8 @@
   }
 
   .section--result-section {
-    margin-block-end: 8rem !important;
-    @variant lg {
-      margin-block-end: 16rem !important;
-    }
-
     .text-block {
       @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
-
-      @variant lg {
-        margin-block-end: 4rem !important;
-      }
     }
   }
 }
@@ -352,36 +371,13 @@
 
 .page--lekkerland {
   .section--intro-section {
-    margin-block-end: 10rem !important;
-    @variant md { margin-block-end: 16rem !important; }
-    @variant xl { margin-block-end: 32rem !important; }
-    @variant 2xl { margin-block-end: 20rem !important; }
     .page-section__foreground {
-      place-content: start !important;
-      margin-block-start: 8rem;
-      @variant md { margin-block-start: 5rem; }
-      @variant lg { margin-block-start: 6rem; }
-      @variant xl { margin-block-start: 8rem; }
-
-      .image { margin: 0; }
-      .image img { margin: 0; }
-    }
-    .svg-logo {
-      @apply w-[160px] lg:w-[140px] xl:w-[180px] mx-auto mb-0;
-    }
-    .text-block {
-      @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6;
-    }
-    .picture:not(.svg-logo) {
-      @apply max-md:relative max-md:left-1/2 max-md:w-dvw max-md:max-w-none max-md:-translate-x-1/2 xl:col-start-2 xl:col-span-10
+      padding-block-start: 8rem;
     }
   }
 
   .section--challenge-section,
   .section--process-section {
-    margin-block-end: 4rem !important;
-    @variant lg { margin-block-end: 8rem !important; }
-    @variant xl { margin-block-end: 12rem !important; }
     .content-columns {
       @variant lg {
         align-items: center;
@@ -395,39 +391,23 @@
         @variant lg { grid-column: 8 / span 5; }
       }
     }
-    .text-block {
-      margin-block-end: 2rem;
-    }
   }
   .section--process-section {
-    @variant md { margin-block-end: 16rem !important; }
-    @variant lg { margin-block-end: 32rem !important; }
-    @variant xl { margin-block-end: 40rem !important; }
-    @variant 2xl { margin-block-end: 24rem !important; }
     .page-section__foreground {
-      @variant md {
-        place-content: start !important;
-      }
-      margin-block-start: 0;
-      @variant md { margin-block-start: 8rem; }
-      @variant lg { margin-block-start: 4rem; }
-      @variant xl { margin-block-start: 8rem; }
-      @variant 2xl { margin-block-start: 10rem; }
+      padding-block-end: 8rem;
+    }
+    .text-block-headline {
+      color: #fff;
+      -webkit-text-fill-color: #fff;
+      background: none;
+      background-clip: unset;
     }
   }
 
   .section--result-section {
-    margin-block-end: 8rem !important;
-    @variant lg {
-      margin-block-end: 16rem !important;
-    }
 
     .text-block {
       @apply md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8;
-
-      @variant lg {
-        margin-block-end: 4rem !important;
-      }
     }
   }
 }
