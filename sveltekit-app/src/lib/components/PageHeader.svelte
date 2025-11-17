@@ -7,13 +7,13 @@
   <div class="page-header--background absolute top-0 right-0 w-full h-full backdrop-blur-md bg-page-background/80"></div>
   <div class="container-fluid-xl flex items-center relative z-10">
     <div class="grow-0 shrink-0 ms-8 sm:ms-10">
-      <!-- <a href="/" aria-label="Home"> -->
+      <a href={`/${locale}`} aria-label="Home">
         <NeuzeitLogo
           id="header-logo"
           withText
           colors={themeData}
         />
-      <!-- </a> -->
+      </a>
     </div>
 
     {#if page.data && page.data.nav}
@@ -105,9 +105,11 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
 <script lang="ts">
   import NeuzeitLogo from '$lib/components/NeuzeitLogo.svelte';
   import Navigation from '$lib/components/Navigation.svelte';
-
+  
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+  import { getLocale, baseLocale } from '$lib/paraglide/runtime.js';
+
   import { useScrollDirection } from '$lib/utils/useScrollDirection.svelte';
 
   let {
@@ -119,8 +121,10 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
 
   let header = $state<HTMLElement>();
   let expanded = $state(false);
-  
+
   let selectedSlug = $state<string>('');
+
+  const locale = $derived(page.url.pathname && getLocale());
 
   // Initialize scroll direction tracking
   const scroll = useScrollDirection({ threshold: 10 });

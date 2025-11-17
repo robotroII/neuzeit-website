@@ -1,5 +1,7 @@
 <section
+  bind:this={sectionRef}
   class="page-section {className}"
+  class:animate-in={isVisible}
   class:tw-dark-mode={theme?.colorMode === 'dark'}
   class:tw-light-mode={theme?.colorMode === 'light'}
   style="
@@ -109,9 +111,35 @@
   } = $props();
 
   let loaded = $state(false);
+  let isVisible = $state(false);
+  let sectionRef: HTMLElement;
 
   onMount(() => {
     console.log('PageSection mounted with background:', className, background);
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isVisible = true;
+            // Optional: stop observing after animation triggers once
+            // observer.unobserve(entry.target);
+          }
+        });
+      },
+      { 
+        threshold: 0.1, // Trigger when 10% of the section is visible
+        rootMargin: '0px 0px -100px 0px' // Trigger 100px before section enters viewport
+      }
+    );
+
+    if (sectionRef) {
+      observer.observe(sectionRef);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
   });
 </script>
 
@@ -136,6 +164,17 @@
         background-size: 100%;
         background-position: top;
       } */
+      
+      /* Scroll animation styles */
+      opacity: 0;
+      transform: translateY(4rem);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      
+      &.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     .quarter-circle-tl {
       /* border-top-left-radius: 50%; */
