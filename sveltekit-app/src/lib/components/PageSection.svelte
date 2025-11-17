@@ -115,8 +115,6 @@
   let sectionRef: HTMLElement;
 
   onMount(() => {
-    console.log('PageSection mounted with background:', className, background);
-    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

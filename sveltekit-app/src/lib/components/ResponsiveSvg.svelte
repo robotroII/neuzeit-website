@@ -209,7 +209,7 @@ $effect(() => {
     // Initial update of the current SVG content
     currentSvgContent = getBestMatchingSvgContent();
     loaded = !!currentSvgContent;
-    console.log('SVGs loaded', loaded);
+    // console.log('SVGs loaded', loaded);
     await tick(); // Ensure DOM is updated
   });
 });
