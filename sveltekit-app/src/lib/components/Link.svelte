@@ -6,6 +6,7 @@
     || `${page.url.pathname.split('/')[1]}s` === slug}
   onclick={() => { active = active !== slug ? slug : ''; }}
   target={target}
+  data-sveltekit-noscroll
   >
   {@render children()}
 </a>
