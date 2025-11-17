@@ -50,6 +50,7 @@
 		"@sanity/svelte-loader": "^1.13.38",
 		"@sanity/visual-editing": "^3.0.5",
 		"@splidejs/svelte-splide": "^0.2.9",
+		"@vercel/analytics": "^1.5.0",
 		"groq": "^3.88.1"
 	}
 }
