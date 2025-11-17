@@ -98,13 +98,11 @@
     /* background-size: 100vw; /* 100dvh; */
   }
   .menu-list-item a.active {
-    @variant xl {
-      background: var(--gradient-primary);
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      /* background-attachment: fixed; */
-      text-decoration: underline;
-    }
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* background-attachment: fixed; */
+    text-decoration: underline;
   }
 
   .link-gradient {

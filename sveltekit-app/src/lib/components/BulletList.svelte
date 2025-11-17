@@ -3,7 +3,7 @@
     {#each items as item}
       <li class="bullet-list__item flex items-center mb-4 gap-2 md:gap-4">
         {#if bullet?.src}
-          <img src="{bullet.src}" alt="{bullet.alt || 'Bullet icon'}" class="bullet-list__icon flex-shrink-0" />
+          <img src="{bullet.src}" alt="{bullet.alt || ''}" class="bullet-list__icon flex-shrink-0" />
         {/if}
         <div class="bullet-list__text">
           {#if item.subheadline}
