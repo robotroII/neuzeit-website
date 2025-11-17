@@ -10,9 +10,18 @@
 
   import { page } from '$app/state';
 
+  import { fade, fly } from 'svelte/transition';
+  import { cubicIn, cubicOut } from 'svelte/easing';
+
 	const pageData = $derived(page.data.page?.data);
   const theme = $derived(pageData && pageData.theme);
-  // console.log('layout pageData', pageData);
+
+	const duration = 300;
+	const delay = duration + 100;
+	const y = 10;
+
+	const transitionIn = { easing: cubicOut, y, duration, delay };
+	const transitionOut = { easing: cubicIn, y: -y, duration };
 
 	const { children } = $props();
 </script>
@@ -60,7 +69,11 @@
     <PageHeader class="relative z-100" />
   <!-- --{Object.keys(pageData)}-- -->
     <main>
-      {@render children()}
+      {#key page.data?.pathname}
+        <div in:fly={transitionIn} out:fly={transitionOut}>
+          {@render children?.()}
+        </div>
+      {/key}
     </main>
   
     <PageFooter />
