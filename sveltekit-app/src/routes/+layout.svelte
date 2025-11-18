@@ -28,19 +28,32 @@
 	const { children } = $props();
 
 	// Scroll to top after out-transition completes but before in-transition starts
-	afterNavigate(async () => {
-		// Wait for the DOM to update
-		await tick();
-		// Scroll happens during the delay period (between out and in transition)
-		setTimeout(() => {
-			window.scrollTo({ top: 0, behavior: 'instant' });
-		}, duration + 50); // Scroll during the delay period
+	// Only for actual navigation (not reloads)
+	afterNavigate(async (navigation) => {
+		// Only scroll to top if it's a navigation (not a reload)
+		if (navigation.type === 'link' || navigation.type === 'goto') {
+			// Wait for the DOM to update
+			await tick();
+			// Scroll happens during the delay period (between out and in transition)
+			setTimeout(() => {
+				window.scrollTo({ top: 0, behavior: 'instant' });
+			}, duration + 50); // Scroll during the delay period
+		}
 	});
 
-	// Disable scroll snapshot restoration
+	// Allow scroll snapshot restoration for browser back/forward and page reloads
 	export const snapshot = {
-		capture: () => ({}),
-		restore: () => {}
+		capture: () => {
+			return {
+				scroll: window.scrollY
+			};
+		},
+		restore: (values) => {
+			// Restore scroll position on page reload or back/forward navigation
+			if (values?.scroll !== undefined) {
+				window.scrollTo({ top: values.scroll, behavior: 'instant' });
+			}
+		}
 	};
 </script>
 
