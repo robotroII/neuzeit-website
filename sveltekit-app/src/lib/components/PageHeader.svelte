@@ -148,6 +148,19 @@ before:content-[''] before:absolute before:top-0 before:left-[100%] before:w-ful
         expanded = false;
       });
     });
+
+    // Close cases navigation on scroll
+    const handleScroll = () => {
+      if (selectedSlug.includes('cases')) {
+        selectedSlug = '';
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   });
 </script>
 
