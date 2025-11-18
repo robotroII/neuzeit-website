@@ -22,10 +22,7 @@
     {#if background?.shape}
       {#if background?.shape === 'topLeft'}
         <div 
-          bind:this={backgroundRef}
-          class="page-section__background inset-0 place-content-stretch"
-          class:animate-background={backgroundVisible}
-          ontransitionend={handleBackgroundTransitionEnd}>
+          class="page-section__background inset-0 place-content-stretch">
           <div
             class="bg-shape container-fluid-xl inset-0 w-full h-full"
             style="--shape-bg-color: {background?.shapeColor || '#fff'};"
@@ -43,10 +40,7 @@
       {/if}
       {#if background?.shape === 'topRightBottomLeft'}
         <div 
-          bind:this={backgroundRef}
-          class="page-section__background inset-0 place-content-stretch"
-          class:animate-background={backgroundVisible}
-          ontransitionend={handleBackgroundTransitionEnd}>
+          class="page-section__background inset-0 place-content-stretch">
           <div
             class="bg-shape container-fluid-xl inset-0 w-full h-full"
             style="--shape-bg-color: {background?.shapeColor || '#fff'};"
@@ -68,10 +62,7 @@
     {:else}
       {#if background}
         <div 
-          bind:this={backgroundRef}
-          class="{background.class} {loaded ? 'page-section__background' : ''}"
-          class:animate-background={backgroundVisible}
-          ontransitionend={handleBackgroundTransitionEnd}>
+          class="{background.class} {loaded ? 'page-section__background' : ''}">
           <div class="container-fluid-xl">
             <Picture
               {...background}
@@ -84,9 +75,7 @@
       {/if}
     {/if}
     <div 
-      bind:this={foregroundRef}
-      class="page-section__foreground max-w-none"
-      class:animate-foreground={foregroundVisible}>
+      class="page-section__foreground max-w-none">
       <div
         bind:this={canvasRef}
         class="page-section__canvas w-full lg:w-auto
@@ -117,35 +106,16 @@
 
   let loaded = $state(false);
   let isVisible = $state(false);
-  let backgroundVisible = $state(false);
-  let foregroundVisible = $state(false);
   let sectionRef: HTMLElement;
-  let backgroundRef: HTMLElement | undefined;
-  let foregroundRef: HTMLElement | undefined;
   let canvasRef: HTMLElement | undefined;
 
-  // Handle transition end for background
-  function handleBackgroundTransitionEnd(event: TransitionEvent) {
-    // Only trigger on opacity transition to avoid multiple triggers
-    if (event.propertyName === 'opacity' && backgroundVisible) {
-      foregroundVisible = true;
-    }
-  }
-
   onMount(() => {
-    // Observer for the section itself (triggers background animation)
+    // Observer for the section itself
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             isVisible = true;
-            backgroundVisible = true;
-            
-            // If no background, trigger foreground immediately
-            if (!background) {
-              foregroundVisible = true;
-            }
-            // If background exists, the transitionend handler will trigger foreground
           }
         });
       },
@@ -162,7 +132,7 @@
           if (entry.isIntersecting) {
             // Add animate class to trigger animation
             entry.target.classList.add('animate-child');
-            // Optional: stop observing after animation triggers
+            // Stop observing after animation triggers
             childObserver.unobserve(entry.target);
           }
         });
@@ -179,7 +149,6 @@
 
     // Observe all direct children of the canvas
     if (canvasRef) {
-      // Wait for foreground to be ready before observing children
       const setupChildObservers = () => {
         const children = canvasRef?.children;
         if (children) {
@@ -265,20 +234,12 @@
       + .page-section__foreground {
         z-index: 10;
       }
-      
-      /* Background animation - starts hidden */
-      opacity: 0;
-      transition: opacity 0.3s ease-out;
-      
-      &.animate-background {
-        opacity: 1;
-      }
     }
     
     /* Child elements animation */
     .page-section__canvas > :global(*) {
       opacity: 0;
-      transform: translateY(2rem);
+      transform: translateY(4rem);
       transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                   transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -289,11 +250,6 @@
       transform: translateY(0);
     }
     
-    /* Fallback: animate all children when foreground is visible (for immediate visibility) */
-    .page-section__foreground.animate-foreground .page-section__canvas > :global(*) {
-      /* Keep transition properties but don't force visibility */
-      /* Children will animate individually via viewport detection */
-    }
     /* Default: all direct children span full width unless they have their own grid-column class */
     /* :global(.page-section__canvas > *:not([class*="col-"])) {
       grid-column: 1 / -1;
