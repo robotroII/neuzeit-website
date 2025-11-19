@@ -51,7 +51,7 @@ export function isSvgUrl(url: string): boolean {
 export function shouldUseResponsiveSvg(src: string | undefined, sources: Source[] = [], portableText: any = null): boolean {
   const imageUrl = src || portableText?.value?.asset?.src;
   if (imageUrl && isSvgUrl(imageUrl)) return true;
-  return sources.some(source => source.srcset && isSvgUrl(source.srcset));
+  return sources?.some(source => source.srcset && isSvgUrl(source.srcset));
 }
 </script>
 
