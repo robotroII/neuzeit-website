@@ -35,7 +35,7 @@
           <div class="xl:flex xl:grow xl:h-24 mb-4 xl:mb-0">
             <Navigation
               nav={mainNavItems}
-              class="flex-col lg:flex-row ms-12 2xl:ms-auto 2xl:me-[8rem] mb-12 xl:mb-0"
+              class="flex-col lg:flex-row ms-12 2xl:mx-auto mb-12 xl:mb-0"
               ulClass="navigation flex-col xl:flex-row xl:gap-6 2xl:gap-8 xl:items-center"
               liClass="xl:place-items-center"
               aClass="uppercase text-end xl:text-start xl:text-sm 2xl:text-base font-bold"
