@@ -62,18 +62,18 @@
   
         <hr class="w-full border-t border-dim" />
   
-        <div class="flex justify-between items-center">
+        <div class="flex flex-col-reverse lg:flex-row lg:justify-between lg:items-center gap-6">
           <p class="copyright text-dim text-sm">{@html m.footer_copyright()}</p>
-          <!-- <div class="lang-switch">
+          <div class="lang-switc lg:me-18">
             {#each locales as _locale}
               {#if _locale !== locale}
                 <a
-                  class="text-sm text-dim uppercase hover:underline p-2"
+                  class="text-sm text-dim uppercase hover:underline font-bold"
                   href={localizeHref(page.url.pathname, { locale: _locale })}
                 >{_locale}</a>
               {/if}
             {/each}
-          </div> -->
+          </div>
         </div>
 
 

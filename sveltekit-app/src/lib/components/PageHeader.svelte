@@ -43,6 +43,7 @@
             />
             <div
               class="
+                cases-navigation-container
                 {selectedSlug.includes('cases') ? 'xl:[clip-path:inset(0_0_0_0)]' : 'xl:[clip-path:inset(0_0_100%_0)]'}
                 xl:absolute xl:left-0 xl:w-full xl:top-full
                 transition-all ease-in-out duration-200

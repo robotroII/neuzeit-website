@@ -139,6 +139,13 @@
 }
 
 .page--human-centered-design {
+  .section--hero-section {
+    .text-block {
+      @variant md {
+        max-width: 32rem !important;
+      }
+    }
+  }
   .section--profile-section {
     margin-block-end: 4rem;
     @variant xl {

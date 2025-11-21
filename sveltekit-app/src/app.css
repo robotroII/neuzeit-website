@@ -518,5 +518,54 @@
   pointer-events: none;
 }
 
+@variant xl {
+  :focus-visible {
+    outline: none;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      width: 100%;
+      /* border-radius: 2rem; */
+      padding: .0625rem;
+      background: var(--gradient-primary);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+    }
+  }
+  .border-gradient:focus-visible {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 0rem;
+      padding: .75rem !important;
+      bottom: unset;
+      left: unset;
+      width: unset;
+      background: var(--gradient-primary);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+    }
+    &::after {
+      content: none;
+    }
+  }
+  .cases-navigation-container:focus-within {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+
 @import './lib/css/pages.css';
 @import './lib/css/cases.css';
