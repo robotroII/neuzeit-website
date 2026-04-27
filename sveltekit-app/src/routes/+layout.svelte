@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from "svelte";
 	import PageHeader from '$lib/components/PageHeader.svelte';
   import PageFooter from '$lib/components/PageFooter.svelte';
   import ScrollToTop from '$lib/components/ScrollToTop.svelte';
@@ -56,16 +55,6 @@
 			}
 		}
 	};
-
-onMount(async () => {
-  const widget = document?.querySelector('nz-consent-widget')
-  if (widget) {
-    console.log('widget', widget);
-    widget.style.setProperty('--nz-accent', pageData?.theme?.primaryColor)
-    widget.style.setProperty('--nz-accent-start', pageData?.theme?.primaryGradient?.colors[0])
-    widget.style.setProperty('--nz-accent-end', pageData?.theme?.primaryGradient?.colors[pageData?.theme?.primaryGradient?.colors.length - 1])
-  }
-});
 </script>
 
 <svelte:head>

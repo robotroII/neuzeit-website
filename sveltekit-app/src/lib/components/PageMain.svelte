@@ -158,9 +158,7 @@
                         <Link
                           slug={item.href}
                           class="carousel-item__link
-                            link flex items-center gap-4 text-sm lg:text-lg 2xl:text-xl uppercase
-                            mb-4
-                          "
+                            link flex items-center gap-4 text-sm lg:text-lg 2xl:text-xl uppercase"
                           >
                           <span class="link--text">{@html m.more()}</span>
                           <span>&rightarrow;</span>

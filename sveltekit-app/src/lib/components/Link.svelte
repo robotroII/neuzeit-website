@@ -7,7 +7,6 @@
   onclick={() => { active = active !== slug ? slug : ''; }}
   target={target}
   data-sveltekit-noscroll
-  tabindex={0}
   >
   {@render children()}
 </a>
