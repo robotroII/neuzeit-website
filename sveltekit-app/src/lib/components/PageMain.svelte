@@ -158,7 +158,9 @@
                         <Link
                           slug={item.href}
                           class="carousel-item__link
-                            link flex items-center gap-4 text-sm lg:text-lg 2xl:text-xl uppercase"
+                            link flex items-center gap-4 text-sm lg:text-lg 2xl:text-xl uppercase
+                            mb-4
+                          "
                           >
                           <span class="link--text">{@html m.more()}</span>
                           <span>&rightarrow;</span>
@@ -246,7 +248,7 @@
     for (let i = 0; i < multiplier; i++) {
       colors = [
         ...colors,
-        ...pageData.theme?.primaryGradient?.colors
+        ...(pageData.theme?.primaryGradient?.colors || [])
       ];
     }
     gradientColors = colors.map(color => {

@@ -11,11 +11,13 @@
         >{item.text}</Link>
       </li>
     {/each}
+    {@render append?.()}
   </ul>
 </nav>
 
 <script lang="ts">
 	import Link from './Link.svelte';
+  import type { Snippet } from 'svelte';
 
   let {
     nav,
@@ -24,6 +26,15 @@
     liClass = '',
     aClass = '',
     selectedItem = $bindable<string>(''),
+    append,
+  }: {
+    nav: any;
+    class?: string;
+    ulClass?: string;
+    liClass?: string;
+    aClass?: string;
+    selectedItem?: string;
+    append?: Snippet;
   } = $props();
 
   // let selectedItem = $state<string>('');

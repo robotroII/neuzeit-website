@@ -39,7 +39,13 @@
           {#if page.data && page.data.nav}
             <div>
               <h2 class="text-base font-bold mb-3 lg:mb-8">{@html m.legalLinksHeadline()}</h2>
-              <Navigation nav={page.data.nav.footer} ulClass="lg:gap-4 flex-col" aClass="text-sm" />
+              <Navigation nav={page.data.nav.footer} ulClass="lg:gap-4 flex-col" aClass="text-sm">
+                {#snippet append()}
+                  <li class="menu-list-item grid">
+                    <button class="bold text-sm block text-left" data-nz-consent-settings>{m.cookieSettings()}</button>
+                  </li>
+                {/snippet}
+              </Navigation>
             </div>
           {/if}
 
@@ -64,7 +70,7 @@
   
         <div class="flex flex-col-reverse lg:flex-row lg:justify-between lg:items-center gap-6">
           <p class="copyright text-dim text-sm">{@html m.footer_copyright()}</p>
-          <div class="lang-switc lg:me-18">
+          <div class="lang-switch lg:me-18">
             {#each locales as _locale}
               {#if _locale !== locale}
                 <a
