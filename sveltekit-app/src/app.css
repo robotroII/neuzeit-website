@@ -145,9 +145,15 @@
     @apply max-w-10xl mx-auto;
   }
 
+  button,
   [role=button] {
     cursor: pointer;
+    
+    &:is([disabled]) {
+      cursor: not-allowed;
+    }
   }
+
   .svg-icon {
     display: inline-flex;
     justify-content: center;

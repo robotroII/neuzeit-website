@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from "svelte";
 	import PageHeader from '$lib/components/PageHeader.svelte';
   import PageFooter from '$lib/components/PageFooter.svelte';
   import ScrollToTop from '$lib/components/ScrollToTop.svelte';
@@ -15,6 +16,11 @@
   import { fade, fly } from 'svelte/transition';
   import { cubicIn, cubicOut } from 'svelte/easing';
 
+  import { browser } from '$app/environment'
+	import { locales, getLocale, localizeHref } from '$lib/paraglide/runtime';
+
+  const widgetUrl = '/nz-consent.iife.js'
+
 	const pageData = $derived(page.data.page?.data);
   const theme = $derived(pageData && pageData.theme);
 
@@ -26,6 +32,8 @@
 	const transitionOut = { easing: cubicIn, y: -y, duration };
 
 	const { children } = $props();
+
+  const locale = $derived((() => getLocale())());
 
 	// Scroll to top after out-transition completes but before in-transition starts
 	// Only for actual navigation (not reloads)
@@ -55,6 +63,15 @@
 			}
 		}
 	};
+
+// $effect(() => {
+//   const widget = document?.querySelector('nz-consent-widget')
+//   if (widget) {
+//     widget.style.setProperty('--nz-accent', pageData?.theme?.primaryColor)
+//     widget.style.setProperty('--nz-accent-start', pageData?.theme?.primaryGradient?.colors[0])
+//     widget.style.setProperty('--nz-accent-end', pageData?.theme?.primaryGradient?.colors[pageData?.theme?.primaryGradient?.colors.length - 1])
+//   }
+// });
 </script>
 
 <svelte:head>
@@ -62,6 +79,9 @@
     {pageData?.title}
   </title>
   <meta property="description" content="{pageData?.description}" />
+  {#if browser}
+    <script src={widgetUrl}></script>
+  {/if}
 </svelte:head>
 
 <div
@@ -100,6 +120,7 @@
     <PageHeader class="z-100" />
     <!-- Spacer for fixed header -->
     <div class="h-[72px] xl:h-[96px]"></div>
+
   <!-- --{Object.keys(pageData)}-- -->
     <main>
       {#key page.data?.pathname}
@@ -138,6 +159,22 @@
     </defs>
   </svg>
 </div>
+
+<nz-consent-widget
+  appKey="nz_kxhwEUM7T0Dgfigixosz_yQh"
+  fallbackConfig={{
+    enabledCategories: ["essential"],
+    cookies: [
+      { name: "PARAGLIDE_LOCALE", domain: ".www.neuzeit.ai", category: "essential" }
+    ],
+  }}
+  locale={locale}
+  color-primary={pageData?.theme?.primaryColor}
+  color-gradient-start={pageData?.theme?.primaryGradient?.colors[0]}
+  color-gradient-end={pageData?.theme?.primaryGradient?.colors[pageData?.theme?.primaryGradient?.colors.length - 1]}
+  privacy-policy-url={`/${locale}/privacy`}
+  no-float
+></nz-consent-widget>
 
 <style lang="postcss">
 </style>
