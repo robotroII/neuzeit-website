@@ -4919,6 +4919,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       baseUrl: $$props.apiUrl || window.location.origin,
       appKey: $$props.appKey
     });
+    const offlineMode = !!$$props.fallbackConfig && !$$props.apiUrl;
     const visitorId = getOrCreateVisitorId($$props.appKey);
     const resolvedTheme = /* @__PURE__ */ user_derived(() => () => {
       if (theme() === "auto") {
@@ -4947,48 +4948,53 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       };
     });
     async function init() {
-      var _a2, _b2, _c;
+      var _a2, _b2, _c, _d, _e, _f, _g, _h, _i, _j, _k;
       const stored = getStoredConsent($$props.appKey);
-      try {
-        const config = await client.getConfig();
-        store.config = config;
-        const shouldGeoTarget = $$props.geoTargeting ?? config.geoTargeting;
+      const fbScripts = (((_a2 = $$props.fallbackConfig) == null ? void 0 : _a2.scripts) ?? []).map((s, i) => ({
+        id: `fb-${i}`,
+        appId: $$props.appKey,
+        pattern: s.pattern,
+        category: s.category,
+        description: "",
+        provider: "",
+        createdAt: 0
+      }));
+      const useOfflineFallback = !!$$props.fallbackConfig && !$$props.apiUrl;
+      if (useOfflineFallback) {
+        const shouldGeoTarget = $$props.geoTargeting ?? ((_b2 = $$props.fallbackConfig) == null ? void 0 : _b2.geoTargeting);
         if (shouldGeoTarget && !isLikelyEU()) {
+          store.config = {
+            appKey: $$props.appKey,
+            name: "",
+            enabledCategories: ((_c = $$props.fallbackConfig) == null ? void 0 : _c.enabledCategories) ?? [
+              "essential",
+              "functional",
+              "analytics",
+              "marketing",
+              "social_media"
+            ],
+            geoTargeting: ((_d = $$props.fallbackConfig) == null ? void 0 : _d.geoTargeting) ?? false,
+            cookiePolicyUrl: ((_e = $$props.fallbackConfig) == null ? void 0 : _e.cookiePolicyUrl) ?? "",
+            privacyPolicyUrl: ((_f = $$props.fallbackConfig) == null ? void 0 : _f.privacyPolicyUrl) ?? "",
+            cookies: ((_g = $$props.fallbackConfig) == null ? void 0 : _g.cookies) ?? [],
+            storageItems: [],
+            scripts: fbScripts
+          };
           store.acceptAll();
           const prefs = store.preferences;
           saveConsent($$props.appKey, prefs, visitorId);
           unblockScripts(prefs);
           const g = window["__NzConsent"];
           if (g) {
-            (_a2 = g.release) == null ? void 0 : _a2.call(g, prefs);
+            (_h = g.release) == null ? void 0 : _h.call(g, prefs);
             if (g._observer) {
               g._observer.disconnect();
               g._observer = null;
             }
           }
-          (_b2 = $$props.onaccept) == null ? void 0 : _b2.call($$props, prefs);
+          (_i = $$props.onaccept) == null ? void 0 : _i.call($$props, prefs);
           return;
         }
-        blockScripts(config.scripts);
-        if (stored) {
-          store.preferences = stored.preferences;
-          store.state = "hidden";
-          unblockScripts(stored.preferences);
-          return;
-        }
-        store.state = "banner";
-      } catch (err) {
-        console.error("[NzConsent] Failed to load config:", err);
-        store.error = err instanceof Error ? err.message : "Failed to load config";
-        const fbScripts = (((_c = $$props.fallbackConfig) == null ? void 0 : _c.scripts) ?? []).map((s, i) => ({
-          id: `fb-${i}`,
-          appId: $$props.appKey,
-          pattern: s.pattern,
-          category: s.category,
-          description: "",
-          provider: "",
-          createdAt: 0
-        }));
         blockScripts(fbScripts);
         if ($$props.fallbackConfig) {
           const allCategories = [
@@ -5005,7 +5011,68 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
             geoTargeting: $$props.fallbackConfig.geoTargeting ?? false,
             cookiePolicyUrl: $$props.fallbackConfig.cookiePolicyUrl ?? "",
             privacyPolicyUrl: $$props.fallbackConfig.privacyPolicyUrl ?? "",
-            cookies: [],
+            cookies: $$props.fallbackConfig.cookies ?? [],
+            storageItems: [],
+            scripts: fbScripts
+          };
+        }
+        if (stored) {
+          store.preferences = stored.preferences;
+          store.state = "hidden";
+          unblockScripts(stored.preferences);
+          return;
+        }
+        store.state = "banner";
+        return;
+      }
+      try {
+        const config = await client.getConfig();
+        store.config = config;
+        const shouldGeoTarget = $$props.geoTargeting ?? config.geoTargeting;
+        if (shouldGeoTarget && !isLikelyEU()) {
+          store.acceptAll();
+          const prefs = store.preferences;
+          saveConsent($$props.appKey, prefs, visitorId);
+          unblockScripts(prefs);
+          const g = window["__NzConsent"];
+          if (g) {
+            (_j = g.release) == null ? void 0 : _j.call(g, prefs);
+            if (g._observer) {
+              g._observer.disconnect();
+              g._observer = null;
+            }
+          }
+          (_k = $$props.onaccept) == null ? void 0 : _k.call($$props, prefs);
+          return;
+        }
+        blockScripts(config.scripts);
+        if (stored) {
+          store.preferences = stored.preferences;
+          store.state = "hidden";
+          unblockScripts(stored.preferences);
+          return;
+        }
+        store.state = "banner";
+      } catch (err) {
+        console.error("[NzConsent] Failed to load config:", err);
+        store.error = err instanceof Error ? err.message : "Failed to load config";
+        blockScripts(fbScripts);
+        if ($$props.fallbackConfig) {
+          const allCategories = [
+            "essential",
+            "functional",
+            "analytics",
+            "marketing",
+            "social_media"
+          ];
+          store.config = {
+            appKey: $$props.appKey,
+            name: "",
+            enabledCategories: $$props.fallbackConfig.enabledCategories ?? allCategories,
+            geoTargeting: $$props.fallbackConfig.geoTargeting ?? false,
+            cookiePolicyUrl: $$props.fallbackConfig.cookiePolicyUrl ?? "",
+            privacyPolicyUrl: $$props.fallbackConfig.privacyPolicyUrl ?? "",
+            cookies: $$props.fallbackConfig.cookies ?? [],
             storageItems: [],
             scripts: fbScripts
           };
@@ -5035,8 +5102,10 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       const prefs = store.preferences;
       saveConsent($$props.appKey, prefs, visitorId);
       unblockScripts(prefs);
-      client.logConsent(visitorId, prefs, "grant").catch(() => {
-      });
+      if (!offlineMode) {
+        client.logConsent(visitorId, prefs, "grant").catch(() => {
+        });
+      }
       (_a2 = $$props.onaccept) == null ? void 0 : _a2.call($$props, prefs);
     }
     function handleRejectAll() {
@@ -5044,8 +5113,10 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       store.rejectAll();
       const prefs = store.preferences;
       saveConsent($$props.appKey, prefs, visitorId);
-      client.logConsent(visitorId, prefs, "grant").catch(() => {
-      });
+      if (!offlineMode) {
+        client.logConsent(visitorId, prefs, "grant").catch(() => {
+        });
+      }
       (_a2 = $$props.onreject) == null ? void 0 : _a2.call($$props);
     }
     function handleSavePreferences(prefs) {
@@ -5055,8 +5126,10 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       const finalPrefs = store.preferences;
       saveConsent($$props.appKey, finalPrefs, visitorId);
       unblockScripts(finalPrefs);
-      client.logConsent(visitorId, finalPrefs, isUpdate ? "update" : "grant").catch(() => {
-      });
+      if (!offlineMode) {
+        client.logConsent(visitorId, finalPrefs, isUpdate ? "update" : "grant").catch(() => {
+        });
+      }
       if (isUpdate) {
         (_a2 = $$props.onupdate) == null ? void 0 : _a2.call($$props, finalPrefs);
       } else {
@@ -5252,27 +5325,39 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
           __publicField(this, "_widget", null);
         }
         connectedCallback() {
+          var _a2, _b2, _c, _d, _e, _f, _g;
           const appKey = this.getAttribute("appkey") ?? "";
           if (!appKey) return;
+          const props = this;
+          let fallbackConfig = props["fallbackConfig"] ?? void 0;
+          const fallbackConfigAttr = this.getAttribute("fallback-config");
+          if (!fallbackConfig && fallbackConfigAttr) {
+            try {
+              fallbackConfig = JSON.parse(fallbackConfigAttr);
+            } catch (err) {
+              console.error("[NzConsent] Invalid fallback-config JSON:", err);
+            }
+          }
           this._widget = render({
             target: this,
-            appKey,
-            apiUrl: this.getAttribute("apiurl") ?? void 0,
-            locale: this.getAttribute("locale") ?? void 0,
-            position: this.getAttribute("position") ?? void 0,
-            theme: this.getAttribute("theme") ?? void 0,
-            privacyPolicyUrl: this.getAttribute("privacy-policy-url") ?? void 0,
-            cookiePolicyUrl: this.getAttribute("cookie-policy-url") ?? void 0,
-            geoTargeting: this.hasAttribute("geo-targeting"),
-            showFloatingButton: !this.hasAttribute("no-float"),
+            appKey: props["appKey"] ?? this.getAttribute("appkey") ?? "",
+            apiUrl: props["apiUrl"] ?? this.getAttribute("apiurl") ?? void 0,
+            locale: props["locale"] ?? this.getAttribute("locale") ?? void 0,
+            position: props["position"] ?? this.getAttribute("position") ?? void 0,
+            theme: props["theme"] ?? this.getAttribute("theme") ?? void 0,
+            privacyPolicyUrl: props["privacyPolicyUrl"] ?? this.getAttribute("privacy-policy-url") ?? void 0,
+            cookiePolicyUrl: props["cookiePolicyUrl"] ?? this.getAttribute("cookie-policy-url") ?? void 0,
+            geoTargeting: props["geoTargeting"] ?? this.hasAttribute("geo-targeting"),
+            showFloatingButton: props["showFloatingButton"] ?? !this.hasAttribute("no-float"),
+            fallbackConfig: props["fallbackConfig"] ?? void 0,
             colors: {
-              primary: this.getAttribute("color-primary") ?? void 0,
-              gradientStart: this.getAttribute("color-gradient-start") ?? void 0,
-              gradientEnd: this.getAttribute("color-gradient-end") ?? void 0,
-              background: this.getAttribute("color-background") ?? void 0,
-              text: this.getAttribute("color-text") ?? void 0,
-              border: this.getAttribute("color-border") ?? void 0,
-              toggleActive: this.getAttribute("color-toggle-active") ?? void 0
+              primary: ((_a2 = props["colors"]) == null ? void 0 : _a2.primary) ?? this.getAttribute("color-primary") ?? void 0,
+              gradientStart: ((_b2 = props["colors"]) == null ? void 0 : _b2.gradientStart) ?? this.getAttribute("color-gradient-start") ?? void 0,
+              gradientEnd: ((_c = props["colors"]) == null ? void 0 : _c.gradientEnd) ?? this.getAttribute("color-gradient-end") ?? void 0,
+              background: ((_d = props["colors"]) == null ? void 0 : _d.background) ?? this.getAttribute("color-background") ?? void 0,
+              text: ((_e = props["colors"]) == null ? void 0 : _e.text) ?? this.getAttribute("color-text") ?? void 0,
+              border: ((_f = props["colors"]) == null ? void 0 : _f.border) ?? this.getAttribute("color-border") ?? void 0,
+              toggleActive: ((_g = props["colors"]) == null ? void 0 : _g.toggleActive) ?? this.getAttribute("color-toggle-active") ?? void 0
             }
           });
         }
@@ -5300,7 +5385,8 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         "color-background",
         "color-text",
         "color-border",
-        "color-toggle-active"
+        "color-toggle-active",
+        "fallback-config"
       ]), _b)
     );
   }

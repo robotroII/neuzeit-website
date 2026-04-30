@@ -162,7 +162,12 @@
 
 <nz-consent-widget
   appKey="nz_kxhwEUM7T0Dgfigixosz_yQh"
-  apiUrl="http://localhost:3002"
+  fallbackConfig={{
+    enabledCategories: ["essential"],
+    cookies: [
+      { name: "PARAGLIDE_LOCALE", domain: ".www.neuzeit.ai", category: "essential" }
+    ],
+  }}
   locale={locale}
   color-primary={pageData?.theme?.primaryColor}
   color-gradient-start={pageData?.theme?.primaryGradient?.colors[0]}
