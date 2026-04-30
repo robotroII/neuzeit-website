@@ -1,3 +1,4 @@
+(function(){var s=document.createElement('style');s.textContent=":root,:host{--nz-bg: #050508;--nz-bg-elevated: #0d0d12;--nz-bg-surface: #16161e;--nz-bg-glass: rgba(255, 255, 255, .04);--nz-bg-hover: rgba(255, 255, 255, .05);--nz-input-bg: rgba(255, 255, 255, .04);--nz-input-border: rgba(255, 255, 255, .1);--nz-text: #fafafa;--nz-text-secondary: #a1a1aa;--nz-text-tertiary: #71717a;--nz-grad: linear-gradient(135deg, #22d3ee 0%, #6366f1 50%, #a855f7 100%);--nz-grad-subtle: linear-gradient(135deg, rgba(34,211,238,.45) 0%, rgba(99,102,241,.45) 50%, rgba(168,85,247,.45) 100%);--nz-grad-faint: linear-gradient(135deg, rgba(34,211,238,.18) 0%, rgba(99,102,241,.18) 50%, rgba(168,85,247,.18) 100%);--nz-accent: #818cf8;--nz-accent-hover: #6366f1;--nz-accent-fg: #09090b;--nz-accent-start: #22d3ee;--nz-accent-mid: #6366f1;--nz-accent-end: #a855f7;--nz-success: #4ade80;--nz-error: #f87171;--nz-warning: #fbbf24;--nz-border: #3f3f46;--nz-border-hover: #52525b;--nz-font: \"Inter\", system-ui, -apple-system, sans-serif;--nz-font-mono: \"JetBrains Mono\", ui-monospace, monospace;--nz-radius-sm: 4px;--nz-radius-md: 8px;--nz-radius-lg: 16px;--nz-radius: var(--nz-radius-md);--nz-shadow-sm: 0 1px 2px rgba(0, 0, 0, .5);--nz-shadow-md: 0 4px 12px rgba(0, 0, 0, .6);--nz-shadow-lg: 0 8px 32px rgba(0, 0, 0, .7);--nz-shadow-glow: 0 0 32px rgba(99, 102, 241, .15);--nz-transition: .2s ease;--nz-transition-slow: .4s ease;--nz-space-xs: 4px;--nz-space-sm: 8px;--nz-space-md: 16px;--nz-space-lg: 24px;--nz-space-xl: 32px}@media(prefers-color-scheme:light){:root:not(.dark),:host:not(.dark){color-scheme:light;--nz-bg: #f8f8fc;--nz-bg-elevated: #ffffff;--nz-bg-surface: #f0f0f5;--nz-bg-glass: rgba(255, 255, 255, .82);--nz-bg-hover: rgba(0, 0, 0, .03);--nz-input-bg: rgba(255, 255, 255, .7);--nz-input-border: rgba(0, 0, 0, .12);--nz-text: #0a0a0f;--nz-text-secondary: #52525b;--nz-text-tertiary: #71717a;--nz-grad-subtle: linear-gradient(135deg, rgba(34,211,238,.55) 0%, rgba(99,102,241,.55) 50%, rgba(168,85,247,.55) 100%);--nz-grad-faint: linear-gradient(135deg, rgba(34,211,238,.2) 0%, rgba(99,102,241,.2) 50%, rgba(168,85,247,.2) 100%);--nz-accent: #4f46e5;--nz-accent-hover: #4338ca;--nz-accent-fg: #ffffff;--nz-success: #16a34a;--nz-error: #dc2626;--nz-warning: #d97706;--nz-border: #e4e4e7;--nz-border-hover: #d4d4d8;--nz-shadow-sm: 0 1px 3px rgba(0, 0, 0, .08);--nz-shadow-md: 0 4px 12px rgba(0, 0, 0, .12);--nz-shadow-lg: 0 8px 32px rgba(0, 0, 0, .16);--nz-shadow-glow: 0 0 32px rgba(99, 102, 241, .08)}}[data-nz-theme=dark],.dark,.nz-dark{color-scheme:dark}[data-nz-theme=light],.nz-light{color-scheme:light;--nz-bg: #f8f8fc;--nz-bg-elevated: #ffffff;--nz-bg-surface: #f0f0f5;--nz-bg-glass: rgba(255, 255, 255, .82);--nz-bg-hover: rgba(0, 0, 0, .03);--nz-input-bg: rgba(255, 255, 255, .7);--nz-input-border: rgba(0, 0, 0, .12);--nz-text: #0a0a0f;--nz-text-secondary: #52525b;--nz-text-tertiary: #71717a;--nz-grad-subtle: linear-gradient(135deg, rgba(34,211,238,.55) 0%, rgba(99,102,241,.55) 50%, rgba(168,85,247,.55) 100%);--nz-grad-faint: linear-gradient(135deg, rgba(34,211,238,.2) 0%, rgba(99,102,241,.2) 50%, rgba(168,85,247,.2) 100%);--nz-accent: #4f46e5;--nz-accent-hover: #4338ca;--nz-accent-fg: #ffffff;--nz-success: #16a34a;--nz-error: #dc2626;--nz-warning: #d97706;--nz-border: #e4e4e7;--nz-border-hover: #d4d4d8;--nz-shadow-sm: 0 1px 3px rgba(0, 0, 0, .08);--nz-shadow-md: 0 4px 12px rgba(0, 0, 0, .12);--nz-shadow-lg: 0 8px 32px rgba(0, 0, 0, .16);--nz-shadow-glow: 0 0 32px rgba(99, 102, 241, .08)}@media(prefers-reduced-motion:reduce){:root,:host{--nz-transition: 0ms;--nz-transition-slow: 0ms}}.nz-btn.svelte-fr2yeo{display:inline-flex;align-items:center;justify-content:center;gap:var(--nz-space-sm);padding:var(--nz-space-sm) var(--nz-space-md);border:1px solid transparent;border-radius:var(--nz-radius-sm);font-family:var(--nz-font);font-size:.875rem;font-weight:600;line-height:1.25rem;cursor:pointer;transition:opacity var(--nz-transition),transform .1s ease;position:relative;white-space:nowrap}.nz-btn.svelte-fr2yeo:disabled{opacity:.35;cursor:not-allowed}.nz-btn.svelte-fr2yeo:active:not(:disabled){transform:scale(.97)}.nz-btn.svelte-fr2yeo:focus-visible{outline:2px solid var(--nz-accent);outline-offset:2px}.nz-btn--primary.svelte-fr2yeo{background:linear-gradient(135deg,var(--nz-accent-start, #22d3ee) 0%,var(--nz-accent-end, #6366f1) 100%);color:#fff;border-color:transparent}.nz-btn--primary.svelte-fr2yeo:hover:not(:disabled){opacity:.88}.nz-btn--secondary.svelte-fr2yeo{background:transparent;color:var(--nz-text);border-color:var(--nz-border)}.nz-btn--secondary.svelte-fr2yeo:hover:not(:disabled){border-color:var(--nz-border-hover);background:var(--nz-bg-elevated)}.nz-btn--ghost.svelte-fr2yeo{background:linear-gradient(transparent,transparent) padding-box,linear-gradient(135deg,color-mix(in srgb,var(--nz-accent-start, #22d3ee) 35%,transparent),color-mix(in srgb,var(--nz-accent-end, #6366f1) 35%,transparent)) border-box;color:var(--nz-text-secondary)}.nz-btn--ghost.svelte-fr2yeo:hover:not(:disabled){background:linear-gradient(transparent,transparent) padding-box,linear-gradient(135deg,color-mix(in srgb,var(--nz-accent-start, #22d3ee) 65%,transparent),color-mix(in srgb,var(--nz-accent-end, #6366f1) 65%,transparent)) border-box;color:var(--nz-text)}.nz-btn__spinner.svelte-fr2yeo{width:1rem;height:1rem;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:svelte-fr2yeo-nz-spin .6s linear infinite}.nz-btn__content--hidden.svelte-fr2yeo{visibility:hidden}@keyframes svelte-fr2yeo-nz-spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.nz-btn.svelte-fr2yeo{transition:none}.nz-btn.svelte-fr2yeo:active:not(:disabled){transform:none}.nz-btn__spinner.svelte-fr2yeo{animation:none;border-top-color:currentColor;opacity:.4}}.nz-banner.svelte-frsc0w{position:fixed;z-index:9999;background:var(--nz-bg);border:1px solid var(--nz-border);box-shadow:var(--nz-shadow-md);padding:20px 24px;display:flex;gap:16px;font-family:var(--nz-font);animation:svelte-frsc0w-nz-slide-in .3s ease-out}.nz-banner--bottom.svelte-frsc0w{bottom:0;left:0;right:0;border-radius:var(--nz-radius-lg) var(--nz-radius-lg) 0 0;flex-direction:row;align-items:center}.nz-banner--top.svelte-frsc0w{top:0;left:0;right:0;border-radius:0 0 var(--nz-radius-lg) var(--nz-radius-lg);flex-direction:row;align-items:center}.nz-banner--bottom-left.svelte-frsc0w{bottom:16px;left:16px;max-width:420px;border-radius:var(--nz-radius-lg);flex-direction:column}.nz-banner--bottom-right.svelte-frsc0w{bottom:16px;right:16px;max-width:420px;border-radius:var(--nz-radius-lg);flex-direction:column}@container (max-width: 600px){.nz-banner--bottom.svelte-frsc0w,.nz-banner--top.svelte-frsc0w{flex-direction:column}}.nz-banner__content.svelte-frsc0w{flex:1;min-width:0}.nz-banner__title.svelte-frsc0w{font-size:16px;font-weight:600;margin:0 0 4px;color:var(--nz-text)}.nz-banner__description.svelte-frsc0w{margin:0;color:var(--nz-text-secondary);font-size:14px}.nz-banner__links.svelte-frsc0w{margin:8px 0 0;display:flex;gap:12px;font-size:13px}.nz-banner__link.svelte-frsc0w{color:var(--nz-accent);text-decoration:underline;text-underline-offset:2px}.nz-banner__link.svelte-frsc0w:hover{text-decoration-thickness:2px}.nz-banner__actions.svelte-frsc0w{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;align-items:center}@keyframes svelte-frsc0w-nz-slide-in{0%{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.nz-banner.svelte-frsc0w{animation:none}}.nz-toggle.svelte-iz14do{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 16px}.nz-toggle__info.svelte-iz14do{flex:1;min-width:0}.nz-toggle__label.svelte-iz14do{font-weight:500;font-size:14px;color:var(--nz-text);cursor:pointer;display:flex;align-items:center;gap:8px}.nz-toggle__badge.svelte-iz14do{font-size:11px;font-weight:400;color:var(--nz-text-secondary);background:var(--nz-border);padding:1px 6px;border-radius:4px}.nz-toggle__description.svelte-iz14do{margin:2px 0 0;font-size:13px;color:var(--nz-text-secondary)}.nz-toggle__switch.svelte-iz14do{position:relative;flex-shrink:0;width:44px;height:24px}.nz-toggle__input.svelte-iz14do{position:absolute;width:100%;height:100%;opacity:0;cursor:pointer;margin:0;z-index:1}.nz-toggle__input.svelte-iz14do:disabled{cursor:not-allowed}.nz-toggle__track.svelte-iz14do{position:absolute;top:0;right:0;bottom:0;left:0;background:var(--nz-border);border-radius:12px;transition:background var(--nz-transition);pointer-events:none}.nz-toggle__input.svelte-iz14do:checked+.nz-toggle__track:where(.svelte-iz14do){background:var(--nz-consent-toggle-active, var(--nz-accent))}.nz-toggle__input.svelte-iz14do:disabled+.nz-toggle__track:where(.svelte-iz14do){opacity:.6}.nz-toggle__input.svelte-iz14do:focus-visible+.nz-toggle__track:where(.svelte-iz14do){outline:2px solid var(--nz-accent);outline-offset:2px}.nz-toggle__thumb.svelte-iz14do{position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px #00000026}.nz-toggle__input.svelte-iz14do:checked+.nz-toggle__track:where(.svelte-iz14do) .nz-toggle__thumb:where(.svelte-iz14do){transform:translate(20px)}@media(prefers-reduced-motion:reduce){.nz-toggle__track.svelte-iz14do,.nz-toggle__thumb.svelte-iz14do{transition:none}}.nz-cookie-table-wrapper.svelte-kmvg96{padding:0 16px 12px;overflow-x:auto}.nz-cookie-table__caption.svelte-kmvg96{text-align:left;font-size:11px;font-weight:500;color:var(--nz-text-tertiary);padding:4px 8px;caption-side:top}.nz-cookie-table.svelte-kmvg96{width:100%;border-collapse:collapse;font-size:12px}.nz-cookie-table.svelte-kmvg96 th:where(.svelte-kmvg96){text-align:left;font-weight:500;color:var(--nz-text-secondary);padding:6px 8px;border-bottom:1px solid var(--nz-border);white-space:nowrap}.nz-cookie-table.svelte-kmvg96 td:where(.svelte-kmvg96){padding:6px 8px;border-bottom:1px solid var(--nz-border);color:var(--nz-text);vertical-align:top}.nz-cookie-table.svelte-kmvg96 tbody:where(.svelte-kmvg96) tr:where(.svelte-kmvg96):last-child td:where(.svelte-kmvg96){border-bottom:none}.nz-cookie-table__name.svelte-kmvg96 code:where(.svelte-kmvg96){font-family:ui-monospace,monospace;font-size:12px;background:var(--nz-border);padding:1px 4px;border-radius:3px}.nz-cookie-table__desc-col.svelte-kmvg96{max-width:200px}@container (max-width: 400px){.nz-cookie-table__desc-col.svelte-kmvg96{display:none}}.nz-prefs.svelte-qjmdg0{border:none;padding:0;margin:auto;max-width:min(560px,calc(100vw - 32px));max-height:min(80vh,700px);width:100%;background:var(--nz-bg);color:var(--nz-text);font-family:var(--nz-font);border-radius:var(--nz-radius-lg);box-shadow:var(--nz-shadow-lg);overflow:hidden;animation:svelte-qjmdg0-nz-dialog-in .25s ease-out;container-type:inline-size}.nz-prefs.svelte-qjmdg0::backdrop{background:#00000080;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);animation:svelte-qjmdg0-nz-fade-in .2s ease-out}.nz-prefs__container.svelte-qjmdg0{display:flex;flex-direction:column;max-height:min(80vh,700px)}.nz-prefs__header.svelte-qjmdg0{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--nz-border);flex-shrink:0}.nz-prefs__title.svelte-qjmdg0{font-size:18px;font-weight:600;margin:0}.nz-prefs__body.svelte-qjmdg0{padding:16px 20px;overflow-y:auto;flex:1}.nz-prefs__description.svelte-qjmdg0{margin:0 0 12px;color:var(--nz-text-secondary);font-size:14px}.nz-prefs__links.svelte-qjmdg0{margin:0 0 16px;display:flex;gap:12px;font-size:13px}.nz-prefs__link.svelte-qjmdg0{color:var(--nz-accent);text-decoration:underline;text-underline-offset:2px}.nz-prefs__categories.svelte-qjmdg0{display:flex;flex-direction:column;gap:2px}.nz-prefs__category.svelte-qjmdg0{border:1px solid var(--nz-border);border-radius:var(--nz-radius-md);overflow:hidden;transition:border-color var(--nz-transition)}.nz-prefs__category.svelte-qjmdg0:has(:where(.svelte-qjmdg0):checked){border-color:color-mix(in srgb,var(--nz-accent) 40%,transparent)}.nz-prefs__category--expanded.svelte-qjmdg0{border-color:var(--nz-accent)}.nz-prefs__details-toggle.svelte-qjmdg0{display:flex;align-items:center;gap:4px;padding:4px 16px 8px;background:none;border:none;color:var(--nz-accent);font-size:12px;cursor:pointer}.nz-prefs__details-toggle.svelte-qjmdg0:hover{text-decoration:underline}.nz-prefs__chevron.svelte-qjmdg0{transition:transform var(--nz-transition)}.nz-prefs__category--expanded.svelte-qjmdg0 .nz-prefs__chevron:where(.svelte-qjmdg0){transform:rotate(180deg)}.nz-prefs__footer.svelte-qjmdg0{display:flex;gap:8px;padding:16px 20px;border-top:1px solid var(--nz-border);justify-content:flex-end;flex-shrink:0;flex-wrap:wrap;align-items:center}@container (max-width: 400px){.nz-prefs__footer.svelte-qjmdg0{flex-direction:column}}@keyframes svelte-qjmdg0-nz-dialog-in{0%{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}@keyframes svelte-qjmdg0-nz-fade-in{0%{opacity:0}to{opacity:1}}@media(prefers-reduced-motion:reduce){.nz-prefs.svelte-qjmdg0{animation:none}.nz-prefs.svelte-qjmdg0::backdrop{animation:none}.nz-prefs__category.svelte-qjmdg0,.nz-prefs__chevron.svelte-qjmdg0{transition:none}}.nz-consent-root.svelte-1iqzoy1{font-family:var(--nz-font);font-size:14px;line-height:1.5;color:var(--nz-text);container-type:inline-size}.nz-consent-reopen.svelte-1iqzoy1{position:fixed;bottom:16px;left:16px;z-index:9998;width:40px;height:40px;border-radius:50%;background:var(--nz-accent);color:var(--nz-accent-fg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--nz-shadow-md);transition:transform var(--nz-transition),opacity var(--nz-transition)}.nz-consent-reopen.svelte-1iqzoy1:hover{transform:scale(1.1)}.nz-consent-reopen.svelte-1iqzoy1:focus-visible{outline:2px solid var(--nz-accent);outline-offset:2px}\n";document.head.appendChild(s);}());
 var NzConsent = (function(exports) {
   "use strict";var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
@@ -11,7 +12,7 @@ var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot
 var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), setter ? setter.call(obj, value) : member.set(obj, value), value);
 var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
 
-  var _commit_callbacks, _discard_callbacks, _fork_commit_callbacks, _pending, _blocking_pending, _deferred, _roots, _new_effects, _dirty_effects, _maybe_dirty_effects, _skipped_branches, _unskipped_branches, _decrement_queued, _blockers, _Batch_instances, is_deferred_fn, is_blocked_fn, process_fn, traverse_fn, defer_effects_fn, commit_fn, _anchor, _hydrate_open, _props, _children, _effect, _main_effect, _pending_effect, _failed_effect, _offscreen_fragment, _local_pending_count, _pending_count, _pending_count_update_queued, _dirty_effects2, _maybe_dirty_effects2, _effect_pending, _effect_pending_subscriber, _Boundary_instances, hydrate_resolved_content_fn, hydrate_failed_content_fn, hydrate_pending_content_fn, render_fn, resolve_fn, run_fn, update_pending_count_fn, handle_error_fn, _a, _batches, _onscreen, _offscreen, _outroing, _transition, _commit, _discard;
+  var _commit_callbacks, _discard_callbacks, _fork_commit_callbacks, _pending, _blocking_pending, _deferred, _roots, _new_effects, _dirty_effects, _maybe_dirty_effects, _skipped_branches, _unskipped_branches, _decrement_queued, _blockers, _Batch_instances, is_deferred_fn, is_blocked_fn, process_fn, traverse_fn, defer_effects_fn, commit_fn, _anchor, _hydrate_open, _props, _children, _effect, _main_effect, _pending_effect, _failed_effect, _offscreen_fragment, _local_pending_count, _pending_count, _pending_count_update_queued, _dirty_effects2, _maybe_dirty_effects2, _effect_pending, _effect_pending_subscriber, _Boundary_instances, hydrate_resolved_content_fn, hydrate_failed_content_fn, hydrate_pending_content_fn, render_fn, resolve_fn, run_fn, update_pending_count_fn, handle_error_fn, _a, _batches, _onscreen, _offscreen, _outroing, _transition, _commit, _discard, _b;
   const EACH_ITEM_REACTIVE = 1;
   const EACH_INDEX_REACTIVE = 1 << 1;
   const EACH_ITEM_IMMUTABLE = 1 << 4;
@@ -185,12 +186,13 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         create_user_effect(fn);
       }
     }
+    if (component !== void 0) {
+      context.x = component;
+    }
     context.i = true;
     component_context = context.p;
-    return (
-      /** @type {T} */
-      {}
-    );
+    return component ?? /** @type {T} */
+    {};
   }
   function is_runes() {
     return true;
@@ -615,7 +617,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     return false;
   };
   process_fn = function() {
-    var _a2, _b;
+    var _a2, _b2;
     if (flush_count++ > 1e3) {
       batches.delete(this);
       infinite_loop_guard();
@@ -683,7 +685,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     }
     if (next_batch !== null) {
       batches.add(next_batch);
-      __privateMethod(_b = next_batch, _Batch_instances, process_fn).call(_b);
+      __privateMethod(_b2 = next_batch, _Batch_instances, process_fn).call(_b2);
     }
   };
   /**
@@ -735,7 +737,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     }
   };
   commit_fn = function() {
-    var _a2, _b, _c;
+    var _a2, _b2, _c;
     for (const batch of batches) {
       var is_earlier = batch.id < this.id;
       var sources = [];
@@ -807,7 +809,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     for (const batch of batches) {
       if (__privateGet(batch, _blockers).has(this)) {
         __privateGet(batch, _blockers).delete(this);
-        if (__privateGet(batch, _blockers).size === 0 && !__privateMethod(_b = batch, _Batch_instances, is_deferred_fn).call(_b)) {
+        if (__privateGet(batch, _blockers).size === 0 && !__privateMethod(_b2 = batch, _Batch_instances, is_deferred_fn).call(_b2)) {
           batch.activate();
           __privateMethod(_c = batch, _Batch_instances, process_fn).call(_c);
         }
@@ -1641,12 +1643,12 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     }
   }
   function freeze_derived_effects(derived2) {
-    var _a2, _b;
+    var _a2, _b2;
     if (derived2.effects === null) return;
     for (const e of derived2.effects) {
       if (e.teardown || e.ac) {
         (_a2 = e.teardown) == null ? void 0 : _a2.call(e);
-        (_b = e.ac) == null ? void 0 : _b.abort(STALE_REACTION);
+        (_b2 = e.ac) == null ? void 0 : _b2.abort(STALE_REACTION);
         e.teardown = noop;
         e.ac = null;
         remove_reactions(e, 0);
@@ -2776,7 +2778,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
   }
   let last_propagated_event = null;
   function handle_event_propagation(event) {
-    var _a2, _b;
+    var _a2, _b2;
     var handler_element = this;
     var owner_document = (
       /** @type {Node} */
@@ -2826,7 +2828,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         var parent_element = current_target.assignedSlot || current_target.parentNode || /** @type {any} */
         current_target.host || null;
         try {
-          var delegated2 = (_b = current_target[event_symbol]) == null ? void 0 : _b[event_name];
+          var delegated2 = (_b2 = current_target[event_symbol]) == null ? void 0 : _b2[event_name];
           if (delegated2 != null && (!/** @type {any} */
           current_target.disabled || // DOM could've been updated already by the time this is reached, so we check this as well
           // -> the target could not have been disabled because it emits the event in the first place
@@ -4113,7 +4115,27 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
   }
   const blockedScripts = [];
   let observer = null;
+  function transferFromLoader() {
+    const g = window["__NzConsent"];
+    if (!g) return;
+    if (g._observer) {
+      g._observer.disconnect();
+      g._observer = null;
+    }
+    if (Array.isArray(g._blockedScripts) && g._blockedScripts.length > 0) {
+      for (const b of g._blockedScripts) {
+        if (blockedScripts.some((s) => s.element === b.element)) continue;
+        blockedScripts.push({
+          element: b.element,
+          originalType: b.originalType,
+          category: b.category
+        });
+      }
+      g._blockedScripts.length = 0;
+    }
+  }
   function blockScripts(scriptPatterns) {
+    transferFromLoader();
     const scripts = document.querySelectorAll("script[data-consent-category]");
     for (const script of scripts) {
       const category = script.getAttribute("data-consent-category");
@@ -4607,31 +4629,18 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     push($$props, true);
     let localPrefs = /* @__PURE__ */ state(proxy({
       essential: true,
-      functional: false,
-      analytics: false,
-      marketing: false,
-      social_media: false
+      functional: $$props.preferences.functional ?? false,
+      analytics: $$props.preferences.analytics ?? false,
+      marketing: $$props.preferences.marketing ?? false,
+      social_media: $$props.preferences.social_media ?? false
     }));
     let expandedCategory = /* @__PURE__ */ state(null);
     let dialogEl = /* @__PURE__ */ state(null);
-    user_effect(() => {
-      set(
-        localPrefs,
-        {
-          essential: true,
-          functional: $$props.preferences.functional ?? false,
-          analytics: $$props.preferences.analytics ?? false,
-          marketing: $$props.preferences.marketing ?? false,
-          social_media: $$props.preferences.social_media ?? false
-        },
-        true
-      );
-    });
     const categories = ["essential", "functional", "analytics", "marketing"];
     const availableCategories = /* @__PURE__ */ user_derived(() => () => {
-      var _a2, _b;
+      var _a2, _b2;
       const cats = [...categories];
-      if ((_b = (_a2 = $$props.config) == null ? void 0 : _a2.enabledCategories) == null ? void 0 : _b.includes("social_media")) {
+      if ((_b2 = (_a2 = $$props.config) == null ? void 0 : _a2.categories) == null ? void 0 : _b2.includes("social_media")) {
         cats.push("social_media");
       }
       return cats;
@@ -4664,7 +4673,6 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         if (focusable.length === 0) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
-        if (!first || !last) return;
         if (e.shiftKey) {
           if (document.activeElement === first) {
             e.preventDefault();
@@ -4682,8 +4690,8 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       set(expandedCategory, get(expandedCategory) === category ? null : category, true);
     }
     function getCookiesForCategory(category) {
-      var _a2, _b;
-      return ((_b = (_a2 = $$props.config) == null ? void 0 : _a2.cookies) == null ? void 0 : _b.filter((c) => c.category === category)) || [];
+      var _a2, _b2;
+      return ((_b2 = (_a2 = $$props.config) == null ? void 0 : _a2.cookies) == null ? void 0 : _b2.filter((c) => c.category === category)) || [];
     }
     var dialog = root$1();
     var div = child(dialog);
@@ -4889,21 +4897,29 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
   var root = /* @__PURE__ */ from_html(`<div class="nz-consent-root svelte-1iqzoy1"><!> <!> <!></div>`);
   function ConsentWidget($$anchor, $$props) {
     push($$props, true);
-    let locale = prop($$props, "locale", 3, "en"), position = prop($$props, "position", 3, "bottom"), theme = prop($$props, "theme", 3, "auto"), showFloatingButton = prop($$props, "showFloatingButton", 3, true);
+    let localeProp = prop($$props, "locale", 3, "en"), position = prop($$props, "position", 3, "bottom"), theme = prop($$props, "theme", 3, "auto"), showFloatingButton = prop($$props, "showFloatingButton", 3, true);
+    let locale = /* @__PURE__ */ state(proxy(localeProp()));
+    let colors = /* @__PURE__ */ state(proxy($$props.colors));
+    user_effect(() => {
+      set(locale, localeProp());
+    });
+    user_effect(() => {
+      set(colors, $$props.colors, true);
+    });
+    function setLocale(l) {
+      set(locale, l, true);
+    }
+    function setColors(c) {
+      set(colors, c, true);
+    }
     const store = createConsentStore();
-    function t(key) {
-      return createConsentI18n(locale()).t(key);
-    }
-    function getClient() {
-      if ($$props.config) return null;
-      return new ConsentApiClient({
-        baseUrl: $$props.apiUrl || window.location.origin,
-        appKey: $$props.appKey
-      });
-    }
-    function getVisitorId() {
-      return getOrCreateVisitorId($$props.appKey);
-    }
+    const i18n = /* @__PURE__ */ user_derived(() => createConsentI18n(get(locale)));
+    const t = /* @__PURE__ */ user_derived(() => (key) => get(i18n).t(key));
+    const client = new ConsentApiClient({
+      baseUrl: $$props.apiUrl || window.location.origin,
+      appKey: $$props.appKey
+    });
+    const visitorId = getOrCreateVisitorId($$props.appKey);
     const resolvedTheme = /* @__PURE__ */ user_derived(() => () => {
       if (theme() === "auto") {
         return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -4931,19 +4947,26 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       };
     });
     async function init() {
-      var _a2, _b;
+      var _a2, _b2, _c;
       const stored = getStoredConsent($$props.appKey);
       try {
-        const config = $$props.config ?? await ((_a2 = getClient()) == null ? void 0 : _a2.getConfig());
-        if (!config) throw new Error("Consent config unavailable");
+        const config = await client.getConfig();
         store.config = config;
         const shouldGeoTarget = $$props.geoTargeting ?? config.geoTargeting;
         if (shouldGeoTarget && !isLikelyEU()) {
           store.acceptAll();
           const prefs = store.preferences;
-          saveConsent($$props.appKey, prefs, getVisitorId());
+          saveConsent($$props.appKey, prefs, visitorId);
           unblockScripts(prefs);
-          (_b = $$props.onaccept) == null ? void 0 : _b.call($$props, prefs);
+          const g = window["__NzConsent"];
+          if (g) {
+            (_a2 = g.release) == null ? void 0 : _a2.call(g, prefs);
+            if (g._observer) {
+              g._observer.disconnect();
+              g._observer = null;
+            }
+          }
+          (_b2 = $$props.onaccept) == null ? void 0 : _b2.call($$props, prefs);
           return;
         }
         blockScripts(config.scripts);
@@ -4957,6 +4980,36 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       } catch (err) {
         console.error("[NzConsent] Failed to load config:", err);
         store.error = err instanceof Error ? err.message : "Failed to load config";
+        const fbScripts = (((_c = $$props.fallbackConfig) == null ? void 0 : _c.scripts) ?? []).map((s, i) => ({
+          id: `fb-${i}`,
+          appId: $$props.appKey,
+          pattern: s.pattern,
+          category: s.category,
+          description: "",
+          provider: "",
+          createdAt: 0
+        }));
+        blockScripts(fbScripts);
+        if ($$props.fallbackConfig) {
+          const allCategories = [
+            "essential",
+            "functional",
+            "analytics",
+            "marketing",
+            "social_media"
+          ];
+          store.config = {
+            appKey: $$props.appKey,
+            name: "",
+            enabledCategories: $$props.fallbackConfig.enabledCategories ?? allCategories,
+            geoTargeting: $$props.fallbackConfig.geoTargeting ?? false,
+            cookiePolicyUrl: $$props.fallbackConfig.cookiePolicyUrl ?? "",
+            privacyPolicyUrl: $$props.fallbackConfig.privacyPolicyUrl ?? "",
+            cookies: [],
+            storageItems: [],
+            scripts: fbScripts
+          };
+        }
         if (stored) {
           store.preferences = stored.preferences;
           store.state = "hidden";
@@ -4965,12 +5018,6 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         }
         store.state = "banner";
       }
-    }
-    function logConsent(preferences, action) {
-      const client = getClient();
-      if (!client) return;
-      client.logConsent(getVisitorId(), preferences, action).catch(() => {
-      });
     }
     function handleAcceptAll() {
       var _a2;
@@ -4986,31 +5033,34 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         });
       }
       const prefs = store.preferences;
-      saveConsent($$props.appKey, prefs, getVisitorId());
+      saveConsent($$props.appKey, prefs, visitorId);
       unblockScripts(prefs);
-      logConsent(prefs, "grant");
+      client.logConsent(visitorId, prefs, "grant").catch(() => {
+      });
       (_a2 = $$props.onaccept) == null ? void 0 : _a2.call($$props, prefs);
     }
     function handleRejectAll() {
       var _a2;
       store.rejectAll();
       const prefs = store.preferences;
-      saveConsent($$props.appKey, prefs, getVisitorId());
-      logConsent(prefs, "grant");
+      saveConsent($$props.appKey, prefs, visitorId);
+      client.logConsent(visitorId, prefs, "grant").catch(() => {
+      });
       (_a2 = $$props.onreject) == null ? void 0 : _a2.call($$props);
     }
     function handleSavePreferences(prefs) {
-      var _a2, _b;
+      var _a2, _b2;
       const isUpdate = getStoredConsent($$props.appKey) !== null;
       store.savePreferences(prefs);
       const finalPrefs = store.preferences;
-      saveConsent($$props.appKey, finalPrefs, getVisitorId());
+      saveConsent($$props.appKey, finalPrefs, visitorId);
       unblockScripts(finalPrefs);
-      logConsent(finalPrefs, isUpdate ? "update" : "grant");
+      client.logConsent(visitorId, finalPrefs, isUpdate ? "update" : "grant").catch(() => {
+      });
       if (isUpdate) {
         (_a2 = $$props.onupdate) == null ? void 0 : _a2.call($$props, finalPrefs);
       } else {
-        (_b = $$props.onaccept) == null ? void 0 : _b.call($$props, finalPrefs);
+        (_b2 = $$props.onaccept) == null ? void 0 : _b2.call($$props, finalPrefs);
       }
     }
     function handleCustomize() {
@@ -5024,6 +5074,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         store.showBanner();
       }
     }
+    var $$exports = { setLocale, setColors };
     var div = root();
     let styles;
     var node = child(div);
@@ -5042,7 +5093,9 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
             get position() {
               return position();
             },
-            t,
+            get t() {
+              return get(t);
+            },
             get privacyPolicyUrl() {
               return get($0);
             },
@@ -5072,7 +5125,9 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
             return $$props.cookiePolicyUrl || ((_a2 = store.config) == null ? void 0 : _a2.cookiePolicyUrl);
           });
           PreferenceCenter($$anchor2, {
-            t,
+            get t() {
+              return get(t);
+            },
             get config() {
               return store.config;
             },
@@ -5100,7 +5155,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     {
       var consequent_2 = ($$anchor2) => {
         var button = root_3();
-        template_effect(($0) => set_attribute(button, "aria-label", $0), [() => t("consent.customize")]);
+        template_effect(($0) => set_attribute(button, "aria-label", $0), [() => get(t)("consent.customize")]);
         append($$anchor2, button);
       };
       if_block(node_2, ($$render) => {
@@ -5109,22 +5164,24 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     }
     template_effect(
       ($0) => {
-        var _a2, _b, _c, _d, _e;
-        set_attribute(div, "lang", locale());
+        var _a2, _b2, _c, _d, _e, _f, _g;
+        set_attribute(div, "lang", get(locale));
         set_attribute(div, "data-nz-theme", $0);
         set_attribute(div, "data-nz-consent", $$props.appKey);
         styles = set_style(div, "", styles, {
-          "--nz-accent": (_a2 = $$props.colors) == null ? void 0 : _a2.primary,
-          "--nz-bg": (_b = $$props.colors) == null ? void 0 : _b.background,
-          "--nz-text": (_c = $$props.colors) == null ? void 0 : _c.text,
-          "--nz-border": (_d = $$props.colors) == null ? void 0 : _d.border,
-          "--nz-consent-toggle-active": (_e = $$props.colors) == null ? void 0 : _e.toggleActive
+          "--nz-accent": (_a2 = get(colors)) == null ? void 0 : _a2.primary,
+          "--nz-accent-start": (_b2 = get(colors)) == null ? void 0 : _b2.gradientStart,
+          "--nz-accent-end": (_c = get(colors)) == null ? void 0 : _c.gradientEnd,
+          "--nz-bg": (_d = get(colors)) == null ? void 0 : _d.background,
+          "--nz-text": (_e = get(colors)) == null ? void 0 : _e.text,
+          "--nz-border": (_f = get(colors)) == null ? void 0 : _f.border,
+          "--nz-consent-toggle-active": (_g = get(colors)) == null ? void 0 : _g.toggleActive
         });
       },
       [() => get(resolvedTheme)()]
     );
     append($$anchor, div);
-    pop();
+    return pop($$exports);
   }
   function render(options) {
     const target = typeof options.target === "string" ? document.querySelector(options.target) : options.target;
@@ -5136,7 +5193,6 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       props: {
         appKey: options.appKey,
         apiUrl: options.apiUrl,
-        config: options.config,
         locale: options.locale,
         position: options.position,
         theme: options.theme,
@@ -5145,12 +5201,14 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         cookiePolicyUrl: options.cookiePolicyUrl,
         geoTargeting: options.geoTargeting,
         showFloatingButton: options.showFloatingButton,
+        fallbackConfig: options.fallbackConfig,
         onaccept: options.onaccept,
         onreject: options.onreject,
         onupdate: options.onupdate
       }
     });
     return {
+      ...component,
       destroy() {
         unmount(component);
       },
@@ -5158,6 +5216,93 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         target.dispatchEvent(new CustomEvent("nz-consent-show-preferences"));
       }
     };
+  }
+  function autoInit() {
+    const C = window["__NzConsent"];
+    if (!(C == null ? void 0 : C.key)) return;
+    function doInit() {
+      let mount2 = document.getElementById("nz-consent-mount");
+      if (!mount2) {
+        mount2 = document.createElement("div");
+        mount2.id = "nz-consent-mount";
+        document.body.appendChild(mount2);
+      }
+      render({
+        target: mount2,
+        appKey: C.key,
+        apiUrl: C.apiUrl,
+        fallbackConfig: C.fallbackConfig
+      });
+    }
+    if (document.body) {
+      doInit();
+    } else {
+      document.addEventListener("DOMContentLoaded", doInit, { once: true });
+    }
+  }
+  if (typeof window !== "undefined" && window["__NzConsent"]) {
+    autoInit();
+  }
+  if (typeof window !== "undefined" && !customElements.get("nz-consent-widget")) {
+    customElements.define(
+      "nz-consent-widget",
+      (_b = class extends HTMLElement {
+        constructor() {
+          super(...arguments);
+          __publicField(this, "_widget", null);
+        }
+        connectedCallback() {
+          const appKey = this.getAttribute("appkey") ?? "";
+          if (!appKey) return;
+          this._widget = render({
+            target: this,
+            appKey,
+            apiUrl: this.getAttribute("apiurl") ?? void 0,
+            locale: this.getAttribute("locale") ?? void 0,
+            position: this.getAttribute("position") ?? void 0,
+            theme: this.getAttribute("theme") ?? void 0,
+            privacyPolicyUrl: this.getAttribute("privacy-policy-url") ?? void 0,
+            cookiePolicyUrl: this.getAttribute("cookie-policy-url") ?? void 0,
+            geoTargeting: this.hasAttribute("geo-targeting"),
+            showFloatingButton: !this.hasAttribute("no-float"),
+            colors: {
+              primary: this.getAttribute("color-primary") ?? void 0,
+              gradientStart: this.getAttribute("color-gradient-start") ?? void 0,
+              gradientEnd: this.getAttribute("color-gradient-end") ?? void 0,
+              background: this.getAttribute("color-background") ?? void 0,
+              text: this.getAttribute("color-text") ?? void 0,
+              border: this.getAttribute("color-border") ?? void 0,
+              toggleActive: this.getAttribute("color-toggle-active") ?? void 0
+            }
+          });
+        }
+        attributeChangedCallback(name, _old, _value) {
+          if (!this._widget) return;
+          if (name === "locale") {
+            this._widget.setLocale(this.getAttribute("locale") ?? "en");
+          } else {
+            this._widget.setColors({
+              primary: this.getAttribute("color-primary") ?? void 0,
+              gradientStart: this.getAttribute("color-gradient-start") ?? void 0,
+              gradientEnd: this.getAttribute("color-gradient-end") ?? void 0,
+              background: this.getAttribute("color-background") ?? void 0,
+              text: this.getAttribute("color-text") ?? void 0,
+              border: this.getAttribute("color-border") ?? void 0,
+              toggleActive: this.getAttribute("color-toggle-active") ?? void 0
+            });
+          }
+        }
+      }, __publicField(_b, "observedAttributes", [
+        "locale",
+        "color-primary",
+        "color-gradient-start",
+        "color-gradient-end",
+        "color-background",
+        "color-text",
+        "color-border",
+        "color-toggle-active"
+      ]), _b)
+    );
   }
   exports.ConsentWidget = ConsentWidget;
   exports.render = render;

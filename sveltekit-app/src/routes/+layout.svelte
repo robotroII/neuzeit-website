@@ -19,7 +19,7 @@
   import { browser } from '$app/environment'
 	import { locales, getLocale, localizeHref } from '$lib/paraglide/runtime';
 
-  const widgetUrl = 'http://localhost:3002/widget/nz-consent.iife.js'
+  const widgetUrl = '/nz-consent.iife.js'
 
 	const pageData = $derived(page.data.page?.data);
   const theme = $derived(pageData && pageData.theme);
