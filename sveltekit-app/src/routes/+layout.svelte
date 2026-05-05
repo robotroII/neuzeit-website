@@ -19,7 +19,7 @@
   import { browser } from '$app/environment'
 	import { locales, getLocale, localizeHref } from '$lib/paraglide/runtime';
 
-  const widgetUrl = '/nz-consent.iife.js'
+  const widgetUrl = '/widget/nz-consent.iife.js'
 
 	const pageData = $derived(page.data.page?.data);
   const theme = $derived(pageData && pageData.theme);
@@ -162,12 +162,7 @@
 
 <nz-consent-widget
   appKey="nz_kxhwEUM7T0Dgfigixosz_yQh"
-  fallbackConfig={{
-    enabledCategories: ["essential"],
-    cookies: [
-      { name: "PARAGLIDE_LOCALE", domain: ".www.neuzeit.ai", category: "essential" }
-    ],
-  }}
+  localConfig={'{"enabledCategories":["essential"],"cookies":[{"name":"PARAGLIDE_LOCALE","domain":".www.neuzeit.ai","category":"essential"}]}'}
   locale={locale}
   color-primary={pageData?.theme?.primaryColor}
   color-gradient-start={pageData?.theme?.primaryGradient?.colors[0]}

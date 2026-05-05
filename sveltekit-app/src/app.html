@@ -7,9 +7,15 @@
   <!-- <link rel="icon" href="%sveltekit.assets%/favicon.png" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   %sveltekit.head%
+  <script
+    src="/widget/nz-consent-loader.js"
+    data-app-key="nz_kxhwEUM7T0Dgfigixosz_yQh"
+    data-local-config='{"enabledCategories":["essential"],"scripts":[{"pattern":"*matomo.cloud*","category":"analytics"}],"cookies":[{"name":"PARAGLIDE_LOCALE","domain":".www.neuzeit.ai","category":"essential"}]}'
+  ></script>
 
-  <!-- Matomo -->
-  <!-- <script>
+<!-- Matomo -->
+  <!-- <script id="matomo-script" data-consent-category="analytics">
+    console.log('Matomo script loaded');
     var _paq = window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
     _paq.push(['trackPageView']);
@@ -27,6 +33,17 @@
 
 <body data-sveltekit-preload-data="hover">
   <div style="display: contents">%sveltekit.body%</div>
+
+<!-- <nz-consent-widget
+  appKey="nz_kxhwEUM7T0Dgfigixosz_yQh"
+  fallbackConfig='{
+    enabledCategories: ["essential"],
+    cookies: [
+      { name: "PARAGLIDE_LOCALE", domain: ".www.neuzeit.ai", category: "essential" }
+    ],
+  }'
+></nz-consent-widget> -->
+
 </body>
 
 </html>
