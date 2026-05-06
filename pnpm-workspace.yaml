@@ -1,3 +1,5 @@
+# pnpm-workspace.yaml
+minimumReleaseAge: 10080
 packages:
   - 'sveltekit-app'
   - 'studio'

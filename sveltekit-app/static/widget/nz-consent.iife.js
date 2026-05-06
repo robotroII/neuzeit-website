@@ -4156,6 +4156,19 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
           }
         }
       }
+      for (const pattern of scriptPatterns) {
+        if (!pattern.selector) continue;
+        try {
+          const matched = document.querySelectorAll(pattern.selector);
+          for (const script of matched) {
+            if (script.src) continue;
+            if (script.getAttribute("data-consent-category")) continue;
+            script.setAttribute("data-consent-category", pattern.category);
+            blockScript(script, pattern.category);
+          }
+        } catch {
+        }
+      }
     }
     observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
@@ -4164,12 +4177,26 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
             const category = node.getAttribute("data-consent-category");
             if (category && category !== "essential") {
               blockScript(node, category);
-            } else if (node.src && scriptPatterns.length > 0) {
-              for (const pattern of scriptPatterns) {
-                if (matchPattern(node.src, pattern.pattern)) {
-                  node.setAttribute("data-consent-category", pattern.category);
-                  blockScript(node, pattern.category);
-                  break;
+            } else if (scriptPatterns.length > 0) {
+              if (node.src) {
+                for (const pattern of scriptPatterns) {
+                  if (matchPattern(node.src, pattern.pattern)) {
+                    node.setAttribute("data-consent-category", pattern.category);
+                    blockScript(node, pattern.category);
+                    break;
+                  }
+                }
+              } else {
+                for (const pattern of scriptPatterns) {
+                  if (!pattern.selector) continue;
+                  try {
+                    if (node.matches(pattern.selector)) {
+                      node.setAttribute("data-consent-category", pattern.category);
+                      blockScript(node, pattern.category);
+                      break;
+                    }
+                  } catch {
+                  }
                 }
               }
             }
@@ -4183,11 +4210,24 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
     });
   }
   function blockScript(script, category) {
-    const originalType = script.type || "text/javascript";
-    if (originalType === "text/plain") return;
-    blockedScripts.push({ element: script, originalType, category });
+    const currentType = script.type || "text/javascript";
+    if (currentType === "text/plain") {
+      if (blockedScripts.some((s) => s.element === script)) return;
+      const restoreType = script.getAttribute("data-original-type") || "text/javascript";
+      blockedScripts.push({ element: script, originalType: restoreType, category });
+      return;
+    }
+    if (!script.src) {
+      console.warn(
+        `[NzConsent] Inline script with data-consent-category="${category}" could not be blocked — it already executed before the widget could intercept it. To prevent execution until consent is given, add type="text/plain" to the <script> tag in your HTML.`,
+        script
+      );
+      return;
+    }
+    if (blockedScripts.some((s) => s.element === script)) return;
+    blockedScripts.push({ element: script, originalType: currentType, category });
     script.type = "text/plain";
-    script.setAttribute("data-original-type", originalType);
+    script.setAttribute("data-original-type", currentType);
   }
   function unblockScripts(preferences) {
     var _a2;
@@ -4198,7 +4238,8 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       for (const attr of oldScript.attributes) {
         if (attr.name === "type") {
           newScript.type = blocked.originalType;
-        } else {
+        } else if (attr.name === "data-consent-category" || attr.name === "data-original-type") ;
+        else {
           newScript.setAttribute(attr.name, attr.value);
         }
       }
@@ -4217,6 +4258,9 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       observer = null;
     }
     blockedScripts.length = 0;
+  }
+  function getBlockedCategories() {
+    return new Set(blockedScripts.map((s) => s.category));
   }
   function matchPattern(url, pattern) {
     const escaped = pattern.replace(/[.+^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*");
@@ -4919,7 +4963,6 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       baseUrl: $$props.apiUrl || window.location.origin,
       appKey: $$props.appKey
     });
-    const offlineMode = !!$$props.fallbackConfig && !$$props.apiUrl;
     const visitorId = getOrCreateVisitorId($$props.appKey);
     const resolvedTheme = /* @__PURE__ */ user_derived(() => () => {
       if (theme() === "auto") {
@@ -4947,11 +4990,17 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         destroyBlocker();
       };
     });
-    async function init() {
-      var _a2, _b2, _c, _d, _e, _f, _g, _h, _i, _j, _k;
-      const stored = getStoredConsent($$props.appKey);
-      const fbScripts = (((_a2 = $$props.fallbackConfig) == null ? void 0 : _a2.scripts) ?? []).map((s, i) => ({
-        id: `fb-${i}`,
+    const ALL_CATEGORIES = [
+      "essential",
+      "functional",
+      "analytics",
+      "marketing",
+      "social_media"
+    ];
+    function buildLocalConfig() {
+      var _a2, _b2;
+      const fbScripts = (((_a2 = $$props.localConfig) == null ? void 0 : _a2.scripts) ?? []).map((s, i) => ({
+        id: `lc-${i}`,
         appId: $$props.appKey,
         pattern: s.pattern,
         category: s.category,
@@ -4959,63 +5008,52 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         provider: "",
         createdAt: 0
       }));
-      const useOfflineFallback = !!$$props.fallbackConfig && !$$props.apiUrl;
-      if (useOfflineFallback) {
-        const shouldGeoTarget = $$props.geoTargeting ?? ((_b2 = $$props.fallbackConfig) == null ? void 0 : _b2.geoTargeting);
+      const fbCookies = (((_b2 = $$props.localConfig) == null ? void 0 : _b2.cookies) ?? []).map((c, i) => ({
+        id: `lc-c-${i}`,
+        appId: $$props.appKey,
+        name: c.name,
+        domain: c.domain ?? "",
+        path: "/",
+        duration: "",
+        httpOnly: false,
+        secure: false,
+        sameSite: "",
+        provider: "",
+        isRegex: false,
+        category: c.category,
+        description: "",
+        source: "manual",
+        firstSeen: 0,
+        lastSeen: 0
+      }));
+      return { fbScripts, fbCookies };
+    }
+    async function init() {
+      var _a2, _b2, _c;
+      const stored = getStoredConsent($$props.appKey);
+      if ($$props.localConfig && !$$props.apiUrl) {
+        const { fbScripts, fbCookies } = buildLocalConfig();
+        blockScripts(fbScripts);
+        const shouldGeoTarget = $$props.geoTargeting ?? $$props.localConfig.geoTargeting ?? false;
         if (shouldGeoTarget && !isLikelyEU()) {
-          store.config = {
-            appKey: $$props.appKey,
-            name: "",
-            enabledCategories: ((_c = $$props.fallbackConfig) == null ? void 0 : _c.enabledCategories) ?? [
-              "essential",
-              "functional",
-              "analytics",
-              "marketing",
-              "social_media"
-            ],
-            geoTargeting: ((_d = $$props.fallbackConfig) == null ? void 0 : _d.geoTargeting) ?? false,
-            cookiePolicyUrl: ((_e = $$props.fallbackConfig) == null ? void 0 : _e.cookiePolicyUrl) ?? "",
-            privacyPolicyUrl: ((_f = $$props.fallbackConfig) == null ? void 0 : _f.privacyPolicyUrl) ?? "",
-            cookies: ((_g = $$props.fallbackConfig) == null ? void 0 : _g.cookies) ?? [],
-            storageItems: [],
-            scripts: fbScripts
-          };
           store.acceptAll();
           const prefs = store.preferences;
           saveConsent($$props.appKey, prefs, visitorId);
           unblockScripts(prefs);
-          const g = window["__NzConsent"];
-          if (g) {
-            (_h = g.release) == null ? void 0 : _h.call(g, prefs);
-            if (g._observer) {
-              g._observer.disconnect();
-              g._observer = null;
-            }
-          }
-          (_i = $$props.onaccept) == null ? void 0 : _i.call($$props, prefs);
+          (_a2 = $$props.onaccept) == null ? void 0 : _a2.call($$props, prefs);
           return;
         }
-        blockScripts(fbScripts);
-        if ($$props.fallbackConfig) {
-          const allCategories = [
-            "essential",
-            "functional",
-            "analytics",
-            "marketing",
-            "social_media"
-          ];
-          store.config = {
-            appKey: $$props.appKey,
-            name: "",
-            enabledCategories: $$props.fallbackConfig.enabledCategories ?? allCategories,
-            geoTargeting: $$props.fallbackConfig.geoTargeting ?? false,
-            cookiePolicyUrl: $$props.fallbackConfig.cookiePolicyUrl ?? "",
-            privacyPolicyUrl: $$props.fallbackConfig.privacyPolicyUrl ?? "",
-            cookies: $$props.fallbackConfig.cookies ?? [],
-            storageItems: [],
-            scripts: fbScripts
-          };
-        }
+        store.config = {
+          appKey: $$props.appKey,
+          name: "",
+          enabledCategories: $$props.localConfig.enabledCategories ?? ALL_CATEGORIES,
+          geoTargeting: $$props.localConfig.geoTargeting ?? false,
+          cookiePolicyUrl: $$props.localConfig.cookiePolicyUrl ?? "",
+          privacyPolicyUrl: $$props.localConfig.privacyPolicyUrl ?? "",
+          cookies: fbCookies,
+          storageItems: [],
+          scripts: fbScripts
+        };
         if (stored) {
           store.preferences = stored.preferences;
           store.state = "hidden";
@@ -5036,13 +5074,13 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
           unblockScripts(prefs);
           const g = window["__NzConsent"];
           if (g) {
-            (_j = g.release) == null ? void 0 : _j.call(g, prefs);
+            (_b2 = g.release) == null ? void 0 : _b2.call(g, prefs);
             if (g._observer) {
               g._observer.disconnect();
               g._observer = null;
             }
           }
-          (_k = $$props.onaccept) == null ? void 0 : _k.call($$props, prefs);
+          (_c = $$props.onaccept) == null ? void 0 : _c.call($$props, prefs);
           return;
         }
         blockScripts(config.scripts);
@@ -5056,23 +5094,17 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       } catch (err) {
         console.error("[NzConsent] Failed to load config:", err);
         store.error = err instanceof Error ? err.message : "Failed to load config";
+        const { fbScripts, fbCookies } = buildLocalConfig();
         blockScripts(fbScripts);
-        if ($$props.fallbackConfig) {
-          const allCategories = [
-            "essential",
-            "functional",
-            "analytics",
-            "marketing",
-            "social_media"
-          ];
+        if ($$props.localConfig) {
           store.config = {
             appKey: $$props.appKey,
             name: "",
-            enabledCategories: $$props.fallbackConfig.enabledCategories ?? allCategories,
-            geoTargeting: $$props.fallbackConfig.geoTargeting ?? false,
-            cookiePolicyUrl: $$props.fallbackConfig.cookiePolicyUrl ?? "",
-            privacyPolicyUrl: $$props.fallbackConfig.privacyPolicyUrl ?? "",
-            cookies: $$props.fallbackConfig.cookies ?? [],
+            enabledCategories: $$props.localConfig.enabledCategories ?? ALL_CATEGORIES,
+            geoTargeting: $$props.localConfig.geoTargeting ?? false,
+            cookiePolicyUrl: $$props.localConfig.cookiePolicyUrl ?? "",
+            privacyPolicyUrl: $$props.localConfig.privacyPolicyUrl ?? "",
+            cookies: fbCookies,
             storageItems: [],
             scripts: fbScripts
           };
@@ -5099,13 +5131,15 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
           social_media: true
         });
       }
-      const prefs = store.preferences;
+      const prefs = { ...store.preferences };
+      for (const cat of getBlockedCategories()) {
+        prefs[cat] = true;
+      }
+      store.savePreferences(prefs);
       saveConsent($$props.appKey, prefs, visitorId);
       unblockScripts(prefs);
-      if (!offlineMode) {
-        client.logConsent(visitorId, prefs, "grant").catch(() => {
-        });
-      }
+      if ($$props.apiUrl) client.logConsent(visitorId, prefs, "grant").catch(() => {
+      });
       (_a2 = $$props.onaccept) == null ? void 0 : _a2.call($$props, prefs);
     }
     function handleRejectAll() {
@@ -5113,10 +5147,8 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       store.rejectAll();
       const prefs = store.preferences;
       saveConsent($$props.appKey, prefs, visitorId);
-      if (!offlineMode) {
-        client.logConsent(visitorId, prefs, "grant").catch(() => {
-        });
-      }
+      if ($$props.apiUrl) client.logConsent(visitorId, prefs, "grant").catch(() => {
+      });
       (_a2 = $$props.onreject) == null ? void 0 : _a2.call($$props);
     }
     function handleSavePreferences(prefs) {
@@ -5126,10 +5158,8 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       const finalPrefs = store.preferences;
       saveConsent($$props.appKey, finalPrefs, visitorId);
       unblockScripts(finalPrefs);
-      if (!offlineMode) {
-        client.logConsent(visitorId, finalPrefs, isUpdate ? "update" : "grant").catch(() => {
-        });
-      }
+      if ($$props.apiUrl) client.logConsent(visitorId, finalPrefs, isUpdate ? "update" : "grant").catch(() => {
+      });
       if (isUpdate) {
         (_a2 = $$props.onupdate) == null ? void 0 : _a2.call($$props, finalPrefs);
       } else {
@@ -5274,7 +5304,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         cookiePolicyUrl: options.cookiePolicyUrl,
         geoTargeting: options.geoTargeting,
         showFloatingButton: options.showFloatingButton,
-        fallbackConfig: options.fallbackConfig,
+        localConfig: options.localConfig,
         onaccept: options.onaccept,
         onreject: options.onreject,
         onupdate: options.onupdate
@@ -5304,7 +5334,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         target: mount2,
         appKey: C.key,
         apiUrl: C.apiUrl,
-        fallbackConfig: C.fallbackConfig
+        localConfig: C.localConfig
       });
     }
     if (document.body) {
@@ -5313,8 +5343,11 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
       document.addEventListener("DOMContentLoaded", doInit, { once: true });
     }
   }
-  if (typeof window !== "undefined" && window["__NzConsent"]) {
-    autoInit();
+  if (typeof window !== "undefined") {
+    const _C = window["__NzConsent"];
+    if (_C == null ? void 0 : _C.widgetSrc) {
+      autoInit();
+    }
   }
   if (typeof window !== "undefined" && !customElements.get("nz-consent-widget")) {
     customElements.define(
@@ -5325,39 +5358,37 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
           __publicField(this, "_widget", null);
         }
         connectedCallback() {
-          var _a2, _b2, _c, _d, _e, _f, _g;
           const appKey = this.getAttribute("appkey") ?? "";
           if (!appKey) return;
-          const props = this;
-          let fallbackConfig = props["fallbackConfig"] ?? void 0;
-          const fallbackConfigAttr = this.getAttribute("fallback-config");
-          if (!fallbackConfig && fallbackConfigAttr) {
-            try {
-              fallbackConfig = JSON.parse(fallbackConfigAttr);
-            } catch (err) {
-              console.error("[NzConsent] Invalid fallback-config JSON:", err);
-            }
-          }
           this._widget = render({
             target: this,
-            appKey: props["appKey"] ?? this.getAttribute("appkey") ?? "",
-            apiUrl: props["apiUrl"] ?? this.getAttribute("apiurl") ?? void 0,
-            locale: props["locale"] ?? this.getAttribute("locale") ?? void 0,
-            position: props["position"] ?? this.getAttribute("position") ?? void 0,
-            theme: props["theme"] ?? this.getAttribute("theme") ?? void 0,
-            privacyPolicyUrl: props["privacyPolicyUrl"] ?? this.getAttribute("privacy-policy-url") ?? void 0,
-            cookiePolicyUrl: props["cookiePolicyUrl"] ?? this.getAttribute("cookie-policy-url") ?? void 0,
-            geoTargeting: props["geoTargeting"] ?? this.hasAttribute("geo-targeting"),
-            showFloatingButton: props["showFloatingButton"] ?? !this.hasAttribute("no-float"),
-            fallbackConfig: props["fallbackConfig"] ?? void 0,
+            appKey,
+            apiUrl: this.getAttribute("apiurl") ?? void 0,
+            locale: this.getAttribute("locale") ?? void 0,
+            position: this.getAttribute("position") ?? void 0,
+            theme: this.getAttribute("theme") ?? void 0,
+            privacyPolicyUrl: this.getAttribute("privacy-policy-url") ?? void 0,
+            cookiePolicyUrl: this.getAttribute("cookie-policy-url") ?? void 0,
+            geoTargeting: this.hasAttribute("geo-targeting"),
+            showFloatingButton: !this.hasAttribute("no-float"),
+            localConfig: (() => {
+              const raw = this.getAttribute("localconfig") ?? this.getAttribute("local-config");
+              if (!raw) return void 0;
+              try {
+                return JSON.parse(raw);
+              } catch {
+                console.warn("[NzConsent] localConfig attribute is not valid JSON");
+                return void 0;
+              }
+            })(),
             colors: {
-              primary: ((_a2 = props["colors"]) == null ? void 0 : _a2.primary) ?? this.getAttribute("color-primary") ?? void 0,
-              gradientStart: ((_b2 = props["colors"]) == null ? void 0 : _b2.gradientStart) ?? this.getAttribute("color-gradient-start") ?? void 0,
-              gradientEnd: ((_c = props["colors"]) == null ? void 0 : _c.gradientEnd) ?? this.getAttribute("color-gradient-end") ?? void 0,
-              background: ((_d = props["colors"]) == null ? void 0 : _d.background) ?? this.getAttribute("color-background") ?? void 0,
-              text: ((_e = props["colors"]) == null ? void 0 : _e.text) ?? this.getAttribute("color-text") ?? void 0,
-              border: ((_f = props["colors"]) == null ? void 0 : _f.border) ?? this.getAttribute("color-border") ?? void 0,
-              toggleActive: ((_g = props["colors"]) == null ? void 0 : _g.toggleActive) ?? this.getAttribute("color-toggle-active") ?? void 0
+              primary: this.getAttribute("color-primary") ?? void 0,
+              gradientStart: this.getAttribute("color-gradient-start") ?? void 0,
+              gradientEnd: this.getAttribute("color-gradient-end") ?? void 0,
+              background: this.getAttribute("color-background") ?? void 0,
+              text: this.getAttribute("color-text") ?? void 0,
+              border: this.getAttribute("color-border") ?? void 0,
+              toggleActive: this.getAttribute("color-toggle-active") ?? void 0
             }
           });
         }
@@ -5385,8 +5416,7 @@ var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce
         "color-background",
         "color-text",
         "color-border",
-        "color-toggle-active",
-        "fallback-config"
+        "color-toggle-active"
       ]), _b)
     );
   }
