@@ -1,7 +1,7 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"hello_world": "Hello, {name} from en!",
-	"footer_copyright": "<span class=\"whitespace-nowrap block md:inline mb-2\">© Neuzeit GmbH 2025</span> <span class=\"whitespace-nowrap block md:inline mb-2\">Stollwerckstraße 27-31 51149 Köln</span> <span class=\"whitespace-nowrap block md:inline mb-2\">+49 221 168 53 600</span> <span class=\"whitespace-nowrap block md:inline mb-2\"><a href=\"mailto:info@neuzeit.ai\">info@neuzeit.ai</a></span>",
+	"footer_copyright": "<span class=\"whitespace-nowrap block md:inline mb-2\">© Neuzeit GmbH 2025</span> <span class=\"whitespace-nowrap block md:inline mb-2\">Stolberger Straße 90d 50933 Köln</span> <span class=\"whitespace-nowrap block md:inline mb-2\">+49 221 168 53 600</span> <span class=\"whitespace-nowrap block md:inline mb-2\"><a href=\"mailto:info@neuzeit.ai\">info@neuzeit.ai</a></span>",
 	"more": "More",
 	"contactHeadline": "CONTACT",
 	"contactPostalAddress": "Stollwerckstraße 27-31<br>51149 Cologne",
@@ -9,6 +9,6 @@
 	"contactEmail": "hello@neuzeit.ai",
 	"smHeadline": "Follow us",
 	"legalLinksHeadline": "LEGAL",
-"getInTouch": "Get in touch",
+	"getInTouch": "Get in touch",
   "cookieSettings": "Cookie Settings"
 }
